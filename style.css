@@ -1,0 +1,588 @@
+:root {
+    --bg-main: #0c0d0f;
+    --bg-card: #16181d;
+    --text-main: #ffffff;
+    --text-sub: #8a8f98;
+    --accent-cyan: #00baeb;
+    --primary-btn: #ccf381;
+    --icon-yellow: #f4d16e;
+    --icon-coral: #ee7c68;
+    --icon-purple: #c3acf0;
+}
+
+/* 1. CONFIGURACIÓN BASE */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: block;
+}
+
+/* 2. HERO SECTION (BLOQUE SUPERIOR) */
+.hero-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: var(--bg-main);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+    padding: 60px 0;
+    box-sizing: border-box;
+}
+
+.hexagon-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.12;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cpath fill='none' stroke='%234a4e57' stroke-width='1' d='M13.9 49L0 41.1V25.3l13.9-7.9L27.8 25.3V41.1L13.9 49zM0 8.2V0h27.8v8.2l-13.9 7.9L0 8.2z'/%3E%3C/svg%3E");
+    -webkit-mask-image: radial-gradient(circle, black 30%, transparent 80%);
+    mask-image: radial-gradient(circle, black 30%, transparent 80%);
+    pointer-events: none;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero-main-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+.hero-subtitle {
+    margin-top: 20px;
+    color: var(--text-sub);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 3. ANIMACIÓN DIAGRAMA DE VENN */
+.venn-animation-container {
+    background: transparent;
+    backdrop-filter: blur(1px);
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-1 {
+    animation: intersectVenn 7s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(0, 186, 235, 0.3));
+    mix-blend-mode: screen;
+}
+
+.circle-2 {
+    animation: intersectVennReverse 7s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes intersectVenn {
+
+    0%,
+    100% {
+        transform: translateX(-45px);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateX(35px);
+        opacity: 1;
+    }
+}
+
+@keyframes intersectVennReverse {
+
+    0%,
+    100% {
+        transform: translateX(45px);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: translateX(-35px);
+        opacity: 1;
+    }
+}
+
+/* 4. SECCIÓN DE CARACTERÍSTICAS (TARJETAS) */
+.features-section {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+    padding: 60px 0 80px;
+}
+
+.features-container {
+    /* Fijamos el ancho máximo para que el zoom no estire las tarjetas */
+    width: 1100px;
+    max-width: 95%;
+    /* Margen de seguridad para pantallas pequeñas */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 3.5rem;
+}
+
+.features-grid {
+    display: grid;
+    gap: 40px;
+    /* Aumenta este valor (antes era 20px) para dar más aire entre ellas */
+    grid-template-columns: repeat(3, 340px);
+    justify-content: center;
+    /* Centra el bloque de tarjetas fijas en la pantalla */
+    /* ... */
+}
+
+.feature-card {
+    background: var(--bg-card);
+    padding: 2.5rem;
+    border-radius: 16px;
+    position: relative;
+    height: 280px;
+    /* Altura fija opcional para uniformidad */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+    cursor: default;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+
+    /* 2. Asegura que el contenido no "traspase" el borde durante el movimiento */
+    isolation: isolate;
+}
+
+.features-section {
+    /* ... */
+    overflow-x: auto;
+    /* Si la ventana es más estrecha que 1020px, permite scroll lateral */
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    border-radius: 16px;
+    padding: 1.5px;
+    /* Borde un poco más definido */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 1), transparent 60%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    /* Elevación */
+    background: rgba(22, 24, 29, 0.8);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.icon-yellow {
+    background-color: var(--icon-yellow);
+    color: #000;
+}
+
+.icon-coral {
+    background-color: var(--icon-coral);
+    color: #000;
+}
+
+.icon-purple {
+    background-color: var(--icon-purple);
+    color: #000;
+}
+
+/* 5. SECCIÓN DE DESCARGAS (GRID TÉCNICO) */
+.downloads-section {
+    width: 100%;
+    background-color: transparent;
+}
+
+.downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.download-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+    /* Crea un espacio uniforme entre título, texto y botón */
+    padding: 60px 40px;
+    border-right: 1px solid rgba(255, 255, 255, 0.75);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+}
+
+.download-card:nth-child(2n) {
+    border-right: none;
+}
+
+.download-card:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.download-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+}
+
+.download-text {
+    color: var(--text-sub);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 400px;
+}
+
+.button {
+    --main-focus: #2d8cf0;
+    --font-color: #dedede;
+    --bg-color-sub: #222;
+    --bg-color: #323232;
+    --main-color: #dedede;
+    margin-top: 24px;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    /* ELIMINA EL SUBRAYADO */
+}
+
+.button,
+.button__icon,
+.button__text {
+    transition: all 0.3s;
+}
+
+.button .button__text {
+    transform: translateX(21px);
+    color: var(--font-color);
+    font-weight: 600;
+}
+
+.button .button__icon {
+    position: absolute;
+    transform: translateX(109px);
+    height: 100%;
+    width: 39px;
+    background-color: var(--bg-color-sub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button .svg {
+    width: 20px;
+    fill: var(--main-color);
+}
+
+.button:hover {
+    background: var(--bg-color);
+}
+
+.button:hover .button__text {
+    color: transparent;
+}
+
+.button:hover .button__icon {
+    width: 148px;
+    transform: translateX(0);
+}
+
+.button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px var(--main-color);
+}
+.button-doble {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    width: 250px;
+    height: 42px;
+    background-color: #323232;
+    border: 2px solid #dedede;
+    border-radius: 10px;
+    box-shadow: 4px 4px #dedede;
+    overflow: hidden;
+    padding: 0; /* Asegura que no haya espacio extra */
+}
+
+/* LA LÍNEA SEPARADORA */
+.btn-separator {
+    width: 2px;               /* Grosor idéntico al borde exterior */
+    height: 100%;            /* Forzamos alto total */
+    background-color: #8e8e8e; /* Color exacto del borde */
+    flex-shrink: 0;           /* PROHIBIDO que los botones la aplasten */
+    display: block !important; /* Forzamos renderizado */
+}
+
+.btn-left, .btn-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 100%;
+    color: #dedede;
+    font-weight: 600;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.btn-left:hover, .btn-right:hover {
+    background-color: #444;
+}
+/* 6. RESPONSIVIDAD */
+@media (max-width: 900px) {
+
+    .hero-container,
+    .features-grid,
+    .downloads-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-main-title {
+        font-size: 3.2rem;
+    }
+
+    .download-card {
+        border-right: none;
+    }
+}
+.card-client {
+  /* Fondo oscuro para que no desentone con el sitio */
+  background: #111;
+  width: 14rem;
+  padding: 30px 20px;
+  /* Borde sutil en lugar de blanco grueso */
+  border: 1px solid #333;
+  /* Sombra más suave para profundidad */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+  margin: 0 auto;
+}
+
+.card-client:hover {
+  transform: translateY(-10px);
+  /* Brillo sutil al pasar el mouse, similar a tus botones */
+  border-color: #555;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8);
+}
+
+.user-picture {
+  overflow: hidden;
+  width: 4.5rem;
+  height: 4.5rem;
+  /* El borde del avatar ahora es más discreto */
+  border: 2px solid #444;
+  background: #1a1a1a;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  transition: all 0.3s ease;
+}
+
+.card-client:hover .user-picture {
+  border-color: #0077b5; /* Color sutil de LinkedIn al hacer hover */
+}
+
+.user-picture svg {
+  width: 2rem;
+  fill: #ccc;
+}
+
+.name-client {
+  margin: 0;
+  margin-top: 15px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.name-client span {
+  display: block;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: #aaa; /* Color grisáceo para el cargo */
+  margin-top: 4px;
+}
+
+.social-media:before {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 1px; /* Línea más fina */
+  margin: 20px 0;
+  background: linear-gradient(90deg, transparent, #444, transparent);
+}
+
+.social-media a {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: #888;
+  transition: all 0.3s ease;
+}
+
+.social-media a svg {
+  width: 1.2rem;
+  fill: currentColor;
+}
+
+.social-media a:hover {
+  color: #0077b5; /* Color corporativo de LinkedIn */
+  transform: scale(1.1);
+}
+
+/*-- Tooltip Ajustado --*/
+.tooltip-social {
+  background: #0077b5; /* Fondo del color de la marca */
+  color: white;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 0.4rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -90%);
+  transition: all 0.2s ease;
+  z-index: 1;
+}
+
+.social-media a:hover .tooltip-social {
+  opacity: 1;
+  transform: translate(-50%, -140%);
+}
+
+.profile-section {
+    padding: 60px 0;
+    border-top: 1px solid #222; /* Línea sutil de separación */
+}
+
+.profile-layout {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* Esto asegura que el bloque completo (tarjeta + texto) esté centrado */
+    justify-content: center;
+    gap: 40px; /* Espacio fijo entre tarjeta y texto */
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+.profile-info {
+    /* Limitamos el ancho para que el texto no se extienda al borde de la página */
+    max-width: 450px;
+    text-align: left;
+    /* Eliminamos cualquier margen automático que lo empuje a la derecha */
+    margin: 0;
+}
+
+
+.info-item {
+    margin-bottom: 25px;
+}
+
+.info-item h4 {
+    color: #fff;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+/* Opcional: mejora el espaciado de los títulos en esta sección */
+.info-item h4 {
+    margin-top: 0;
+    font-size: 1.1rem;
+    color: #fff;
+}
+.info-item p {
+    color: #aaa;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.info-footer {
+    margin-top: 40px;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+.info-footer p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .profile-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+    .profile-info {
+        text-align: center;
+    }
+}
