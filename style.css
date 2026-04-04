@@ -247,9 +247,9 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
+    gap: 1px;
     /* Crea un espacio uniforme entre título, texto y botón */
-    padding: 60px 40px;
+    padding: 40px 20px;
     border-right: 1px solid rgba(255, 255, 255, 0.75);
     border-bottom: 1px solid rgba(255, 255, 255, 0.75);
     display: flex;
@@ -407,7 +407,7 @@ body {
   /* Fondo oscuro para que no desentone con el sitio */
   background: #111;
   width: 14rem;
-  padding: 30px 20px;
+  padding: 50px 60px;
   /* Borde sutil en lugar de blanco grueso */
   border: 1px solid #333;
   /* Sombra más suave para profundidad */
@@ -429,8 +429,8 @@ body {
 
 .user-picture {
   overflow: hidden;
-  width: 4.5rem;
-  height: 4.5rem;
+  width: 9.5rem;
+  height: 9.5rem;
   /* El borde del avatar ahora es más discreto */
   border: 2px solid #444;
   background: #1a1a1a;
@@ -485,7 +485,7 @@ body {
 }
 
 .social-media a svg {
-  width: 1.2rem;
+  width: 2rem;
   fill: currentColor;
 }
 
@@ -519,7 +519,7 @@ body {
 }
 
 .profile-section {
-    padding: 60px 0;
+    padding: 50px 0;
     border-top: 1px solid #222; /* Línea sutil de separación */
 }
 
