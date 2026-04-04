@@ -20,7 +20,7 @@ En este sitio encontrarás material detallado sobre:
 
 ## 🚀 Tecnologías Utilizadas
 Este recurso ha sido construido utilizando:
-* **HTML5/CSS3** para la estructura y el diseño responsivo.
+* **HTML5/CSS** para la estructura y el diseño responsivo.
 * **JavaScript** para componentes interactivos.
 * **LaTeX** para la representación precisa de fórmulas matemáticas.
 * **GitHub Pages** para el despliegue y hosting gratuito.
