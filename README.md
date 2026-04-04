@@ -31,5 +31,6 @@ Este es un proyecto académico en constante actualización. Si eres estudiante o
 2. Realizar un **Pull Request** con tus mejoras.
 
 ---
-**Autor:** [Diego Linares]((https://www.linkedin.com/in/diegolinares117/))  
+**Autor:** [Diego Linares]([https://diegol117.github.io/elementos-discretos/](https://www.linkedin.com/in/diegolinares117/))
+
 **Institución:** Universidad de Carabobo (U.C.)  
