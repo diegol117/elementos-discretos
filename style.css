@@ -247,24 +247,29 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
     /* Centra el bloque de tarjetas fijas en la pantalla */
     /* ... */
 }
-
 .feature-card {
     background: var(--bg-card);
-    padding: 2.5rem;
+    padding: 2rem; /* Reducido ligeramente de 2.5rem para mejor balance */
     border-radius: 16px;
     position: relative;
-    height: 320px;
-    /* Altura fija opcional para uniformidad */
+
+    /* SOLUCIÓN AL ESTIRAMIENTO: */
+    width: 100%;
+    max-width: 340px; /* Evita que la tarjeta crezca más allá de esto */
+    height: 400px;    /* Aumentado un poco para que el contenido respire si hay mucho texto */
+    margin: 0 auto;   /* Centra la tarjeta si el contenedor es más ancho */
+    box-sizing: border-box; /* Fundamental: incluye el padding en el cálculo del ancho */
+
     display: flex;
     flex-direction: column;
+    justify-content: flex-start; /* Alinea el contenido arriba */
+
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-        background 0.3s ease,
-        box-shadow 0.3s ease;
+                background 0.3s ease,
+                box-shadow 0.3s ease;
     cursor: default;
     backface-visibility: hidden;
     -webkit-font-smoothing: subpixel-antialiased;
-
-    /* 2. Asegura que el contenido no "traspase" el borde durante el movimiento */
     isolation: isolate;
 }
 
