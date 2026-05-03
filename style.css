@@ -26,7 +26,7 @@ body {
     overflow: hidden;
     background-color: var(--bg-main);
     border-bottom: 1px solid rgba(255, 255, 255, 0.75);
-    padding: 60px 0;
+    padding: 10px 0;
     box-sizing: border-box;
 }
 
@@ -138,17 +138,17 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 .hero-container {
     position: relative;
     z-index: 1;
-    max-width: 1100px;
+    max-width: 850px;
     margin: 0 auto;
     padding: 20px;
     display: grid;
-    grid-template-columns: 1.2fr 1.4fr;
+    grid-template-columns: 1.4fr 1.4fr;
     gap: 40px;
     align-items: center;
 }
 
 .hero-main-title {
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.03em;
@@ -240,9 +240,9 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 
 .features-grid {
     display: grid;
-    gap: 40px;
+    gap: 20px;
     /* Aumenta este valor (antes era 20px) para dar más aire entre ellas */
-    grid-template-columns: repeat(3, 340px);
+    grid-template-columns: repeat(3, 300px);
     justify-content: center;
     /* Centra el bloque de tarjetas fijas en la pantalla */
     /* ... */
@@ -366,7 +366,7 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 
 .download-text {
     color: #aaa;
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 40px;
     max-width: 400px;
@@ -442,8 +442,8 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 .button-doble {
     display: flex;
     align-items: center; /* Centra verticalmente */
-    width: 250px;
-    height: 42px;
+    width: 190px;
+    height: 35px;
     background-color: #323232;
     border: 2px solid #dedede;
     border-radius: 10px;
@@ -470,7 +470,7 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
     height: 100%;
     color: #dedede;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     transition: background 0.3s;
 }
 
@@ -498,7 +498,7 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
   /* Fondo oscuro para que no desentone con el sitio */
   background: #111;
   width: 14rem;
-  padding: 50px 60px;
+  padding: 25px 30px;
   /* Borde sutil en lugar de blanco grueso */
   border: 1px solid #333;
   /* Sombra más suave para profundidad */
@@ -546,7 +546,7 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
   margin: 0;
   margin-top: 15px;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1rem;
   letter-spacing: 0.5px;
 }
 
@@ -670,7 +670,7 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 /* Opcional: mejora el espaciado de los títulos en esta sección */
 .info-item h4 {
     margin-top: 0;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #fff;
 }
 .info-item p {
