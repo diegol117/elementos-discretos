@@ -705,3 +705,54 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
         text-align: center;
     }
 }
+
+/* Contenedor que agrupa la barra doble y el botón inferior */
+.card-actions-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    width: 100%;
+}
+
+/* Asegura que la barra doble ocupe el mismo ancho que el botón inferior */
+.card-actions-group .button-doble {
+    width: 100%;
+    margin-top: 0;
+}
+
+/* Botón inferior de Apuntes de Teoría */
+.btn-apuntes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    background-color: rgba(56, 189, 248, 0.08);
+    color: #7dd3fc;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    box-sizing: border-box;
+}
+
+.btn-apuntes svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+}
+
+.btn-apuntes:hover {
+    background-color: rgba(56, 189, 248, 0.16);
+    border-color: rgba(56, 189, 248, 0.65);
+    color: #ffffff;
+}
+
+.btn-apuntes:active {
+    transform: translateY(1px);
+}
