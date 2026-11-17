@@ -1,27 +1,25 @@
+
 # 📐 Notas Generales — Lógica Matemática
 
 > **Autor:** Diego Linares &nbsp;|&nbsp; **Área:** Fundamentos de Computación y Matemáticas Discretas &nbsp;|&nbsp; **Nivel:** Universitario
 
 ---
 
-<a id="indice"></a>
 ## 📑 Mapa de Contenidos
 
 | Módulo | Tema Principal | Subtemas Clave |
 | :--- | :--- | :--- |
-| **01** | [**Proposiciones Lógicas**](#seccion-1) | [1.1 Proposiciones simples](#seccion-1-1) • [1.2 Proposición compuesta](#seccion-1-2) |
-| **02** | [**Clasificación Lógica**](#seccion-2) | [2.1 Formas del condicional](#seccion-2-1) • [2.2 Tautología y contradicción](#seccion-2-2) |
-| **03** | [**Leyes Lógicas**](#seccion-3) | [3.1 Equivalencias notables](#seccion-3-1) • [3.2 Algoritmo de simplificación](#seccion-3-2) |
-| **04** | [**Razonamientos e Inferencia**](#seccion-4) | [4.1 Invalidez analítica](#seccion-4-1) • [4.2 Prueba directa](#seccion-4-2) • [4.3 Reducción al absurdo](#seccion-4-3) |
-| **05** | [**Cuantificadores y Predicados**](#seccion-5) | [5.1 Tipos de cuantificadores](#seccion-5-1) • [5.2 Negación y propiedades](#seccion-5-2) • [5.3 Ejercicios](#seccion-5-3) |
-| **06** | [**Referencias**](#seccion-6) | [6.1 Bibliografía recomendada](#seccion-6-1) |
+| **01** | [**Proposiciones Lógicas**](#1-proposiciones-lógicas-y-conectivos) | [1.1 Proposiciones simples](#11-proposiciones-simples) • [1.2 Proposición compuesta](#12-proposición-compuesta) |
+| **02** | [**Clasificación Lógica**](#2-clasificación-de-proposiciones) | [2.1 Formas del condicional](#21-formas-alternativas-del-condicional) • [2.2 Tautología y contradicción](#22-tautología-contradicción-y-contingencia) |
+| **03** | [**Leyes Lógicas**](#3-leyes-lógicas) | [3.1 Equivalencias notables](#31-equivalencias-lógicas-notables) • [3.2 Algoritmo de simplificación](#32-estrategia-de-simplificación) |
+| **04** | [**Razonamientos e Inferencia**](#4-razonamientos-e-inferencia) | [4.1 Invalidez analítica](#41-determinación-analítica-de-invalidez) • [4.2 Prueba directa](#42-reglas-de-inferencia-y-prueba-directa) • [4.3 Reducción al absurdo](#43-reducción-al-absurdo) |
+| **05** | [**Cuantificadores y Predicados**](#5-cuantificadores-y-lógica-de-predicados) | [5.1 Tipos de cuantificadores](#51-predicados-y-tipos-de-cuantificadores) • [5.2 Negación y propiedades](#52-negación-y-propiedades) • [5.3 Ejercicios](#53-ejercicios-propuestos) |
+| **06** | [**Referencias**](#6-bibliografía) | [6.1 Bibliografía recomendada](#6-bibliografía) |
 
 ---
 
-<a id="seccion-1"></a>
 ## 1. Proposiciones lógicas y conectivos
 
-<a id="seccion-1-1"></a>
 ### 1.1 Proposiciones simples
 
 > 📌 **Definición Formal**
@@ -47,7 +45,6 @@ En ciencias de la computación, estas variables representan condiciones booleana
 
 ---
 
-<a id="seccion-1-2"></a>
 ### 1.2 Proposición compuesta
 
 Una **proposición compuesta** surge al combinar proposiciones simples mediante **conectivos lógicos**, los cuales operan sobre los valores de verdad de sus componentes.
@@ -60,7 +57,7 @@ Una **proposición compuesta** surge al combinar proposiciones simples mediante 
 | **Condicional** | *“Si ..., entonces ...”* | $\to$ | $P \to Q$ | Es $F$ **solo** si $P$ es $V$ y $Q$ es $F$. |
 | **Bicondicional** | *“... si y solo si ...”* | $\leftrightarrow$ | $P \leftrightarrow Q$ | Es $V$ si ambas tienen el **mismo** valor. |
 
-#### 📊 Tabla de Verdad Fundamental
+#### 📊 Matriz de Verdad Fundamental
 
 Para $n$ proposiciones simples, una tabla de verdad requiere $2^n$ filas ($2^2 = 4$ para dos variables; $2^3 = 8$ para tres variables).
 
@@ -117,23 +114,19 @@ Analice la expresión compuesta $(P \land Q) \to \neg R$.
 
 </details>
 
-<div align="right"><a href="#indice">⬆️ Volver al índice</a></div>
+<div align="right"><a href="#-mapa-de-contenidos">⬆️ Volver al índice</a></div>
 
 ---
 
-<a id="seccion-2"></a>
 ## 2. Clasificación de proposiciones
 
-<a id="seccion-2-1"></a>
 ### 2.1 Formas alternativas del condicional
 
 En la estructura de los teoremas matemáticos, el condicional $P \to Q$ establece una relación de dependencia lógica:
 
-{% raw %}
 $$
 \underbrace{P}_{\substack{\text{Antecedente / Hipótesis} \\ \textbf{(Condición Suficiente)}}} \quad \longrightarrow \quad \underbrace{Q}_{\substack{\text{Consecuente / Tesis} \\ \textbf{(Condición Necesaria)}}}
 $$
-{% endraw %}
 
 #### 🗣️ Ejemplo 5: Traducciones equivalentes
 
@@ -147,12 +140,10 @@ Sean $P$: *“Una figura es un cuadrado”* y $Q$: *“La figura tiene cuatro la
 
 ---
 
-<a id="seccion-2-2"></a>
 ### 2.2 Tautología, contradicción y contingencia
 
 > 📌 **Clasificación por Resultado Final**
 >
-> {% raw %}
 > $$
 > \text{Clasificación}(P) = \begin{cases}
 > \text{Solo valores } V & \implies \textbf{Tautología} \text{ (Verdad universal)} \\
@@ -160,7 +151,6 @@ Sean $P$: *“Una figura es un cuadrado”* y $Q$: *“La figura tiene cuatro la
 > \text{Valores } V \text{ y } F & \implies \textbf{Contingencia} \text{ (Depende del caso)}
 > \end{cases}
 > $$
-> {% endraw %}
 
 Cuando una proposición compuesta resulta ser una **tautología**, su conectivo principal adquiere jerarquía metalógica:
 
@@ -223,14 +213,12 @@ Por tanto, $P \lor (Q \land R) \equiv (P \lor Q) \land (P \lor R)$. $\blacksquar
 
 </details>
 
-<div align="right"><a href="#indice">⬆️ Volver al índice</a></div>
+<div align="right"><a href="#-mapa-de-contenidos">⬆️ Volver al índice</a></div>
 
 ---
 
-<a id="seccion-3"></a>
 ## 3. Leyes lógicas
 
-<a id="seccion-3-1"></a>
 ### 3.1 Equivalencias lógicas notables
 
 Las leyes lógicas son tautologías universales empleadas como **reglas de reemplazo algebraico** para simplificar expresiones sin alterar su valor de verdad.
@@ -252,7 +240,6 @@ Las leyes lógicas son tautologías universales empleadas como **reglas de reemp
 
 ---
 
-<a id="seccion-3-2"></a>
 ### 3.2 Estrategia de simplificación
 
 Dado que las tablas de verdad crecen exponencialmente ($2^n$: para $10$ variables se requieren $1024$ filas), la simplificación algebraica sigue un algoritmo heurístico en dos fases:
@@ -278,7 +265,6 @@ Dado que las tablas de verdad crecen exponencialmente ($2^n$: para $10$ variable
 <summary>🔍 <b>Ver desarrollo paso a paso</b></summary>
 <br>
 
-{% raw %}
 $$
 \begin{aligned}
 (A \land B) \to \neg(A \land B) &\equiv \neg(A \land B) \lor \neg(A \land B) && \text{(Definición de condicional)} \\
@@ -286,11 +272,8 @@ $$
 &\equiv \neg A \lor \neg B && \text{(Ley de De Morgan)} \quad \blacksquare
 \end{aligned}
 $$
-{% endraw %}
 
 </details>
-
-<br>
 
 **2. Simplificar:** $\neg(B \land A) \lor \neg B$
 
@@ -298,7 +281,6 @@ $$
 <summary>🔍 <b>Ver desarrollo paso a paso</b></summary>
 <br>
 
-{% raw %}
 $$
 \begin{aligned}
 \neg(B \land A) \lor \neg B &\equiv (\neg B \lor \neg A) \lor \neg B && \text{(Ley de De Morgan)} \\
@@ -306,11 +288,8 @@ $$
 &\equiv \neg B \lor \neg A && \text{(Idempotencia)} \quad \blacksquare
 \end{aligned}
 $$
-{% endraw %}
 
 </details>
-
-<br>
 
 **3. Simplificar:** $(A \lor B) \land \neg A$
 
@@ -318,7 +297,6 @@ $$
 <summary>🔍 <b>Ver desarrollo paso a paso</b></summary>
 <br>
 
-{% raw %}
 $$
 \begin{aligned}
 (A \lor B) \land \neg A &\equiv (A \land \neg A) \lor (B \land \neg A) && \text{(Ley distributiva)} \\
@@ -326,11 +304,8 @@ $$
 &\equiv B \land \neg A && \text{(Ley de identidad)} \quad \blacksquare
 \end{aligned}
 $$
-{% endraw %}
 
 </details>
-
-<br>
 
 **4. Simplificar:** $[A \land (\neg A \lor B)] \lor (A \to \neg A)$
 
@@ -338,7 +313,6 @@ $$
 <summary>🔍 <b>Ver desarrollo paso a paso</b></summary>
 <br>
 
-{% raw %}
 $$
 \begin{aligned}
 [A \land (\neg A \lor B)] \lor (A \to \neg A) &\equiv [A \land (\neg A \lor B)] \lor (\neg A \lor \neg A) && \text{(Definición de condicional)} \\
@@ -351,7 +325,6 @@ $$
 &\equiv B \lor \neg A && \text{(Ley de identidad)} \quad \blacksquare
 \end{aligned}
 $$
-{% endraw %}
 
 </details>
 
@@ -363,25 +336,32 @@ Simplifique las siguientes expresiones aplicando las leyes lógicas:
 3. $A \to \neg(A \to (A \to (\neg B \lor B)))$
 4. $(A \lor B) \lor \neg A \lor B$
 
-<div align="right"><a href="#indice">⬆️ Volver al índice</a></div>
+<div align="right"><a href="#-mapa-de-contenidos">⬆️ Volver al índice</a></div>
 
 ---
 
-<a id="seccion-4"></a>
 ## 4. Razonamientos e inferencia
 
 Un **razonamiento** vincula un conjunto de premisas ($P_1, P_2, \dots, P_n$) con una conclusión ($C$):
 
-{% raw %}
-$$ \underbrace{(P_1 \land P_2 \land \cdots \land P_n)}_{\text{Premisas}} \longrightarrow \underbrace{C}_{\text{Conclusión}} \qquad\Longleftrightarrow\qquad \begin{array}{l} P_1 \\ P_2 \\ \vdots \\ P_n \\ \hline \therefore C \end{array} $$
-{% endraw %}
+$$
+\underbrace{(P_1 \land P_2 \land \cdots \land P_n)}_{\text{Premisas}} \longrightarrow \underbrace{C}_{\text{Conclusión}}
+\qquad\Longleftrightarrow\qquad
+\begin{array}{l}
+P_1 \\
+P_2 \\
+\vdots \\
+P_n \\
+\hline
+\therefore C
+\end{array}
+$$
 
 * **Razonamiento Válido:** La implicación asociada es una **tautología** (es imposible que todas las premisas sean verdaderas y la conclusión falsa).
 * **Razonamiento Inválido (Falacia):** Existe al menos un **contraejemplo** donde todas las premisas son $V$ y la conclusión es $F$.
 
 ---
 
-<a id="seccion-4-1"></a>
 ### 4.1 Determinación analítica de invalidez
 
 En lugar de construir una tabla de verdad completa, podemos probar la invalidez asignando directamente $C \equiv F$ y forzando que cada premisa sea $V$. Si no surge ninguna contradicción, el contraejemplo demuestra que el argumento es inválido.
@@ -390,7 +370,6 @@ En lugar de construir una tabla de verdad completa, podemos probar la invalidez 
 
 Demuestre la invalidez del siguiente razonamiento:
 
-{% raw %}
 $$
 \begin{array}{ll}
 P_1: & p \lor q \\
@@ -401,7 +380,6 @@ P_4: & \neg q \lor p \\
 \therefore & q
 \end{array}
 $$
-{% endraw %}
 
 <details>
 <summary>🔍 <b>Ver resolución analítica</b></summary>
@@ -420,7 +398,6 @@ Como todas las premisas son verdaderas y la conclusión es falsa para la asignac
 
 ---
 
-<a id="seccion-4-2"></a>
 ### 4.2 Reglas de inferencia y prueba directa
 
 La **prueba directa** construye una cadena deductiva finita partiendo de las premisas y aplicando reglas de inferencia válidas hasta alcanzar la conclusión.
@@ -459,7 +436,6 @@ $\blacksquare$
 
 ---
 
-<a id="seccion-4-3"></a>
 ### 4.3 Reducción al absurdo
 
 La **reducción al absurdo** es un método indirecto que incorpora la negación de la conclusión ($\neg C$) como una premisa auxiliar. Si al operar se deriva una contradicción explícita ($r \land \neg r$), la suposición $\neg C$ es falsa y la conclusión $C$ queda demostrada.
@@ -486,14 +462,12 @@ Al alcanzar el absurdo $P \land \neg P$, se concluye que $Q$ es válido. $\black
 
 </details>
 
-<div align="right"><a href="#indice">⬆️ Volver al índice</a></div>
+<div align="right"><a href="#-mapa-de-contenidos">⬆️ Volver al índice</a></div>
 
 ---
 
-<a id="seccion-5"></a>
 ## 5. Cuantificadores y lógica de predicados
 
-<a id="seccion-5-1"></a>
 ### 5.1 Predicados y tipos de cuantificadores
 
 La lógica proposicional no puede analizar la estructura interna de enunciados como *“Todos los hombres son mortales; Sócrates es hombre; por tanto, Sócrates es mortal”*. Para ello se introducen los **predicados** $P(x)$ sobre un **universo de discurso** ($U$) y los **cuantificadores**:
@@ -511,22 +485,17 @@ Simbolice: *“Cualquier estudiante de la facultad debe aprobar Cálculo y Matem
 * **Universo ($U$):** Estudiantes de la facultad.
 * **Predicados:** $\text{ApruebaC}(x)$: *$x$ aprueba Cálculo*; $\text{ApruebaMD}(x)$: *$x$ aprueba Matemáticas Discretas*.
 * **Formalización:**
-  {% raw %}
   $$\forall x \big[\text{ApruebaC}(x) \land \text{ApruebaMD}(x)\big]$$
-  {% endraw %}
 
 ---
 
-<a id="seccion-5-2"></a>
 ### 5.2 Negación y propiedades
 
 > 📌 **Teorema 1: Leyes de De Morgan para Cuantificadores**
 >
-> {% raw %}
 > $$
 > \neg \forall x\, P(x) \equiv \exists x\, (\neg P(x)) \qquad\qquad \neg \exists x\, P(x) \equiv \forall x\, (\neg P(x))
 > $$
-> {% endraw %}
 
 #### 🧩 Ejemplo 12: Negación de expresiones cuantificadas
 
@@ -536,19 +505,15 @@ Simbolice: *“Cualquier estudiante de la facultad debe aprobar Cálculo y Matem
 <summary>🔍 <b>Ver solución</b></summary>
 <br>
 
-{% raw %}
 $$
-\begin{array}{rcl}
-\neg \forall x [x > 3 \to x^2 > 9] &\equiv& \exists x \big[\neg(x > 3 \to x^2 > 9)\big] \quad \text{(De Morgan para cuantificadores)} \\[6pt]
-&\equiv& \exists x \big[x > 3 \land \neg(x^2 > 9)\big] \quad \text{(Negación del condicional)} \\[6pt]
-&\equiv& \exists x \big[x > 3 \land x^2 \leq 9\big] \quad \text{(Negación de desigualdad)} \quad \blacksquare
-\end{array}
+\begin{aligned}
+\neg \forall x [x > 3 \to x^2 > 9] &\equiv \exists x \big[\neg(x > 3 \to x^2 > 9)\big] && \text{(De Morgan para cuantificadores)} \\
+&\equiv \exists x \big[x > 3 \land \neg(x^2 > 9)\big] && \text{(Negación del condicional)} \\
+&\equiv \exists x \big[x > 3 \land x^2 \leq 9\big] && \text{(Negación de desigualdad)} \quad \blacksquare
+\end{aligned}
 $$
-{% endraw %}
 
 </details>
-
-<br>
 
 **2. En $U = \mathbb{R}$, simplifique:** $\neg \forall x [f(x) = 0 \to x = 0]$
 
@@ -556,15 +521,13 @@ $$
 <summary>🔍 <b>Ver solución</b></summary>
 <br>
 
-{% raw %}
 $$
-\begin{array}{rcl}
-\neg \forall x [f(x) = 0 \to x = 0] &\equiv& \exists x \big[\neg(f(x) = 0 \to x = 0)\big] \quad \text{(De Morgan para cuantificadores)} \\[6pt]
-&\equiv& \exists x \big[f(x) = 0 \land \neg(x = 0)\big] \quad \text{(Negación del condicional)} \\[6pt]
-&\equiv& \exists x \big[f(x) = 0 \land x \neq 0\big] \quad \text{(Negación de igualdad)} \quad \blacksquare
-\end{array}
+\begin{aligned}
+\neg \forall x [f(x) = 0 \to x = 0] &\equiv \exists x \big[\neg(f(x) = 0 \to x = 0)\big] && \text{(De Morgan para cuantificadores)} \\
+&\equiv \exists x \big[f(x) = 0 \land \neg(x = 0)\big] && \text{(Negación del condicional)} \\
+&\equiv \exists x \big[f(x) = 0 \land x \neq 0\big] && \text{(Negación de igualdad)} \quad \blacksquare
+\end{aligned}
 $$
-{% endraw %}
 
 </details>
 
@@ -585,7 +548,6 @@ $$
 
 ---
 
-<a id="seccion-5-3"></a>
 ### 5.3 Ejercicios propuestos
 
 1. **Evaluación en $U = \mathbb{R}$:** Dados $p(x): x^2 - 7x + 10 = 0$ y $y(x): \text{sen}(x) = 0$:
@@ -625,17 +587,15 @@ $$
      4. Un entero es par si, y solo si, es positivo.
      5. No existe ningún entero par que no sea positivo.
 
-<div align="right"><a href="#indice">⬆️ Volver al índice</a></div>
+<div align="right"><a href="#-mapa-de-contenidos">⬆️ Volver al índice</a></div>
 
 ---
 
-<a id="seccion-6"></a>
 ## 6. Bibliografía
 
-<a id="seccion-6-1"></a>
 * **Epp, S. S.** (2012). *Matemáticas discretas con aplicaciones* (4.ª ed.). Cengage Learning.
 * **Grimaldi, R. P.** (1998). *Matemáticas discreta y combinatoria: Una introducción con aplicaciones* (3.ª ed.). Addison-Wesley Iberoamericana.
 * **Johnsonbaugh, R.** (2005). *Matemáticas discretas* (6.ª ed.). Pearson Educación.
 * **Kolman, B., Busby, R. C., & Ross, S.** (1997). *Estructuras de matemáticas discretas para la computación* (3.ª ed.). Prentice Hall Hispanoamericana.
-* **Murillo, m.** (2012). *Introducción a la matemática discreta* (4.ª ed.). Editorial Tecnológica de Costa Rica.
+* **Murillo, M.** (2012). *Introducción a la matemática discreta* (4.ª ed.). Editorial Tecnológica de Costa Rica.
 * **Rosen, K. H.** (2012). *Matemática discreta y sus aplicaciones* (7.ª ed.). McGraw-Hill Interamericana.

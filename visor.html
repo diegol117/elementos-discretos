@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
     <!-- KaTeX para matemáticas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
     <!-- Marked para convertir Markdown a HTML -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -35,10 +35,8 @@
 
     <script>
         const params = new URLSearchParams(window.location.search);
-
-        // 1. Apunta por defecto a la carpeta assets/docs/ si no se especifica otro documento en la URL
-        const archivoPorDefecto = 'assets/docs/README.md'; // O el nombre de tu archivo .md dentro de esa carpeta
-        const archivo = params.get('doc') || archivoPorDefecto;
+        // Captura el parámetro 'doc'. Si no hay nada, usa 'apuntes_logica.md' por defecto
+        const archivo = params.get('doc') || 'apuntes_logica.md';
 
         fetch(archivo)
             .then(res => {
@@ -47,16 +45,11 @@
             })
             .then(md => {
                 const contenedor = document.getElementById('contenido');
-                // Traduce el markdown a HTML
                 contenedor.innerHTML = marked.parse(md);
-
-                // 2. Renderiza KaTeX de forma síncrona asegurando que tome el contenido ya inyectado
                 renderMathInElement(contenedor, {
                     delimiters: [
                         {left: '$$', right: '$$', display: true},
-                        {left: '$', right: '$', display: false},
-                        {left: '\\(', right: '\\)', display: false},
-                        {left: '\\[', right: '\\]', display: true}
+                        {left: '$', right: '$', display: false}
                     ],
                     throwOnError: false
                 });
@@ -66,7 +59,7 @@
                     <div style="color: #da3633; padding: 20px; border: 1px solid #da3633; border-radius: 6px; background: rgba(218,54,51,0.1);">
                         <h3>Error al cargar el documento</h3>
                         <p>${err.message}</p>
-                        <p><small>Verifica que el archivo exista en tu repositorio dentro de 'assets/docs/' y que la ruta sea correcta.</small></p>
+                        <p><small>Verifica que el archivo exista en tu repositorio de GitHub y que la ruta en el enlace sea correcta.</small></p>
                     </div>`;
             });
     </script>
