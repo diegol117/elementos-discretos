@@ -238,15 +238,6 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
     margin-bottom: 3.5rem;
 }
 
-.features-grid {
-    display: grid;
-    gap: 10px;
-    /* Aumenta este valor (antes era 20px) para dar más aire entre ellas */
-    grid-template-columns: repeat(3, 250px);
-    justify-content: center;
-    /* Centra el bloque de tarjetas fijas en la pantalla */
-    /* ... */
-}
 .feature-card {
     background: var(--bg-card);
     padding: 1rem; /* Reducido ligeramente de 2.5rem para mejor balance */
@@ -779,19 +770,14 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
     color: #ffffff;
     letter-spacing: -0.02em;
 }
-
 .features-grid {
     display: grid;
-    /* Fuerza exactamente 3 columnas iguales que se ajustan al espacio */
-    grid-template-columns: repeat(3, 1fr);
+    /* Crea columnas flexibles de un ancho mínimo de 280px que se adaptan al espacio */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 
-    /* Limita el ancho total del grid para que las tarjetas no se estiren demasiado */
     max-width: 1020px;
-    margin: 0 auto; /* Centra el grid en la pantalla */
-
-    /* Espaciado reducido entre las tarjetas (cerca del centro) */
+    margin: 0 auto;
     gap: 1rem;
-
     align-items: stretch;
     padding-inline: 1rem;
 }
