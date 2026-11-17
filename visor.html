@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apuntes de Teoría — Estructuras Discretas</title>
+    <!-- Estilos limpios tipo GitHub -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
+    <!-- KaTeX para matemáticas rápidas -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    <!-- Marked para convertir Markdown a HTML -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 32px 20px;
+            background-color: #ffffff;
+        }
+        @media (prefers-color-scheme: dark) {
+            body { background-color: #0d1117; }
+        }
+    </style>
+</head>
+<body>
+    <article id="contenido" class="markdown-body">Cargando apuntes...</article>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const archivo = params.get('doc') || 'apuntes_logica.md';
+
+        fetch(archivo)
+            .then(res => {
+                if (!res.ok) throw new Error('No se pudo cargar el documento');
+                return res.text();
+            })
+            .then(md => {
+                const contenedor = document.getElementById('contenido');
+                contenedor.innerHTML = marked.parse(md);
+                renderMathInElement(contenedor, {
+                    delimiters: [
+                        {left: '$$', right: '$$', display: true},
+                        {left: '$', right: '$', display: false}
+                    ],
+                    throwOnError: false
+                });
+            })
+            .catch(err => {
+                document.getElementById('contenido').innerHTML = `<p>Error: ${err.message}</p>`;
+            });
+    </script>
+</body>
+</html>
