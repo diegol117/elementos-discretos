@@ -1,3 +1,7 @@
+---
+layout: default
+title: Notas Generales — Lógica Matemática
+---
 # 📐 Notas Generales — Lógica Matemática
 
 > **Autor:** Diego Linares &nbsp;|&nbsp; **Área:** Fundamentos de Computación y Matemáticas Discretas &nbsp;|&nbsp; **Nivel:** Universitario
@@ -144,9 +148,9 @@ Sean $P$: *“Una figura es un cuadrado”* y $Q$: *“La figura tiene cuatro la
 > 📌 **Clasificación por Resultado Final**
 >
 > $$
-> \text{Clasificación}(P) = \begin{cases} 
-> \text{Solo valores } V & \implies \textbf{Tautología} \text{ (Verdad universal)} \\ 
-> \text{Solo valores } F & \implies \textbf{Contradicción} \text{ (Absurdo lógico)} \\ 
+> \text{Clasificación}(P) = \begin{cases}
+> \text{Solo valores } V & \implies \textbf{Tautología} \text{ (Verdad universal)} \\
+> \text{Solo valores } F & \implies \textbf{Contradicción} \text{ (Absurdo lógico)} \\
 > \text{Valores } V \text{ y } F & \implies \textbf{Contingencia} \text{ (Depende del caso)}
 > \end{cases}
 > $$
