@@ -782,9 +782,18 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    gap: 0.6rem; /* Espaciado original entre tarjetas */
+    /* Fuerza exactamente 3 columnas iguales que se ajustan al espacio */
+    grid-template-columns: repeat(3, 1fr);
+
+    /* Limita el ancho total del grid para que las tarjetas no se estiren demasiado */
+    max-width: 1020px;
+    margin: 0 auto; /* Centra el grid en la pantalla */
+
+    /* Espaciado reducido entre las tarjetas (cerca del centro) */
+    gap: 1rem;
+
     align-items: stretch;
+    padding-inline: 1rem;
 }
 
 /* =========================================
