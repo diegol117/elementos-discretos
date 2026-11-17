@@ -360,19 +360,7 @@ Simplifique las siguientes expresiones aplicando las leyes lógicas:
 
 Un **razonamiento** vincula un conjunto de premisas ($P_1, P_2, \dots, P_n$) con una conclusión ($C$):
 
-$$
-\underbrace{(P_1 \land P_2 \land \cdots \land P_n)}_{\text{Premisas}} \longrightarrow \underbrace{C}_{\text{Conclusión}}
-\qquad\Longleftrightarrow\qquad
-\begin{array}{l}
-P_1 \\
-P_2 \\
-\vdots \\
-P_n \\
-\hline
-\therefore C
-\end{array}
-$$
-
+$$ \underbrace{(P_1 \land P_2 \land \cdots \land P_n)}_{\text{Premisas}} \longrightarrow \underbrace{C}_{\text{Conclusión}} \qquad\Longleftrightarrow\qquad \begin{array}{l} P_1 \\ P_2 \\ \vdots \\ P_n \\ \hline \therefore C \end{array} $$
 * **Razonamiento Válido:** La implicación asociada es una **tautología** (es imposible que todas las premisas sean verdaderas y la conclusión falsa).
 * **Razonamiento Inválido (Falacia):** Existe al menos un **contraejemplo** donde todas las premisas son $V$ y la conclusión es $F$.
 
@@ -528,11 +516,11 @@ Simbolice: *“Cualquier estudiante de la facultad debe aprobar Cálculo y Matem
 <br>
 
 $$
-\begin{aligned}
-\neg \forall x [x > 3 \to x^2 > 9] &\equiv \exists x \big[\neg(x > 3 \to x^2 > 9)\big] && \text{(De Morgan para cuantificadores)} \\[6pt]
-&\equiv \exists x \big[x > 3 \land \neg(x^2 > 9)\big] && \text{(Negación del condicional)} \\[6pt]
-&\equiv \exists x \big[x > 3 \land x^2 \leq 9\big] && \text{(Negación de desigualdad)} \quad \blacksquare
-\end{aligned}
+\begin{array}{rcl}
+\neg \forall x [x > 3 \to x^2 > 9] &\equiv& \exists x \big[\neg(x > 3 \to x^2 > 9)\big] \quad \text{(De Morgan para cuantificadores)} \\
+&\equiv& \exists x \big[x > 3 \land \neg(x^2 > 9)\big] \quad \text{(Negación del condicional)} \\
+&\equiv& \exists x \big[x > 3 \land x^2 \leq 9\big] \quad \text{(Negación de desigualdad)} \quad \blacksquare
+\end{array}
 $$
 
 </details>
@@ -546,11 +534,11 @@ $$
 <br>
 
 $$
-\begin{aligned}
-\neg \forall x [f(x) = 0 \to x = 0] &\equiv \exists x \big[\neg(f(x) = 0 \to x = 0)\big] && \text{(De Morgan para cuantificadores)} \\[6pt]
-&\equiv \exists x \big[f(x) = 0 \land \neg(x = 0)\big] && \text{(Negación del condicional)} \\[6pt]
-&\equiv \exists x \big[f(x) = 0 \land x \neq 0\big] && \text{(Negación de igualdad)} \quad \blacksquare
-\end{aligned}
+\begin{array}{rcl}
+\neg \forall x [f(x) = 0 \to x = 0] &\equiv& \exists x \big[\neg(f(x) = 0 \to x = 0)\big] \quad \text{(De Morgan para cuantificadores)} \\
+&\equiv& \exists x \big[f(x) = 0 \land \neg(x = 0)\big] \quad \text{(Negación del condicional)} \\
+&\equiv& \exists x \big[f(x) = 0 \land x \neq 0\big] \quad \text{(Negación de igualdad)} \quad \blacksquare
+\end{array}
 $$
 
 </details>
