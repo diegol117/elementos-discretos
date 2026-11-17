@@ -6,7 +6,7 @@
     <title>Apuntes de Teoría — Estructuras Discretas</title>
     <!-- Estilos limpios tipo GitHub -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.1/github-markdown.min.css">
-    <!-- KaTeX para matemáticas rápidas -->
+    <!-- KaTeX para matemáticas -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -20,9 +20,13 @@
             margin: 0 auto;
             padding: 32px 20px;
             background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
         }
         @media (prefers-color-scheme: dark) {
-            body { background-color: #0d1117; }
+            body {
+                background-color: #0d1117;
+                color: #c9d1d9;
+            }
         }
     </style>
 </head>
@@ -31,11 +35,12 @@
 
     <script>
         const params = new URLSearchParams(window.location.search);
+        // Captura el parámetro 'doc'. Si no hay nada, usa 'apuntes_logica.md' por defecto
         const archivo = params.get('doc') || 'apuntes_logica.md';
 
         fetch(archivo)
             .then(res => {
-                if (!res.ok) throw new Error('No se pudo cargar el documento');
+                if (!res.ok) throw new Error(`No se pudo encontrar el archivo: ${archivo} (Estado: ${res.status})`);
                 return res.text();
             })
             .then(md => {
@@ -50,7 +55,12 @@
                 });
             })
             .catch(err => {
-                document.getElementById('contenido').innerHTML = `<p>Error: ${err.message}</p>`;
+                document.getElementById('contenido').innerHTML = `
+                    <div style="color: #da3633; padding: 20px; border: 1px solid #da3633; border-radius: 6px; background: rgba(218,54,51,0.1);">
+                        <h3>Error al cargar el documento</h3>
+                        <p>${err.message}</p>
+                        <p><small>Verifica que el archivo exista en tu repositorio de GitHub y que la ruta en el enlace sea correcta.</small></p>
+                    </div>`;
             });
     </script>
 </body>
