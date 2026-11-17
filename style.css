@@ -240,22 +240,22 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 
 .features-grid {
     display: grid;
-    gap: 20px;
+    gap: 10px;
     /* Aumenta este valor (antes era 20px) para dar más aire entre ellas */
-    grid-template-columns: repeat(3, 300px);
+    grid-template-columns: repeat(3, 250px);
     justify-content: center;
     /* Centra el bloque de tarjetas fijas en la pantalla */
     /* ... */
 }
 .feature-card {
     background: var(--bg-card);
-    padding: 2rem; /* Reducido ligeramente de 2.5rem para mejor balance */
+    padding: 1rem; /* Reducido ligeramente de 2.5rem para mejor balance */
     border-radius: 16px;
     position: relative;
 
     /* SOLUCIÓN AL ESTIRAMIENTO: */
     width: 100%;
-    max-width: 340px; /* Evita que la tarjeta crezca más allá de esto */
+    max-width: 300px; /* Evita que la tarjeta crezca más allá de esto */
     height: 400px;    /* Aumentado un poco para que el contenido respire si hay mucho texto */
     margin: 0 auto;   /* Centra la tarjeta si el contenedor es más ancho */
     box-sizing: border-box; /* Fundamental: incluye el padding en el cálculo del ancho */
@@ -762,13 +762,13 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
    CONTENEDOR Y GRID (Espaciado original)
    ========================================= */
 .features-section {
-    padding: 4rem 1.5rem;
+    padding: 4rem 0rem;
     background-color: #0b0d11;
     color: #f8fafc;
 }
 
 .container-max {
-    max-width: 1140px;
+    max-width: 1320px;
     margin: 0 auto;
 }
 
@@ -783,7 +783,7 @@ margin-top: 1.5rem;   /* Usa un valor fijo para controlar la distancia exacta */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    gap: 1.75rem; /* Espaciado original entre tarjetas */
+    gap: 0.6rem; /* Espaciado original entre tarjetas */
     align-items: stretch;
 }
 
