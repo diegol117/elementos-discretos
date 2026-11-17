@@ -1,7 +1,4 @@
----
-layout: default
-title: Notas Generales — Lógica Matemática
----
+
 # 📐 Notas Generales — Lógica Matemática
 
 > **Autor:** Diego Linares &nbsp;|&nbsp; **Área:** Fundamentos de Computación y Matemáticas Discretas &nbsp;|&nbsp; **Nivel:** Universitario
