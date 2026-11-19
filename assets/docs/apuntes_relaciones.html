@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tema 3: Relaciones — Matemáticas Discretas</title>
-  
+
   <!-- KaTeX para renderizado matemático rápido y limpio -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -351,6 +351,99 @@
     .back-top a:hover {
       color: var(--primary);
     }
+
+/* ===== AJUSTES RESPONSIVE PARA CELULARES ===== */
+@media (max-width: 640px) {
+  body {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .container {
+    padding: 0.9rem 0.85rem 3.5rem;
+  }
+
+  header.doc-header {
+    padding: 1.4rem 1.15rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  header.doc-header h1 {
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
+
+  header.doc-header p {
+    font-size: 0.95rem !important;
+  }
+
+  .meta-bar {
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+  }
+
+  .controls-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .controls-bar .btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .card {
+    padding: 1.15rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  h2.module-title {
+    font-size: 1.22rem;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    line-height: 1.3;
+  }
+
+  h3.section-title {
+    font-size: 1.1rem;
+    margin-top: 1.4rem;
+  }
+
+  .example-box {
+    padding: 0.95rem 1rem;
+    margin: 1rem 0;
+  }
+
+  .callout {
+    padding: 0.9rem 1rem;
+    margin: 1rem 0;
+  }
+
+  /* Tablas más compactas y fáciles de desplazar en horizontal */
+  th, td {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.86rem;
+  }
+
+  /* Evitar que fórmulas matemáticas largas desborden la pantalla */
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.35rem 0;
+    max-width: 100%;
+  }
+
+  .katex-display > .katex {
+    font-size: 0.95em;
+  }
+}
+
+
   </style>
 </head>
 <body>
@@ -395,8 +488,8 @@
             <td><span class="badge">01</span></td>
             <td><a href="#mod-1">Conceptos Principales</a></td>
             <td>
-              <a href="#sec-1-1">1.1 Relaciones binarias, dominio y rango</a> • 
-              <a href="#sec-1-2">1.2 Relación identidad</a> • 
+              <a href="#sec-1-1">1.1 Relaciones binarias, dominio y rango</a> •
+              <a href="#sec-1-2">1.2 Relación identidad</a> •
               <a href="#sec-1-3">1.3 Composición de relaciones</a>
             </td>
           </tr>
@@ -404,8 +497,8 @@
             <td><span class="badge">02</span></td>
             <td><a href="#mod-2">Operaciones con Relaciones</a></td>
             <td>
-              <a href="#sec-2-1">2.1 Definición conjuntista</a> • 
-              <a href="#sec-2-2">2.2 Finitas (extensión y comprensión)</a> • 
+              <a href="#sec-2-1">2.1 Definición conjuntista</a> •
+              <a href="#sec-2-2">2.2 Finitas (extensión y comprensión)</a> •
               <a href="#sec-2-3">2.3 Interpretación gráfica y regiones infinitas</a>
             </td>
           </tr>
@@ -413,7 +506,7 @@
             <td><span class="badge">03</span></td>
             <td><a href="#mod-3">Propiedades de las Relaciones</a></td>
             <td>
-              <a href="#sec-3-1">3.1 Análisis por extensión e implicaciones</a> • 
+              <a href="#sec-3-1">3.1 Análisis por extensión e implicaciones</a> •
               <a href="#sec-3-2">3.2 Análisis por comprensión en $\mathbb{R}$</a>
             </td>
           </tr>
@@ -421,9 +514,9 @@
             <td><span class="badge">04</span></td>
             <td><a href="#mod-4">Matrices Binarias</a></td>
             <td>
-              <a href="#sec-4-1">4.1 Matriz booleana</a> • 
-              <a href="#sec-4-2">4.2 Operaciones lógicas</a> • 
-              <a href="#sec-4-3">4.3 Producto booleano</a> • 
+              <a href="#sec-4-1">4.1 Matriz booleana</a> •
+              <a href="#sec-4-2">4.2 Operaciones lógicas</a> •
+              <a href="#sec-4-3">4.3 Producto booleano</a> •
               <a href="#sec-4-4">4.4 Verificación matricial de propiedades</a>
             </td>
           </tr>
@@ -431,8 +524,8 @@
             <td><span class="badge">05</span></td>
             <td><a href="#mod-5">Clasificación de Relaciones</a></td>
             <td>
-              <a href="#sec-5-1">5.1 Taxonomía de estructuras</a> • 
-              <a href="#sec-5-2">5.2 Relación de equivalencia</a> • 
+              <a href="#sec-5-1">5.1 Taxonomía de estructuras</a> •
+              <a href="#sec-5-2">5.2 Relación de equivalencia</a> •
               <a href="#sec-5-3">5.3 Clases de equivalencia y conjunto cociente</a>
             </td>
           </tr>
@@ -440,8 +533,8 @@
             <td><span class="badge">06</span></td>
             <td><a href="#mod-6">Relaciones de Orden</a></td>
             <td>
-              <a href="#sec-6-1">6.1 Orden parcial y comparabilidad</a> • 
-              <a href="#sec-6-2">6.2 Diagramas de Hasse</a> • 
+              <a href="#sec-6-1">6.1 Orden parcial y comparabilidad</a> •
+              <a href="#sec-6-2">6.2 Diagramas de Hasse</a> •
               <a href="#sec-6-3">6.3 Elementos globales, relativos, cadenas y anticadenas</a>
             </td>
           </tr>
@@ -625,10 +718,10 @@
               <!-- Conjuntos -->
               <ellipse cx="80" cy="115" rx="42" ry="75" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
               <text x="80" y="210" text-anchor="middle" fill="#1d4ed8" font-weight="bold">A</text>
-              
+
               <ellipse cx="230" cy="115" rx="45" ry="85" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
               <text x="230" y="215" text-anchor="middle" fill="#1d4ed8" font-weight="bold">B</text>
-              
+
               <ellipse cx="380" cy="115" rx="42" ry="75" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
               <text x="380" y="210" text-anchor="middle" fill="#1d4ed8" font-weight="bold">C</text>
 
@@ -657,7 +750,7 @@
               <!-- Arcos superiores e inferiores -->
               <path d="M 95,42 Q 155,10 215,35" fill="none" stroke="#2563eb" stroke-dasharray="4,3" marker-end="url(#arrow-blue)"/>
               <text x="155" y="18" text-anchor="middle" fill="#1d4ed8" font-size="13" font-style="italic">R</text>
-              
+
               <path d="M 245,35 Q 305,10 365,42" fill="none" stroke="#2563eb" stroke-dasharray="4,3" marker-end="url(#arrow-blue)"/>
               <text x="305" y="18" text-anchor="middle" fill="#1d4ed8" font-size="13" font-style="italic">S</text>
 
@@ -690,7 +783,7 @@
           $$(x - y) + (y - z) = 2k + 2m \implies x - z = 2(k + m)$$
           Recíprocamente, si $x - z$ es par, basta elegir $y = x \in \mathbb{Z}$ para verificar ambas condiciones. Por tanto:
           $$S \circ R = \{ (x, z) \in \mathbb{Z}^2 \mid x - z \text{ es un número par} \} = R = S$$</p>
-          
+
           <p><strong>2. Relaciones lineales en $\mathbb{R}$:</strong><br>
           Sustituyendo $y = x + 2$ en $z = 3y$:
           $$z = 3(x + 2) \implies z = 3x + 6$$
@@ -741,10 +834,10 @@
         <div class="solution-content">
           <p><strong>1.</strong> $R \cup S = \{(1,1), (2,2), (3,3)\}$ y $R \Delta S = \{(1,1), (3,3)\}$.<br>
           Entonces: $(R \cup S) - (R \Delta S) = \{(2,2)\}$.</p>
-          
+
           <p><strong>2.</strong> $R - S = \{(a,a)\}$ y $R \cap S = \{(b,b)\}$.<br>
           Entonces: $(R - S) \cup (R \cap S) = \{(a,a), (b,b)\} = R$.</p>
-          
+
           <p><strong>3.</strong> $R_U = U \times U$ tiene $9$ pares. El complemento es $R^c = \{(1,2), (1,3), (2,1), (2,3), (3,1), (3,2), (3,3)\}$.<br>
           Uniendo con $S$: $R^c \cup S = \{(1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3)\}$.<br>
           Intersectando con $R$: $R \cap (R^c \cup S) = \{(2,2)\}$.</p>
@@ -1171,7 +1264,7 @@
               <path d="M 65,45 C 35,15 35,85 65,55" fill="none" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrow-g)"/>
               <path d="M 195,45 C 225,15 225,85 195,55" fill="none" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrow-g)"/>
               <path d="M 125,138 C 95,168 165,168 135,138" fill="none" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrow-g)"/>
-              
+
               <!-- Aristas bidireccionales 1 <-> 2 -->
               <path d="M 92,42 Q 130,22 168,42" fill="none" stroke="#2563eb" stroke-width="1.6" marker-end="url(#arrow-g)"/>
               <path d="M 168,58 Q 130,78 92,58" fill="none" stroke="#2563eb" stroke-width="1.6" marker-end="url(#arrow-g)"/>

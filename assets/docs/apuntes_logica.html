@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tema 1: Lógica — Matemáticas Discretas</title>
-  
+
   <!-- KaTeX para renderizado matemático rápido y limpio -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
@@ -356,6 +356,98 @@
     table.truth-table th, table.truth-table td {
       text-align: center;
     }
+
+/* ===== AJUSTES RESPONSIVE PARA CELULARES ===== */
+@media (max-width: 640px) {
+  body {
+    font-size: 0.96rem;
+    line-height: 1.6;
+  }
+
+  .container {
+    padding: 0.9rem 0.85rem 3.5rem;
+  }
+
+  header.doc-header {
+    padding: 1.4rem 1.15rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  header.doc-header h1 {
+    font-size: 1.45rem;
+    line-height: 1.25;
+  }
+
+  header.doc-header p {
+    font-size: 0.95rem !important;
+  }
+
+  .meta-bar {
+    flex-direction: column;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+  }
+
+  .controls-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .controls-bar .btn {
+    width: 100%;
+    text-align: center;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .card {
+    padding: 1.15rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  h2.module-title {
+    font-size: 1.22rem;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    line-height: 1.3;
+  }
+
+  h3.section-title {
+    font-size: 1.1rem;
+    margin-top: 1.4rem;
+  }
+
+  .example-box {
+    padding: 0.95rem 1rem;
+    margin: 1rem 0;
+  }
+
+  .callout {
+    padding: 0.9rem 1rem;
+    margin: 1rem 0;
+  }
+
+  /* Tablas más compactas y fáciles de desplazar en horizontal */
+  th, td {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.86rem;
+  }
+
+  /* Evitar que fórmulas matemáticas largas desborden la pantalla */
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.35rem 0;
+    max-width: 100%;
+  }
+
+  .katex-display > .katex {
+    font-size: 0.95em;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -400,8 +492,8 @@
             <td><span class="badge">01</span></td>
             <td><a href="#mod-1">Proposiciones Lógicas: Definiciones</a></td>
             <td>
-              <a href="#sec-1-1">1.1 Proposiciones simples</a> • 
-              <a href="#sec-1-2">1.2 Proposición compuesta y conectivos</a> • 
+              <a href="#sec-1-1">1.1 Proposiciones simples</a> •
+              <a href="#sec-1-2">1.2 Proposición compuesta y conectivos</a> •
               <a href="#sec-1-3">1.3 Tablas de verdad básicas</a>
             </td>
           </tr>
@@ -409,8 +501,8 @@
             <td><span class="badge">02</span></td>
             <td><a href="#mod-2">Proposiciones Lógicas: Clasificación</a></td>
             <td>
-              <a href="#sec-2-1">2.1 Formas alternativas del condicional</a> • 
-              <a href="#sec-2-2">2.2 Tautología, contradicción y contingencia</a> • 
+              <a href="#sec-2-1">2.1 Formas alternativas del condicional</a> •
+              <a href="#sec-2-2">2.2 Tautología, contradicción y contingencia</a> •
               <a href="#sec-2-3">2.3 Implicación y equivalencia lógica</a>
             </td>
           </tr>
@@ -418,8 +510,8 @@
             <td><span class="badge">03</span></td>
             <td><a href="#mod-3">Leyes Lógicas</a></td>
             <td>
-              <a href="#sec-3-1">3.1 Equivalencias lógicas notables</a> • 
-              <a href="#sec-3-2">3.2 Importancia y algoritmo de simplificación</a> • 
+              <a href="#sec-3-1">3.1 Equivalencias lógicas notables</a> •
+              <a href="#sec-3-2">3.2 Importancia y algoritmo de simplificación</a> •
               <a href="#sec-3-3">3.3 Ejercicios resueltos y propuestos</a>
             </td>
           </tr>
@@ -427,9 +519,9 @@
             <td><span class="badge">04</span></td>
             <td><a href="#mod-4">Razonamientos Lógicos</a></td>
             <td>
-              <a href="#sec-4-1">4.1 Inferencia y validez</a> • 
-              <a href="#sec-4-2">4.2 Determinación analítica de invalidez</a> • 
-              <a href="#sec-4-3">4.3 Reglas de inferencia y prueba directa</a> • 
+              <a href="#sec-4-1">4.1 Inferencia y validez</a> •
+              <a href="#sec-4-2">4.2 Determinación analítica de invalidez</a> •
+              <a href="#sec-4-3">4.3 Reglas de inferencia y prueba directa</a> •
               <a href="#sec-4-4">4.4 Reducción al absurdo</a>
             </td>
           </tr>
@@ -437,9 +529,9 @@
             <td><span class="badge">05</span></td>
             <td><a href="#mod-5">Cuantificadores</a></td>
             <td>
-              <a href="#sec-5-1">5.1 Motivación</a> • 
-              <a href="#sec-5-2">5.2 Predicados y cuantificadores ($\forall, \exists, \exists!$)</a> • 
-              <a href="#sec-5-3">5.3 Negación (De Morgan) y propiedades</a> • 
+              <a href="#sec-5-1">5.1 Motivación</a> •
+              <a href="#sec-5-2">5.2 Predicados y cuantificadores ($\forall, \exists, \exists!$)</a> •
+              <a href="#sec-5-3">5.3 Negación (De Morgan) y propiedades</a> •
               <a href="#sec-5-4">5.4 Ejercicios propuestos</a>
             </td>
           </tr>
