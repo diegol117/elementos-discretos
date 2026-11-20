@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temario de Estructuras Discretas</title>
+  
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      
+      /* Color principal (Cian) */
+      --primary: #00baeb; 
+      /* Fondo sutil para la etiqueta numérica */
+      --primary-light: rgba(0, 186, 235, 0.1); 
+      
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 4rem 1.5rem;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Encabezado */
+    .header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+    }
+
+    /* Contenedor de los Temas */
+    .syllabus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Tarjeta del Tema */
+    .module {
+      background-color: var(--surface);
+      border: 1px solid #f1f5f9;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    /* Barra de gradiente al hacer hover */
+    .module::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0,186,235,1) 0%, rgba(0,186,235,0.3) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .module:hover {
+      box-shadow: 0 8px 25px -5px rgba(0, 186, 235, 0.15);
+      border-color: #e0f2fe;
+      transform: translateX(4px);
+    }
+
+    .module:hover::before {
+      opacity: 1;
+    }
+
+    /* Cabecera de la tarjeta */
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 1rem;
+    }
+
+    /* Número / Etiqueta estilizada */
+    .module-number {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0096c0;
+      background-color: var(--primary-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Título del Tema */
+    .module h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    /* Lista de subtemas */
+    .subtopics {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .subtopics li {
+      position: relative;
+      padding-left: 1.75rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    /* Ícono de check minimalista */
+    .subtopics li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: stroke 0.3s ease;
+    }
+
+    .module:hover .subtopics li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300baeb' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    }
+
+    /* Estilos para sublistas anidadas (Ej: Clasificación) */
+    .subtopics ul {
+      list-style-type: disc;
+      margin-top: 0.5rem;
+      margin-left: 0.5rem;
+      padding-left: 1rem;
+    }
+
+    .subtopics ul li {
+      padding-left: 0.5rem;
+    }
+
+    .subtopics ul li::before {
+      display: none; /* Oculta el check para los sub-items */
+    }
+
+    /* Adaptación para móviles */
+    @media (max-width: 600px) {
+      body { padding: 2.5rem 1rem; }
+      .header h1 { font-size: 2rem; }
+      .module { padding: 1.5rem; }
+      .module:hover { transform: none; }
+      .module-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .module h2 { font-size: 1.2rem; }
+      .subtopics li { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header class="header">
+      <h1>Contenido Programático</h1>
+      <p>Estructuras Discretas</p>
+    </header>
+
+    <div class="syllabus-list">
+
+      <!-- TEMA 1 -->
+      <div class="module">
+        <div class="module-header">
+          <span class="module-number">01</span>
+          <h2>Nociones de Lógica</h2>
+        </div>
+        <ul class="subtopics">
+          <li><strong>Conceptos Básicos:</strong> Razonamiento y tipos de razonamientos.</li>
+          <li><strong>Proposiciones:</strong> Proposición simple y compuesta.</li>
+          <li><strong>Lógica Proposicional:</strong> Conectivos lógicos, Tablas de verdad, Tautología, contradicción y contingencia.</li>
+          <li><strong>Leyes Lógicas:</strong> Uso de leyes para simplificación de expresiones.</li>
+          <li><strong>Inferencia:</strong> Validez e invalidez de razonamientos lógicos. Razonamientos con hipótesis condicional.</li>
+          <li><strong>Lógica de Predicados:</strong> Funciones proposicionales y Cuantificadores.</li>
+        </ul>
+      </div>
+
+      <!-- TEMA 2 -->
+      <div class="module">
+        <div class="module-header">
+          <span class="module-number">02</span>
+          <h2>Teoría de Conjuntos</h2>
+        </div>
+        <ul class="subtopics">
+          <li><strong>Conceptos Básicos:</strong> Noción de conjunto, descripción por comprensión y por extensión.</li>
+          <li><strong>Diagramas de Venn:</strong> Representación gráfica y uso de leyes para graficar.</li>
+          <li><strong>Tipos de Conjuntos:</strong> Vacío, Universal, Potencia (o de las partes) y Partición.</li>
+          <li><strong>Relaciones entre Conjuntos:</strong> Igualdad e inclusión.</li>
+          <li><strong>Operaciones:</strong> Unión, intersección, complementación, diferencia y diferencia simétrica.</li>
+          <li><strong>Generalización:</strong> Unión e intersección de familias de conjuntos y conjuntos indexados.</li>
+          <li><strong>Leyes de Conjuntos:</strong> Uso para demostrar igualdades y simplificar expresiones complejas.</li>
+          <li><strong>Cardinalidad:</strong> Cardinales, cardinales asociados y demostración de sus propiedades.</li>
+          <li><strong>Demostraciones:</strong> Demostraciones con y sin hipótesis adicionales.</li>
+          <li><strong>Producto Cartesiano:</strong> Definición y aplicaciones.</li>
+        </ul>
+      </div>
+
+      <!-- TEMA 3 -->
+      <div class="module">
+        <div class="module-header">
+          <span class="module-number">03</span>
+          <h2>Teoría de Relaciones</h2>
+        </div>
+        <ul class="subtopics">
+          <li><strong>Conceptos Básicos:</strong> Relación binaria, relación identidad e inversa. Dominio y rango, composición de una relación.</li>
+          <li><strong>Representaciones:</strong> Extensión, comprensión, Grafos dirigidos, Diagrama Sagital y Matrices.</li>
+          <li><strong>Operaciones:</strong> Interpretación gráfica de productos cartesianos y operaciones en relaciones (finitas e infinitas).</li>
+          <li><strong>Matrices Booleanas:</strong> Definición, operaciones entre matrices y propiedades (exclusivo para relaciones finitas).</li>
+          <li><strong>Propiedades:</strong> Análisis de relaciones descritas por extensión y comprensión.</li>
+          <li><strong>Clasificación:</strong>
+            <ul>
+              <li><strong>Equivalencia:</strong> Clases de equivalencia y conjunto cociente.</li>
+              <li><strong>Orden:</strong> Orden parcial, total, amplio y estricto.</li>
+            </ul>
+          </li>
+          <li><strong>Conjuntos Ordenados:</strong> Elementos comparables, elementos distinguidos y Diagrama de Hasse.</li>
+        </ul>
+      </div>
+
+      <!-- BIBLIOGRAFÍA -->
+      <div class="module">
+        <div class="module-header">
+          <span class="module-number">BIB</span>
+          <h2>Bibliografía Recomendada</h2>
+        </div>
+        <ul class="subtopics">
+          <li>Rosen, K. H. (2019). <em>Discrete Mathematics and Its Applications</em> (8th ed.). McGraw-Hill Education.</li>
+          <li>Grimaldi, R. P. (2006). <em>Discrete and Combinatorial Mathematics: An Applied Introduction</em> (5th ed.). Pearson.</li>
+          <li>Kolman, B., Busby, R. C., & Ross, S. (2006). <em>Discrete Mathematical Structures</em> (6th ed.). Pearson Prentice Hall.</li>
+          <li>Johnsonbaugh, R. (2018). <em>Discrete Mathematics</em> (8th ed.). Pearson.</li>
+          <li>Lipschutz, S., & Lipson, M. (2007). <em>Schaum's Outline of Discrete Mathematics</em>. McGraw-Hill.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

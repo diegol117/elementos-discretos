@@ -329,6 +329,7 @@
                 </div>
             </div>
         </section>
+
         <section class="downloads-section">
             <div class="container-max downloads-grid">
                 <div class="download-card">
@@ -354,27 +355,40 @@
                     </button>
                 </div>
 
+                <!-- REGLAS DE EXAMEN -->
                 <div class="download-card">
                     <h3 class="download-title">Reglas de Examen</h3>
                     <p class="download-text">Lineamientos y normas institucionales para la presentación formal de
                         evaluaciones.</p>
-                    <button class="button"
-                        onclick="descargarPDF('assets/docs/normas-curso-estructuras-discretas.pdf', 'normas-curso-estructuras-discretas.pdf')">
-                        <span class="button__text">Descargar</span>
-                        <span class="button__icon">
-                            <svg class="svg" viewBox="0 0 45 35">
-                                <path
-                                    d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z">
-                                </path>
-                                <path
-                                    d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z">
-                                </path>
-                                <path
-                                    d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z">
-                                </path>
-                            </svg>
-                        </span>
-                    </button>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+
+                        <!-- Botón Visitar con el diseño exacto solicitado -->
+                        <button class="button" style="margin: 0;" onclick="window.open('assets/docs/normas.html', '_blank')">
+                            <span class="button__text">Visitar</span>
+                            <span class="button__icon">
+                                <svg class="svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <button class="button" style="margin: 0;"
+                            onclick="descargarPDF('assets/docs/normas-curso-estructuras-discretas.pdf', 'normas-curso-estructuras-discretas.pdf')">
+                            <span class="button__text">Descargar</span>
+                            <span class="button__icon">
+                                <svg class="svg" viewBox="0 0 45 35">
+                                    <path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path>
+                                    <path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path>
+                                    <path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path>
+                                </svg>
+                            </span>
+                        </button>
+
+
+                    </div>
                 </div>
 
                 <div class="download-card">
@@ -400,27 +414,41 @@
                     </button>
                 </div>
 
+                <!-- PROGRAMA ACADÉMICO -->
                 <div class="download-card">
                     <h3 class="download-title">Programa Académico</h3>
                     <p class="download-text">Estructura detallada de las unidades y temas a desarrollar en Matemáticas
                         Discretas.</p>
-                    <button class="button"
-                        onclick="descargarPDF('assets/docs/temario-estructuras-discretas-uc.pdf', 'temario-estructuras-discretas-uc.pdf')">
-                        <span class="button__text">Descargar</span>
-                        <span class="button__icon">
-                            <svg class="svg" viewBox="0 0 45 35">
-                                <path
-                                    d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z">
-                                </path>
-                                <path
-                                    d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z">
-                                </path>
-                                <path
-                                    d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z">
-                                </path>
-                            </svg>
-                        </span>
-                    </button>
+
+                    <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 15px;">
+
+
+                        <!-- Botón Visitar con el diseño exacto solicitado -->
+                        <button class="button" style="margin: 0;" onclick="window.open('assets/docs/temas.html', '_blank')">
+                            <span class="button__text">Visitar</span>
+                            <span class="button__icon">
+                                <svg class="svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </span>
+                        </button>
+
+                        <button class="button" style="margin: 0;"
+                            onclick="descargarPDF('assets/docs/temario-estructuras-discretas-uc.pdf', 'temario-estructuras-discretas-uc.pdf')">
+                            <span class="button__text">Descargar</span>
+                            <span class="button__icon">
+                                <svg class="svg" viewBox="0 0 45 35">
+                                    <path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path>
+                                    <path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path>
+                                    <path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path>
+                                </svg>
+                            </span>
+                        </button>
+
+
+                    </div>
                 </div>
             </div>
         </section>
@@ -442,8 +470,6 @@
                     <div class="social-media">
                         <ul
                             style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding:0; list-style:none; margin: 0;">
-
-
 
                             <li>
                                 <a href="https://diegol117.github.io/" target="_blank" rel="noopener noreferrer">
@@ -470,14 +496,11 @@
                     </div>
                 </div>
 
-
-                <!-- He modificado el margin y añadido un poco de padding para dar "aire" -->
                 <div class="profile-info"
                     style="max-width: 550px; text-align: left; margin-left: 30px; margin-right: 30px; padding: 40px 0;">
 
                     <div class="info-item" style="margin-bottom: 40px;">
                         <h4 style="color: #fff; margin-bottom: 8px; font-size: 1.3rem;">Sobre el portal</h4>
-                        <!-- Aplicando el tamaño de 1rem que definimos antes para los párrafos -->
                         <p style="color: #aaa; line-height: 1.6; font-size: 1rem; margin: 0;">
                             Este portal ha sido desarrollado para los estudiantes de <strong>Estructuras Discretas
                                 (EDI)</strong>, con el fin de centralizar materiales de apoyo, guías y autoevaluaciones.

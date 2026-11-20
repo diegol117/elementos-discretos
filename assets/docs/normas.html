@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Normas de Examen</title>
+  
+  <!-- Fuentes de Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      
+      /* Color principal (Cian) */
+      --primary: #00baeb; 
+      /* Fondo sutil para la etiqueta numérica */
+      --primary-light: rgba(0, 186, 235, 0.1); 
+      
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 4rem 1.5rem;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* Encabezado */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 500;
+    }
+
+    /* Texto introductorio general */
+    .intro-text {
+      background-color: var(--surface);
+      border: 1px solid #f1f5f9;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.04);
+      color: var(--text-muted);
+      text-align: justify;
+    }
+
+    .intro-text p {
+      margin-bottom: 1rem;
+    }
+
+    .intro-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Contenedor de los Temas */
+    .syllabus-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Tarjeta del Tema */
+    .module {
+      background-color: var(--surface);
+      border: 1px solid #f1f5f9;
+      border-radius: 12px;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    /* Barra de gradiente al hacer hover */
+    .module::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0,186,235,1) 0%, rgba(0,186,235,0.3) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .module:hover {
+      box-shadow: 0 8px 25px -5px rgba(0, 186, 235, 0.15);
+      border-color: #e0f2fe;
+      transform: translateX(4px);
+    }
+
+    .module:hover::before {
+      opacity: 1;
+    }
+
+    /* Cabecera de la tarjeta */
+    .module-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 1rem;
+    }
+
+    /* Número / Etiqueta estilizada */
+    .module-number {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #0096c0;
+      background-color: var(--primary-light);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Título del Tema */
+    .module h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    /* Párrafo descriptivo dentro de la tarjeta */
+    .module-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+      text-align: justify;
+    }
+
+    /* Lista de subtemas */
+    .subtopics {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .subtopics li {
+      position: relative;
+      padding-left: 1.75rem;
+      color: var(--text-muted);
+      font-size: 1rem;
+      text-align: justify;
+    }
+
+    /* Ícono de check minimalista */
+    .subtopics li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: stroke 0.3s ease;
+    }
+
+    .module:hover .subtopics li::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300baeb' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    }
+
+    /* Adaptación para móviles */
+    @media (max-width: 600px) {
+      body { padding: 2.5rem 1rem; }
+      .header h1 { font-size: 2rem; }
+      .module { padding: 1.5rem; }
+      .intro-text { padding: 1.5rem; }
+      .module:hover { transform: none; }
+      .module-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .module h2 { font-size: 1.2rem; }
+      .subtopics li { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <header class="header">
+      <h1>Normas de Examen</h1>
+      <p>Evaluaciones Parciales</p>
+    </header>
+
+    <!-- Párrafos Introductorios -->
+    <div class="intro-text">
+      <p>Este instructivo detalla las normativas vigentes para la administración de exámenes parciales, con un enfoque específico en la integridad académica y la logística dentro del aula. Aunque la normativa universitaria general establece lineamientos macro sobre la evaluación, la implementación de estas reglas asegura un entorno de justicia y orden desde el momento de la identificación del estudiante.</p>
+      <p>Considerando que la validez de los resultados depende del cumplimiento estricto de protocolos de seguridad —como la restricción de dispositivos electrónicos y el control de asistencia mediante listas de Control de Estudios—, el seguimiento de estas pautas es obligatorio para todos los aspirantes que deseen formalizar su rendimiento académico en la institución.</p>
+    </div>
+
+    <div class="syllabus-list">
+
+      <!-- SECCIÓN I -->
+      <div class="module">
+        <div class="module-header">
+          <span class="module-number">I</span>
+          <h2>Protocolos de Identificación y Registro</h2>
+        </div>
+        <p class="module-desc">Antes de dar inicio formal a la evaluación, es imprescindible cumplir con los requisitos de acreditación de identidad. Esta sección establece los documentos necesarios y el procedimiento de validación frente a los listados oficiales de la institución para garantizar la transparencia del proceso.</p>
+        <ul class="subtopics">
+          <li>Tener a la mano la cédula de identidad o carnet de la U.C.</li>
+          <li>El profesor verificará la asistencia utilizando las listas oficiales de Control de Estudios.</li>
+          <li>En caso de no aparecer en lista, el estudiante podrá presentar el examen, pero su nota quedará sujeta a la regularización de su situación académica.</li>
+        </ul>
+      </div>
+
+      <!-- SECCIÓN II -->
+      <div class="module">
+        <div class="module-header">
+          <span class="module-number">II</span>
+          <h2>Logística y Gestión del Tiempo</h2>
+        </div>
+        <p class="module-desc">El orden dentro del aula y el respeto a los tiempos de ejecución son fundamentales para el desarrollo de la prueba. A continuación, se detallan las normas sobre la ubicación de pertenencias personales y las ventanas de tiempo permitidas para el ingreso y egreso del recinto.</p>
+        <ul class="subtopics">
+          <li>Todos los morrales y bolsos deben colocarse en el piso, específicamente en el área cercana al pizarrón.</li>
+          <li>Una vez comenzado el examen, queda estrictamente prohibida la salida del aula.</li>
+          <li>Se establece un tiempo de permanencia mínima obligatoria de 30 minutos antes de poder entregar el examen y retirarse.</li>
+          <li>No se permitirá el ingreso de ningún estudiante al aula transcurridos 30 minutos desde el inicio de la evaluación.</li>
+        </ul>
+      </div>
+
+      <!-- SECCIÓN III -->
+      <div class="module">
+        <div class="module-header">
+          <span class="module-number">III</span>
+          <h2>Integridad y Comunicación durante la Prueba</h2>
+        </div>
+        <p class="module-desc">Para asegurar la equidad en la evaluación, se restringe el uso de herramientas externas y se define el canal adecuado para la resolución de dudas. Esta sección describe el comportamiento esperado respecto a la tecnología y la interacción con el docente.</p>
+        <ul class="subtopics">
+          <li>Está prohibido el uso de celulares o cualquier dispositivo electrónico; estos deben permanecer apagados y guardados en todo momento.</li>
+          <li>No se admitirán preguntas que comprometan la resolución del examen o sugieran respuestas.</li>
+          <li>Cualquier duda razonable sobre el enunciado de las preguntas debe plantearse levantando la mano y desde el propio pupitre.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>
