@@ -642,30 +642,31 @@
         </li>
       </ul>
 
-<div class="example-box">
-  <div class="example-header">🧩 Ejemplo 1.2: Cálculo de Dominio y Rango</div>
-  <p>Considérense los conjuntos y la relación:</p>
-  $$A = \{\text{Ana},\, \text{Luis},\, \text{María},\, \text{Juan},\, \text{Alberto}\}$$
-  $$B = \{\text{Matemáticas},\, \text{Historia}\}$$
-  $$R = \{(\text{Ana}, \text{Matemáticas}),\, (\text{Luis}, \text{Historia}),\, (\text{María}, \text{Matemáticas})\}$$
-  <p>Determine $\text{Dom}(R)$ y $\text{Rgo}(R)$.</p>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.2: Cálculo de Dominio y Rango</div>
+        <p>Considérense los conjuntos y la relación:</p>
+        $$A = \{\text{Ana},\, \text{Luis},\, \text{María},\, \text{Juan},\, \text{Alberto}\}$$
+        $$B = \{\text{Matemáticas},\, \text{Historia}\}$$
+        $$R = \{(\text{Ana}, \text{Matemáticas}),\, (\text{Luis}, \text{Historia}),\, (\text{María},
+        \text{Matemáticas})\}$$
+        <p>Determine $\text{Dom}(R)$ y $\text{Rgo}(R)$.</p>
 
-  <details class="solution">
-    <summary>🔍 Ver solución paso a paso</summary>
-    <div class="solution-content">
-      <ol>
-        <li><strong>Dominio ($\text{Dom}(R)$):</strong> primeras componentes de los pares en $R$:
-          $$\text{Dom}(R) = \{\text{Ana},\, \text{Luis},\, \text{María}\}$$
-          <em>Nota:</em> Juan y Alberto pertenecen a $A$, pero no al dominio al no estar relacionados con ninguna
-          asignatura.
-        </li>
-        <li><strong>Rango ($\text{Rgo}(R)$):</strong> segundas componentes presentes en los pares de $R$:
-          $$\text{Rgo}(R) = \{\text{Matemáticas},\, \text{Historia}\} = B$$
-        </li>
-      </ol>
-    </div>
-  </details>
-</div>
+        <details class="solution">
+          <summary>🔍 Ver solución paso a paso</summary>
+          <div class="solution-content">
+            <ol>
+              <li><strong>Dominio ($\text{Dom}(R)$):</strong> primeras componentes de los pares en $R$:
+                $$\text{Dom}(R) = \{\text{Ana},\, \text{Luis},\, \text{María}\}$$
+                <em>Nota:</em> Juan y Alberto pertenecen a $A$, pero no al dominio al no estar relacionados con ninguna
+                asignatura.
+              </li>
+              <li><strong>Rango ($\text{Rgo}(R)$):</strong> segundas componentes presentes en los pares de $R$:
+                $$\text{Rgo}(R) = \{\text{Matemáticas},\, \text{Historia}\} = B$$
+              </li>
+            </ol>
+          </div>
+        </details>
+      </div>
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 1.3: Conversión de Comprensión a Extensión</div>
         <p>Sea $A = \{1, 2, 3\}$ y $R \subseteq A^2$ definida por $R = \{ (x, y) \in A^2 \mid x + y = 4 \}$. Exprese $R$
@@ -705,9 +706,14 @@
 
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 1.5: Identificación de la Relación Identidad</div>
-        <p>Dado $A = \{1, 2, 3\}$, determine cuáles de las siguientes relaciones corresponden a $I_A$:<br>
-          $$R_1 = \{(1, 1), (2, 2), (3, 3)\}$$
-          $$R_2 = \{(1, 1), (2, 2)\}$$ $$R_3 = \{(1, 1), (2, 2), (3, 3), (1,2)\}$$</p>
+        <p>Dado \(A = \{1, 2, 3\}\), determine cuáles de las siguientes relaciones corresponden a \(I_A\):</p>
+        $$
+        \begin{align}
+        R_1 &= \{(1, 1), (2, 2), (3, 3)\} \\
+        R_2 &= \{(1, 1), (2, 2)\} \\
+        R_3 &= \{(1, 1), (2, 2), (3, 3), (1,2)\}
+        \end{align}
+        $$
         <details class="solution">
           <summary>🔍 Ver solución</summary>
           <div class="solution-content">
@@ -926,66 +932,74 @@
       </div>
 
       <h3 class="section-title" id="sec-2-2">2.2 Operaciones en Relaciones Finitas (Extensión y Comprensión)</h3>
-<div class="example-box">
-  <div class="example-header">🧩 Ejemplo 2.1: Operaciones en relaciones definidas por extensión</div>
-  <ol>
-    <li>Sea $U = \{1, 2, 3, 4\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $(R \cup S) - (R \Delta S)$.</li>
-    <li>Sea $A = \{a, b, c\}$, $R = \{(a,a), (b,b)\}$ y $S = \{(b,b), (c,c)\}$. Halle $(R - S) \cup (R \cap S)$.</li>
-    <li>Sea $U = \{1, 2, 3\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $R \cap (R^c \cup S)$.</li>
-  </ol>
-  <details class="solution">
-    <summary>🔍 Ver soluciones desarrolladas</summary>
-    <div class="solution-content">
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 2.1: Operaciones en relaciones definidas por extensión</div>
+        <ol>
+          <li>Sea $U = \{1, 2, 3, 4\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $(R \cup S) - (R \Delta
+            S)$.</li>
+          <li>Sea $A = \{a, b, c\}$, $R = \{(a,a), (b,b)\}$ y $S = \{(b,b), (c,c)\}$. Halle $(R - S) \cup (R \cap S)$.
+          </li>
+          <li>Sea $U = \{1, 2, 3\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $R \cap (R^c \cup S)$.</li>
+        </ol>
+        <details class="solution">
+          <summary>🔍 Ver soluciones desarrolladas</summary>
+          <div class="solution-content">
 
-      <p><strong>1.</strong> Calculamos primero la unión y la diferencia simétrica:</p>
-      $$R \cup S = \{(1,1),\, (2,2),\, (3,3)\}$$
-      $$R \Delta S = (R \cup S) - (R \cap S) = \{(1,1),\, (3,3)\}$$
-      <p>Restando ambos resultados:</p>
-      $$(R \cup S) - (R \Delta S) = \{(2,2)\}$$
+            <p><strong>1.</strong> Calculamos primero la unión y la diferencia simétrica:</p>
+            $$R \cup S = \{(1,1),\, (2,2),\, (3,3)\}$$
+            $$R \Delta S = (R \cup S) - (R \cap S) = \{(1,1),\, (3,3)\}$$
+            <p>Restando ambos resultados:</p>
+            $$(R \cup S) - (R \Delta S) = \{(2,2)\}$$
 
-      <p><strong>2.</strong> Calculamos cada operación por separado:</p>
-      $$R - S = \{(a,a)\}, \qquad R \cap S = \{(b,b)\}$$
-      <p>Al ser conjuntos disjuntos, la unión coincide con $R$:</p>
-      $$(R - S) \cup (R \cap S) = \{(a,a),\, (b,b)\} = R$$
+            <p><strong>2.</strong> Calculamos cada operación por separado:</p>
+            $$R - S = \{(a,a)\}, \qquad R \cap S = \{(b,b)\}$$
+            <p>Al ser conjuntos disjuntos, la unión coincide con $R$:</p>
+            $$(R - S) \cup (R \cap S) = \{(a,a),\, (b,b)\} = R$$
 
-      <p><strong>3.</strong> El complemento $R^c = (U \times U) \setminus R$ son los $7$ pares de $U \times U$ que no están en $R$. Al unirlo con $S$ se recupera únicamente el par $(2,2)$, de modo que $R^c \cup S$ contiene todos los pares de $U \times U$ salvo $(1,1)$:</p>
-      $$R^c \cup S = (U \times U) \setminus \{(1,1)\}$$
-      <p>Intersectando finalmente con $R$:</p>
-      $$R \cap (R^c \cup S) = \{(2,2)\}$$
+            <p><strong>3.</strong> El complemento $R^c = (U \times U) \setminus R$ son los $7$ pares de $U \times U$ que
+              no están en $R$. Al unirlo con $S$ se recupera únicamente el par $(2,2)$, de modo que $R^c \cup S$
+              contiene todos los pares de $U \times U$ salvo $(1,1)$:</p>
+            $$R^c \cup S = (U \times U) \setminus \{(1,1)\}$$
+            <p>Intersectando finalmente con $R$:</p>
+            $$R \cap (R^c \cup S) = \{(2,2)\}$$
 
-    </div>
-  </details>
-</div>
+          </div>
+        </details>
+      </div>
 
-<div class="example-box">
-  <div class="example-header">🧩 Ejemplo 2.2: Operaciones en relaciones finitas definidas por comprensión</div>
-  <ol>
-    <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x = y \}$ y $S = \{ (x, y) \mid x < y \}$. Halle $S - R^c$.</li>
-    <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x + y \text{ es par} \}$ y $S = \{ (x, y) \mid x + y \leq 3 \}$. Halle $R \cap S$.</li>
-    <li>En $A = \{1, 2, 3, 4\}$: $R = \{ (x, y) \mid y = 2x \}$ y $S = \{ (x, y) \mid x \text{ es par y } y \text{ es impar} \}$. Halle $R \Delta S$.</li>
-  </ol>
-  <details class="solution">
-    <summary>🔍 Ver soluciones desarrolladas</summary>
-    <div class="solution-content">
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 2.2: Operaciones en relaciones finitas definidas por comprensión</div>
+        <ol>
+          <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x = y \}$ y $S = \{ (x, y) \mid x < y \}$. Halle $S - R^c$.</li>
+          <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x + y \text{ es par} \}$ y $S = \{ (x, y) \mid x + y \leq 3 \}$.
+            Halle $R \cap S$.</li>
+          <li>En $A = \{1, 2, 3, 4\}$: $R = \{ (x, y) \mid y = 2x \}$ y $S = \{ (x, y) \mid x \text{ es par y } y \text{
+            es impar} \}$. Halle $R \Delta S$.</li>
+        </ol>
+        <details class="solution">
+          <summary>🔍 Ver soluciones desarrolladas</summary>
+          <div class="solution-content">
 
-      <p><strong>1.</strong> Por extensión:</p>
-      $$R = \{(1,1),\, (2,2),\, (3,3)\}, \qquad S = \{(1,2),\, (1,3),\, (2,3)\}$$
-      <p>El complemento $R^c = (A \times A) \setminus R$ está formado por todos los pares con coordenadas distintas, entre ellos los tres de $S$. Es decir, $S \subseteq R^c$, por lo que:</p>
-      $$S - R^c = \emptyset$$
+            <p><strong>1.</strong> Por extensión:</p>
+            $$R = \{(1,1),\, (2,2),\, (3,3)\}, \qquad S = \{(1,2),\, (1,3),\, (2,3)\}$$
+            <p>El complemento $R^c = (A \times A) \setminus R$ está formado por todos los pares con coordenadas
+              distintas, entre ellos los tres de $S$. Es decir, $S \subseteq R^c$, por lo que:</p>
+            $$S - R^c = \emptyset$$
 
-      <p><strong>2.</strong> Por extensión:</p>
-      $$R = \{(1,1),\, (1,3),\, (2,2),\, (3,1),\, (3,3)\}, \qquad S = \{(1,1),\, (1,2),\, (2,1)\}$$
-      <p>El único par que satisface simultáneamente $x + y$ par y $x + y \leq 3$ es $(1,1)$:</p>
-      $$R \cap S = \{(1,1)\}$$
+            <p><strong>2.</strong> Por extensión:</p>
+            $$R = \{(1,1),\, (1,3),\, (2,2),\, (3,1),\, (3,3)\}, \qquad S = \{(1,1),\, (1,2),\, (2,1)\}$$
+            <p>El único par que satisface simultáneamente $x + y$ par y $x + y \leq 3$ es $(1,1)$:</p>
+            $$R \cap S = \{(1,1)\}$$
 
-      <p><strong>3.</strong> La condición $y = 2x$ solo se cumple para $x \in \{1, 2\}$, y la condición "$x$ par, $y$ impar" genera los pares con $x \in \{2,4\}$ e $y \in \{1,3\}$:</p>
-      $$R = \{(1,2),\, (2,4)\}, \qquad S = \{(2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
-      <p>Como $R$ y $S$ son disjuntos, la diferencia simétrica coincide con la unión:</p>
-      $$R \Delta S = R \cup S = \{(1,2),\, (2,4),\, (2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
+            <p><strong>3.</strong> La condición $y = 2x$ solo se cumple para $x \in \{1, 2\}$, y la condición "$x$ par,
+              $y$ impar" genera los pares con $x \in \{2,4\}$ e $y \in \{1,3\}$:</p>
+            $$R = \{(1,2),\, (2,4)\}, \qquad S = \{(2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
+            <p>Como $R$ y $S$ son disjuntos, la diferencia simétrica coincide con la unión:</p>
+            $$R \Delta S = R \cup S = \{(1,2),\, (2,4),\, (2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
 
-    </div>
-  </details>
-</div>
+          </div>
+        </details>
+      </div>
       <h3 class="section-title" id="sec-2-3">2.3 Interpretación Gráfica: Conjuntos Discretos, Continuos y Regiones
         Infinitas</h3>
       <ul>
@@ -1298,7 +1312,8 @@
       <div class="callout callout-thm">
         <div class="callout-title">📐 Teorema 3.1: Implicaciones y Relaciones Particulares</div>
         <ul style="margin:0;">
-          <li><strong>Asimetría:</strong> Si $R$ es asimétrica $\rightarrow$ es arreflexiva, antisimétrica y no total.</li>
+          <li><strong>Asimetría:</strong> Si $R$ es asimétrica $\rightarrow$ es arreflexiva, antisimétrica y no total.
+          </li>
           <li><strong>Totalidad:</strong> Si $R$ es total $\rightarrow$ es reflexiva y no asimétrica.</li>
           <li><strong>Simetría + Antisimetría:</strong> Si ambas se cumplen $\rightarrow R \subseteq I_A$.</li>
           <li><strong>Relación Vacía ($\emptyset$) sobre $A \neq \emptyset$:</strong> Es arreflexiva, simétrica,
