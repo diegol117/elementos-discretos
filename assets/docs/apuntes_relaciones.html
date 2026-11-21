@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,7 @@
   <!-- KaTeX para renderizado matemático rápido y limpio -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
-    onload="renderMathInElement(document.body, {
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
       delimiters: [
         {left: '$$', right: '$$', display: true},
         {left: '$', right: '$', display: false},
@@ -18,6 +18,7 @@
       ],
       throwOnError: false
     });"></script>
+
 
   <style>
     :root {
@@ -81,7 +82,7 @@
       gap: 1rem;
       font-size: 0.92rem;
       color: #cbd5e1;
-      border-top: 1px solid rgba(255,255,255,0.15);
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
       padding-top: 0.85rem;
       margin-top: 0.85rem;
     }
@@ -108,7 +109,7 @@
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
     .btn:hover {
@@ -165,6 +166,7 @@
     /* Tables */
     .table-wrapper {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       margin: 1.2rem 0;
       border-radius: 10px;
       border: 1px solid var(--border);
@@ -184,6 +186,7 @@
       text-align: left;
       padding: 0.8rem 1rem;
       border-bottom: 2px solid var(--border);
+      white-space: nowrap;
     }
 
     td {
@@ -242,9 +245,17 @@
       font-size: 1rem;
     }
 
-    .callout-def .callout-title { color: var(--primary); }
-    .callout-thm .callout-title { color: var(--secondary); }
-    .callout-note .callout-title { color: var(--accent); }
+    .callout-def .callout-title {
+      color: var(--primary);
+    }
+
+    .callout-thm .callout-title {
+      color: var(--secondary);
+    }
+
+    .callout-note .callout-title {
+      color: var(--accent);
+    }
 
     /* Examples & Collapsible Details */
     .example-box {
@@ -311,7 +322,7 @@
       border-top: 1px solid #e2e8f0;
     }
 
-    /* SVG Diagrams */
+    /* Diagram Containers */
     .diagram-container {
       display: flex;
       flex-wrap: wrap;
@@ -352,1222 +363,1686 @@
       color: var(--primary);
     }
 
-/* ===== AJUSTES RESPONSIVE PARA CELULARES ===== */
-@media (max-width: 640px) {
-  body {
-    font-size: 0.96rem;
-    line-height: 1.6;
-  }
+    /* ===== CORRECCIÓN CLAVE PARA KATEX ===== */
+    /* Evita que las fórmulas en línea se rompan a la mitad (ej. P \to Q) */
+    .katex {
+      white-space: nowrap;
+    }
 
-  .container {
-    padding: 0.9rem 0.85rem 3.5rem;
-  }
+    /* Permite scroll en bloques de ecuaciones largas */
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.35rem 0;
+      max-width: 100%;
+    }
 
-  header.doc-header {
-    padding: 1.4rem 1.15rem;
-    border-radius: 12px;
-    margin-bottom: 1.25rem;
-  }
+    .katex-display>.katex {
+      font-size: 0.95em;
+    }
 
-  header.doc-header h1 {
-    font-size: 1.45rem;
-    line-height: 1.25;
-  }
+    /* ===== AJUSTES RESPONSIVE PARA CELULARES ===== */
+    @media (max-width: 640px) {
+      body {
+        font-size: 0.96rem;
+        line-height: 1.6;
+      }
 
-  header.doc-header p {
-    font-size: 0.95rem !important;
-  }
+      .container {
+        padding: 0.9rem 0.85rem 3.5rem;
+      }
 
-  .meta-bar {
-    flex-direction: column;
-    gap: 0.35rem;
-    font-size: 0.85rem;
-  }
+      header.doc-header {
+        padding: 1.4rem 1.15rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+      }
 
-  .controls-bar {
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1.1rem;
-  }
+      header.doc-header h1 {
+        font-size: 1.45rem;
+        line-height: 1.25;
+      }
 
-  .controls-bar .btn {
-    width: 100%;
-    text-align: center;
-    padding: 0.65rem 0.85rem;
-  }
+      header.doc-header p {
+        font-size: 0.95rem !important;
+      }
 
-  .card {
-    padding: 1.15rem 1rem;
-    border-radius: 12px;
-    margin-bottom: 1.25rem;
-  }
+      .meta-bar {
+        flex-direction: column;
+        gap: 0.35rem;
+        font-size: 0.85rem;
+      }
 
-  h2.module-title {
-    font-size: 1.22rem;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-    line-height: 1.3;
-  }
+      .controls-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.1rem;
+      }
 
-  h3.section-title {
-    font-size: 1.1rem;
-    margin-top: 1.4rem;
-  }
+      .controls-bar .btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.65rem 0.85rem;
+      }
 
-  .example-box {
-    padding: 0.95rem 1rem;
-    margin: 1rem 0;
-  }
+      .card {
+        padding: 1.15rem 1rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+      }
 
-  .callout {
-    padding: 0.9rem 1rem;
-    margin: 1rem 0;
-  }
+      h2.module-title {
+        font-size: 1.22rem;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        line-height: 1.3;
+      }
 
-  /* Tablas más compactas y fáciles de desplazar en horizontal */
-  th, td {
-    padding: 0.55rem 0.65rem;
-    font-size: 0.86rem;
-  }
+      h3.section-title {
+        font-size: 1.1rem;
+        margin-top: 1.4rem;
+      }
 
-  /* Evitar que fórmulas matemáticas largas desborden la pantalla */
-  .katex-display {
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0.35rem 0;
-    max-width: 100%;
-  }
+      .example-box {
+        padding: 0.95rem 1rem;
+        margin: 1rem 0;
+      }
 
-  .katex-display > .katex {
-    font-size: 0.95em;
-  }
-}
+      .callout {
+        padding: 0.9rem 1rem;
+        margin: 1rem 0;
+      }
 
-
+      /* Tablas más compactas y fáciles de desplazar en horizontal */
+      th,
+      td {
+        padding: 0.55rem 0.65rem;
+        font-size: 0.86rem;
+      }
+    }
   </style>
 </head>
+
 <body>
 
-<div class="container">
+  <div class="container">
 
-  <!-- HEADER -->
-  <header class="doc-header" id="inicio">
-    <h1>📐 Tema 3: Relaciones — Matemáticas Discretas</h1>
-    <p style="margin: 0; color: #e2e8f0; font-size: 1.05rem;">
-      Apuntes completos de teoría, propiedades, representación matricial, clasificación y estructuras de orden.
-    </p>
-    <div class="meta-bar">
-      <span><strong>Autor:</strong> Diego Linares</span>
-      <span>•</span>
-      <span><strong>Área:</strong> Fundamentos de Computación y Matemáticas Discretas</span>
-      <span>•</span>
-      <span><strong>Nivel:</strong> Universitario</span>
-    </div>
-  </header>
+    <!-- HEADER -->
+    <header class="doc-header" id="inicio">
+      <h1>📐 Tema 3: Relaciones — Matemáticas Discretas</h1>
+      <p style="margin: 0; color: #e2e8f0; font-size: 1.05rem;">
+        Apuntes completos de teoría, propiedades, representación matricial, clasificación y estructuras de orden.
+      </p>
+      <div class="meta-bar">
+        <span><strong>Autor:</strong> Diego Linares</span>
+        <span><strong>Área:</strong> Fundamentos de Computación y Matemáticas Discretas</span>
+        <span><strong>Nivel:</strong> Universitario</span>
+      </div>
+    </header>
 
-  <!-- CONTROLES GLOBALES -->
-  <div class="controls-bar">
-    <button class="btn" onclick="toggleAllDetails(true)">📂 Expandir todas las soluciones</button>
-    <button class="btn" onclick="toggleAllDetails(false)">📁 Contraer todas las soluciones</button>
-  </div>
-
-  <!-- MAPA DE CONTENIDOS -->
-  <section class="card" id="mapa-de-contenidos">
-    <h2 class="module-title">📑 Mapa de Contenidos</h2>
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 80px;">Módulo</th>
-            <th style="width: 260px;">Tema Principal</th>
-            <th>Subtemas Clave</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="badge">01</span></td>
-            <td><a href="#mod-1">Conceptos Principales</a></td>
-            <td>
-              <a href="#sec-1-1">1.1 Relaciones binarias, dominio y rango</a> •
-              <a href="#sec-1-2">1.2 Relación identidad</a> •
-              <a href="#sec-1-3">1.3 Composición de relaciones</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge">02</span></td>
-            <td><a href="#mod-2">Operaciones con Relaciones</a></td>
-            <td>
-              <a href="#sec-2-1">2.1 Definición conjuntista</a> •
-              <a href="#sec-2-2">2.2 Finitas (extensión y comprensión)</a> •
-              <a href="#sec-2-3">2.3 Interpretación gráfica y regiones infinitas</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge">03</span></td>
-            <td><a href="#mod-3">Propiedades de las Relaciones</a></td>
-            <td>
-              <a href="#sec-3-1">3.1 Análisis por extensión e implicaciones</a> •
-              <a href="#sec-3-2">3.2 Análisis por comprensión en $\mathbb{R}$</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge">04</span></td>
-            <td><a href="#mod-4">Matrices Binarias</a></td>
-            <td>
-              <a href="#sec-4-1">4.1 Matriz booleana</a> •
-              <a href="#sec-4-2">4.2 Operaciones lógicas</a> •
-              <a href="#sec-4-3">4.3 Producto booleano</a> •
-              <a href="#sec-4-4">4.4 Verificación matricial de propiedades</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge">05</span></td>
-            <td><a href="#mod-5">Clasificación de Relaciones</a></td>
-            <td>
-              <a href="#sec-5-1">5.1 Taxonomía de estructuras</a> •
-              <a href="#sec-5-2">5.2 Relación de equivalencia</a> •
-              <a href="#sec-5-3">5.3 Clases de equivalencia y conjunto cociente</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge">06</span></td>
-            <td><a href="#mod-6">Relaciones de Orden</a></td>
-            <td>
-              <a href="#sec-6-1">6.1 Orden parcial y comparabilidad</a> •
-              <a href="#sec-6-2">6.2 Diagramas de Hasse</a> •
-              <a href="#sec-6-3">6.3 Elementos globales, relativos, cadenas y anticadenas</a>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="badge">REF</span></td>
-            <td><a href="#bibliografia">Bibliografía</a></td>
-            <td>Referencias bibliográficas fundamentales sobre Matemáticas Discretas y Relaciones</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- ===================================================================== -->
-  <!-- MÓDULO 1: CONCEPTOS PRINCIPALES -->
-  <!-- ===================================================================== -->
-  <section class="card" id="mod-1">
-    <h2 class="module-title"><span class="badge">MÓDULO 01</span> Conceptos Principales</h2>
-
-    <h3 class="section-title" id="sec-1-1">1.1 Relaciones Binarias</h3>
-    <p>Una vez comprendido el concepto de producto cartesiano, podemos estudiar cómo se vinculan los elementos de distintos conjuntos. En matemáticas, esta vinculación se formaliza bajo la estructura de una relación.</p>
-
-    <div class="callout callout-def">
-      <div class="callout-title">📌 Definición Formal: Relación Binaria</div>
-      <p style="margin:0;">Una <strong>Relación Binaria</strong> es un subconjunto del producto cartesiano entre dos conjuntos $A$ y $B$, denotado como $R \subseteq A \times B$. Si un elemento $x$ está relacionado con $y$, se escribe formalmente $xRy$ o $(x,y) \in R$.</p>
+    <!-- CONTROLES GLOBALES -->
+    <div class="controls-bar">
+      <button class="btn" onclick="toggleAllDetails(true)">📂 Expandir todas las soluciones</button>
+      <button class="btn" onclick="toggleAllDetails(false)">📁 Contraer todas las soluciones</button>
     </div>
 
-    <ul>
-      <li><strong>Relación vacía ($R = \emptyset$):</strong> No contiene ningún par ordenado.</li>
-      <li><strong>Relación universal ($R_U = A \times B$):</strong> Contiene la totalidad de los pares posibles del producto cartesiano.</li>
-      <li><strong>Por Extensión:</strong> Enumera explícitamente cada par ordenado: $R = \{ (a_1, b_1), (a_2, b_2), \dots \}$.</li>
-      <li><strong>Por Comprensión:</strong> Especifica la condición lógica que cumplen los pares: $R = \{ (x, y) \in A \times B \mid P(x,y) \}$.</li>
-    </ul>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 1.1: Relación por extensión a partir de tabla</div>
-      <p>Sean los conjuntos $A$ y $B$ con la relación $R$: <em>"x estudia la carrera y"</em>:</p>
-      <div class="table-wrapper" style="max-width: 380px;">
+    <!-- MAPA DE CONTENIDOS -->
+    <section class="card" id="mapa-de-contenidos">
+      <h2 class="module-title">📑 Mapa de Contenidos</h2>
+      <div class="table-wrapper">
         <table>
-          <thead><tr><th>$A$ (Estudiante)</th><th>$B$ (Carrera)</th></tr></thead>
+          <thead>
+            <tr>
+              <th style="width: 80px;">Módulo</th>
+              <th style="width: 100px;">Tema Principal</th>
+              <th style="width: 260px;">Subtemas Clave</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Ana</td><td>Matemáticas</td></tr>
-            <tr><td>Luis</td><td>Física</td></tr>
-            <tr><td>Marta</td><td>Literatura</td></tr>
+            <tr>
+              <td><span class="badge">01</span></td>
+              <td><a href="#mod-1">Conceptos Principales</a></td>
+              <td>
+                <a href="#sec-1-1">1.1 Relaciones binarias, dominio y rango</a><br>
+                <a href="#sec-1-2">1.2 Relación identidad</a><br>
+                <a href="#sec-1-3">1.3 Composición de relaciones</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">02</span></td>
+              <td><a href="#mod-2">Operaciones con Relaciones</a></td>
+              <td>
+                <a href="#sec-2-1">2.1 Definición conjuntista</a><br>
+                <a href="#sec-2-2">2.2 Finitas (extensión y comprensión)</a><br>
+                <a href="#sec-2-3">2.3 Interpretación gráfica y regiones infinitas</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">03</span></td>
+              <td><a href="#mod-3">Propiedades de las Relaciones</a></td>
+              <td>
+                <a href="#sec-3-1">3.1 Análisis por extensión e implicaciones</a><br>
+                <a href="#sec-3-2">3.2 Análisis por comprensión en $\mathbb{R}$</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">04</span></td>
+              <td><a href="#mod-4">Matrices Binarias</a></td>
+              <td>
+                <a href="#sec-4-1">4.1 Matriz booleana</a><br>
+                <a href="#sec-4-2">4.2 Operaciones lógicas</a><br>
+                <a href="#sec-4-3">4.3 Producto booleano</a><br>
+                <a href="#sec-4-4">4.4 Verificación matricial de propiedades</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">05</span></td>
+              <td><a href="#mod-5">Clasificación de Relaciones</a></td>
+              <td>
+                <a href="#sec-5-1">5.1 Taxonomía de estructuras</a><br>
+                <a href="#sec-5-2">5.2 Relación de equivalencia</a><br>
+                <a href="#sec-5-3">5.3 Clases de equivalencia y conjunto cociente</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">06</span></td>
+              <td><a href="#mod-6">Relaciones de Orden</a></td>
+              <td>
+                <a href="#sec-6-1">6.1 Orden parcial y comparabilidad</a><br>
+                <a href="#sec-6-2">6.2 Diagramas de Hasse</a><br>
+                <a href="#sec-6-3">6.3 Elementos globales, relativos, cadenas y anticadenas</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">REF</span></td>
+              <td><a href="#bibliografia">Bibliografía</a></td>
+              <td>Referencias bibliográficas fundamentales sobre Matemáticas Discretas y Relaciones</td>
+            </tr>
           </tbody>
         </table>
       </div>
-      <details class="solution">
-        <summary>🔍 Ver solución</summary>
-        <div class="solution-content">
-          <p>Los conjuntos asociados son $A = \{ \text{Ana}, \text{Luis}, \text{Marta} \}$ y $B = \{ \text{Matemáticas}, \text{Literatura}, \text{Física} \}$.</p>
-          <p>Expresando la relación por extensión:</p>
-          $$R = \left\{ (\text{Ana}, \text{Matemáticas}), (\text{Luis}, \text{Física}), (\text{Marta}, \text{Literatura}) \right\}$$
-        </div>
-      </details>
-    </div>
+    </section>
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 1: CONCEPTOS PRINCIPALES -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-1">
+      <h2 class="module-title"><span class="badge">MÓDULO 01</span> Conceptos Principales</h2>
 
-    <h4 class="sub-title">Elementos asociados a una relación</h4>
-    <ul>
-      <li><strong>Dominio:</strong> Elementos del conjunto de partida ($A$) que participan en la relación:
-        $$\text{Dom}(R) = \{ x \in A \mid \exists \, y \in B, (x, y) \in R \}$$
-      </li>
-      <li><strong>Rango:</strong> Elementos del conjunto de llegada ($B$) asociados con al menos un elemento de $A$:
-        $$\text{Rgo}(R) = \{ y \in B \mid \exists \, x \in A, (x, y) \in R \}$$
-      </li>
-      <li><strong>Relación Inversa ($R^{-1} \subseteq B \times A$):</strong> Pares ordenados invertidos:
-        $$R^{-1} = \{ (y, x) \mid (x, y) \in R \}$$
-        Cumple las dualidades: $\text{Dom}(R^{-1}) = \text{Rgo}(R)$ y $\text{Rgo}(R^{-1}) = \text{Dom}(R)$.
-      </li>
-    </ul>
+      <h3 class="section-title" id="sec-1-1">1.1 Relaciones Binarias</h3>
+      <p>Una vez comprendido el concepto de producto cartesiano, podemos estudiar cómo se vinculan los elementos de
+        distintos conjuntos. En matemáticas, esta vinculación se formaliza bajo la estructura de una relación.</p>
 
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 1.2: Cálculo de Dominio y Rango</div>
-      <p>Considérese $A = \{\text{Ana}, \text{Luis}, \text{María}, \text{Juan}, \text{Alberto}\}$, $B = \{\text{Matemáticas}, \text{Historia}\}$ y $R = \{(\text{Ana}, \text{Matemáticas}), (\text{Luis}, \text{Historia}), (\text{María}, \text{Matemáticas})\}$. Determine $\text{Dom}(R)$ y $\text{Rgo}(R)$.</p>
-      <details class="solution">
-        <summary>🔍 Ver solución paso a paso</summary>
-        <div class="solution-content">
-          <ol>
-            <li><strong>Dominio ($\text{Dom}(R)$):</strong> Primeras componentes de los pares en $R$:
-              $$\text{Dom}(R) = \{\text{Ana}, \text{Luis}, \text{María}\}$$
-              <em>Nota:</em> Juan y Alberto pertenecen a $A$, pero no al dominio al no estar relacionados con ninguna asignatura.
-            </li>
-            <li><strong>Rango ($\text{Rgo}(R)$):</strong> Segundas componentes presentes en los pares de $R$:
-              $$\text{Rgo}(R) = \{\text{Matemáticas}, \text{Historia}\} = B$$
-            </li>
-          </ol>
-        </div>
-      </details>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 1.3: Conversión de Comprensión a Extensión</div>
-      <p>Sea $A = \{1, 2, 3\}$ y $R \subseteq A^2$ definida por $R = \{ (x, y) \in A^2 \mid x + y = 4 \}$. Exprese $R$ por extensión.</p>
-      <details class="solution">
-        <summary>🔍 Ver solución paso a paso</summary>
-        <div class="solution-content">
-          <p>El producto cartesiano tiene $3 \times 3 = 9$ pares:</p>
-          $$A^2 = \{ (1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3) \}$$
-          <p>Evaluando $x + y = 4$ en cada par, solo cumplen $(1,3)$, $(2,2)$ y $(3,1)$. Por tanto:</p>
-          $$R = \{ (1, 3), (2, 2), (3, 1) \}$$
-        </div>
-      </details>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 1.4: Conversión de Extensión a Comprensión</div>
-      <p>Dados $A = \{2, 4, 6, 8\}$, $B = \{4, 8, 12, 16\}$ y $R = \{ (2, 4), (4, 8), (6, 12), (8, 16) \}$, exprese $R$ por comprensión.</p>
-      <details class="solution">
-        <summary>🔍 Ver solución paso a paso</summary>
-        <div class="solution-content">
-          <p>Observamos que en todos los pares $(x,y) \in R$, la segunda componente es el doble de la primera ($y = 2x$):</p>
-          $$R = \{ (x, y) \in A \times B \mid y = 2x \}$$
-        </div>
-      </details>
-    </div>
-
-    <h3 class="section-title" id="sec-1-2">1.2 Relación Identidad</h3>
-    <div class="callout callout-def">
-      <div class="callout-title">📌 Definición: Relación Identidad ($I_A$)</div>
-      <p style="margin:0;">Definida sobre un conjunto $A$ (con $R_U = A^2$), asigna cada elemento únicamente consigo mismo:
-      $$I_A = \{ (x, x) \mid x \in A \}$$</p>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 1.5: Identificación de la Relación Identidad</div>
-      <p>Dado $A = \{1, 2, 3\}$, determine cuáles de las siguientes relaciones corresponden a $I_A$:<br>
-      $R_1 = \{(1, 1), (2, 2), (3, 3)\}, \quad R_2 = \{(1, 1), (2, 2)\}, \quad R_3 = \{(1, 1), (2, 2), (3, 3), (1, 2)\}$.</p>
-      <details class="solution">
-        <summary>🔍 Ver solución</summary>
-        <div class="solution-content">
-          <p>La relación identidad corresponde a la diagonal principal de $A \times A$: $I_A = \{ \color{blue}{(1, 1)}, \color{blue}{(2, 2)}, \color{blue}{(3, 3)} \}$.</p>
-          <ul>
-            <li><strong>$R_1$: Sí es $I_A$</strong>, contiene exactamente todos los pares $(x,x)$ de $A$.</li>
-            <li><strong>$R_2$: No es $I_A$</strong>, falta el par $(3,3)$ correspondiente a $3 \in A$.</li>
-            <li><strong>$R_3$: No es $I_A$</strong>, incluye el par extra $(1,2)$ con componentes distintas.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <h3 class="section-title" id="sec-1-3">1.3 Composición de Relaciones</h3>
-    <p>La composición encadena relaciones conectando un elemento de $A$ con uno de $C$ a través de un intermediario en $B$. En la notación $S \circ R = S(R)$, actúa primero $R$ y luego $S$.</p>
-
-    <div class="callout callout-def">
-      <div class="callout-title">📌 Definición: Composición de Relaciones ($S \circ R$)</div>
-      <p style="margin:0;">Sean $R \subseteq A \times B$ y $S \subseteq B \times C$. La composición se define como:
-      $$S \circ R = S(R) = \{ (x, z) \in A \times C \mid \exists \, y \in B, (x, y) \in R \land (y, z) \in S \}$$</p>
-    </div>
-
-    <div class="callout callout-thm">
-      <div class="callout-title">📐 Teorema 1.1: Propiedades y Condiciones de Existencia</div>
-      <div class="table-wrapper" style="margin-bottom:0;">
-        <table>
-          <thead><tr><th>Propiedad</th><th>Expresión / Condición</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Existencia</strong></td><td>$S \circ R \neq \emptyset \iff \text{Rgo}(R) \cap \text{Dom}(S) \neq \emptyset$</td></tr>
-            <tr><td><strong>Asociatividad</strong></td><td>$(T \circ S) \circ R = T \circ (S \circ R)$</td></tr>
-            <tr><td><strong>No Conmutatividad</strong></td><td>$S \circ R \neq R \circ S$ (en general)</td></tr>
-            <tr><td><strong>Inversa</strong></td><td>$(S \circ R)^{-1} = R^{-1} \circ S^{-1}$</td></tr>
-          </tbody>
-        </table>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición Formal: Relación Binaria</div>
+        <p style="margin:0;">Una <strong>Relación Binaria</strong> es un subconjunto del producto cartesiano entre dos
+          conjuntos $A$ y $B$, denotado como $R \subseteq A \times B$. Si un elemento $x$ está relacionado con $y$, se
+          escribe formalmente $xRy$ o $(x,y) \in R$.</p>
       </div>
-    </div>
 
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 1.6: Obtención mediante Diagrama Sagital</div>
-      <p>Sean $A=\{1, 2\}$, $B=\{a, b, c\}$, $C=\{x, y\}$, $R = \{(1, a), (1, b), (2, c)\}$ y $S = \{(a, x), (c, y)\}$. Obtenga $S \circ R$.</p>
-      <details class="solution">
-        <summary>🔍 Ver diagrama sagital y solución</summary>
-        <div class="solution-content">
-          <div class="diagram-container">
-            <svg width="460" height="230" viewBox="0 0 460 230">
-              <defs>
-                <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/>
-                </marker>
-                <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L8,3 z" fill="#dc2626"/>
-                </marker>
-              </defs>
-              <!-- Conjuntos -->
-              <ellipse cx="80" cy="115" rx="42" ry="75" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-              <text x="80" y="210" text-anchor="middle" fill="#1d4ed8" font-weight="bold">A</text>
-
-              <ellipse cx="230" cy="115" rx="45" ry="85" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-              <text x="230" y="215" text-anchor="middle" fill="#1d4ed8" font-weight="bold">B</text>
-
-              <ellipse cx="380" cy="115" rx="42" ry="75" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
-              <text x="380" y="210" text-anchor="middle" fill="#1d4ed8" font-weight="bold">C</text>
-
-              <!-- Nodos A -->
-              <circle cx="80" cy="85" r="4" fill="#0f172a"/><text x="64" y="89" font-size="14">1</text>
-              <circle cx="80" cy="145" r="4" fill="#0f172a"/><text x="64" y="149" font-size="14">2</text>
-
-              <!-- Nodos B -->
-              <circle cx="230" cy="65" r="4" fill="#0f172a"/><text x="230" y="83" text-anchor="middle" font-size="14">a</text>
-              <circle cx="230" cy="115" r="4" fill="#0f172a"/><text x="230" y="133" text-anchor="middle" font-size="14">b</text>
-              <circle cx="230" cy="165" r="4" fill="#0f172a"/><text x="230" y="183" text-anchor="middle" font-size="14">c</text>
-
-              <!-- Nodos C -->
-              <circle cx="380" cy="85" r="4" fill="#0f172a"/><text x="394" y="89" font-size="14">x</text>
-              <circle cx="380" cy="145" r="4" fill="#0f172a"/><text x="394" y="149" font-size="14">y</text>
-
-              <!-- Flechas R -->
-              <line x1="84" y1="84" x2="222" y2="66" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
-              <line x1="84" y1="86" x2="222" y2="114" stroke="#dc2626" stroke-width="1.8" marker-end="url(#arrow-red)"/>
-              <line x1="84" y1="146" x2="222" y2="164" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
-
-              <!-- Flechas S -->
-              <line x1="234" y1="66" x2="372" y2="84" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
-              <line x1="234" y1="164" x2="372" y2="146" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrow-blue)"/>
-
-              <!-- Arcos superiores e inferiores -->
-              <path d="M 95,42 Q 155,10 215,35" fill="none" stroke="#2563eb" stroke-dasharray="4,3" marker-end="url(#arrow-blue)"/>
-              <text x="155" y="18" text-anchor="middle" fill="#1d4ed8" font-size="13" font-style="italic">R</text>
-
-              <path d="M 245,35 Q 305,10 365,42" fill="none" stroke="#2563eb" stroke-dasharray="4,3" marker-end="url(#arrow-blue)"/>
-              <text x="305" y="18" text-anchor="middle" fill="#1d4ed8" font-size="13" font-style="italic">S</text>
-
-              <path d="M 95,188 Q 230,235 365,188" fill="none" stroke="#2563eb" stroke-dasharray="4,3" marker-end="url(#arrow-blue)"/>
-              <text x="230" y="226" text-anchor="middle" fill="#1d4ed8" font-size="13" font-weight="bold">S ∘ R</text>
-            </svg>
-          </div>
-          <ul>
-            <li>Desde $1 \in A \to a \in B \to x \in C \implies (1, x) \in S \circ R$.</li>
-            <li>El camino $1 \to b$ se corta en $b$ (no tiene salida en $S$).</li>
-            <li>Desde $2 \in A \to c \in B \to y \in C \implies (2, y) \in S \circ R$.</li>
-          </ul>
-          $$S \circ R = \{ (1, x), (2, y) \} \subset A \times C$$
-        </div>
-      </details>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 1.7: Composición por Comprensión (Paridad y Lineales)</div>
-      <p>Determine $S \circ R$ en los siguientes dos casos:</p>
-      <ol>
-        <li>En $\mathbb{Z}$: $R = \{ (x, y) \mid x - y \text{ es par} \}$ y $S = \{ (y, z) \mid y - z \text{ es par} \}$.</li>
-        <li>En $\mathbb{R}$: $R = \{ (x, y) \mid y = x + 2 \}$ y $S = \{ (y, z) \mid z = 3y \}$.</li>
-      </ol>
-      <details class="solution">
-        <summary>🔍 Ver demostraciones analíticas</summary>
-        <div class="solution-content">
-          <p><strong>1. Paridad en $\mathbb{Z}$:</strong><br>
-          Si existe $y \in \mathbb{Z}$ tal que $x - y = 2k$ y $y - z = 2m$, sumando ambas ecuaciones se elimina $y$:
-          $$(x - y) + (y - z) = 2k + 2m \implies x - z = 2(k + m)$$
-          Recíprocamente, si $x - z$ es par, basta elegir $y = x \in \mathbb{Z}$ para verificar ambas condiciones. Por tanto:
-          $$S \circ R = \{ (x, z) \in \mathbb{Z}^2 \mid x - z \text{ es un número par} \} = R = S$$</p>
-
-          <p><strong>2. Relaciones lineales en $\mathbb{R}$:</strong><br>
-          Sustituyendo $y = x + 2$ en $z = 3y$:
-          $$z = 3(x + 2) \implies z = 3x + 6$$
-          Para cualquier $(x, z)$ con $z = 3x + 6$, existe $y = x + 2 \in \mathbb{R}$ que satisface ambas relaciones:
-          $$S \circ R = \{ (x, z) \in \mathbb{R}^2 \mid z = 3x + 6 \}$$</p>
-        </div>
-      </details>
-    </div>
-
-    <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
-  </section>
-
-  <!-- ===================================================================== -->
-  <!-- MÓDULO 2: OPERACIONES CON RELACIONES -->
-  <!-- ===================================================================== -->
-  <section class="card" id="mod-2">
-    <h2 class="module-title"><span class="badge">MÓDULO 02</span> Operaciones con Relaciones</h2>
-
-    <h3 class="section-title" id="sec-2-1">2.1 Definición Conjuntista de las Operaciones</h3>
-    <p>Al ser conjuntos de pares ordenados, las relaciones heredan todas las operaciones del álgebra de conjuntos:</p>
-
-    <div class="callout callout-def">
-      <div class="callout-title">📌 Operaciones Fundamentales sobre $R$ y $S$</div>
-      <div class="table-wrapper" style="margin-bottom:0;">
-        <table>
-          <thead><tr><th>Operación</th><th>Definición del Conjunto</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Unión</strong></td><td>$R \cup S = \{ (x,y) \mid (x,y) \in R \lor (x,y) \in S \}$</td></tr>
-            <tr><td><strong>Intersección</strong></td><td>$R \cap S = \{ (x,y) \mid (x,y) \in R \land (x,y) \in S \}$</td></tr>
-            <tr><td><strong>Diferencia</strong></td><td>$R - S = \{ (x,y) \mid (x,y) \in R \land (x,y) \notin S \}$</td></tr>
-            <tr><td><strong>Diferencia Simétrica</strong></td><td>$R \Delta S = (R - S) \cup (S - R) = (R \cup S) - (R \cap S)$</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <h3 class="section-title" id="sec-2-2">2.2 Operaciones en Relaciones Finitas (Extensión y Comprensión)</h3>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 2.1: Operaciones en relaciones definidas por extensión</div>
-      <ol>
-        <li>Sea $U = \{1, 2, 3, 4\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $(R \cup S) - (R \Delta S)$.</li>
-        <li>Sea $A = \{a, b, c\}$, $R = \{(a,a), (b,b)\}$ y $S = \{(b,b), (c,c)\}$. Halle $(R - S) \cup (R \cap S)$.</li>
-        <li>Sea $U = \{1, 2, 3\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $R \cap (R^c \cup S)$.</li>
-      </ol>
-      <details class="solution">
-        <summary>🔍 Ver soluciones desarrolladas</summary>
-        <div class="solution-content">
-          <p><strong>1.</strong> $R \cup S = \{(1,1), (2,2), (3,3)\}$ y $R \Delta S = \{(1,1), (3,3)\}$.<br>
-          Entonces: $(R \cup S) - (R \Delta S) = \{(2,2)\}$.</p>
-
-          <p><strong>2.</strong> $R - S = \{(a,a)\}$ y $R \cap S = \{(b,b)\}$.<br>
-          Entonces: $(R - S) \cup (R \cap S) = \{(a,a), (b,b)\} = R$.</p>
-
-          <p><strong>3.</strong> $R_U = U \times U$ tiene $9$ pares. El complemento es $R^c = \{(1,2), (1,3), (2,1), (2,3), (3,1), (3,2), (3,3)\}$.<br>
-          Uniendo con $S$: $R^c \cup S = \{(1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3)\}$.<br>
-          Intersectando con $R$: $R \cap (R^c \cup S) = \{(2,2)\}$.</p>
-        </div>
-      </details>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 2.2: Operaciones en relaciones finitas definidas por comprensión</div>
-      <ol>
-        <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x = y \}$ y $S = \{ (x, y) \mid x < y \}$. Halle $S - R^c$.</li>
-        <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x + y \text{ es par} \}$ y $S = \{ (x, y) \mid x + y \leq 3 \}$. Halle $R \cap S$.</li>
-        <li>En $A = \{1, 2, 3, 4\}$: $R = \{ (x, y) \mid y = 2x \}$ y $S = \{ (x, y) \mid x \text{ es par y } y \text{ es impar} \}$. Halle $R \Delta S$.</li>
-      </ol>
-      <details class="solution">
-        <summary>🔍 Ver soluciones desarrolladas</summary>
-        <div class="solution-content">
-          <p><strong>1.</strong> $R = \{(1,1), (2,2), (3,3)\}$, $S = \{(1,2), (1,3), (2,3)\}$ y $R^c = \{(1,2), (1,3), (2,1), (2,3), (3,1), (3,2)\}$.<br>
-          Como $S \subseteq R^c$, entonces $S - R^c = \emptyset$.</p>
-
-          <p><strong>2.</strong> $R = \{(1,1), (1,3), (2,2), (3,1), (3,3)\}$ y $S = \{(1,1), (1,2), (2,1)\}$.<br>
-          El único par común es: $R \cap S = \{(1,1)\}$.</p>
-
-          <p><strong>3.</strong> $R = \{(1,2), (2,4)\}$ y $S = \{(2,1), (2,3), (4,1), (4,3)\}$.<br>
-          Como $R \cap S = \emptyset$, la diferencia simétrica es la unión: $R \Delta S = \{(1,2), (2,4), (2,1), (2,3), (4,1), (4,3)\}$.</p>
-        </div>
-      </details>
-    </div>
-
-    <h3 class="section-title" id="sec-2-3">2.3 Interpretación Gráfica: Conjuntos Discretos, Continuos y Regiones Infinitas</h3>
-    <ul>
-      <li><strong>Caso Discreto:</strong> Nube de puntos aislados en la cuadrícula cartesiana.</li>
-      <li><strong>Caso Continuo:</strong> Regiones del plano. Los extremos <strong>cerrados</strong> ($\le, \ge$) se trazan con <strong>línea continua</strong>; los extremos <strong>abiertos</strong> ($<, >$) se trazan con <strong>línea punteada</strong>.</li>
-    </ul>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr><th>Característica</th><th>En Conjuntos Ordinarios ($\mathbb{R}$)</th><th>En Relaciones ($\mathbb{R}^2$)</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Elemento típico</strong></td><td>$x$</td><td>$(x, y)$</td></tr>
-          <tr><td><strong>Condición</strong></td><td>Una variable: $\{x \in \mathbb{R} \mid x > 2\}$</td><td>Dos variables: $\{(x,y) \in \mathbb{R}^2 \mid y > x\}$</td></tr>
-          <tr><td><strong>Resultado Geométrico</strong></td><td>Segmento o puntos en una recta.</td><td>Región del plano, curva o nube de puntos.</td></tr>
-          <tr><td><strong>Complemento ($R^c$)</strong></td><td>Puntos de la recta fuera del intervalo.</td><td>Todo el plano fuera de la región o curva.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 2.3: Producto Cartesiano Discreto vs. Continuo e Intervalos</div>
-      <p>Visualización comparativa de $A \times B = \{1,2,3,4\} \times \{1,2,3\}$ frente a intervalos continuos $[1,4] \times [1,3]$ y variantes abiertas/semiabiertas.</p>
-      <details class="solution" open>
-        <summary>🔍 Ver gráficas vectoriales comparativas</summary>
-        <div class="solution-content">
-          <div class="diagram-container">
-            <!-- Discreto -->
-            <div>
-              <svg width="210" height="175" viewBox="0 0 210 175">
-                <line x1="25" y1="145" x2="195" y2="145" stroke="#334155" stroke-width="1.5"/>
-                <line x1="25" y1="145" x2="25" y2="15" stroke="#334155" stroke-width="1.5"/>
-                <text x="198" y="149" font-size="12">x</text>
-                <text x="21" y="12" font-size="12">y</text>
-                <!-- Grid & Dots -->
-                <g fill="#2563eb">
-                  <circle cx="60" cy="115" r="3.5"/><circle cx="95" cy="115" r="3.5"/><circle cx="130" cy="115" r="3.5"/><circle cx="165" cy="115" r="3.5"/>
-                  <circle cx="60" cy="85" r="3.5"/><circle cx="95" cy="85" r="3.5"/><circle cx="130" cy="85" r="3.5"/><circle cx="165" cy="85" r="3.5"/>
-                  <circle cx="60" cy="55" r="3.5"/><circle cx="95" cy="55" r="3.5"/><circle cx="130" cy="55" r="3.5"/><circle cx="165" cy="55" r="3.5"/>
-                </g>
-                <text x="60" y="160" text-anchor="middle" font-size="11">1</text>
-                <text x="165" y="160" text-anchor="middle" font-size="11">4</text>
-                <text x="16" y="119" text-anchor="end" font-size="11">1</text>
-                <text x="16" y="59" text-anchor="end" font-size="11">3</text>
-              </svg>
-              <div class="diagram-caption">Discreto: $\{1,2,3,4\} \times \{1,2,3\}$ (12 puntos)</div>
-            </div>
-
-            <!-- Continuo Cerrado -->
-            <div>
-              <svg width="210" height="175" viewBox="0 0 210 175">
-                <line x1="25" y1="145" x2="195" y2="145" stroke="#334155" stroke-width="1.5"/>
-                <line x1="25" y1="145" x2="25" y2="15" stroke="#334155" stroke-width="1.5"/>
-                <rect x="60" y="55" width="105" height="60" fill="rgba(37, 99, 235, 0.2)" stroke="#2563eb" stroke-width="2"/>
-                <text x="60" y="160" text-anchor="middle" font-size="11">1</text>
-                <text x="165" y="160" text-anchor="middle" font-size="11">4</text>
-                <text x="16" y="119" text-anchor="end" font-size="11">1</text>
-                <text x="16" y="59" text-anchor="end" font-size="11">3</text>
-              </svg>
-              <div class="diagram-caption">Continuo Cerrado: $[1,4] \times [1,3]$</div>
-            </div>
-
-            <!-- Semiabierto (1,4) x [1,3] -->
-            <div>
-              <svg width="210" height="175" viewBox="0 0 210 175">
-                <line x1="25" y1="145" x2="195" y2="145" stroke="#334155" stroke-width="1.5"/>
-                <line x1="25" y1="145" x2="25" y2="15" stroke="#334155" stroke-width="1.5"/>
-                <rect x="60" y="55" width="105" height="60" fill="rgba(37, 99, 235, 0.12)"/>
-                <line x1="60" y1="55" x2="165" y2="55" stroke="#2563eb" stroke-width="2"/>
-                <line x1="60" y1="115" x2="165" y2="115" stroke="#2563eb" stroke-width="2"/>
-                <line x1="60" y1="55" x2="60" y2="115" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,3"/>
-                <line x1="165" y1="55" x2="165" y2="115" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,3"/>
-                <text x="60" y="160" text-anchor="middle" font-size="11">1</text>
-                <text x="165" y="160" text-anchor="middle" font-size="11">4</text>
-              </svg>
-              <div class="diagram-caption">Abierto × Cerrado: $(1,4) \times [1,3]$</div>
-            </div>
-
-            <!-- Ambos Abiertos (1,4) x (1,3) -->
-            <div>
-              <svg width="210" height="175" viewBox="0 0 210 175">
-                <line x1="25" y1="145" x2="195" y2="145" stroke="#334155" stroke-width="1.5"/>
-                <line x1="25" y1="145" x2="25" y2="15" stroke="#334155" stroke-width="1.5"/>
-                <rect x="60" y="55" width="105" height="60" fill="rgba(22, 163, 74, 0.15)" stroke="#16a34a" stroke-width="2" stroke-dasharray="4,3"/>
-                <text x="60" y="160" text-anchor="middle" font-size="11">1</text>
-                <text x="165" y="160" text-anchor="middle" font-size="11">4</text>
-              </svg>
-              <div class="diagram-caption">Ambos Abiertos: $(1,4) \times (1,3)$</div>
-            </div>
-          </div>
-        </div>
-      </details>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 2.4: Operaciones con Regiones Infinitas en $\mathbb{R}^2$</div>
-      <ol>
-        <li><strong>Intersección lineal:</strong> $R = \{ (x, y) \in \mathbb{R}^2 \mid y > x \}$ y $S = \{ (x, y) \in \mathbb{R}^2 \mid y < -x + 2 \}$. Halle $R \cap S$.</li>
-        <li><strong>Diferencia cuadrática (Corona circular):</strong> $R = \{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2 \leq 4 \}$ y $S = \{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2 < 1 \}$. Halle $R - S$.</li>
-        <li><strong>Intersección de cuadrados:</strong> $R = [1, 4] \times [1, 4]$ y $S = [2, 5] \times [2, 5]$. Halle $R \cap S$.</li>
-      </ol>
-      <details class="solution">
-        <summary>🔍 Ver resolución analítica y gráficas</summary>
-        <div class="solution-content">
-          <p><strong>1. Intersección de semiplanos:</strong><br>
-          $R \cap S = \{ (x, y) \in \mathbb{R}^2 \mid x < y < -x + 2 \}$. Región triangular abierta a la izquierda del vértice abierto $(1,1)$.</p>
-
-          <p><strong>2. Corona circular ($R - S$):</strong><br>
-          $$R - S = \{ (x, y) \in \mathbb{R}^2 \mid (x^2 + y^2 \leq 4) \land \neg (x^2 + y^2 < 1) \} = \{ (x, y) \in \mathbb{R}^2 \mid 1 \leq x^2 + y^2 \leq 4 \}$$
-          <em>Detalle clave:</em> La circunferencia interior $x^2+y^2=1$ era abierta en $S$, pero pasa a ser <strong>cerrada</strong> (línea continua) en $R - S$ porque esos puntos pertenecían a $R$.</p>
-
-          <p><strong>3. Intersección de productos cartesianos:</strong><br>
-          $$R \cap S = ([1,4] \cap [2,5]) \times ([1,4] \cap [2,5]) = [2, 4] \times [2, 4]$$</p>
-
-          <div class="diagram-container">
-            <!-- Triángulo R cap S -->
-            <div>
-              <svg width="210" height="210" viewBox="0 0 210 210">
-                <line x1="15" y1="150" x2="195" y2="150" stroke="#475569" stroke-width="1.2"/>
-                <line x1="60" y1="15" x2="60" y2="195" stroke="#475569" stroke-width="1.2"/>
-                <!-- Región sombreada -->
-                <polygon points="15,195 105,105 15,15" fill="rgba(147, 51, 234, 0.2)"/>
-                <!-- y = x -->
-                <line x1="15" y1="195" x2="180" y2="30" stroke="#2563eb" stroke-width="1.8" stroke-dasharray="4,3"/>
-                <!-- y = -x + 2 -->
-                <line x1="15" y1="15" x2="180" y2="180" stroke="#dc2626" stroke-width="1.8" stroke-dasharray="4,3"/>
-                <circle cx="105" cy="105" r="3.5" fill="white" stroke="black" stroke-width="1.5"/>
-                <text x="112" y="109" font-size="11">(1,1)</text>
-                <text x="35" y="108" fill="#7e22ce" font-weight="bold" font-size="13">R ∩ S</text>
-              </svg>
-              <div class="diagram-caption">1) $x < y < -x + 2$</div>
-            </div>
-
-            <!-- Corona Circular -->
-            <div>
-              <svg width="210" height="210" viewBox="0 0 210 210">
-                <circle cx="105" cy="105" r="70" fill="rgba(220, 38, 38, 0.22)" stroke="#dc2626" stroke-width="2"/>
-                <circle cx="105" cy="105" r="35" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
-                <line x1="15" y1="105" x2="195" y2="105" stroke="#475569" stroke-width="1"/>
-                <line x1="105" y1="15" x2="105" y2="195" stroke="#475569" stroke-width="1"/>
-                <text x="105" y="55" text-anchor="middle" fill="#b91c1c" font-weight="bold" font-size="12">R - S</text>
-              </svg>
-              <div class="diagram-caption">2) Corona: $1 \leq x^2 + y^2 \leq 4$</div>
-            </div>
-
-            <!-- Cuadrados [2,4]x[2,4] -->
-            <div>
-              <svg width="210" height="210" viewBox="0 0 210 210">
-                <line x1="25" y1="185" x2="195" y2="185" stroke="#475569" stroke-width="1.2"/>
-                <line x1="25" y1="185" x2="25" y2="15" stroke="#475569" stroke-width="1.2"/>
-                <!-- R: [1,4] -->
-                <rect x="50" y="85" width="75" height="75" fill="rgba(37, 99, 235, 0.15)" stroke="#2563eb" stroke-width="1.5"/>
-                <!-- S: [2,5] -->
-                <rect x="75" y="60" width="75" height="75" fill="rgba(220, 38, 38, 0.15)" stroke="#dc2626" stroke-width="1.5"/>
-                <!-- R cap S: [2,4] -->
-                <rect x="75" y="85" width="50" height="50" fill="rgba(245, 158, 11, 0.45)" stroke="#0f172a" stroke-width="2"/>
-                <text x="100" y="114" text-anchor="middle" font-weight="bold" font-size="11">R ∩ S</text>
-              </svg>
-              <div class="diagram-caption">3) $[2,4] \times [2,4]$</div>
-            </div>
-          </div>
-        </div>
-      </details>
-    </div>
-
-    <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
-  </section>
-
-  <!-- ===================================================================== -->
-  <!-- MÓDULO 3: PROPIEDADES DE LAS RELACIONES -->
-  <!-- ===================================================================== -->
-  <section class="card" id="mod-3">
-    <h2 class="module-title"><span class="badge">MÓDULO 03</span> Propiedades de las Relaciones</h2>
-
-    <h3 class="section-title" id="sec-3-1">3.1 Relaciones Descritas por Extensión</h3>
-    <p>Sobre una relación universo $R_U = A^2$, las propiedades fundamentales se caracterizan mediante operaciones conjuntistas:</p>
-
-    <div class="table-wrapper">
-      <table>
-        <thead>
-          <tr><th>Propiedad</th><th>Definición Conjuntista</th><th>Definición Lógica (Comprensión)</th><th>Significado</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Reflexiva</strong></td><td>$I_A \subseteq R$</td><td>$\forall x \in A \implies (x, x) \in R$</td><td>Todos los pares $(x,x)$ están en $R$.</td></tr>
-          <tr><td><strong>No Reflexiva</strong></td><td>$I_A \not\subseteq R$</td><td>$\exists x \in A \land (x, x) \notin R$</td><td>Al menos un $(x,x)$ falta en $R$.</td></tr>
-          <tr><td><strong>Arreflexiva</strong></td><td>$I_A \cap R = \emptyset$</td><td>$\forall x \in A \implies (x, x) \notin R$</td><td>Ningún par $(x,x)$ está en $R$.</td></tr>
-          <tr><td><strong>Simétrica</strong></td><td>$R = R^{-1}$</td><td>$\forall x,y [(x,y) \in R \implies (y,x) \in R]$</td><td>Todo par tiene su recíproco en $R$.</td></tr>
-          <tr><td><strong>No Simétrica</strong></td><td>$R \neq R^{-1}$</td><td>$\exists x,y [(x,y) \in R \land (y,x) \notin R]$</td><td>Al menos un par no tiene recíproco.</td></tr>
-          <tr><td><strong>Asimétrica</strong></td><td>$R \cap R^{-1} = \emptyset$</td><td>$\forall x,y [(x,y) \in R \implies (y,x) \notin R]$</td><td>Ningún par tiene recíproco en $R$.</td></tr>
-          <tr><td><strong>Antisimétrica</strong></td><td>$R \cap R^{-1} \subseteq I_A$</td><td>$\forall x,y [(x,y) \in R \land (y,x) \in R \implies x = y]$</td><td>Solo hay simetría en pares $(x,x)$.</td></tr>
-          <tr><td><strong>Transitiva</strong></td><td>$R \circ R \subseteq R$</td><td>$\forall x,y,z [(x,y) \in R \land (y,z) \in R \implies (x,z) \in R]$</td><td>Todo camino de 2 pasos tiene atajo directo.</td></tr>
-          <tr><td><strong>No Transitiva</strong></td><td>$R \circ R \not\subseteq R$</td><td>$\exists x,y,z [(x,y),(y,z) \in R \land (x,z) \notin R]$</td><td>Al menos una composición sale de $R$.</td></tr>
-          <tr><td><strong>Atransitiva</strong></td><td>$(R \circ R) \cap R = \emptyset$</td><td>$\forall x,y,z [(x,y),(y,z) \in R \implies (x,z) \notin R]$</td><td>Ningún par compuesto está en $R$.</td></tr>
-          <tr><td><strong>Total</strong></td><td>$R \cup R^{-1} = R_U$</td><td>$\forall x,y \in A \implies (x,y) \in R \lor (y,x) \in R$</td><td>Todo par de elementos es comparable.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout callout-thm">
-      <div class="callout-title">📐 Teorema 3.1: Implicaciones y Relaciones Particulares</div>
-      <ul style="margin:0;">
-        <li><strong>Asimetría:</strong> Si $R$ es asimétrica $\implies$ es arreflexiva, antisimétrica y no total.</li>
-        <li><strong>Totalidad:</strong> Si $R$ es total $\implies$ es reflexiva y no asimétrica.</li>
-        <li><strong>Simetría + Antisimetría:</strong> Si ambas se cumplen $\implies R \subseteq I_A$.</li>
-        <li><strong>Relación Vacía ($\emptyset$) sobre $A \neq \emptyset$:</strong> Es arreflexiva, simétrica, antisimétrica, asimétrica, transitiva y atransitiva por vacuidad.</li>
-        <li><strong>Relación Universal ($A \times A$):</strong> Es reflexiva, simétrica, transitiva y total.</li>
-        <li><strong>Relación Identidad ($I_A$):</strong> Es reflexiva, simétrica, antisimétrica y transitiva simultáneamente.</li>
+      <ul>
+        <li><strong>Relación vacía ($R = \emptyset$):</strong> No contiene ningún par ordenado.</li>
+        <li><strong>Relación universal ($R_U = A \times B$):</strong> Contiene la totalidad de los pares posibles del
+          producto cartesiano.</li>
+        <li><strong>Por Extensión:</strong> Enumera explícitamente cada par ordenado: $R = \{ (a_1, b_1), (a_2, b_2),
+          \dots \}$.</li>
+        <li><strong>Por Comprensión:</strong> Especifica la condición lógica que cumplen los pares: $R = \{ (x, y) \in A
+          \times B \mid P(x,y) \}$.</li>
       </ul>
-    </div>
 
-    <h3 class="section-title" id="sec-3-2">3.2 Análisis por Comprensión e Interpretación Geométrica en $\mathbb{R}$</h3>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 3.1: Relación $R = \{ (x, y) \in \mathbb{R}^2 \mid x \geq y \}$ vs. $R = \{ (x, y) \in \mathbb{R}^2 \mid x > y \}$</div>
-      <p>Analice reflexividad, simetría, antisimetría, transitividad y totalidad para ambas relaciones en $\mathbb{R}$.</p>
-      <details class="solution">
-        <summary>🔍 Ver análisis lógico y comparación geométrica</summary>
-        <div class="solution-content">
-          <div class="table-wrapper">
-            <table>
-              <thead><tr><th>Propiedad</th><th>$R_1: x \geq y$ (Orden Amplio)</th><th>$R_2: x > y$ (Orden Estricto)</th></tr></thead>
-              <tbody>
-                <tr><td><strong>Reflexividad</strong></td><td>✅ <strong>Reflexiva</strong> ($x \ge x$ siempre).</td><td>❌ <strong>Arreflexiva</strong> ($x > x$ es falso).</td></tr>
-                <tr><td><strong>Simetría</strong></td><td>❌ <strong>No simétrica</strong> ($5 \ge 3$ pero $3 \not\ge 5$).</td><td>❌ <strong>Asimétrica</strong> ($x > y \implies y \not> x$).</td></tr>
-                <tr><td><strong>Antisimetría</strong></td><td>✅ <strong>Antisimétrica</strong> ($x \ge y \land y \ge x \implies x = y$).</td><td>✅ <strong>Antisimétrica</strong> (por vacuidad / asimetría).</td></tr>
-                <tr><td><strong>Transitividad</strong></td><td>✅ <strong>Transitiva</strong> ($x \ge y \land y \ge z \implies x \ge z$).</td><td>✅ <strong>Transitiva</strong> ($x > y \land y > z \implies x > z$).</td></tr>
-                <tr><td><strong>Totalidad</strong></td><td>✅ <strong>Total</strong> ($R_1 \cup R_1^{-1} = \mathbb{R}^2$).</td><td>❌ <strong>No total</strong> (falta la diagonal $y = x$).</td></tr>
-              </tbody>
-            </table>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.1: Relación por extensión a partir de tabla</div>
+        <p>Sean los conjuntos $A$ y $B$ con la relación $R$: <em>"x estudia la carrera y"</em>:</p>
+        <div class="table-wrapper" style="max-width: 380px;">
+          <table>
+            <thead>
+              <tr>
+                <th>$A$ (Estudiante)</th>
+                <th>$B$ (Carrera)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Ana</td>
+                <td>Matemáticas</td>
+              </tr>
+              <tr>
+                <td>Luis</td>
+                <td>Física</td>
+              </tr>
+              <tr>
+                <td>Marta</td>
+                <td>Literatura</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
+            <p>Los conjuntos asociados son $A = \{ \text{Ana}, \text{Luis}, \text{Marta} \}$ y $B = \{
+              \text{Matemáticas}, \text{Literatura}, \text{Física} \}$.</p>
+            <p>Expresando la relación por extensión:</p>
+            $$R = \left\{ (\text{Ana}, \text{Matemáticas}), (\text{Luis}, \text{Física}), (\text{Marta},
+            \text{Literatura}) \right\}$$
           </div>
+        </details>
+      </div>
 
-          <div class="diagram-container">
-            <!-- x >= y -->
-            <div>
-              <svg width="210" height="210" viewBox="0 0 210 210">
-                <polygon points="20,190 190,20 190,190" fill="rgba(37, 99, 235, 0.2)"/>
-                <line x1="20" y1="190" x2="190" y2="20" stroke="#1d4ed8" stroke-width="2"/>
-                <line x1="15" y1="105" x2="195" y2="105" stroke="#475569" stroke-width="1"/>
-                <line x1="105" y1="15" x2="105" y2="195" stroke="#475569" stroke-width="1"/>
-                <text x="145" y="145" font-weight="bold" font-size="13">x ≥ y</text>
-              </svg>
-              <div class="diagram-caption">Frontera continua (Incluye diagonal)</div>
-            </div>
-
-            <!-- x > y -->
-            <div>
-              <svg width="210" height="210" viewBox="0 0 210 210">
-                <polygon points="20,190 190,20 190,190" fill="rgba(37, 99, 235, 0.15)"/>
-                <line x1="20" y1="190" x2="190" y2="20" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="5,4"/>
-                <line x1="15" y1="105" x2="195" y2="105" stroke="#475569" stroke-width="1"/>
-                <line x1="105" y1="15" x2="105" y2="195" stroke="#475569" stroke-width="1"/>
-                <text x="145" y="145" font-weight="bold" font-size="13">x > y</text>
-              </svg>
-              <div class="diagram-caption">Frontera punteada (Excluye diagonal)</div>
-            </div>
-          </div>
-        </div>
-      </details>
-    </div>
-
-    <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
-  </section>
-
-  <!-- ===================================================================== -->
-  <!-- MÓDULO 4: MATRICES BINARIAS -->
-  <!-- ===================================================================== -->
-  <section class="card" id="mod-4">
-    <h2 class="module-title"><span class="badge">MÓDULO 04</span> Matrices Binarias</h2>
-
-    <h3 class="section-title" id="sec-4-1">4.1 Matriz de una Relación ($M_R$)</h3>
-    <div class="callout callout-def">
-      <div class="callout-title">📌 Definición: Matriz Booleana de Adyacencia</div>
-      <p style="margin:0;">Dada $R \subseteq A \times B$ con $A = \{a_1, \dots, a_m\}$ y $B = \{b_1, \dots, b_n\}$, la matriz $M_R$ tiene entradas $m_{ij} \in \{0, 1\}$ definidas por:
-      $$m_{ij} = \begin{cases} 1 & \text{si } (a_i, b_j) \in R \\ 0 & \text{si } (a_i, b_j) \notin R \end{cases}$$</p>
-    </div>
-
-    <h3 class="section-title" id="sec-4-2">4.2 Operaciones Lógicas entre Matrices</h3>
-    <div class="table-wrapper">
-      <table>
-        <thead><tr><th>Operación</th><th>Descripción</th><th>Fórmula Matricial</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Unión ($R \cup S$)</strong></td><td>Disyunción lógica ($\lor$) elemento a elemento.</td><td>$M_{R \cup S}[i, j] = M_{R}[i, j] \lor M_{S}[i, j]$</td></tr>
-          <tr><td><strong>Intersección ($R \cap S$)</strong></td><td>Conjunción lógica ($\land$) elemento a elemento.</td><td>$M_{R \cap S}[i, j] = M_{R}[i, j] \land M_{S}[i, j]$</td></tr>
-          <tr><td><strong>Complemento ($\overline{R}$)</strong></td><td>Negación booleana ($\neg 1 = 0$, $\neg 0 = 1$).</td><td>$M_{\overline{R}}[i, j] = \neg M_{R}[i, j]$</td></tr>
-          <tr><td><strong>Diferencia ($R - S$)</strong></td><td>Intersección de $R$ con el complemento de $S$.</td><td>$M_{R - S}[i, j] = M_{R}[i, j] \land \neg M_{S}[i, j]$</td></tr>
-          <tr><td><strong>Inversa ($R^{-1}$)</strong></td><td>Transposición de la matriz (filas $\leftrightarrow$ columnas).</td><td>$M_{R^{-1}} = M_{R}^T$</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 class="section-title" id="sec-4-3">4.3 Composición mediante Producto Booleano</h3>
-    <div class="callout callout-def">
-      <div class="callout-title">📌 Producto Booleano ($M_{S \circ R} = M_R \cdot M_S$)</div>
-      <p style="margin:0;">Para $R \subseteq A \times B$ y $S \subseteq B \times C$, cada entrada se calcula reemplazando suma por $\lor$ y producto por $\land$:
-      $$M_{S \circ R}[i, j] = \bigvee_{k=1}^n \left( M_{R}[i, k] \land M_{S}[k, j] \right)$$</p>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 4.1: Producto Booleano para Composición</div>
-      <p>Sean $A = \{1, 2\}$, $B = \{x, y, z\}$, $C = \{a, b\}$, $R = \{ (1, x), (1, z), (2, y) \}$ y $S = \{ (x, b), (y, a), (z, b) \}$. Calcule $M_{S \circ R}$.</p>
-      <details class="solution">
-        <summary>🔍 Ver cálculo matricial paso a paso</summary>
-        <div class="solution-content">
-          $$M_R = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix}, \quad M_S = \begin{bmatrix} 0 & 1 \\ 1 & 0 \\ 0 & 1 \end{bmatrix}$$
-          <ul>
-            <li>$[1,1] = (1 \land 0) \lor (0 \land 1) \lor (1 \land 0) = 0$</li>
-            <li>$[1,2] = (1 \land 1) \lor (0 \land 0) \lor (1 \land 1) = 1$</li>
-            <li>$[2,1] = (0 \land 0) \lor (1 \land 1) \lor (0 \land 0) = 1$</li>
-            <li>$[2,2] = (0 \land 1) \lor (1 \land 0) \lor (0 \land 1) = 0$</li>
-          </ul>
-          $$M_{S \circ R} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \implies S \circ R = \{(1, b), (2, a)\}$$
-        </div>
-      </details>
-    </div>
-
-    <h3 class="section-title" id="sec-4-4">4.4 Verificación Matricial de Propiedades</h3>
-    <div class="table-wrapper">
-      <table>
-        <thead><tr><th>Propiedad</th><th>Criterio Matricial</th><th>Interpretación Visual en $M_R$</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Reflexiva</strong></td><td>$M_I \leq M_R$</td><td>Diagonal principal compuesta exclusivamente por <strong>1s</strong>.</td></tr>
-          <tr><td><strong>Arreflexiva</strong></td><td>$M_R \wedge M_I = \mathbf{0}$</td><td>Diagonal principal compuesta exclusivamente por <strong>0s</strong>.</td></tr>
-          <tr><td><strong>Simétrica</strong></td><td>$M_R = M_R^T$</td><td>Simetría respecto a la diagonal principal.</td></tr>
-          <tr><td><strong>Asimétrica</strong></td><td>$M_R \wedge M_R^T = \mathbf{0}$</td><td>Si $m_{ij} = 1$, entonces $m_{ji} = 0$ (incluye diagonal nula).</td></tr>
-          <tr><td><strong>Antisimétrica</strong></td><td>$(M_R \wedge M_R^T) \leq M_I$</td><td>Fuera de la diagonal no hay pares $(i,j)$ y $(j,i)$ simultáneamente en 1.</td></tr>
-          <tr><td><strong>Transitiva</strong></td><td>$(M_R \circ M_R) \leq M_R$</td><td>El producto booleano $M_R^2$ no genera ningún <strong>1</strong> donde $M_R$ tiene <strong>0</strong>.</td></tr>
-          <tr><td><strong>Total</strong></td><td>$M_R \vee M_R^T = \mathbf{1}$</td><td>La unión con su transpuesta produce la matriz universal $\mathbf{1}$.</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 4.2: Análisis matricial de la relación de inclusión ($Y \subseteq X$)</div>
-      <p>Dado $A = \{1, 2\}$ y $\mathcal{P}(A) = \{ \emptyset, \{1\}, \{2\}, A \}$, analice matricialmente la relación $(X, Y) \in R \iff Y \subseteq X$.</p>
-      <details class="solution">
-        <summary>🔍 Ver verificación matricial completa</summary>
-        <div class="solution-content">
-          $$M_R = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 1 \end{bmatrix}$$
-          <ul>
-            <li><strong>Reflexiva:</strong> ✅ Toda la diagonal es $1$ ($M_I \leq M_R$).</li>
-            <li><strong>Simétrica:</strong> ❌ $M_R \neq M_R^T$ (por ejemplo, $m_{21} = 1 \neq m_{12} = 0$).</li>
-            <li><strong>Antisimétrica:</strong> ✅ $M_R \wedge M_R^T = M_I \leq M_I$.</li>
-            <li><strong>Transitiva:</strong> ✅ $M_R \circ M_R = M_R \leq M_R$.</li>
-            <li><strong>Total:</strong> ❌ $M_R \vee M_R^T$ tiene ceros en $[2,3]$ y $[3,2]$ ($\{1\}$ y $\{2\}$ son incomparables).</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
-  </section>
-
-  <!-- ===================================================================== -->
-  <!-- MÓDULO 5: CLASIFICACIÓN DE RELACIONES -->
-  <!-- ===================================================================== -->
-  <section class="card" id="mod-5">
-    <h2 class="module-title"><span class="badge">MÓDULO 05</span> Clasificación de Relaciones</h2>
-
-    <h3 class="section-title" id="sec-5-1">5.1 Taxonomía de Estructuras Algebraicas</h3>
-    <div class="table-wrapper">
-      <table>
-        <thead><tr><th>Combinación de Propiedades</th><th>Estructura Resultante</th></tr></thead>
-        <tbody>
-          <tr><td>Reflexiva + Transitiva</td><td><strong>Preorden</strong></td></tr>
-          <tr><td>Preorden + Simétrica (Reflexiva + Simétrica + Transitiva)</td><td><strong>Relación de Equivalencia ($\sim$)</strong></td></tr>
-          <tr><td>Preorden + Antisimétrica (Reflexiva + Antisimétrica + Transitiva)</td><td><strong>Orden Parcial (Poset)</strong></td></tr>
-          <tr><td>Orden Parcial + Total</td><td><strong>Orden Total (Lineal)</strong></td></tr>
-          <tr><td>Arreflexiva + Transitiva (implica Asimetría)</td><td><strong>Orden Estricto</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout callout-thm">
-      <div class="callout-title">📐 Teorema 5.1: Heredabilidad en la Relación Inversa ($R^{-1}$)</div>
-      <p style="margin:0;">Toda propiedad primaria (reflexividad, arreflexividad, simetría, antisimetría, asimetría y transitividad) se preserva intacta en $R^{-1}$. En consecuencia, si $R$ es una <strong>relación de equivalencia</strong> (o un <strong>orden parcial</strong>), $R^{-1}$ también lo es.</p>
-    </div>
-
-    <h3 class="section-title" id="sec-5-2">5.2 Relación de Equivalencia</h3>
-    <p>Una relación de equivalencia ($R = \sim$) generaliza la noción de igualdad y fragmenta un conjunto en grupos disjuntos llamados clases de equivalencia.</p>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 5.1: Verificación gráfica y analítica de Equivalencia</div>
-      <p>Sea $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$. Verifique que $R$ es de equivalencia.</p>
-      <details class="solution">
-        <summary>🔍 Ver grafo dirigido y verificación</summary>
-        <div class="solution-content">
-          <div class="diagram-container">
-            <svg width="260" height="170" viewBox="0 0 260 170">
-              <defs>
-                <marker id="arrow-g" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-                  <path d="M0,0 L0,6 L8,3 z" fill="#0f172a"/>
-                </marker>
-              </defs>
-              <!-- Bucles -->
-              <path d="M 65,45 C 35,15 35,85 65,55" fill="none" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrow-g)"/>
-              <path d="M 195,45 C 225,15 225,85 195,55" fill="none" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrow-g)"/>
-              <path d="M 125,138 C 95,168 165,168 135,138" fill="none" stroke="#0f172a" stroke-width="1.5" marker-end="url(#arrow-g)"/>
-
-              <!-- Aristas bidireccionales 1 <-> 2 -->
-              <path d="M 92,42 Q 130,22 168,42" fill="none" stroke="#2563eb" stroke-width="1.6" marker-end="url(#arrow-g)"/>
-              <path d="M 168,58 Q 130,78 92,58" fill="none" stroke="#2563eb" stroke-width="1.6" marker-end="url(#arrow-g)"/>
-
-              <!-- Nodos -->
-              <circle cx="80" cy="50" r="15" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2"/><text x="80" y="55" text-anchor="middle" font-weight="bold">1</text>
-              <circle cx="180" cy="50" r="15" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2"/><text x="180" y="55" text-anchor="middle" font-weight="bold">2</text>
-              <circle cx="130" cy="125" r="15" fill="#eff6ff" stroke="#1e3a8a" stroke-width="2"/><text x="130" y="130" text-anchor="middle" font-weight="bold">3</text>
-            </svg>
-          </div>
-          <ul>
-            <li><strong>Reflexividad:</strong> Contiene todos los bucles: $I_A = \{(1,1), (2,2), (3,3)\} \subseteq R$.</li>
-            <li><strong>Simetría:</strong> $R^{-1} = R$ (el camino $1 \to 2$ tiene su regreso $2 \to 1$).</li>
-            <li><strong>Transitividad:</strong> $R \circ R = R \subseteq R$ (los recorridos $1 \to 2 \to 1$ y $2 \to 1 \to 2$ aterrizan en los bucles $(1,1)$ y $(2,2)$ ya incluidos).</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <h3 class="section-title" id="sec-5-3">5.3 Clases de Equivalencia y Conjunto Cociente</h3>
-    <div class="callout callout-def">
-      <div class="callout-title">📌 Definiciones: Clase de Equivalencia y Conjunto Cociente</div>
-      <ul style="margin:0;">
-        <li><strong>Clase de equivalencia de $x$:</strong> $[x] = \{ y \in A \mid (x, y) \in R \}$.</li>
-        <li><strong>Conjunto Cociente ($A/R$):</strong> Familia formada por todas las clases distintas de $A$:
-          $$A/R = \{ [x] \mid x \in A \}$$
-          Constituye una <strong>partición</strong> exacta de $A$.
+      <h4 class="sub-title">Elementos asociados a una relación</h4>
+      <ul>
+        <li><strong>Dominio:</strong> Elementos del conjunto de partida ($A$) que participan en la relación:
+          $$\text{Dom}(R) = \{ x \in A \mid \exists \, y \in B, (x, y) \in R \}$$
         </li>
-        <li><strong>Reconstrucción de $R$:</strong> $R = \bigcup_{C \in A/R} (C \times C)$.</li>
+        <li><strong>Rango:</strong> Elementos del conjunto de llegada ($B$) asociados con al menos un elemento de $A$:
+          $$\text{Rgo}(R) = \{ y \in B \mid \exists \, x \in A, (x, y) \in R \}$$
+        </li>
+        <li><strong>Relación Inversa ($R^{-1} \subseteq B \times A$):</strong> Pares ordenados invertidos:
+          $$R^{-1} = \{ (y, x) \mid (x, y) \in R \}$$
+          Cumple las dualidades: $\text{Dom}(R^{-1}) = \text{Rgo}(R)$ y $\text{Rgo}(R^{-1}) = \text{Dom}(R)$.
+        </li>
       </ul>
-    </div>
 
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 5.2: Cálculo del Conjunto Cociente y Reconstrucción de $R$</div>
+<div class="example-box">
+  <div class="example-header">🧩 Ejemplo 1.2: Cálculo de Dominio y Rango</div>
+  <p>Considérense los conjuntos y la relación:</p>
+  $$A = \{\text{Ana},\, \text{Luis},\, \text{María},\, \text{Juan},\, \text{Alberto}\}$$
+  $$B = \{\text{Matemáticas},\, \text{Historia}\}$$
+  $$R = \{(\text{Ana}, \text{Matemáticas}),\, (\text{Luis}, \text{Historia}),\, (\text{María}, \text{Matemáticas})\}$$
+  <p>Determine $\text{Dom}(R)$ y $\text{Rgo}(R)$.</p>
+
+  <details class="solution">
+    <summary>🔍 Ver solución paso a paso</summary>
+    <div class="solution-content">
       <ol>
-        <li>Para $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$, halle las clases y $A/R$.</li>
-        <li>Dado $A/R = \{ \{x, z\}, \{y\} \}$, reconstruya $A$ y la relación $R$ por extensión.</li>
+        <li><strong>Dominio ($\text{Dom}(R)$):</strong> primeras componentes de los pares en $R$:
+          $$\text{Dom}(R) = \{\text{Ana},\, \text{Luis},\, \text{María}\}$$
+          <em>Nota:</em> Juan y Alberto pertenecen a $A$, pero no al dominio al no estar relacionados con ninguna
+          asignatura.
+        </li>
+        <li><strong>Rango ($\text{Rgo}(R)$):</strong> segundas componentes presentes en los pares de $R$:
+          $$\text{Rgo}(R) = \{\text{Matemáticas},\, \text{Historia}\} = B$$
+        </li>
       </ol>
-      <details class="solution">
-        <summary>🔍 Ver soluciones</summary>
-        <div class="solution-content">
-          <p><strong>1.</strong> $[1] = \{1, 2\}$, $[2] = \{1, 2\}$ y $[3] = \{3\}$. Eliminando clases repetidas:
-          $$A/R = \{ \{1, 2\}, \{3\} \}$$</p>
+    </div>
+  </details>
+</div>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.3: Conversión de Comprensión a Extensión</div>
+        <p>Sea $A = \{1, 2, 3\}$ y $R \subseteq A^2$ definida por $R = \{ (x, y) \in A^2 \mid x + y = 4 \}$. Exprese $R$
+          por extensión.</p>
+        <details class="solution">
+          <summary>🔍 Ver solución paso a paso</summary>
+          <div class="solution-content">
+            <p>El producto cartesiano tiene $3 \times 3 = 9$ pares:</p>
+            $$A^2 = \{ (1,1), (1,2), (1,3), (2,1), (2,2), (2,3), (3,1), (3,2), (3,3) \}$$
+            <p>Evaluando $x + y = 4$ en cada par, solo cumplen $(1,3)$, $(2,2)$ y $(3,1)$. Por tanto:</p>
+            $$R = \{ (1, 3), (2, 2), (3, 1) \}$$
+          </div>
+        </details>
+      </div>
 
-          <p><strong>2.</strong> El conjunto original es $A = \{x, z\} \cup \{y\} = \{x, y, z\}$.<br>
-          Reconstruyendo $R$:
-          $$R = (\{x, z\} \times \{x, z\}) \cup (\{y\} \times \{y\}) = \{ (x, x), (x, z), (z, x), (z, z), (y, y) \}$$</p>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.4: Conversión de Extensión a Comprensión</div>
+        <p>Dados $A = \{2, 4, 6, 8\}$, $B = \{4, 8, 12, 16\}$ y $R = \{ (2, 4), (4, 8), (6, 12), (8, 16) \}$, exprese
+          $R$ por comprensión.</p>
+        <details class="solution">
+          <summary>🔍 Ver solución paso a paso</summary>
+          <div class="solution-content">
+            <p>Observamos que en todos los pares $(x,y) \in R$, la segunda componente es el doble de la primera ($y =
+              2x$):</p>
+            $$R = \{ (x, y) \in A \times B \mid y = 2x \}$$
+          </div>
+        </details>
+      </div>
+
+      <h3 class="section-title" id="sec-1-2">1.2 Relación Identidad</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Relación Identidad ($I_A$)</div>
+        <p style="margin:0;">Definida sobre un conjunto $A$ (con $R_U = A^2$), asigna cada elemento únicamente consigo
+          mismo:
+          $$I_A = \{ (x, x) \mid x \in A \}$$</p>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.5: Identificación de la Relación Identidad</div>
+        <p>Dado $A = \{1, 2, 3\}$, determine cuáles de las siguientes relaciones corresponden a $I_A$:<br>
+          $R_1 = \{(1, 1), (2, 2), (3, 3)\}, \quad R_2 = \{(1, 1), (2, 2)\}, \quad R_3 = \{(1, 1), (2, 2), (3, 3), (1,
+          2)\}$.</p>
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
+            <p>La relación identidad corresponde a la diagonal principal de $A \times A$: $I_A = \{ (1,
+              1), (2, 2), (3, 3) \}$.</p>
+            <ul>
+              <li><strong>$R_1$: Sí es $I_A$</strong>, contiene exactamente todos los pares $(x,x)$ de $A$.</li>
+              <li><strong>$R_2$: No es $I_A$</strong>, falta el par $(3,3)$ correspondiente a $3 \in A$.</li>
+              <li><strong>$R_3$: No es $I_A$</strong>, incluye el par extra $(1,2)$ con componentes distintas.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <h3 class="section-title" id="sec-1-3">1.3 Composición de Relaciones</h3>
+      <p>La composición encadena relaciones conectando un elemento de $A$ con uno de $C$ a través de un intermediario en
+        $B$. En la notación $S \circ R = S(R)$, actúa primero $R$ y luego $S$.</p>
+
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Composición de Relaciones ($S \circ R$)</div>
+        <p style="margin:0;">Sean $R \subseteq A \times B$ y $S \subseteq B \times C$. La composición se define como:
+          $$S \circ R = S(R) = \{ (x, z) \in A \times C \mid \exists \, y \in B, (x, y) \in R \land (y, z) \in S \}$$
+        </p>
+      </div>
+
+      <div class="callout callout-thm">
+        <div class="callout-title">📐 Teorema 1.1: Propiedades y Condiciones de Existencia</div>
+        <div class="table-wrapper" style="margin-bottom:0;">
+          <table>
+            <thead>
+              <tr>
+                <th>Propiedad</th>
+                <th>Expresión / Condición</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Existencia</strong></td>
+                <td>$S \circ R \neq \emptyset \iff \text{Rgo}(R) \cap \text{Dom}(S) \neq \emptyset$</td>
+              </tr>
+              <tr>
+                <td><strong>Asociatividad</strong></td>
+                <td>$(T \circ S) \circ R = T \circ (S \circ R)$</td>
+              </tr>
+              <tr>
+                <td><strong>No Conmutatividad</strong></td>
+                <td>$S \circ R \neq R \circ S$ (en general)</td>
+              </tr>
+              <tr>
+                <td><strong>Inversa</strong></td>
+                <td>$(S \circ R)^{-1} = R^{-1} \circ S^{-1}$</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </details>
-    </div>
+      </div>
 
-    <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
-  </section>
-
-  <!-- ===================================================================== -->
-  <!-- MÓDULO 6: RELACIONES DE ORDEN -->
-  <!-- ===================================================================== -->
-  <section class="card" id="mod-6">
-    <h2 class="module-title"><span class="badge">MÓDULO 06</span> Relaciones de Orden</h2>
-
-    <h3 class="section-title" id="sec-6-1">6.1 Orden Parcial y Comparabilidad</h3>
-    <div class="callout callout-def">
-      <div class="callout-title">📌 Definición: Conjunto Parcialmente Ordenado $(A, \le)$ o $(A, \underline{\alpha})$</div>
-      <ul style="margin:0;">
-        <li><strong>Orden Parcial (Amplio):</strong> Relación <strong>reflexiva, antisimétrica y transitiva</strong>.</li>
-        <li><strong>Orden Estricto ($<$):</strong> Relación <strong>arreflexiva, asimétrica y transitiva</strong>.</li>
-        <li><strong>Elementos Comparables:</strong> $x \le y \lor y \le x$.</li>
-        <li><strong>Elementos Incomparables ($x \parallel y$):</strong> $x \not\le y \land y \not\le x$.</li>
-      </ul>
-    </div>
-
-    <h3 class="section-title" id="sec-6-2">6.2 Diagrama de Hasse</h3>
-    <p>El <strong>Diagrama de Hasse</strong> simplifica el grafo dirigido de un orden parcial eliminando información redundante en 3 pasos:</p>
-    <ol>
-      <li><strong>Eliminar bucles:</strong> Se omite la reflexividad implícita en cada nodo.</li>
-      <li><strong>Eliminar aristas transitivas:</strong> Si $x \le y$ y $y \le z$, se borra la línea directa entre $x$ y $z$.</li>
-      <li><strong>Orientación ascendente:</strong> Si $x \le y$, $y$ se dibuja físicamente más arriba que $x$, eliminando las puntas de flecha.</li>
-    </ol>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 6.1: Simplificación de Grafo a Diagrama de Hasse (Divisibilidad en $\{1,2,3,4\}$)</div>
-      <p>Sea $A = \{1, 2, 3, 4\}$ con $x \mathcal{R} y \iff x \mid y$. La relación es $\mathcal{R} = \{(1,1), (1,2), (1,3), (1,4), (2,2), (2,4), (3,3), (4,4)\}$.</p>
-      <details class="solution" open>
-        <summary>🔍 Ver transformación visual y análisis de comparabilidad</summary>
-        <div class="solution-content">
-          <div class="diagram-container">
-            <!-- Grafo completo -->
-            <div>
-              <svg width="200" height="200" viewBox="0 0 200 200">
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.6: Obtención mediante Diagrama Sagital</div>
+        <p>Sean $A=\{1, 2\}$, $B=\{a, b, c\}$, $C=\{x, y\}$, $R = \{(1, a), (1, b), (2, c)\}$ y $S = \{(a, x), (c,
+          y)\}$. Obtenga $S \circ R$.</p>
+        <details class="solution">
+          <summary>🔍 Ver diagrama sagital y solución</summary>
+          <div class="solution-content">
+            <div class="diagram-container">
+              <svg width="460" height="230" viewBox="0 0 460 230" style="color: #64748b;">
                 <defs>
-                  <marker id="arr-h" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
-                    <path d="M0,0 L0,6 L7,3 z" fill="#334155"/>
+                  <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#06b6d4" />
+                  </marker>
+                  <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#f97316" />
                   </marker>
                 </defs>
-                <!-- Aristas -->
-                <line x1="100" y1="158" x2="55" y2="112" stroke="#334155" stroke-width="1.5" marker-end="url(#arr-h)"/>
-                <line x1="100" y1="158" x2="145" y2="112" stroke="#334155" stroke-width="1.5" marker-end="url(#arr-h)"/>
-                <line x1="48" y1="92" x2="92" y2="48" stroke="#334155" stroke-width="1.5" marker-end="url(#arr-h)"/>
-                <!-- Transitiva 1->4 -->
-                <line x1="100" y1="155" x2="100" y2="55" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr-h)"/>
-                <!-- Nodos -->
-                <circle cx="100" cy="168" r="12" fill="white" stroke="#0f172a" stroke-width="1.5"/><text x="100" y="172" text-anchor="middle" font-size="12">1</text>
-                <circle cx="45" cy="102" r="12" fill="white" stroke="#0f172a" stroke-width="1.5"/><text x="45" y="106" text-anchor="middle" font-size="12">2</text>
-                <circle cx="155" cy="102" r="12" fill="white" stroke="#0f172a" stroke-width="1.5"/><text x="155" y="106" text-anchor="middle" font-size="12">3</text>
-                <circle cx="100" cy="38" r="12" fill="white" stroke="#0f172a" stroke-width="1.5"/><text x="100" y="42" text-anchor="middle" font-size="12">4</text>
-              </svg>
-              <div class="diagram-caption">Grafo (con arista transitiva $1 \to 4$)</div>
-            </div>
+                <!-- Conjuntos -->
+                <ellipse cx="80" cy="115" rx="42" ry="75" fill="rgba(6, 182, 212, 0.10)" stroke="#06b6d4"
+                  stroke-width="2" />
+                <text x="80" y="210" text-anchor="middle" fill="currentColor" font-weight="bold">A</text>
 
-            <div style="font-size: 1.5rem; color: var(--primary); font-weight: bold;">➔</div>
+                <ellipse cx="230" cy="115" rx="45" ry="85" fill="rgba(6, 182, 212, 0.10)" stroke="#06b6d4"
+                  stroke-width="2" />
+                <text x="230" y="215" text-anchor="middle" fill="currentColor" font-weight="bold">B</text>
 
-            <!-- Hasse -->
-            <div>
-              <svg width="200" height="200" viewBox="0 0 200 200">
-                <line x1="100" y1="168" x2="45" y2="102" stroke="#0f172a" stroke-width="2"/>
-                <line x1="100" y1="168" x2="155" y2="102" stroke="#0f172a" stroke-width="2"/>
-                <line x1="45" y1="102" x2="100" y2="38" stroke="#0f172a" stroke-width="2"/>
-                <!-- Puntos -->
-                <circle cx="100" cy="168" r="4.5" fill="#0f172a"/><text x="100" y="186" text-anchor="middle" font-weight="bold" font-size="13">1</text>
-                <circle cx="45" cy="102" r="4.5" fill="#0f172a"/><text x="30" y="106" text-anchor="end" font-weight="bold" font-size="13">2</text>
-                <circle cx="155" cy="102" r="4.5" fill="#0f172a"/><text x="170" y="106" text-anchor="start" font-weight="bold" font-size="13">3</text>
-                <circle cx="100" cy="38" r="4.5" fill="#0f172a"/><text x="100" y="25" text-anchor="middle" font-weight="bold" font-size="13">4</text>
+                <ellipse cx="380" cy="115" rx="42" ry="75" fill="rgba(6, 182, 212, 0.10)" stroke="#06b6d4"
+                  stroke-width="2" />
+                <text x="380" y="210" text-anchor="middle" fill="currentColor" font-weight="bold">C</text>
+
+                <!-- Nodos A -->
+                <circle cx="80" cy="85" r="4" fill="currentColor" /><text x="64" y="89" font-size="14"
+                  fill="currentColor">1</text>
+                <circle cx="80" cy="145" r="4" fill="currentColor" /><text x="64" y="149" font-size="14"
+                  fill="currentColor">2</text>
+
+                <!-- Nodos B -->
+                <circle cx="230" cy="65" r="4" fill="currentColor" /><text x="230" y="83" text-anchor="middle"
+                  font-size="14" fill="currentColor">a</text>
+                <circle cx="230" cy="115" r="4" fill="currentColor" /><text x="230" y="133" text-anchor="middle"
+                  font-size="14" fill="currentColor">b</text>
+                <circle cx="230" cy="165" r="4" fill="currentColor" /><text x="230" y="183" text-anchor="middle"
+                  font-size="14" fill="currentColor">c</text>
+
+                <!-- Nodos C -->
+                <circle cx="380" cy="85" r="4" fill="currentColor" /><text x="394" y="89" font-size="14"
+                  fill="currentColor">x</text>
+                <circle cx="380" cy="145" r="4" fill="currentColor" /><text x="394" y="149" font-size="14"
+                  fill="currentColor">y</text>
+
+                <!-- Flechas R -->
+                <line x1="84" y1="84" x2="222" y2="66" stroke="#06b6d4" stroke-width="1.8"
+                  marker-end="url(#arrow-blue)" />
+                <line x1="84" y1="86" x2="222" y2="114" stroke="#f97316" stroke-width="1.8"
+                  marker-end="url(#arrow-red)" />
+                <line x1="84" y1="146" x2="222" y2="164" stroke="#06b6d4" stroke-width="1.8"
+                  marker-end="url(#arrow-blue)" />
+
+                <!-- Flechas S -->
+                <line x1="234" y1="66" x2="372" y2="84" stroke="#06b6d4" stroke-width="1.8"
+                  marker-end="url(#arrow-blue)" />
+                <line x1="234" y1="164" x2="372" y2="146" stroke="#06b6d4" stroke-width="1.8"
+                  marker-end="url(#arrow-blue)" />
+
+                <!-- Arcos superiores e inferiores -->
+                <path d="M 95,42 Q 155,10 215,35" fill="none" stroke="#06b6d4" stroke-dasharray="4,3"
+                  marker-end="url(#arrow-blue)" />
+                <text x="155" y="18" text-anchor="middle" fill="#06b6d4" font-size="13" font-style="italic">R</text>
+
+                <path d="M 245,35 Q 305,10 365,42" fill="none" stroke="#06b6d4" stroke-dasharray="4,3"
+                  marker-end="url(#arrow-blue)" />
+                <text x="305" y="18" text-anchor="middle" fill="#06b6d4" font-size="13" font-style="italic">S</text>
+
+                <path d="M 95,188 Q 230,235 365,188" fill="none" stroke="#06b6d4" stroke-dasharray="4,3"
+                  marker-end="url(#arrow-blue)" />
+                <text x="230" y="226" text-anchor="middle" fill="#06b6d4" font-size="13" font-weight="bold">S ∘ R</text>
               </svg>
-              <div class="diagram-caption">Diagrama de Hasse</div>
             </div>
+            <ul>
+              <li>Desde $1 \in A \to a \in B \to x \in C \implies (1, x) \in S \circ R$.</li>
+              <li>El camino $1 \to b$ se corta en $b$ (no tiene salida en $S$).</li>
+              <li>Desde $2 \in A \to c \in B \to y \in C \implies (2, y) \in S \circ R$.</li>
+            </ul>
+            $$S \circ R = \{ (1, x), (2, y) \} \subset A \times C$$
           </div>
-          <p><strong>Incomparables:</strong> $2 \parallel 3$ y $3 \parallel 4$ (no están conectados por ningún camino ascendente).</p>
+        </details>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.7: Composición por Comprensión (Paridad y Lineales)</div>
+        <p>Determine $S \circ R$ en los siguientes dos casos:</p>
+        <ol>
+          <li>En $\mathbb{Z}$: $R = \{ (x, y) \mid x - y \text{ es par} \}$ y $S = \{ (y, z) \mid y - z \text{ es par}
+            \}$.</li>
+          <li>En $\mathbb{R}$: $R = \{ (x, y) \mid y = x + 2 \}$ y $S = \{ (y, z) \mid z = 3y \}$.</li>
+        </ol>
+        <details class="solution">
+          <summary>🔍 Ver demostraciones analíticas</summary>
+          <div class="solution-content">
+            <p><strong>1. Paridad en $\mathbb{Z}$:</strong><br>
+              Si existe $y \in \mathbb{Z}$ tal que $x - y = 2k$ y $y - z = 2m$, sumando ambas ecuaciones se elimina $y$:
+              $$(x - y) + (y - z) = 2k + 2m \implies x - z = 2(k + m)$$
+              Recíprocamente, si $x - z$ es par, basta elegir $y = x \in \mathbb{Z}$ para verificar ambas condiciones.
+              Por tanto:
+              $$S \circ R = \{ (x, z) \in \mathbb{Z}^2 \mid x - z \text{ es un número par} \} = R = S$$</p>
+
+            <p><strong>2. Relaciones lineales en $\mathbb{R}$:</strong><br>
+              Sustituyendo $y = x + 2$ en $z = 3y$:
+              $$z = 3(x + 2) \implies z = 3x + 6$$
+              Para cualquier $(x, z)$ con $z = 3x + 6$, existe $y = x + 2 \in \mathbb{R}$ que satisface ambas
+              relaciones:
+              $$S \circ R = \{ (x, z) \in \mathbb{R}^2 \mid z = 3x + 6 \}$$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 2: OPERACIONES CON RELACIONES -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-2">
+      <h2 class="module-title"><span class="badge">MÓDULO 02</span> Operaciones con Relaciones</h2>
+
+      <h3 class="section-title" id="sec-2-1">2.1 Definición Conjuntista de las Operaciones</h3>
+      <p>Al ser conjuntos de pares ordenados, las relaciones heredan todas las operaciones del álgebra de conjuntos:</p>
+
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Operaciones Fundamentales sobre $R$ y $S$</div>
+        <div class="table-wrapper" style="margin-bottom:0;">
+          <table>
+            <thead>
+              <tr>
+                <th>Operación</th>
+                <th>Definición del Conjunto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Unión</strong></td>
+                <td>$R \cup S = \{ (x,y) \mid (x,y) \in R \lor (x,y) \in S \}$</td>
+              </tr>
+              <tr>
+                <td><strong>Intersección</strong></td>
+                <td>$R \cap S = \{ (x,y) \mid (x,y) \in R \land (x,y) \in S \}$</td>
+              </tr>
+              <tr>
+                <td><strong>Diferencia</strong></td>
+                <td>$R - S = \{ (x,y) \mid (x,y) \in R \land (x,y) \notin S \}$</td>
+              </tr>
+              <tr>
+                <td><strong>Diferencia Simétrica</strong></td>
+                <td>$R \Delta S = (R - S) \cup (S - R) = (R \cup S) - (R \cap S)$</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </details>
+      </div>
+
+      <h3 class="section-title" id="sec-2-2">2.2 Operaciones en Relaciones Finitas (Extensión y Comprensión)</h3>
+<div class="example-box">
+  <div class="example-header">🧩 Ejemplo 2.1: Operaciones en relaciones definidas por extensión</div>
+  <ol>
+    <li>Sea $U = \{1, 2, 3, 4\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $(R \cup S) - (R \Delta S)$.</li>
+    <li>Sea $A = \{a, b, c\}$, $R = \{(a,a), (b,b)\}$ y $S = \{(b,b), (c,c)\}$. Halle $(R - S) \cup (R \cap S)$.</li>
+    <li>Sea $U = \{1, 2, 3\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $R \cap (R^c \cup S)$.</li>
+  </ol>
+  <details class="solution">
+    <summary>🔍 Ver soluciones desarrolladas</summary>
+    <div class="solution-content">
+
+      <p><strong>1.</strong> Calculamos primero la unión y la diferencia simétrica:</p>
+      $$R \cup S = \{(1,1),\, (2,2),\, (3,3)\}$$
+      $$R \Delta S = (R \cup S) - (R \cap S) = \{(1,1),\, (3,3)\}$$
+      <p>Restando ambos resultados:</p>
+      $$(R \cup S) - (R \Delta S) = \{(2,2)\}$$
+
+      <p><strong>2.</strong> Calculamos cada operación por separado:</p>
+      $$R - S = \{(a,a)\}, \qquad R \cap S = \{(b,b)\}$$
+      <p>Al ser conjuntos disjuntos, la unión coincide con $R$:</p>
+      $$(R - S) \cup (R \cap S) = \{(a,a),\, (b,b)\} = R$$
+
+      <p><strong>3.</strong> El complemento $R^c = (U \times U) \setminus R$ son los $7$ pares de $U \times U$ que no están en $R$. Al unirlo con $S$ se recupera únicamente el par $(2,2)$, de modo que $R^c \cup S$ contiene todos los pares de $U \times U$ salvo $(1,1)$:</p>
+      $$R^c \cup S = (U \times U) \setminus \{(1,1)\}$$
+      <p>Intersectando finalmente con $R$:</p>
+      $$R \cap (R^c \cup S) = \{(2,2)\}$$
+
     </div>
-
-    <h3 class="section-title" id="sec-6-3">6.3 Elementos Globales, Relativos, Cadenas y Anticadenas</h3>
-    <div class="table-wrapper">
-      <table>
-        <thead><tr><th>Tipo</th><th>Concepto</th><th>Definición y Criterio Visual</th></tr></thead>
-        <tbody>
-          <tr><td rowspan="4"><strong>Globales<br>(en $A$)</strong></td><td><strong>Maximal</strong></td><td>No tiene sucesores (nadie por encima de él). Puede haber varios.</td></tr>
-          <tr><td><strong>Minimal</strong></td><td>No tiene predecesores (nadie por debajo de él). Puede haber varios.</td></tr>
-          <tr><td><strong>Máximo</strong></td><td>Supera a <strong>todos</strong> los elementos de $A$. Si existe, es <strong>único</strong> (en finitos, equivale a un único maximal).</td></tr>
-          <tr><td><strong>Mínimo</strong></td><td>Precede a <strong>todos</strong> los elementos de $A$. Si existe, es <strong>único</strong> (en finitos, equivale a un único minimal).</td></tr>
-          <tr><td rowspan="4"><strong>Relativos<br>(respecto a $S \subseteq A$)</strong></td><td><strong>Cota Superior</strong></td><td>Elemento $x \in A$ que supera a todos los elementos de $S$.</td></tr>
-          <tr><td><strong>Cota Inferior</strong></td><td>Elemento $x \in A$ que precede a todos los elementos de $S$.</td></tr>
-          <tr><td><strong>Supremo ($\sup$)</strong></td><td>La <strong>menor</strong> de las cotas superiores (la más cercana a $S$ por arriba).</td></tr>
-          <tr><td><strong>Ínfimo ($\inf$)</strong></td><td>La <strong>mayor</strong> de las cotas inferiores (la más cercana a $S$ por abajo).</td></tr>
-          <tr><td rowspan="2"><strong>Subestructuras</strong></td><td><strong>Cadena</strong></td><td>Camino vertical de nodos conectados (subconjunto totalmente ordenado).</td></tr>
-          <tr><td><strong>Anticadena</strong></td><td>Conjunto de nodos mutuamente incomparables (sin caminos entre sí).</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 6.2: Estudio completo de Elementos Notables, Cotas, Cadenas y Anticadenas</div>
-      <p>Analice los tres diagramas de Hasse presentados en los apuntes para identificar elementos globales, cotas relativas y clasificación de subconjuntos.</p>
-      <details class="solution">
-        <summary>🔍 Ver diagramas de Hasse y tablas resumen</summary>
-        <div class="solution-content">
-          <div class="diagram-container">
-            <!-- Hasse Caso 1 (a,b,c,d,e,f) -->
-            <div>
-              <svg width="210" height="230" viewBox="0 0 210 230">
-                <line x1="65" y1="195" x2="105" y2="140" stroke="#0f172a" stroke-width="1.8"/>
-                <line x1="145" y1="195" x2="105" y2="140" stroke="#0f172a" stroke-width="1.8"/>
-                <line x1="105" y1="140" x2="65" y2="85" stroke="#0f172a" stroke-width="1.8"/>
-                <line x1="105" y1="140" x2="145" y2="85" stroke="#0f172a" stroke-width="1.8"/>
-                <line x1="65" y1="195" x2="65" y2="85" stroke="#0f172a" stroke-width="1.8"/>
-                <line x1="65" y1="85" x2="105" y2="30" stroke="#0f172a" stroke-width="1.8"/>
-                <line x1="145" y1="85" x2="105" y2="30" stroke="#0f172a" stroke-width="1.8"/>
-                <!-- Subconjunto B = {d,e} -->
-                <ellipse cx="105" cy="85" rx="62" ry="20" fill="rgba(37, 99, 235, 0.12)" stroke="#2563eb" stroke-width="1.5"/>
-                <text x="175" y="72" fill="#1d4ed8" font-weight="bold" font-size="12">B</text>
-                <!-- Nodos -->
-                <circle cx="65" cy="195" r="4" fill="#0f172a"/><text x="65" y="212" text-anchor="middle" font-size="12">a</text>
-                <circle cx="145" cy="195" r="4" fill="#0f172a"/><text x="145" y="212" text-anchor="middle" font-size="12">b</text>
-                <circle cx="105" cy="140" r="4" fill="#0f172a"/><text x="118" y="144" font-size="12">c</text>
-                <circle cx="65" cy="85" r="4" fill="#0f172a"/><text x="52" y="89" text-anchor="end" font-size="12">d</text>
-                <circle cx="145" cy="85" r="4" fill="#0f172a"/><text x="158" y="89" font-size="12">e</text>
-                <circle cx="105" cy="30" r="4" fill="#0f172a"/><text x="105" y="18" text-anchor="middle" font-size="12">f</text>
-              </svg>
-              <div class="diagram-caption">Diagrama 1: $B = \{d, e\}$</div>
-            </div>
-
-            <!-- Hasse Caso 2 (a..j) -->
-            <div>
-              <svg width="210" height="230" viewBox="0 0 210 230">
-                <line x1="105" y1="195" x2="60" y2="145" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="105" y1="195" x2="150" y2="145" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="60" y1="145" x2="40" y2="90" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="60" y1="145" x2="80" y2="90" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="150" y1="145" x2="130" y2="90" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="150" y1="145" x2="170" y2="90" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="40" y1="90" x2="60" y2="35" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="80" y1="90" x2="60" y2="35" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="130" y1="90" x2="150" y2="35" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="170" y1="90" x2="150" y2="35" stroke="#0f172a" stroke-width="1.6"/>
-                <!-- S = {g, h} -->
-                <ellipse cx="150" cy="90" rx="34" ry="18" fill="rgba(37, 99, 235, 0.14)" stroke="#2563eb" stroke-width="1.5"/>
-                <text x="188" y="75" fill="#1d4ed8" font-weight="bold" font-size="12">S</text>
-                <!-- Nodos -->
-                <circle cx="105" cy="195" r="3.5" fill="#0f172a"/><text x="105" y="211" text-anchor="middle" font-size="11">a</text>
-                <circle cx="60" cy="145" r="3.5" fill="#0f172a"/><text x="48" y="149" font-size="11">b</text>
-                <circle cx="150" cy="145" r="3.5" fill="#0f172a"/><text x="160" y="149" font-size="11">c</text>
-                <circle cx="40" cy="90" r="3.5" fill="#0f172a"/><text x="28" y="94" font-size="11">d</text>
-                <circle cx="80" cy="90" r="3.5" fill="#0f172a"/><text x="90" y="94" font-size="11">e</text>
-                <circle cx="130" cy="90" r="3.5" fill="#0f172a"/><text x="120" y="94" font-size="11">g</text>
-                <circle cx="170" cy="90" r="3.5" fill="#0f172a"/><text x="180" y="94" font-size="11">h</text>
-                <circle cx="60" cy="35" r="3.5" fill="#0f172a"/><text x="60" y="24" text-anchor="middle" font-size="11">i</text>
-                <circle cx="150" cy="35" r="3.5" fill="#0f172a"/><text x="150" y="24" text-anchor="middle" font-size="11">j</text>
-              </svg>
-              <div class="diagram-caption">Diagrama 2: $S = \{g, h\}$</div>
-            </div>
-
-            <!-- Hasse Caso 3 (1..8 Cadenas/Anticadenas) -->
-            <div>
-              <svg width="210" height="230" viewBox="0 0 210 230">
-                <!-- Cadena S2 (1-2-3-4) -->
-                <polyline points="105,195 152,175 178,132 175,82" fill="none" stroke="rgba(220,38,38,0.22)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-                <!-- Aristas -->
-                <polyline points="105,195 152,175 178,132 175,82 142,42" fill="none" stroke="#0f172a" stroke-width="1.6"/>
-                <polyline points="105,195 45,148 38,95" fill="none" stroke="#0f172a" stroke-width="1.6"/>
-                <line x1="105" y1="195" x2="105" y2="105" stroke="#0f172a" stroke-width="1.6"/>
-                <!-- Anticadena S1 = {6, 8} -->
-                <ellipse cx="72" cy="100" rx="52" ry="18" transform="rotate(8 72 100)" fill="rgba(37, 99, 235, 0.14)" stroke="#2563eb" stroke-width="1.5"/>
-                <text x="20" y="76" fill="#1d4ed8" font-weight="bold" font-size="12">S₁</text>
-                <text x="192" y="135" fill="#dc2626" font-weight="bold" font-size="12">S₂</text>
-                <!-- Nodos -->
-                <circle cx="105" cy="195" r="3.5" fill="#0f172a"/><text x="105" y="211" text-anchor="middle" font-size="11">1</text>
-                <circle cx="152" cy="175" r="3.5" fill="#0f172a"/><text x="163" y="182" font-size="11">2</text>
-                <circle cx="178" cy="132" r="3.5" fill="#0f172a"/><text x="188" y="135" font-size="11">3</text>
-                <circle cx="175" cy="82" r="3.5" fill="#0f172a"/><text x="185" y="85" font-size="11">4</text>
-                <circle cx="142" cy="42" r="3.5" fill="#0f172a"/><text x="148" y="34" font-size="11">5</text>
-                <circle cx="38" cy="95" r="3.5" fill="#0f172a"/><text x="26" y="99" font-size="11">6</text>
-                <circle cx="45" cy="148" r="3.5" fill="#0f172a"/><text x="33" y="152" font-size="11">7</text>
-                <circle cx="105" cy="105" r="3.5" fill="#0f172a"/><text x="115" y="109" font-size="11">8</text>
-              </svg>
-              <div class="diagram-caption">Diagrama 3: $S_1=\{6,8\}$, $S_2=\{1,2,4\}$</div>
-            </div>
-          </div>
-
-          <div class="table-wrapper">
-            <table>
-              <thead>
-                <tr><th>Diagrama</th><th>Globales (Maximales / Máx / Minimales / Mín)</th><th>Relativos y Clasificación</th></tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Diagrama 1</strong></td>
-                  <td>Maximales: $\{f\}$, <strong>Máximo: $f$</strong>.<br>Minimales: $\{a, b\}$, <strong>Mínimo: No hay</strong>.</td>
-                  <td>
-                    • Para $S = \{c\}$: Cotas sup. $\{c,d,e,f\}$ ($\sup = c$); Cotas inf. $\{c,a,b\}$ ($\inf = c$).<br>
-                    • Para $B = \{d,e\}$: Cotas sup. $\{f\}$ ($\sup = f$); Cotas inf. $\{c,a,b\}$ ($\inf = c$).
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Diagrama 2</strong></td>
-                  <td>Maximales: $\{i, j\}$, <strong>Máximo: No hay</strong>.<br>Minimales: $\{a\}$, <strong>Mínimo: $a$</strong>.</td>
-                  <td>
-                    • Para $S = \{g, h\}$: Cotas sup. $\{j\}$ ($\sup = j$); Cotas inf. $\{c, a\}$ ($\inf = c$).
-                  </td>
-                </tr>
-                <tr>
-                  <td><strong>Diagrama 3</strong></td>
-                  <td>Maximales: $\{5, 6, 8\}$, <strong>Máximo: No hay</strong>.<br>Minimales: $\{1\}$, <strong>Mínimo: $1$</strong>.</td>
-                  <td>
-                    • <strong>$S_1 = \{6, 8\}$ (Anticadena):</strong> Cotas sup. $\emptyset$ ($\sup$: No hay); Cotas inf. $\{1\}$ ($\inf = 1$).<br>
-                    • <strong>$S_2 = \{1, 2, 4\}$ (Cadena):</strong> Cotas sup. $\{4, 5\}$ ($\sup = 4$); Cotas inf. $\{1\}$ ($\inf = 1$).
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </details>
-    </div>
-
-    <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
-  </section>
-
-  <!-- ===================================================================== -->
-  <!-- BIBLIOGRAFÍA -->
-  <!-- ===================================================================== -->
-  <section class="card" id="bibliografia">
-    <h2 class="module-title"><span class="badge">REF</span> Bibliografía</h2>
-    <ul style="line-height: 1.85; padding-left: 1.4rem; margin-bottom: 0;">
-      <li><strong>[Rosen, 2012]</strong> Rosen, K. H. (2012). <em>Matemática discreta y sus aplicaciones</em> (7.<sup>a</sup> ed.). McGraw-Hill Interamericana.</li>
-      <li><strong>[Grimaldi, 1998]</strong> Grimaldi, R. P. (1998). <em>Matemáticas discreta y combinatoria: Una introducción con aplicaciones</em> (3.<sup>a</sup> ed.). Addison-Wesley Iberoamericana.</li>
-      <li><strong>[Epp, 2012]</strong> Epp, S. S. (2012). <em>Matemáticas discretas con aplicaciones</em> (4.<sup>a</sup> ed.). Cengage Learning.</li>
-      <li><strong>[Johnsonbaugh, 2005]</strong> Johnsonbaugh, R. (2005). <em>Matemáticas discretas</em> (6.<sup>a</sup> ed.). Pearson Educación.</li>
-      <li><strong>[Kolman et al., 1997]</strong> Kolman, B., Busby, R. C., &amp; Ross, S. (1997). <em>Estructuras de matemáticas discretas para la computación</em> (3.<sup>a</sup> ed.). Prentice Hall Hispanoamericana.</li>
-      <li><strong>[Murillo, 2012]</strong> Murillo, M. (2012). <em>Introducción a la matemática discreta</em> (4.<sup>a</sup> ed.). Editorial Tecnológica de Costa Rica.</li>
-    </ul>
-
-    <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
-  </section>
-
+  </details>
 </div>
 
-<script>
-  function toggleAllDetails(openState) {
-    document.querySelectorAll('details.solution').forEach(detail => {
-      detail.open = openState;
-    });
-  }
-</script>
+<div class="example-box">
+  <div class="example-header">🧩 Ejemplo 2.2: Operaciones en relaciones finitas definidas por comprensión</div>
+  <ol>
+    <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x = y \}$ y $S = \{ (x, y) \mid x < y \}$. Halle $S - R^c$.</li>
+    <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x + y \text{ es par} \}$ y $S = \{ (x, y) \mid x + y \leq 3 \}$. Halle $R \cap S$.</li>
+    <li>En $A = \{1, 2, 3, 4\}$: $R = \{ (x, y) \mid y = 2x \}$ y $S = \{ (x, y) \mid x \text{ es par y } y \text{ es impar} \}$. Halle $R \Delta S$.</li>
+  </ol>
+  <details class="solution">
+    <summary>🔍 Ver soluciones desarrolladas</summary>
+    <div class="solution-content">
+
+      <p><strong>1.</strong> Por extensión:</p>
+      $$R = \{(1,1),\, (2,2),\, (3,3)\}, \qquad S = \{(1,2),\, (1,3),\, (2,3)\}$$
+      <p>El complemento $R^c = (A \times A) \setminus R$ está formado por todos los pares con coordenadas distintas, entre ellos los tres de $S$. Es decir, $S \subseteq R^c$, por lo que:</p>
+      $$S - R^c = \emptyset$$
+
+      <p><strong>2.</strong> Por extensión:</p>
+      $$R = \{(1,1),\, (1,3),\, (2,2),\, (3,1),\, (3,3)\}, \qquad S = \{(1,1),\, (1,2),\, (2,1)\}$$
+      <p>El único par que satisface simultáneamente $x + y$ par y $x + y \leq 3$ es $(1,1)$:</p>
+      $$R \cap S = \{(1,1)\}$$
+
+      <p><strong>3.</strong> La condición $y = 2x$ solo se cumple para $x \in \{1, 2\}$, y la condición "$x$ par, $y$ impar" genera los pares con $x \in \{2,4\}$ e $y \in \{1,3\}$:</p>
+      $$R = \{(1,2),\, (2,4)\}, \qquad S = \{(2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
+      <p>Como $R$ y $S$ son disjuntos, la diferencia simétrica coincide con la unión:</p>
+      $$R \Delta S = R \cup S = \{(1,2),\, (2,4),\, (2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
+
+    </div>
+  </details>
+</div>
+      <h3 class="section-title" id="sec-2-3">2.3 Interpretación Gráfica: Conjuntos Discretos, Continuos y Regiones
+        Infinitas</h3>
+      <ul>
+        <li><strong>Caso Discreto:</strong> Nube de puntos aislados en la cuadrícula cartesiana.</li>
+        <li><strong>Caso Continuo:</strong> Regiones del plano. Los extremos <strong>cerrados</strong> ($\le, \ge$) se
+          trazan con <strong>línea continua</strong>; los extremos <strong>abiertos</strong> ($<,>$) se trazan con
+            <strong>línea punteada</strong>.</li>
+      </ul>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Característica</th>
+              <th>En Conjuntos Ordinarios ($\mathbb{R}$)</th>
+              <th>En Relaciones ($\mathbb{R}^2$)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Elemento típico</strong></td>
+              <td>$x$</td>
+              <td>$(x, y)$</td>
+            </tr>
+            <tr>
+              <td><strong>Condición</strong></td>
+              <td>Una variable: $\{x \in \mathbb{R} \mid x > 2\}$</td>
+              <td>Dos variables: $\{(x,y) \in \mathbb{R}^2 \mid y > x\}$</td>
+            </tr>
+            <tr>
+              <td><strong>Resultado Geométrico</strong></td>
+              <td>Segmento o puntos en una recta.</td>
+              <td>Región del plano, curva o nube de puntos.</td>
+            </tr>
+            <tr>
+              <td><strong>Complemento ($R^c$)</strong></td>
+              <td>Puntos de la recta fuera del intervalo.</td>
+              <td>Todo el plano fuera de la región o curva.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 2.3: Producto Cartesiano Discreto vs. Continuo e Intervalos</div>
+        <p>Visualización comparativa de $A \times B = \{1,2,3,4\} \times \{1,2,3\}$ frente a intervalos continuos $[1,4]
+          \times [1,3]$ y variantes abiertas/semiabiertas.</p>
+        <details class="solution" open>
+          <summary>🔍 Ver gráficas vectoriales comparativas</summary>
+          <div class="solution-content">
+            <div class="diagram-container">
+              <!-- Discreto -->
+              <div>
+                <svg width="210" height="175" viewBox="0 0 210 175" style="color: #64748b;">
+                  <line x1="25" y1="145" x2="195" y2="145" stroke="currentColor" stroke-width="1.5" />
+                  <line x1="25" y1="145" x2="25" y2="15" stroke="currentColor" stroke-width="1.5" />
+                  <text x="198" y="149" font-size="12" fill="currentColor">x</text>
+                  <text x="21" y="12" font-size="12" fill="currentColor">y</text>
+                  <!-- Grid & Dots -->
+                  <g fill="#06b6d4">
+                    <circle cx="60" cy="115" r="3.5" />
+                    <circle cx="95" cy="115" r="3.5" />
+                    <circle cx="130" cy="115" r="3.5" />
+                    <circle cx="165" cy="115" r="3.5" />
+                    <circle cx="60" cy="85" r="3.5" />
+                    <circle cx="95" cy="85" r="3.5" />
+                    <circle cx="130" cy="85" r="3.5" />
+                    <circle cx="165" cy="85" r="3.5" />
+                    <circle cx="60" cy="55" r="3.5" />
+                    <circle cx="95" cy="55" r="3.5" />
+                    <circle cx="130" cy="55" r="3.5" />
+                    <circle cx="165" cy="55" r="3.5" />
+                  </g>
+                  <text x="60" y="160" text-anchor="middle" font-size="11" fill="currentColor">1</text>
+                  <text x="165" y="160" text-anchor="middle" font-size="11" fill="currentColor">4</text>
+                  <text x="16" y="119" text-anchor="end" font-size="11" fill="currentColor">1</text>
+                  <text x="16" y="59" text-anchor="end" font-size="11" fill="currentColor">3</text>
+                </svg>
+                <div class="diagram-caption">Discreto: $\{1,2,3,4\} \times \{1,2,3\}$ (12 puntos)</div>
+              </div>
+
+              <!-- Continuo Cerrado -->
+              <div>
+                <svg width="210" height="175" viewBox="0 0 210 175" style="color: #64748b;">
+                  <line x1="25" y1="145" x2="195" y2="145" stroke="currentColor" stroke-width="1.5" />
+                  <line x1="25" y1="145" x2="25" y2="15" stroke="currentColor" stroke-width="1.5" />
+                  <rect x="60" y="55" width="105" height="60" fill="rgba(6, 182, 212, 0.18)" stroke="#06b6d4"
+                    stroke-width="2" />
+                  <text x="60" y="160" text-anchor="middle" font-size="11" fill="currentColor">1</text>
+                  <text x="165" y="160" text-anchor="middle" font-size="11" fill="currentColor">4</text>
+                  <text x="16" y="119" text-anchor="end" font-size="11" fill="currentColor">1</text>
+                  <text x="16" y="59" text-anchor="end" font-size="11" fill="currentColor">3</text>
+                </svg>
+                <div class="diagram-caption">Continuo Cerrado: $[1,4] \times [1,3]$</div>
+              </div>
+
+              <!-- Semiabierto (1,4) x [1,3] -->
+              <div>
+                <svg width="210" height="175" viewBox="0 0 210 175" style="color: #64748b;">
+                  <line x1="25" y1="145" x2="195" y2="145" stroke="currentColor" stroke-width="1.5" />
+                  <line x1="25" y1="145" x2="25" y2="15" stroke="currentColor" stroke-width="1.5" />
+                  <rect x="60" y="55" width="105" height="60" fill="rgba(6, 182, 212, 0.10)" />
+                  <line x1="60" y1="55" x2="165" y2="55" stroke="#06b6d4" stroke-width="2" />
+                  <line x1="60" y1="115" x2="165" y2="115" stroke="#06b6d4" stroke-width="2" />
+                  <line x1="60" y1="55" x2="60" y2="115" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,3" />
+                  <line x1="165" y1="55" x2="165" y2="115" stroke="#06b6d4" stroke-width="2" stroke-dasharray="4,3" />
+                  <text x="60" y="160" text-anchor="middle" font-size="11" fill="currentColor">1</text>
+                  <text x="165" y="160" text-anchor="middle" font-size="11" fill="currentColor">4</text>
+                </svg>
+                <div class="diagram-caption">Abierto × Cerrado: $(1,4) \times [1,3]$</div>
+              </div>
+
+              <!-- Ambos Abiertos (1,4) x (1,3) -->
+              <div>
+                <svg width="210" height="175" viewBox="0 0 210 175" style="color: #64748b;">
+                  <line x1="25" y1="145" x2="195" y2="145" stroke="currentColor" stroke-width="1.5" />
+                  <line x1="25" y1="145" x2="25" y2="15" stroke="currentColor" stroke-width="1.5" />
+                  <rect x="60" y="55" width="105" height="60" fill="rgba(249, 115, 22, 0.15)" stroke="#f97316"
+                    stroke-width="2" stroke-dasharray="4,3" />
+                  <text x="60" y="160" text-anchor="middle" font-size="11" fill="currentColor">1</text>
+                  <text x="165" y="160" text-anchor="middle" font-size="11" fill="currentColor">4</text>
+                </svg>
+                <div class="diagram-caption">Ambos Abiertos: $(1,4) \times (1,3)$</div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 2.4: Operaciones con Regiones Infinitas en $\mathbb{R}^2$</div>
+        <ol>
+          <li><strong>Intersección lineal:</strong> $R = \{ (x, y) \in \mathbb{R}^2 \mid y > x \}$ y $S = \{ (x, y) \in
+            \mathbb{R}^2 \mid y < -x + 2 \}$. Halle $R \cap S$.</li>
+          <li><strong>Diferencia cuadrática (Corona circular):</strong> $R = \{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2
+            \leq 4 \}$ y $S = \{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2 < 1 \}$. Halle $R - S$.</li>
+          <li><strong>Intersección de cuadrados:</strong> $R = [1, 4] \times [1, 4]$ y $S = [2, 5] \times [2, 5]$. Halle
+            $R \cap S$.</li>
+        </ol>
+        <details class="solution">
+          <summary>🔍 Ver resolución analítica y gráficas</summary>
+          <div class="solution-content">
+            <p><strong>1. Intersección de semiplanos:</strong><br>
+              $R \cap S = \{ (x, y) \in \mathbb{R}^2 \mid x < y < -x + 2 \}$. Región triangular abierta a la izquierda
+                del vértice abierto $(1,1)$.</p>
+
+                <p><strong>2. Corona circular ($R - S$):</strong><br>
+                  $$R - S = \{ (x, y) \in \mathbb{R}^2 \mid (x^2 + y^2 \leq 4) \land \neg (x^2 + y^2 < 1) \}=\{ (x, y)
+                    \in \mathbb{R}^2 \mid 1 \leq x^2 + y^2 \leq 4 \}$$ <em>Detalle clave:</em> La circunferencia
+                    interior $x^2+y^2=1$ era abierta en $S$, pero pasa a ser <strong>cerrada</strong> (línea continua)
+                    en $R - S$ porque esos puntos pertenecían a $R$.</p>
+
+                <p><strong>3. Intersección de productos cartesianos:</strong><br>
+                  $$R \cap S = ([1,4] \cap [2,5]) \times ([1,4] \cap [2,5]) = [2, 4] \times [2, 4]$$</p>
+
+                <div class="diagram-container">
+                  <!-- Triángulo R cap S -->
+                  <div>
+                    <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
+                      <line x1="15" y1="150" x2="195" y2="150" stroke="currentColor" stroke-width="1.2" />
+                      <line x1="60" y1="15" x2="60" y2="195" stroke="currentColor" stroke-width="1.2" />
+                      <!-- Región sombreada (intersección en ámbar) -->
+                      <polygon points="15,195 105,105 15,15" fill="rgba(245, 158, 11, 0.30)" />
+                      <!-- y = x (frontera abierta, cyan) -->
+                      <line x1="15" y1="195" x2="180" y2="30" stroke="#06b6d4" stroke-width="1.8"
+                        stroke-dasharray="4,3" />
+                      <!-- y = -x + 2 (frontera abierta, naranja) -->
+                      <line x1="15" y1="15" x2="180" y2="180" stroke="#f97316" stroke-width="1.8"
+                        stroke-dasharray="4,3" />
+                      <circle cx="105" cy="105" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+                      <text x="112" y="109" font-size="11" fill="currentColor">(1,1)</text>
+                      <text x="35" y="108" fill="#b45309" font-weight="bold" font-size="13">R ∩ S</text>
+                    </svg>
+                    <div class="diagram-caption">1) $x < y < -x + 2$</div>
+                    </div>
+
+                    <!-- Corona Circular -->
+                    <div>
+                      <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
+                        <!-- Anillo con evenodd: dos círculos concéntricos, el interior hace de agujero -->
+                        <path
+                          d="M 105 35 A 70 70 0 1 1 105 175 A 70 70 0 1 1 105 35 Z M 105 70 A 35 35 0 1 1 105 140 A 35 35 0 1 1 105 70 Z"
+                          fill="rgba(249, 115, 22, 0.25)" stroke="#f97316" stroke-width="2" fill-rule="evenodd" />
+                        <line x1="15" y1="105" x2="195" y2="105" stroke="currentColor" stroke-width="1" />
+                        <line x1="105" y1="15" x2="105" y2="195" stroke="currentColor" stroke-width="1" />
+                        <text x="105" y="55" text-anchor="middle" fill="#f97316" font-weight="bold" font-size="12">R -
+                          S</text>
+                      </svg>
+                      <div class="diagram-caption">2) Corona: $1 \leq x^2 + y^2 \leq 4$</div>
+                    </div>
+
+                    <!-- Cuadrados [2,4]x[2,4] -->
+                    <div>
+                      <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
+                        <line x1="25" y1="185" x2="195" y2="185" stroke="currentColor" stroke-width="1.2" />
+                        <line x1="25" y1="185" x2="25" y2="15" stroke="currentColor" stroke-width="1.2" />
+                        <!-- R: [1,4] (cyan) -->
+                        <rect x="50" y="85" width="75" height="75" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4"
+                          stroke-width="1.5" />
+                        <!-- S: [2,5] (naranja) -->
+                        <rect x="75" y="60" width="75" height="75" fill="rgba(249, 115, 22, 0.15)" stroke="#f97316"
+                          stroke-width="1.5" />
+                        <!-- R ∩ S: [2,4] (ámbar, autocontenido) -->
+                        <rect x="75" y="85" width="50" height="50" fill="rgba(245, 158, 11, 0.55)" stroke="#b45309"
+                          stroke-width="2" />
+                        <text x="100" y="114" text-anchor="middle" font-weight="bold" font-size="11" fill="#78350f">R ∩
+                          S</text>
+                      </svg>
+                      <div class="diagram-caption">3) $[2,4] \times [2,4]$</div>
+                    </div>
+                  </div>
+                </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 3: PROPIEDADES DE LAS RELACIONES -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-3">
+      <h2 class="module-title"><span class="badge">MÓDULO 03</span> Propiedades de las Relaciones</h2>
+
+      <h3 class="section-title" id="sec-3-1">3.1 Relaciones Descritas por Extensión</h3>
+      <p>Sobre una relación universo $R_U = A^2$, las propiedades fundamentales se caracterizan mediante operaciones
+        conjuntistas:</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Propiedad</th>
+              <th>Definición Conjuntista</th>
+              <th>Definición Lógica (Comprensión)</th>
+              <th>Significado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Reflexiva</strong></td>
+              <td>$I_A \subseteq R$</td>
+              <td>$\forall x \in A \implies (x, x) \in R$</td>
+              <td>Todos los pares $(x,x)$ están en $R$.</td>
+            </tr>
+            <tr>
+              <td><strong>No Reflexiva</strong></td>
+              <td>$I_A \not\subseteq R$</td>
+              <td>$\exists x \in A \land (x, x) \notin R$</td>
+              <td>Al menos un $(x,x)$ falta en $R$.</td>
+            </tr>
+            <tr>
+              <td><strong>Arreflexiva</strong></td>
+              <td>$I_A \cap R = \emptyset$</td>
+              <td>$\forall x \in A \implies (x, x) \notin R$</td>
+              <td>Ningún par $(x,x)$ está en $R$.</td>
+            </tr>
+            <tr>
+              <td><strong>Simétrica</strong></td>
+              <td>$R = R^{-1}$</td>
+              <td>$\forall x,y [(x,y) \in R \implies (y,x) \in R]$</td>
+              <td>Todo par tiene su recíproco en $R$.</td>
+            </tr>
+            <tr>
+              <td><strong>No Simétrica</strong></td>
+              <td>$R \neq R^{-1}$</td>
+              <td>$\exists x,y [(x,y) \in R \land (y,x) \notin R]$</td>
+              <td>Al menos un par no tiene recíproco.</td>
+            </tr>
+            <tr>
+              <td><strong>Asimétrica</strong></td>
+              <td>$R \cap R^{-1} = \emptyset$</td>
+              <td>$\forall x,y [(x,y) \in R \implies (y,x) \notin R]$</td>
+              <td>Ningún par tiene recíproco en $R$.</td>
+            </tr>
+            <tr>
+              <td><strong>Antisimétrica</strong></td>
+              <td>$R \cap R^{-1} \subseteq I_A$</td>
+              <td>$\forall x,y [(x,y) \in R \land (y,x) \in R \implies x = y]$</td>
+              <td>Solo hay simetría en pares $(x,x)$.</td>
+            </tr>
+            <tr>
+              <td><strong>Transitiva</strong></td>
+              <td>$R \circ R \subseteq R$</td>
+              <td>$\forall x,y,z [(x,y) \in R \land (y,z) \in R \implies (x,z) \in R]$</td>
+              <td>Todo camino de 2 pasos tiene atajo directo.</td>
+            </tr>
+            <tr>
+              <td><strong>No Transitiva</strong></td>
+              <td>$R \circ R \not\subseteq R$</td>
+              <td>$\exists x,y,z [(x,y),(y,z) \in R \land (x,z) \notin R]$</td>
+              <td>Al menos una composición sale de $R$.</td>
+            </tr>
+            <tr>
+              <td><strong>Atransitiva</strong></td>
+              <td>$(R \circ R) \cap R = \emptyset$</td>
+              <td>$\forall x,y,z [(x,y),(y,z) \in R \implies (x,z) \notin R]$</td>
+              <td>Ningún par compuesto está en $R$.</td>
+            </tr>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td>$R \cup R^{-1} = R_U$</td>
+              <td>$\forall x,y \in A \implies (x,y) \in R \lor (y,x) \in R$</td>
+              <td>Todo par de elementos es comparable.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-thm">
+        <div class="callout-title">📐 Teorema 3.1: Implicaciones y Relaciones Particulares</div>
+        <ul style="margin:0;">
+          <li><strong>Asimetría:</strong> Si $R$ es asimétrica $\implies$ es arreflexiva, antisimétrica y no total.</li>
+          <li><strong>Totalidad:</strong> Si $R$ es total $\implies$ es reflexiva y no asimétrica.</li>
+          <li><strong>Simetría + Antisimetría:</strong> Si ambas se cumplen $\implies R \subseteq I_A$.</li>
+          <li><strong>Relación Vacía ($\emptyset$) sobre $A \neq \emptyset$:</strong> Es arreflexiva, simétrica,
+            antisimétrica, asimétrica, transitiva y atransitiva por vacuidad.</li>
+          <li><strong>Relación Universal ($A \times A$):</strong> Es reflexiva, simétrica, transitiva y total.</li>
+          <li><strong>Relación Identidad ($I_A$):</strong> Es reflexiva, simétrica, antisimétrica y transitiva
+            simultáneamente.</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title" id="sec-3-2">3.2 Análisis por Comprensión e Interpretación Geométrica en $\mathbb{R}$
+      </h3>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 3.1: Relación $R = \{ (x, y) \in \mathbb{R}^2 \mid x \geq y \}$ vs. $R =
+          \{ (x, y) \in \mathbb{R}^2 \mid x > y \}$</div>
+        <p>Analice reflexividad, simetría, antisimetría, transitividad y totalidad para ambas relaciones en
+          $\mathbb{R}$.</p>
+        <details class="solution">
+          <summary>🔍 Ver análisis lógico y comparación geométrica</summary>
+          <div class="solution-content">
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Propiedad</th>
+                    <th>$R_1: x \geq y$ (Orden Amplio)</th>
+                    <th>$R_2: x > y$ (Orden Estricto)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Reflexividad</strong></td>
+                    <td>✅ <strong>Reflexiva</strong> ($x \ge x$ siempre).</td>
+                    <td>❌ <strong>Arreflexiva</strong> ($x > x$ es falso).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Simetría</strong></td>
+                    <td>❌ <strong>No simétrica</strong> ($5 \ge 3$ pero $3 \not\ge 5$).</td>
+                    <td>❌ <strong>Asimétrica</strong> ($x > y \implies y \not> x$).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Antisimetría</strong></td>
+                    <td>✅ <strong>Antisimétrica</strong> ($x \ge y \land y \ge x \implies x = y$).</td>
+                    <td>✅ <strong>Antisimétrica</strong> (por vacuidad / asimetría).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Transitividad</strong></td>
+                    <td>✅ <strong>Transitiva</strong> ($x \ge y \land y \ge z \implies x \ge z$).</td>
+                    <td>✅ <strong>Transitiva</strong> ($x > y \land y > z \implies x > z$).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Totalidad</strong></td>
+                    <td>✅ <strong>Total</strong> ($R_1 \cup R_1^{-1} = \mathbb{R}^2$).</td>
+                    <td>❌ <strong>No total</strong> (falta la diagonal $y = x$).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="diagram-container">
+              <!-- x >= y -->
+              <div>
+                <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
+                  <polygon points="20,190 190,20 190,190" fill="rgba(6, 182, 212, 0.18)" />
+                  <line x1="20" y1="190" x2="190" y2="20" stroke="#06b6d4" stroke-width="2" />
+                  <line x1="15" y1="105" x2="195" y2="105" stroke="currentColor" stroke-width="1" />
+                  <line x1="105" y1="15" x2="105" y2="195" stroke="currentColor" stroke-width="1" />
+                  <text x="145" y="145" font-weight="bold" font-size="13" fill="currentColor">x ≥ y</text>
+                </svg>
+                <div class="diagram-caption">Frontera continua (Incluye diagonal)</div>
+              </div>
+
+              <!-- x > y -->
+              <div>
+                <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
+                  <polygon points="20,190 190,20 190,190" fill="rgba(6, 182, 212, 0.12)" />
+                  <line x1="20" y1="190" x2="190" y2="20" stroke="#06b6d4" stroke-width="2" stroke-dasharray="5,4" />
+                  <line x1="15" y1="105" x2="195" y2="105" stroke="currentColor" stroke-width="1" />
+                  <line x1="105" y1="15" x2="105" y2="195" stroke="currentColor" stroke-width="1" />
+                  <text x="145" y="145" font-weight="bold" font-size="13" fill="currentColor">x > y</text>
+                </svg>
+                <div class="diagram-caption">Frontera punteada (Excluye diagonal)</div>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 4: MATRICES BINARIAS -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-4">
+      <h2 class="module-title"><span class="badge">MÓDULO 04</span> Matrices Binarias</h2>
+
+      <h3 class="section-title" id="sec-4-1">4.1 Matriz de una Relación ($M_R$)</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Matriz Booleana de Adyacencia</div>
+        <p style="margin:0;">Dada $R \subseteq A \times B$ con $A = \{a_1, \dots, a_m\}$ y $B = \{b_1, \dots, b_n\}$, la
+          matriz $M_R$ tiene entradas $m_{ij} \in \{0, 1\}$ definidas por:
+          $$m_{ij} = \begin{cases} 1 & \text{si } (a_i, b_j) \in R \\ 0 & \text{si } (a_i, b_j) \notin R \end{cases}$$
+        </p>
+      </div>
+
+      <h3 class="section-title" id="sec-4-2">4.2 Operaciones Lógicas entre Matrices</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Operación</th>
+              <th>Descripción</th>
+              <th>Fórmula Matricial</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Unión ($R \cup S$)</strong></td>
+              <td>Disyunción lógica ($\lor$) elemento a elemento.</td>
+              <td>$M_{R \cup S}[i, j] = M_{R}[i, j] \lor M_{S}[i, j]$</td>
+            </tr>
+            <tr>
+              <td><strong>Intersección ($R \cap S$)</strong></td>
+              <td>Conjunción lógica ($\land$) elemento a elemento.</td>
+              <td>$M_{R \cap S}[i, j] = M_{R}[i, j] \land M_{S}[i, j]$</td>
+            </tr>
+            <tr>
+              <td><strong>Complemento ($\overline{R}$)</strong></td>
+              <td>Negación booleana ($\neg 1 = 0$, $\neg 0 = 1$).</td>
+              <td>$M_{\overline{R}}[i, j] = \neg M_{R}[i, j]$</td>
+            </tr>
+            <tr>
+              <td><strong>Diferencia ($R - S$)</strong></td>
+              <td>Intersección de $R$ con el complemento de $S$.</td>
+              <td>$M_{R - S}[i, j] = M_{R}[i, j] \land \neg M_{S}[i, j]$</td>
+            </tr>
+            <tr>
+              <td><strong>Inversa ($R^{-1}$)</strong></td>
+              <td>Transposición de la matriz (filas $\leftrightarrow$ columnas).</td>
+              <td>$M_{R^{-1}} = M_{R}^T$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="section-title" id="sec-4-3">4.3 Composición mediante Producto Booleano</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Producto Booleano ($M_{S \circ R} = M_R \cdot M_S$)</div>
+        <p style="margin:0;">Para $R \subseteq A \times B$ y $S \subseteq B \times C$, cada entrada se calcula
+          reemplazando suma por $\lor$ y producto por $\land$:
+          $$M_{S \circ R}[i, j] = \bigvee_{k=1}^n \left( M_{R}[i, k] \land M_{S}[k, j] \right)$$</p>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 4.1: Producto Booleano para Composición</div>
+        <p>Sean $A = \{1, 2\}$, $B = \{x, y, z\}$, $C = \{a, b\}$, $R = \{ (1, x), (1, z), (2, y) \}$ y $S = \{ (x, b),
+          (y, a), (z, b) \}$. Calcule $M_{S \circ R}$.</p>
+        <details class="solution">
+          <summary>🔍 Ver cálculo matricial paso a paso</summary>
+          <div class="solution-content">
+            $$M_R = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix}, \quad M_S = \begin{bmatrix} 0 & 1 \\ 1 & 0 \\
+            0 & 1 \end{bmatrix}$$
+            <ul>
+              <li>$[1,1] = (1 \land 0) \lor (0 \land 1) \lor (1 \land 0) = 0$</li>
+              <li>$[1,2] = (1 \land 1) \lor (0 \land 0) \lor (1 \land 1) = 1$</li>
+              <li>$[2,1] = (0 \land 0) \lor (1 \land 1) \lor (0 \land 0) = 1$</li>
+              <li>$[2,2] = (0 \land 1) \lor (1 \land 0) \lor (0 \land 1) = 0$</li>
+            </ul>
+            $$M_{S \circ R} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \implies S \circ R = \{(1, b), (2, a)\}$$
+          </div>
+        </details>
+      </div>
+
+      <h3 class="section-title" id="sec-4-4">4.4 Verificación Matricial de Propiedades</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Propiedad</th>
+              <th>Criterio Matricial</th>
+              <th>Interpretación Visual en $M_R$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Reflexiva</strong></td>
+              <td>$M_I \leq M_R$</td>
+              <td>Diagonal principal compuesta exclusivamente por <strong>1s</strong>.</td>
+            </tr>
+            <tr>
+              <td><strong>Arreflexiva</strong></td>
+              <td>$M_R \wedge M_I = \mathbf{0}$</td>
+              <td>Diagonal principal compuesta exclusivamente por <strong>0s</strong>.</td>
+            </tr>
+            <tr>
+              <td><strong>Simétrica</strong></td>
+              <td>$M_R = M_R^T$</td>
+              <td>Simetría respecto a la diagonal principal.</td>
+            </tr>
+            <tr>
+              <td><strong>Asimétrica</strong></td>
+              <td>$M_R \wedge M_R^T = \mathbf{0}$</td>
+              <td>Si $m_{ij} = 1$, entonces $m_{ji} = 0$ (incluye diagonal nula).</td>
+            </tr>
+            <tr>
+              <td><strong>Antisimétrica</strong></td>
+              <td>$(M_R \wedge M_R^T) \leq M_I$</td>
+              <td>Fuera de la diagonal no hay pares $(i,j)$ y $(j,i)$ simultáneamente en 1.</td>
+            </tr>
+            <tr>
+              <td><strong>Transitiva</strong></td>
+              <td>$(M_R \circ M_R) \leq M_R$</td>
+              <td>El producto booleano $M_R^2$ no genera ningún <strong>1</strong> donde $M_R$ tiene <strong>0</strong>.
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Total</strong></td>
+              <td>$M_R \vee M_R^T = \mathbf{1}$</td>
+              <td>La unión con su transpuesta produce la matriz universal $\mathbf{1}$.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 4.2: Análisis matricial de la relación de inclusión ($Y \subseteq X$)
+        </div>
+        <p>Dado $A = \{1, 2\}$ y $\mathcal{P}(A) = \{ \emptyset, \{1\}, \{2\}, A \}$, analice matricialmente la relación
+          $(X, Y) \in R \iff Y \subseteq X$.</p>
+        <details class="solution">
+          <summary>🔍 Ver verificación matricial completa</summary>
+          <div class="solution-content">
+            $$M_R = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 1 \end{bmatrix}$$
+            <ul>
+              <li><strong>Reflexiva:</strong> ✅ Toda la diagonal es $1$ ($M_I \leq M_R$).</li>
+              <li><strong>Simétrica:</strong> ❌ $M_R \neq M_R^T$ (por ejemplo, $m_{21} = 1 \neq m_{12} = 0$).</li>
+              <li><strong>Antisimétrica:</strong> ✅ $M_R \wedge M_R^T = M_I \leq M_I$.</li>
+              <li><strong>Transitiva:</strong> ✅ $M_R \circ M_R = M_R \leq M_R$.</li>
+              <li><strong>Total:</strong> ❌ $M_R \vee M_R^T$ tiene ceros en $[2,3]$ y $[3,2]$ ($\{1\}$ y $\{2\}$ son
+                incomparables).</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 5: CLASIFICACIÓN DE RELACIONES -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-5">
+      <h2 class="module-title"><span class="badge">MÓDULO 05</span> Clasificación de Relaciones</h2>
+
+      <h3 class="section-title" id="sec-5-1">5.1 Taxonomía de Estructuras Algebraicas</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Combinación de Propiedades</th>
+              <th>Estructura Resultante</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Reflexiva + Transitiva</td>
+              <td><strong>Preorden</strong></td>
+            </tr>
+            <tr>
+              <td>Preorden + Simétrica (Reflexiva + Simétrica + Transitiva)</td>
+              <td><strong>Relación de Equivalencia ($\sim$)</strong></td>
+            </tr>
+            <tr>
+              <td>Preorden + Antisimétrica (Reflexiva + Antisimétrica + Transitiva)</td>
+              <td><strong>Orden Parcial (Poset)</strong></td>
+            </tr>
+            <tr>
+              <td>Orden Parcial + Total</td>
+              <td><strong>Orden Total (Lineal)</strong></td>
+            </tr>
+            <tr>
+              <td>Arreflexiva + Transitiva (implica Asimetría)</td>
+              <td><strong>Orden Estricto</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout callout-thm">
+        <div class="callout-title">📐 Teorema 5.1: Heredabilidad en la Relación Inversa ($R^{-1}$)</div>
+        <p style="margin:0;">Toda propiedad primaria (reflexividad, arreflexividad, simetría, antisimetría, asimetría y
+          transitividad) se preserva intacta en $R^{-1}$. En consecuencia, si $R$ es una <strong>relación de
+            equivalencia</strong> (o un <strong>orden parcial</strong>), $R^{-1}$ también lo es.</p>
+      </div>
+
+      <h3 class="section-title" id="sec-5-2">5.2 Relación de Equivalencia</h3>
+      <p>Una relación de equivalencia ($R = \sim$) generaliza la noción de igualdad y fragmenta un conjunto en grupos
+        disjuntos llamados clases de equivalencia.</p>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 5.1: Verificación gráfica y analítica de Equivalencia</div>
+        <p>Sea $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$. Verifique que $R$ es de
+          equivalencia.</p>
+        <details class="solution">
+          <summary>🔍 Ver grafo dirigido y verificación</summary>
+          <div class="solution-content">
+            <div class="diagram-container">
+              <svg width="260" height="170" viewBox="0 0 260 170" style="color: #64748b;">
+                <defs>
+                  <marker id="arrow-g" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                    <path d="M0,0 L0,6 L8,3 z" fill="#64748b" />
+                  </marker>
+                </defs>
+                <!-- Bucles -->
+                <path d="M 65,45 C 35,15 35,85 65,55" fill="none" stroke="currentColor" stroke-width="1.5"
+                  marker-end="url(#arrow-g)" />
+                <path d="M 195,45 C 225,15 225,85 195,55" fill="none" stroke="currentColor" stroke-width="1.5"
+                  marker-end="url(#arrow-g)" />
+                <path d="M 125,138 C 95,168 165,168 135,138" fill="none" stroke="currentColor" stroke-width="1.5"
+                  marker-end="url(#arrow-g)" />
+
+                <!-- Aristas bidireccionales 1 <-> 2 -->
+                <path d="M 92,42 Q 130,22 168,42" fill="none" stroke="#06b6d4" stroke-width="1.6"
+                  marker-end="url(#arrow-g)" />
+                <path d="M 168,58 Q 130,78 92,58" fill="none" stroke="#06b6d4" stroke-width="1.6"
+                  marker-end="url(#arrow-g)" />
+
+                <!-- Nodos -->
+                <circle cx="80" cy="50" r="15" fill="none" stroke="currentColor" stroke-width="2" /><text x="80" y="55"
+                  text-anchor="middle" font-weight="bold" fill="currentColor">1</text>
+                <circle cx="180" cy="50" r="15" fill="none" stroke="currentColor" stroke-width="2" /><text x="180"
+                  y="55" text-anchor="middle" font-weight="bold" fill="currentColor">2</text>
+                <circle cx="130" cy="125" r="15" fill="none" stroke="currentColor" stroke-width="2" /><text x="130"
+                  y="130" text-anchor="middle" font-weight="bold" fill="currentColor">3</text>
+              </svg>
+            </div>
+            <ul>
+              <li><strong>Reflexividad:</strong> Contiene todos los bucles: $I_A = \{(1,1), (2,2), (3,3)\} \subseteq R$.
+              </li>
+              <li><strong>Simetría:</strong> $R^{-1} = R$ (el camino $1 \to 2$ tiene su regreso $2 \to 1$).</li>
+              <li><strong>Transitividad:</strong> $R \circ R = R \subseteq R$ (los recorridos $1 \to 2 \to 1$ y $2 \to 1
+                \to 2$ aterrizan en los bucles $(1,1)$ y $(2,2)$ ya incluidos).</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <h3 class="section-title" id="sec-5-3">5.3 Clases de Equivalencia y Conjunto Cociente</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definiciones: Clase de Equivalencia y Conjunto Cociente</div>
+        <ul style="margin:0;">
+          <li><strong>Clase de equivalencia de $x$:</strong> $[x] = \{ y \in A \mid (x, y) \in R \}$.</li>
+          <li><strong>Conjunto Cociente ($A/R$):</strong> Familia formada por todas las clases distintas de $A$:
+            $$A/R = \{ [x] \mid x \in A \}$$
+            Constituye una <strong>partición</strong> exacta de $A$.
+          </li>
+          <li><strong>Reconstrucción de $R$:</strong> $R = \bigcup_{C \in A/R} (C \times C)$.</li>
+        </ul>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 5.2: Cálculo del Conjunto Cociente y Reconstrucción de $R$</div>
+        <ol>
+          <li>Para $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$, halle las clases y $A/R$.
+          </li>
+          <li>Dado $A/R = \{ \{x, z\}, \{y\} \}$, reconstruya $A$ y la relación $R$ por extensión.</li>
+        </ol>
+        <details class="solution">
+          <summary>🔍 Ver soluciones</summary>
+          <div class="solution-content">
+            <p><strong>1.</strong> $[1] = \{1, 2\}$, $[2] = \{1, 2\}$ y $[3] = \{3\}$. Eliminando clases repetidas:
+              $$A/R = \{ \{1, 2\}, \{3\} \}$$</p>
+
+            <p><strong>2.</strong> El conjunto original es $A = \{x, z\} \cup \{y\} = \{x, y, z\}$.<br>
+              Reconstruyendo $R$:
+              $$R = (\{x, z\} \times \{x, z\}) \cup (\{y\} \times \{y\}) = \{ (x, x), (x, z), (z, x), (z, z), (y, y)
+              \}$$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 6: RELACIONES DE ORDEN -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-6">
+      <h2 class="module-title"><span class="badge">MÓDULO 06</span> Relaciones de Orden</h2>
+
+      <h3 class="section-title" id="sec-6-1">6.1 Orden Parcial y Comparabilidad</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Conjunto Parcialmente Ordenado $(A, \le)$ o $(A, \underline{\alpha})$
+        </div>
+        <ul style="margin:0;">
+          <li><strong>Orden Parcial (Amplio):</strong> Relación <strong>reflexiva, antisimétrica y transitiva</strong>.
+          </li>
+          <li><strong>Orden Estricto ($<$):< /strong> Relación <strong>arreflexiva, asimétrica y transitiva</strong>.
+          </li>
+          <li><strong>Elementos Comparables:</strong> $x \le y \lor y \le x$.</li>
+          <li><strong>Elementos Incomparables ($x \parallel y$):</strong> $x \not\le y \land y \not\le x$.</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title" id="sec-6-2">6.2 Diagrama de Hasse</h3>
+      <p>El <strong>Diagrama de Hasse</strong> simplifica el grafo dirigido de un orden parcial eliminando información
+        redundante en 3 pasos:</p>
+      <ol>
+        <li><strong>Eliminar bucles:</strong> Se omite la reflexividad implícita en cada nodo.</li>
+        <li><strong>Eliminar aristas transitivas:</strong> Si $x \le y$ y $y \le z$, se borra la línea directa entre $x$
+          y $z$.</li>
+        <li><strong>Orientación ascendente:</strong> Si $x \le y$, $y$ se dibuja físicamente más arriba que $x$,
+          eliminando las puntas de flecha.</li>
+      </ol>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 6.1: Simplificación de Grafo a Diagrama de Hasse</div>
+        <p>Sea $A = \{1, 2, 3, 4\}$ con $x \mathcal{R} y \iff x \mid y$. La relación es $\mathcal{R} = \{(1,1), (1,2),
+          (1,3), (1,4), (2,2), (2,4), (3,3), (4,4)\}$.</p>
+        <details class="solution" open>
+          <summary>🔍 Ver transformación visual y análisis de comparabilidad</summary>
+          <div class="solution-content">
+            <div class="diagram-container">
+              <!-- Grafo completo -->
+              <div>
+                <svg width="200" height="200" viewBox="0 0 200 200" style="color: #64748b;">
+                  <defs>
+                    <marker id="arr-h" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+                      <path d="M0,0 L0,6 L7,3 z" fill="#64748b" />
+                    </marker>
+                  </defs>
+                  <!-- Aristas -->
+                  <line x1="100" y1="158" x2="55" y2="112" stroke="currentColor" stroke-width="1.5"
+                    marker-end="url(#arr-h)" />
+                  <line x1="100" y1="158" x2="145" y2="112" stroke="currentColor" stroke-width="1.5"
+                    marker-end="url(#arr-h)" />
+                  <line x1="48" y1="92" x2="92" y2="48" stroke="currentColor" stroke-width="1.5"
+                    marker-end="url(#arr-h)" />
+                  <!-- Transitiva 1->4 -->
+                  <line x1="100" y1="155" x2="100" y2="55" stroke="#f97316" stroke-width="1.5" stroke-dasharray="4,3"
+                    marker-end="url(#arr-h)" />
+                  <!-- Nodos -->
+                  <circle cx="100" cy="168" r="12" fill="none" stroke="currentColor" stroke-width="1.5" /><text x="100"
+                    y="172" text-anchor="middle" font-size="12" fill="currentColor">1</text>
+                  <circle cx="45" cy="102" r="12" fill="none" stroke="currentColor" stroke-width="1.5" /><text x="45"
+                    y="106" text-anchor="middle" font-size="12" fill="currentColor">2</text>
+                  <circle cx="155" cy="102" r="12" fill="none" stroke="currentColor" stroke-width="1.5" /><text x="155"
+                    y="106" text-anchor="middle" font-size="12" fill="currentColor">3</text>
+                  <circle cx="100" cy="38" r="12" fill="none" stroke="currentColor" stroke-width="1.5" /><text x="100"
+                    y="42" text-anchor="middle" font-size="12" fill="currentColor">4</text>
+                </svg>
+                <div class="diagram-caption">Grafo (con arista transitiva $1 \to 4$)</div>
+              </div>
+
+              <div style="font-size: 1.5rem; color: var(--primary); font-weight: bold;">➔</div>
+
+              <!-- Hasse -->
+              <div>
+                <svg width="200" height="200" viewBox="0 0 200 200" style="color: #64748b;">
+                  <line x1="100" y1="168" x2="45" y2="102" stroke="currentColor" stroke-width="2" />
+                  <line x1="100" y1="168" x2="155" y2="102" stroke="currentColor" stroke-width="2" />
+                  <line x1="45" y1="102" x2="100" y2="38" stroke="currentColor" stroke-width="2" />
+                  <!-- Puntos -->
+                  <circle cx="100" cy="168" r="4.5" fill="currentColor" /><text x="100" y="186" text-anchor="middle"
+                    font-weight="bold" font-size="13" fill="currentColor">1</text>
+                  <circle cx="45" cy="102" r="4.5" fill="currentColor" /><text x="30" y="106" text-anchor="end"
+                    font-weight="bold" font-size="13" fill="currentColor">2</text>
+                  <circle cx="155" cy="102" r="4.5" fill="currentColor" /><text x="170" y="106" text-anchor="start"
+                    font-weight="bold" font-size="13" fill="currentColor">3</text>
+                  <circle cx="100" cy="38" r="4.5" fill="currentColor" /><text x="100" y="25" text-anchor="middle"
+                    font-weight="bold" font-size="13" fill="currentColor">4</text>
+                </svg>
+                <div class="diagram-caption">Diagrama de Hasse</div>
+              </div>
+            </div>
+            <p><strong>Incomparables:</strong> $2 \parallel 3$ y $3 \parallel 4$ (no están conectados por ningún camino
+              ascendente).</p>
+          </div>
+        </details>
+      </div>
+
+      <h3 class="section-title" id="sec-6-3">6.3 Elementos Globales, Relativos, Cadenas y Anticadenas</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Concepto</th>
+              <th>Definición y Criterio Visual</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="4"><strong>Globales<br>(en $A$)</strong></td>
+              <td><strong>Maximal</strong></td>
+              <td>No tiene sucesores (nadie por encima de él). Puede haber varios.</td>
+            </tr>
+            <tr>
+              <td><strong>Minimal</strong></td>
+              <td>No tiene predecesores (nadie por debajo de él). Puede haber varios.</td>
+            </tr>
+            <tr>
+              <td><strong>Máximo</strong></td>
+              <td>Supera a <strong>todos</strong> los elementos de $A$. Si existe, es <strong>único</strong> (en
+                finitos, equivale a un único maximal).</td>
+            </tr>
+            <tr>
+              <td><strong>Mínimo</strong></td>
+              <td>Precede a <strong>todos</strong> los elementos de $A$. Si existe, es <strong>único</strong> (en
+                finitos, equivale a un único minimal).</td>
+            </tr>
+            <tr>
+              <td rowspan="4"><strong>Relativos<br>(respecto a $S \subseteq A$)</strong></td>
+              <td><strong>Cota Superior</strong></td>
+              <td>Elemento $x \in A$ que supera a todos los elementos de $S$.</td>
+            </tr>
+            <tr>
+              <td><strong>Cota Inferior</strong></td>
+              <td>Elemento $x \in A$ que precede a todos los elementos de $S$.</td>
+            </tr>
+            <tr>
+              <td><strong>Supremo ($\sup$)</strong></td>
+              <td>La <strong>menor</strong> de las cotas superiores (la más cercana a $S$ por arriba).</td>
+            </tr>
+            <tr>
+              <td><strong>Ínfimo ($\inf$)</strong></td>
+              <td>La <strong>mayor</strong> de las cotas inferiores (la más cercana a $S$ por abajo).</td>
+            </tr>
+            <tr>
+              <td rowspan="2"><strong>Subestructuras</strong></td>
+              <td><strong>Cadena</strong></td>
+              <td>Camino vertical de nodos conectados (subconjunto totalmente ordenado).</td>
+            </tr>
+            <tr>
+              <td><strong>Anticadena</strong></td>
+              <td>Conjunto de nodos mutuamente incomparables (sin caminos entre sí).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 6.2: Estudio completo de Elementos Notables, Cotas, Cadenas y Anticadenas
+        </div>
+        <p>Analice los tres diagramas de Hasse presentados en los apuntes para identificar elementos globales, cotas
+          relativas y clasificación de subconjuntos.</p>
+        <details class="solution">
+          <summary>🔍 Ver diagramas de Hasse y tablas resumen</summary>
+          <div class="solution-content">
+            <div class="diagram-container">
+              <!-- Hasse Caso 1 (a,b,c,d,e,f) -->
+              <div>
+                <svg width="210" height="230" viewBox="0 0 210 230" style="color: #64748b;">
+                  <line x1="65" y1="195" x2="105" y2="140" stroke="currentColor" stroke-width="1.8" />
+                  <line x1="145" y1="195" x2="105" y2="140" stroke="currentColor" stroke-width="1.8" />
+                  <line x1="105" y1="140" x2="65" y2="85" stroke="currentColor" stroke-width="1.8" />
+                  <line x1="105" y1="140" x2="145" y2="85" stroke="currentColor" stroke-width="1.8" />
+                  <line x1="65" y1="195" x2="65" y2="85" stroke="currentColor" stroke-width="1.8" />
+                  <line x1="65" y1="85" x2="105" y2="30" stroke="currentColor" stroke-width="1.8" />
+                  <line x1="145" y1="85" x2="105" y2="30" stroke="currentColor" stroke-width="1.8" />
+                  <!-- Subconjunto B = {d,e} -->
+                  <ellipse cx="105" cy="85" rx="62" ry="20" fill="rgba(6, 182, 212, 0.18)" stroke="#06b6d4"
+                    stroke-width="1.5" />
+                  <text x="175" y="72" fill="#06b6d4" font-weight="bold" font-size="12">B</text>
+                  <!-- Nodos -->
+                  <circle cx="65" cy="195" r="4" fill="currentColor" /><text x="65" y="212" text-anchor="middle"
+                    font-size="12" fill="currentColor">a</text>
+                  <circle cx="145" cy="195" r="4" fill="currentColor" /><text x="145" y="212" text-anchor="middle"
+                    font-size="12" fill="currentColor">b</text>
+                  <circle cx="105" cy="140" r="4" fill="currentColor" /><text x="118" y="144" font-size="12"
+                    fill="currentColor">c</text>
+                  <circle cx="65" cy="85" r="4" fill="currentColor" /><text x="52" y="89" text-anchor="end"
+                    font-size="12" fill="currentColor">d</text>
+                  <circle cx="145" cy="85" r="4" fill="currentColor" /><text x="158" y="89" font-size="12"
+                    fill="currentColor">e</text>
+                  <circle cx="105" cy="30" r="4" fill="currentColor" /><text x="105" y="18" text-anchor="middle"
+                    font-size="12" fill="currentColor">f</text>
+                </svg>
+                <div class="diagram-caption">Diagrama 1: $B = \{d, e\}$</div>
+              </div>
+
+              <!-- Hasse Caso 2 (a..j) -->
+              <div>
+                <svg width="210" height="230" viewBox="0 0 210 230" style="color: #64748b;">
+                  <line x1="105" y1="195" x2="60" y2="145" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="105" y1="195" x2="150" y2="145" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="60" y1="145" x2="40" y2="90" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="60" y1="145" x2="80" y2="90" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="150" y1="145" x2="130" y2="90" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="150" y1="145" x2="170" y2="90" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="40" y1="90" x2="60" y2="35" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="80" y1="90" x2="60" y2="35" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="130" y1="90" x2="150" y2="35" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="170" y1="90" x2="150" y2="35" stroke="currentColor" stroke-width="1.6" />
+                  <!-- S = {g, h} -->
+                  <ellipse cx="150" cy="90" rx="34" ry="18" fill="rgba(6, 182, 212, 0.18)" stroke="#06b6d4"
+                    stroke-width="1.5" />
+                  <text x="188" y="75" fill="#06b6d4" font-weight="bold" font-size="12">S</text>
+                  <!-- Nodos -->
+                  <circle cx="105" cy="195" r="3.5" fill="currentColor" /><text x="105" y="211" text-anchor="middle"
+                    font-size="11" fill="currentColor">a</text>
+                  <circle cx="60" cy="145" r="3.5" fill="currentColor" /><text x="48" y="149" font-size="11"
+                    fill="currentColor">b</text>
+                  <circle cx="150" cy="145" r="3.5" fill="currentColor" /><text x="160" y="149" font-size="11"
+                    fill="currentColor">c</text>
+                  <circle cx="40" cy="90" r="3.5" fill="currentColor" /><text x="28" y="94" font-size="11"
+                    fill="currentColor">d</text>
+                  <circle cx="80" cy="90" r="3.5" fill="currentColor" /><text x="90" y="94" font-size="11"
+                    fill="currentColor">e</text>
+                  <circle cx="130" cy="90" r="3.5" fill="currentColor" /><text x="120" y="94" font-size="11"
+                    fill="currentColor">g</text>
+                  <circle cx="170" cy="90" r="3.5" fill="currentColor" /><text x="180" y="94" font-size="11"
+                    fill="currentColor">h</text>
+                  <circle cx="60" cy="35" r="3.5" fill="currentColor" /><text x="60" y="24" text-anchor="middle"
+                    font-size="11" fill="currentColor">i</text>
+                  <circle cx="150" cy="35" r="3.5" fill="currentColor" /><text x="150" y="24" text-anchor="middle"
+                    font-size="11" fill="currentColor">j</text>
+                </svg>
+                <div class="diagram-caption">Diagrama 2: $S = \{g, h\}$</div>
+              </div>
+
+              <!-- Hasse Caso 3 (1..8 Cadenas/Anticadenas) -->
+              <div>
+                <svg width="210" height="230" viewBox="0 0 210 230" style="color: #64748b;">
+                  <!-- Cadena S2 (1-2-3-4) resaltada en naranja -->
+                  <polyline points="105,195 152,175 178,132 175,82" fill="none" stroke="rgba(249, 115, 22, 0.30)"
+                    stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+                  <!-- Aristas -->
+                  <polyline points="105,195 152,175 178,132 175,82 142,42" fill="none" stroke="currentColor"
+                    stroke-width="1.6" />
+                  <polyline points="105,195 45,148 38,95" fill="none" stroke="currentColor" stroke-width="1.6" />
+                  <line x1="105" y1="195" x2="105" y2="105" stroke="currentColor" stroke-width="1.6" />
+                  <!-- Anticadena S1 = {6, 8} resaltada en cyan -->
+                  <ellipse cx="72" cy="100" rx="52" ry="18" transform="rotate(8 72 100)" fill="rgba(6, 182, 212, 0.18)"
+                    stroke="#06b6d4" stroke-width="1.5" />
+                  <text x="20" y="76" fill="#06b6d4" font-weight="bold" font-size="12">S₁</text>
+                  <text x="192" y="135" fill="#f97316" font-weight="bold" font-size="12">S₂</text>
+                  <!-- Nodos -->
+                  <circle cx="105" cy="195" r="3.5" fill="currentColor" /><text x="105" y="211" text-anchor="middle"
+                    font-size="11" fill="currentColor">1</text>
+                  <circle cx="152" cy="175" r="3.5" fill="currentColor" /><text x="163" y="182" font-size="11"
+                    fill="currentColor">2</text>
+                  <circle cx="178" cy="132" r="3.5" fill="currentColor" /><text x="188" y="135" font-size="11"
+                    fill="currentColor">3</text>
+                  <circle cx="175" cy="82" r="3.5" fill="currentColor" /><text x="185" y="85" font-size="11"
+                    fill="currentColor">4</text>
+                  <circle cx="142" cy="42" r="3.5" fill="currentColor" /><text x="148" y="34" font-size="11"
+                    fill="currentColor">5</text>
+                  <circle cx="38" cy="95" r="3.5" fill="currentColor" /><text x="26" y="99" font-size="11"
+                    fill="currentColor">6</text>
+                  <circle cx="45" cy="148" r="3.5" fill="currentColor" /><text x="33" y="152" font-size="11"
+                    fill="currentColor">7</text>
+                  <circle cx="105" cy="105" r="3.5" fill="currentColor" /><text x="115" y="109" font-size="11"
+                    fill="currentColor">8</text>
+                </svg>
+                <div class="diagram-caption">Diagrama 3: $S_1=\{6,8\}$, $S_2=\{1,2,4\}$</div>
+              </div>
+            </div>
+
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Diagrama</th>
+                    <th>Globales (Maximales / Máx / Minimales / Mín)</th>
+                    <th>Relativos y Clasificación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Diagrama 1</strong></td>
+                    <td>Maximales: $\{f\}$, <strong>Máximo: $f$</strong>.<br>Minimales: $\{a, b\}$, <strong>Mínimo: No
+                        hay</strong>.</td>
+                    <td>
+                      • Para $S = \{c\}$: Cotas sup. $\{c,d,e,f\}$ ($\sup = c$); Cotas inf. $\{c,a,b\}$ ($\inf =
+                      c$).<br>
+                      • Para $B = \{d,e\}$: Cotas sup. $\{f\}$ ($\sup = f$); Cotas inf. $\{c,a,b\}$ ($\inf = c$).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Diagrama 2</strong></td>
+                    <td>Maximales: $\{i, j\}$, <strong>Máximo: No hay</strong>.<br>Minimales: $\{a\}$, <strong>Mínimo:
+                        $a$</strong>.</td>
+                    <td>
+                      • Para $S = \{g, h\}$: Cotas sup. $\{j\}$ ($\sup = j$); Cotas inf. $\{c, a\}$ ($\inf = c$).
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Diagrama 3</strong></td>
+                    <td>Maximales: $\{5, 6, 8\}$, <strong>Máximo: No hay</strong>.<br>Minimales: $\{1\}$,
+                      <strong>Mínimo: $1$</strong>.
+                    </td>
+                    <td>
+                      • <strong>$S_1 = \{6, 8\}$ (Anticadena):</strong> Cotas sup. $\emptyset$ ($\sup$: No hay); Cotas
+                      inf. $\{1\}$ ($\inf = 1$).<br>
+                      • <strong>$S_2 = \{1, 2, 4\}$ (Cadena):</strong> Cotas sup. $\{4, 5\}$ ($\sup = 4$); Cotas inf.
+                      $\{1\}$ ($\inf = 1$).
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BIBLIOGRAFÍA -->
+    <!-- ===================================================================== -->
+    <section class="card" id="bibliografia">
+      <h2 class="module-title"><span class="badge">REF</span> Bibliografía</h2>
+      <ul style="line-height: 1.85; padding-left: 1.4rem; margin-bottom: 0;">
+        <li><strong>[Rosen, 2012]</strong> Rosen, K. H. (2012). <em>Matemática discreta y sus aplicaciones</em>
+          (7.<sup>a</sup> ed.). McGraw-Hill Interamericana.</li>
+        <li><strong>[Grimaldi, 1998]</strong> Grimaldi, R. P. (1998). <em>Matemáticas discreta y combinatoria: Una
+            introducción con aplicaciones</em> (3.<sup>a</sup> ed.). Addison-Wesley Iberoamericana.</li>
+        <li><strong>[Epp, 2012]</strong> Epp, S. S. (2012). <em>Matemáticas discretas con aplicaciones</em>
+          (4.<sup>a</sup> ed.). Cengage Learning.</li>
+        <li><strong>[Johnsonbaugh, 2005]</strong> Johnsonbaugh, R. (2005). <em>Matemáticas discretas</em>
+          (6.<sup>a</sup> ed.). Pearson Educación.</li>
+        <li><strong>[Kolman et al., 1997]</strong> Kolman, B., Busby, R. C., &amp; Ross, S. (1997). <em>Estructuras de
+            matemáticas discretas para la computación</em> (3.<sup>a</sup> ed.). Prentice Hall Hispanoamericana.</li>
+        <li><strong>[Murillo, 2012]</strong> Murillo, M. (2012). <em>Introducción a la matemática discreta</em>
+          (4.<sup>a</sup> ed.). Editorial Tecnológica de Costa Rica.</li>
+      </ul>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+  </div>
+
+  <script>
+    function toggleAllDetails(openState) {
+      document.querySelectorAll('details.solution').forEach(detail => {
+        detail.open = openState;
+      });
+    }
+  </script>
 
 </body>
+
 </html>
