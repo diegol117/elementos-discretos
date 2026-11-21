@@ -165,6 +165,7 @@
     /* Tables */
     .table-wrapper {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       margin: 1.2rem 0;
       border-radius: 10px;
       border: 1px solid var(--border);
@@ -184,6 +185,7 @@
       text-align: left;
       padding: 0.8rem 1rem;
       border-bottom: 2px solid var(--border);
+      white-space: nowrap; /* Evita saltos de línea en cabeceras */
     }
 
     td {
@@ -357,6 +359,21 @@
       text-align: center;
     }
 
+    /* ===== CORRECCIÓN CLAVE PARA KATEX ===== */
+    /* Evita que las fórmulas en línea se rompan a la mitad (ej. P \to Q) */
+    .katex { white-space: nowrap; }
+
+    /* Permite scroll en bloques de ecuaciones largas */
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.35rem 0;
+      max-width: 100%;
+    }
+    .katex-display > .katex {
+      font-size: 0.95em;
+    }
+
 /* ===== AJUSTES RESPONSIVE PARA CELULARES ===== */
 @media (max-width: 640px) {
   body {
@@ -434,18 +451,6 @@
     padding: 0.55rem 0.65rem;
     font-size: 0.86rem;
   }
-
-  /* Evitar que fórmulas matemáticas largas desborden la pantalla */
-  .katex-display {
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding: 0.35rem 0;
-    max-width: 100%;
-  }
-
-  .katex-display > .katex {
-    font-size: 0.95em;
-  }
 }
 
   </style>
@@ -462,9 +467,7 @@
     </p>
     <div class="meta-bar">
       <span><strong>Autor:</strong> Diego Linares</span>
-      <span>•</span>
       <span><strong>Área:</strong> Fundamentos de Computación y Matemáticas Discretas</span>
-      <span>•</span>
       <span><strong>Nivel:</strong> Universitario</span>
     </div>
   </header>
@@ -476,7 +479,7 @@
   </div>
 
   <!-- MAPA DE CONTENIDOS -->
-  <section class="card" id="mapa-de-contenidos">
+<section class="card" id="mapa-de-contenidos">
     <h2 class="module-title">📑 Mapa de Contenidos</h2>
     <div class="table-wrapper">
       <table>
@@ -492,8 +495,8 @@
             <td><span class="badge">01</span></td>
             <td><a href="#mod-1">Proposiciones Lógicas: Definiciones</a></td>
             <td>
-              <a href="#sec-1-1">1.1 Proposiciones simples</a> •
-              <a href="#sec-1-2">1.2 Proposición compuesta y conectivos</a> •
+              <a href="#sec-1-1">1.1 Proposiciones simples</a><br>
+              <a href="#sec-1-2">1.2 Proposición compuesta y conectivos</a><br>
               <a href="#sec-1-3">1.3 Tablas de verdad básicas</a>
             </td>
           </tr>
@@ -501,8 +504,8 @@
             <td><span class="badge">02</span></td>
             <td><a href="#mod-2">Proposiciones Lógicas: Clasificación</a></td>
             <td>
-              <a href="#sec-2-1">2.1 Formas alternativas del condicional</a> •
-              <a href="#sec-2-2">2.2 Tautología, contradicción y contingencia</a> •
+              <a href="#sec-2-1">2.1 Formas alternativas del condicional</a><br>
+              <a href="#sec-2-2">2.2 Tautología, contradicción y contingencia</a><br>
               <a href="#sec-2-3">2.3 Implicación y equivalencia lógica</a>
             </td>
           </tr>
@@ -510,8 +513,8 @@
             <td><span class="badge">03</span></td>
             <td><a href="#mod-3">Leyes Lógicas</a></td>
             <td>
-              <a href="#sec-3-1">3.1 Equivalencias lógicas notables</a> •
-              <a href="#sec-3-2">3.2 Importancia y algoritmo de simplificación</a> •
+              <a href="#sec-3-1">3.1 Equivalencias lógicas notables</a><br>
+              <a href="#sec-3-2">3.2 Importancia y algoritmo de simplificación</a><br>
               <a href="#sec-3-3">3.3 Ejercicios resueltos y propuestos</a>
             </td>
           </tr>
@@ -519,9 +522,9 @@
             <td><span class="badge">04</span></td>
             <td><a href="#mod-4">Razonamientos Lógicos</a></td>
             <td>
-              <a href="#sec-4-1">4.1 Inferencia y validez</a> •
-              <a href="#sec-4-2">4.2 Determinación analítica de invalidez</a> •
-              <a href="#sec-4-3">4.3 Reglas de inferencia y prueba directa</a> •
+              <a href="#sec-4-1">4.1 Inferencia y validez</a><br>
+              <a href="#sec-4-2">4.2 Determinación analítica de invalidez</a><br>
+              <a href="#sec-4-3">4.3 Reglas de inferencia y prueba directa</a><br>
               <a href="#sec-4-4">4.4 Reducción al absurdo</a>
             </td>
           </tr>
@@ -529,9 +532,9 @@
             <td><span class="badge">05</span></td>
             <td><a href="#mod-5">Cuantificadores</a></td>
             <td>
-              <a href="#sec-5-1">5.1 Motivación</a> •
-              <a href="#sec-5-2">5.2 Predicados y cuantificadores ($\forall, \exists, \exists!$)</a> •
-              <a href="#sec-5-3">5.3 Negación (De Morgan) y propiedades</a> •
+              <a href="#sec-5-1">5.1 Motivación</a><br>
+              <a href="#sec-5-2">5.2 Predicados y cuantificadores $(\forall, \exists, \exists!)$</a><br>
+              <a href="#sec-5-3">5.3 Negación (De Morgan) y propiedades</a><br>
               <a href="#sec-5-4">5.4 Ejercicios propuestos</a>
             </td>
           </tr>
@@ -554,26 +557,26 @@
     <h3 class="section-title" id="sec-1-1">1.1 Proposiciones Simples</h3>
     <div class="callout callout-def">
       <div class="callout-title">📌 Definición: Proposición Simple (o Atómica)</div>
-      <p style="margin-top:0;">Es un enunciado declarativo que se representa con letras minúsculas ($p, q, r, \dots$) y cumple tres condiciones:</p>
+      <p style="margin-top:0;">Es un enunciado declarativo que se representa con letras minúsculas $(p, q, r, \dots)$ y cumple tres condiciones:</p>
       <ol style="margin-bottom:0;">
-        <li>Es inequívocamente verdadera ($V$) o falsa ($F$).</li>
+        <li>Es inequívocamente verdadera $(V)$ o falsa $(F)$.</li>
         <li>No contiene conectivos lógicos ni puede descomponerse en partes más simples.</li>
         <li>Su significado es preciso y objetivo.</li>
       </ol>
     </div>
 
-    <p>En computación, asignamos letras minúsculas ($p, q, r, \dots$) para facilitar su manipulación como instrucciones en código. Las expresiones exclamativas, interrogativas, imperativas o los enunciados abiertos no son proposiciones al carecer de un valor de verdad definido.</p>
+    <p>En computación, asignamos letras minúsculas para facilitar su manipulación como instrucciones en código. Las expresiones exclamativas, interrogativas, imperativas o los enunciados abiertos no son proposiciones al carecer de un valor de verdad definido.</p>
 
     <div class="example-box">
       <div class="example-header">🧩 Ejemplo 1.1: Ejemplos de Enunciados y su Clasificación</div>
       <ul>
-        <li>«¡Qué hermoso día!» $\rightarrow$ <em>No es proposición</em> (exclamación).</li>
-        <li>«¿Ya terminaste el arreglo?» $\rightarrow$ <em>No es proposición</em> (interrogación).</li>
-        <li>«Limpia la base de datos.» $\rightarrow$ <em>No es proposición</em> (imperativo o mandato).</li>
-        <li>«$x + 5 = 10$» $\rightarrow$ <em>No es proposición</em> (enunciado abierto).</li>
-        <li>$p$: «El número 15 es divisible por 3.» $\rightarrow$ <strong>Proposición simple</strong>, valor lógico $V$.</li>
-        <li>$q$: «La capital de Francia es Madrid.» $\rightarrow$ <strong>Proposición simple</strong>, valor lógico $F$.</li>
-        <li>$s$: «El lenguaje Python es un lenguaje de programación.» $\rightarrow$ <strong>Proposición simple</strong>, valor lógico $V$.</li>
+        <li>«¡Qué hermoso día!» <br> $\rightarrow$ <em>No es proposición</em> (exclamación).</li>
+        <li>«¿Ya terminaste el arreglo?» <br> $\rightarrow$ <em>No es proposición</em> (interrogación).</li>
+        <li>«Limpia la base de datos.» <br> $\rightarrow$ <em>No es proposición</em> (imperativo o mandato).</li>
+        <li>«$x + 5 = 10$» <br> $\rightarrow$ <em>No es proposición</em> (enunciado abierto).</li>
+        <li>$p$: «El número 15 es divisible por 3.» <br> $\rightarrow$ <strong>Proposición simple</strong>, valor lógico $V$.</li>
+        <li>$q$: «La capital de Francia es Madrid.» <br> $\rightarrow$ <strong>Proposición simple</strong>, valor lógico $F$.</li>
+        <li>$s$: «El lenguaje Python es un lenguaje de programación.» <br> $\rightarrow$ <strong>Proposición simple</strong>, valor lógico $V$.</li>
       </ul>
     </div>
 
@@ -599,16 +602,16 @@
     </div>
 
     <h3 class="section-title" id="sec-1-3">1.3 Valores y Tablas de Verdad</h3>
-    <p>Toda proposición posee un único valor lógico ($V$ o $1$, $F$ o $0$). Una <strong>tabla de verdad</strong> muestra todas las combinaciones posibles de valores: para $n$ variables simples existen $2^n$ filas (2 filas para 1 variable, 4 para 2 variables y 8 para 3 variables).</p>
+    <p>Toda proposición posee un único valor lógico $(V$ o $1$, $F$ o $0)$. Una <strong>tabla de verdad</strong> muestra todas las combinaciones posibles de valores: para $n$ variables simples existen $2^n$ filas (2 filas para 1 variable, 4 para 2 variables y 8 para 3 variables).</p>
 
     <div class="callout callout-note">
       <div class="callout-title">💡 Comportamiento de los Principales Operadores Lógicos</div>
       <ul style="margin:0;">
-        <li><strong>Negación ($\neg$):</strong> Invierte el valor de verdad ($V \leftrightarrow F$).</li>
-        <li><strong>Conjunción ($\land$):</strong> Verdadera únicamente si <strong>ambas</strong> proposiciones son verdaderas.</li>
-        <li><strong>Disyunción ($\lor$):</strong> Falsa únicamente si <strong>ambas</strong> proposiciones son falsas.</li>
-        <li><strong>Implicación ($\rightarrow$):</strong> Falsa solo si el antecedente es verdadero ($V$) y el consecuente es falso ($F$).</li>
-        <li><strong>Doble implicación ($\leftrightarrow$):</strong> Verdadera si ambas proposiciones tienen el <strong>mismo</strong> valor lógico.</li>
+        <li><strong>Negación $(\neg)$:</strong> Invierte el valor de verdad $(V \leftrightarrow F)$.</li>
+        <li><strong>Conjunción $(\land)$:</strong> Verdadera únicamente si <strong>ambas</strong> proposiciones son verdaderas.</li>
+        <li><strong>Disyunción $(\lor)$:</strong> Falsa únicamente si <strong>ambas</strong> proposiciones son falsas.</li>
+        <li><strong>Implicación $(\rightarrow)$:</strong> Falsa solo si el antecedente es verdadero $(V)$ y el consecuente es falso $(F)$.</li>
+        <li><strong>Doble implicación $(\leftrightarrow)$:</strong> Verdadera si ambas proposiciones tienen el <strong>mismo</strong> valor lógico.</li>
       </ul>
     </div>
 
@@ -629,17 +632,19 @@
     <div class="example-box">
       <div class="example-header">🧩 Ejemplo 1.2: Aplicación de los Conectivos Lógicos</div>
       <ul>
-        <li><strong>Negación:</strong> Si $P$ es «El número 4 es par» ($V$), entonces $\neg P$ es «El número 4 no es par» ($F$).</li>
-        <li><strong>Conjunción:</strong> «Aprobé cálculo» ($P$) y «Aprobé física» ($Q$). Solo es verdadera si pasé ambas materias.</li>
-        <li><strong>Disyunción:</strong> «Iré a la biblioteca» ($P$) o «Estudiaré en casa» ($Q$). Solo es falsa si no hago ninguna de las dos.</li>
-        <li><strong>Implicación:</strong> «Si llueve ($P$), entonces llevo paraguas ($Q$)». Solo se rompe si llueve ($V$) y no llevo paraguas ($F$).</li>
-        <li><strong>Doble implicación:</strong> «Un triángulo es equilátero ($P$) si y solo si todos sus ángulos miden $60^\circ$ ($Q$)».</li>
+        <li><strong>Negación:</strong> Si $P$ es «El número 4 es par» $(V)$, entonces $\neg P$ es «El número 4 no es par» $(F)$.</li>
+        <li><strong>Conjunción:</strong> «Aprobé cálculo» $(P)$ y «Aprobé física» $(Q)$. Solo es verdadera si pasé ambas materias.</li>
+        <li><strong>Disyunción:</strong> «Iré a la biblioteca» $(P)$ o «Estudiaré en casa» $(Q)$. Solo es falsa si no hago ninguna de las dos.</li>
+        <li><strong>Implicación:</strong> «Si llueve $(P)$, entonces llevo paraguas $(Q)$». Solo se rompe si llueve $(V)$ y no llevo paraguas $(F)$.</li>
+        <li><strong>Doble implicación:</strong> «Un triángulo es equilátero $(P)$ si y solo si todos sus ángulos miden $60^\circ$ $(Q)$».</li>
       </ul>
     </div>
 
     <div class="example-box">
-      <div class="example-header">🧩 Ejemplo 1.3: Tablas de Verdad Compuestas (2 y 3 Variables)</div>
-      <p>Construya la tabla de verdad para: <strong>a)</strong> $(P \rightarrow Q) \land \neg P$ ($2^2 = 4$ filas) y <strong>b)</strong> $(P \land Q) \rightarrow \neg R$ ($2^3 = 8$ filas).</p>
+      <div class="example-header">🧩 Ejemplo 1.3: Tablas de Verdad Compuestas</div>
+      <p>Construya la tabla de verdad para:<br>
+      <strong>a)</strong> $(P \rightarrow Q) \land \neg P$ $(2^2 = 4$ filas)<br>
+      <strong>b)</strong> $(P \land Q) \rightarrow \neg R$ $(2^3 = 8$ filas).</p>
       <details class="solution">
         <summary>🔍 Ver tablas de verdad completas</summary>
         <div class="solution-content">
@@ -691,14 +696,19 @@
 
     <h3 class="section-title" id="sec-2-1">2.1 Formas Alternativas del Condicional</h3>
     <div class="callout callout-def">
-      <div class="callout-title">📌 Estructura del Condicional ($P \rightarrow Q$)</div>
+      <div class="callout-title">📌 Estructura del Condicional $(P \rightarrow Q)$</div>
       <p style="margin-top:0;">En matemáticas, las proposiciones condicionales forman la base de los teoremas:</p>
       <ul>
-        <li><strong>Antecedente ($P$):</strong> Hipótesis o condición suficiente.</li>
-        <li><strong>Consecuente ($Q$):</strong> Tesis o condición necesaria.</li>
+        <li><strong>Antecedente $(P)$:</strong> Hipótesis o condición suficiente.</li>
+        <li><strong>Consecuente $(Q)$:</strong> Tesis o condición necesaria.</li>
       </ul>
       $$\text{Hipótesis (Suficiente)} \rightarrow \text{Tesis (Necesaria)}$$
-      <p style="margin-bottom:0;"><strong>Formas equivalentes en lenguaje natural:</strong> (1) Si $P$, entonces $Q$; (2) $P$ es condición suficiente para $Q$; (3) $Q$ es condición necesaria para $P$; (4) $P$ solo si $Q$; (5) $Q$ si $P$.</p>
+      <p style="margin-bottom:0;"><strong>Formas equivalentes en lenguaje natural:</strong><br>
+      (1) Si $P$, entonces $Q$;<br>
+      (2) $P$ es condición suficiente para $Q$;<br>
+      (3) $Q$ es condición necesaria para $P$;<br>
+      (4) $P$ solo si $Q$;<br>
+      (5) $Q$ si $P$.</p>
     </div>
 
     <div class="example-box">
@@ -717,9 +727,9 @@
     <div class="callout callout-def">
       <div class="callout-title">📌 Clasificación según la Última Columna de la Tabla de Verdad</div>
       <ul style="margin:0;">
-        <li><strong>Tautología:</strong> Resulta verdadera ($V$) para todas las combinaciones posibles (verdad formal).</li>
-        <li><strong>Contradicción:</strong> Resulta falsa ($F$) para todas las combinaciones posibles (absurdo lógico).</li>
-        <li><strong>Contingencia:</strong> Presenta tanto valores verdaderos ($V$) como falsos ($F$).</li>
+        <li><strong>Tautología:</strong> Resulta verdadera $(V)$ para todas las combinaciones posibles (verdad formal).</li>
+        <li><strong>Contradicción:</strong> Resulta falsa $(F)$ para todas las combinaciones posibles (absurdo lógico).</li>
+        <li><strong>Contingencia:</strong> Presenta tanto valores verdaderos $(V)$ como falsos $(F)$.</li>
       </ul>
     </div>
 
@@ -764,11 +774,11 @@
       </details>
     </div>
 
-    <h3 class="section-title" id="sec-2-3">2.3 Implicación Lógica ($\Rightarrow$) y Equivalencia Lógica ($\equiv$)</h3>
+    <h3 class="section-title" id="sec-2-3">2.3 Implicación Lógica $(\Rightarrow)$ y Equivalencia Lógica $(\equiv)$</h3>
     <p>Cuando una proposición compuesta resulta en una <strong>tautología</strong>, la notación de su conectivo principal cambia para reflejar validez universal:</p>
     <ul>
-      <li><strong>Implicación lógica ($\Rightarrow$):</strong> Reemplaza al condicional ($\rightarrow$) cuando este es el conectivo principal de una tautología.</li>
-      <li><strong>Equivalencia lógica ($\Leftrightarrow$ o $\equiv$):</strong> Reemplaza al bicondicional ($\leftrightarrow$) cuando este es el conectivo principal de una tautología.</li>
+      <li><strong>Implicación lógica $(\Rightarrow)$:</strong> Reemplaza al condicional $(\rightarrow)$ cuando este es el conectivo principal de una tautología.</li>
+      <li><strong>Equivalencia lógica $(\Leftrightarrow$ o $\equiv)$:</strong> Reemplaza al bicondicional $(\leftrightarrow)$ cuando este es el conectivo principal de una tautología.</li>
     </ul>
 
     <div class="example-box">
@@ -780,7 +790,7 @@
       <details class="solution">
         <summary>🔍 Ver tablas de demostración completas</summary>
         <div class="solution-content">
-          <p><strong>1. Silogismo Hipotético ($E_I = (P \rightarrow Q) \land (Q \rightarrow R)$, $E_D = P \rightarrow R$):</strong></p>
+          <p><strong>1. Llamando $E_I = (P \rightarrow Q) \land (Q \rightarrow R)$, $E_D = P \rightarrow R$:</strong></p>
           <div class="table-wrapper">
             <table class="truth-table">
               <thead>
@@ -799,7 +809,7 @@
             </table>
           </div>
 
-          <p><strong>2. Ley Distributiva ($E_I = P \lor (Q \land R)$, $E_D = (P \lor Q) \land (P \lor R)$):</strong></p>
+          <p><strong>2. Llamando $E_I = P \lor (Q \land R)$, $E_D = (P \lor Q) \land (P \lor R)$:</strong></p>
           <div class="table-wrapper">
             <table class="truth-table">
               <thead>
@@ -831,7 +841,7 @@
     <h2 class="module-title"><span class="badge">MÓDULO 03</span> Leyes Lógicas</h2>
 
     <h3 class="section-title" id="sec-3-1">3.1 Equivalencias Lógicas Notables</h3>
-    <p>Las leyes lógicas son tautologías universales que actúan como «reglas de reemplazo» para transformar expresiones complejas en otras más simples sin alterar su valor de verdad original ($P, Q, R$ proposiciones):</p>
+    <p>Las leyes lógicas son tautologías universales que actúan como «reglas de reemplazo» para transformar expresiones complejas en otras más simples sin alterar su valor de verdad original $(P, Q, R$ proposiciones):</p>
 
     <div class="table-wrapper">
       <table>
@@ -839,9 +849,9 @@
           <tr><th>Nombre</th><th>Simbología</th><th>Nombre</th><th>Simbología</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>Def. Condicional</strong></td><td>$P \to Q \equiv \neg P \lor Q$</td><td><strong>Idempotencia</strong></td><td>$P \land P \equiv P \quad|\quad P \lor P \equiv P$</td></tr>
-          <tr><td><strong>Def. Bicondicional</strong></td><td>$P \leftrightarrow Q \equiv (P \to Q) \land (Q \to P)$</td><td><strong>Inversos</strong></td><td>$P \lor \neg P \equiv V \quad|\quad P \land \neg P \equiv F$</td></tr>
-          <tr><td><strong>Conmutativa</strong></td><td>$P \lor Q \equiv Q \lor P \quad|\quad P \land Q \equiv Q \land P$</td><td><strong>Identidad</strong></td><td>$P \lor F \equiv P \quad|\quad P \land V \equiv P$<br>$P \land F \equiv F \quad|\quad P \lor V \equiv V$</td></tr>
+          <tr><td><strong>Def. Condicional</strong></td><td>$P \to Q \equiv \neg P \lor Q$</td><td><strong>Idempotencia</strong></td><td>$P \land P \equiv P$<br>$P \lor P \equiv P$</td></tr>
+          <tr><td><strong>Def. Bicondicional</strong></td><td>$P \leftrightarrow Q \equiv (P \to Q) \land (Q \to P)$</td><td><strong>Inversos</strong></td><td>$P \lor \neg P \equiv V$<br>$P \land \neg P \equiv F$</td></tr>
+          <tr><td><strong>Conmutativa</strong></td><td>$P \lor Q \equiv Q \lor P$<br>$P \land Q \equiv Q \land P$</td><td><strong>Identidad</strong></td><td>$P \lor F \equiv P$<br>$P \land V \equiv P$<br>$P \land F \equiv F$<br>$P \lor V \equiv V$</td></tr>
           <tr><td><strong>Asociativa</strong></td><td>$(P \lor Q) \lor R \equiv P \lor (Q \lor R)$<br>$(P \land Q) \land R \equiv P \land (Q \land R)$</td><td><strong>Absorción</strong></td><td>$P \lor (P \land Q) \equiv P$<br>$P \land (P \lor Q) \equiv P$</td></tr>
           <tr><td><strong>Distributiva</strong></td><td>$P \lor (Q \land R) \equiv (P \lor Q) \land (P \lor R)$<br>$P \land (Q \lor R) \equiv (P \land Q) \lor (P \land R)$</td><td><strong>Contrapositiva</strong></td><td>$P \to Q \equiv \neg Q \to \neg P$</td></tr>
           <tr><td><strong>Doble Negación</strong></td><td>$\neg\neg P \equiv P$</td><td><strong>De Morgan</strong></td><td>$\neg(P \lor Q) \equiv \neg P \land \neg Q$<br>$\neg(P \land Q) \equiv \neg P \lor \neg Q$</td></tr>
@@ -850,7 +860,7 @@
     </div>
 
     <h3 class="section-title" id="sec-3-2">3.2 Importancia y Algoritmo Analítico de Simplificación</h3>
-    <p>Frente al crecimiento exponencial de las tablas de verdad ($2^n$ filas: 10 variables alcanzan 1024 filas), las leyes lógicas aportan <strong>escalabilidad</strong> y <strong>comprensión estructural</strong>.</p>
+    <p>Frente al crecimiento exponencial de las tablas de verdad $(2^n$ filas: 10 variables alcanzan 1024 filas), las leyes lógicas aportan <strong>escalabilidad</strong> y <strong>comprensión estructural</strong>.</p>
 
     <div class="diagram-container">
       <svg width="680" height="395" viewBox="0 0 680 395">
@@ -977,15 +987,20 @@
     <p>Un razonamiento es <strong>válido</strong> si dicho condicional es una tautología, e <strong>inválido</strong> si existe un <strong>contraejemplo</strong> (premisas verdaderas y conclusión falsa).</p>
 
     <h3 class="section-title" id="sec-4-2">4.2 Determinación Analítica de Invalidez</h3>
-    <p>En lugar de construir toda la tabla de verdad, podemos probar la invalidez imponiendo directamente que todas las premisas sean verdaderas ($\equiv V$) y la conclusión falsa ($\equiv F$).</p>
+    <p>En lugar de construir toda la tabla de verdad, podemos probar la invalidez imponiendo directamente que todas las premisas sean verdaderas $(\equiv V)$ y la conclusión falsa $(\equiv F)$.</p>
 
     <div class="example-box">
       <div class="example-header">🧩 Ejemplo 4.1: Prueba Analítica de Invalidez</div>
-      <p>Demuestre la invalidez del razonamiento: $P_1: p \lor q$, $P_2: p$, $P_3: q \to p$, $P_4: \neg q \lor p \;\therefore\; q$.</p>
+      <p>Demuestre la invalidez del razonamiento:<br>
+      $P_1: p \lor q$,<br>
+      $P_2: p$,<br>
+      $P_3: q \to p$,<br>
+      $P_4: \neg q \lor p$<br>
+      $\therefore q$.</p>
       <details class="solution">
         <summary>🔍 Ver resolución y contraejemplo</summary>
         <div class="solution-content">
-          <p>Imponemos la condición de invalidez ($P_1, P_2, P_3, P_4 \equiv V$ y $C \equiv F$):</p>
+          <p>Imponemos la condición de invalidez $(P_1, P_2, P_3, P_4 \equiv V$ y $C \equiv F)$:</p>
           <ul>
             <li>De la conclusión $q \equiv F$ obtenemos inmediatamente $q \equiv F$.</li>
             <li>De la premisa $P_2$ obtenemos $p \equiv V$.</li>
@@ -1009,19 +1024,23 @@
           <tr><th>Nombre</th><th>Regla</th><th>Nombre</th><th>Regla</th></tr>
         </thead>
         <tbody>
-          <tr><td><strong>Modus Ponens (MP)</strong></td><td>$P \rightarrow Q, \; P \;\vdash\; Q$</td><td><strong>Modus Tollens (MT)</strong></td><td>$P \rightarrow Q, \; \neg Q \;\vdash\; \neg P$</td></tr>
-          <tr><td><strong>Silogismo Hipotético (SH)</strong></td><td>$P \rightarrow Q, \; Q \rightarrow R \;\vdash\; P \rightarrow R$</td><td><strong>Silogismo Disyuntivo (SD)</strong></td><td>$P \vee Q, \; \neg P \;\vdash\; Q$</td></tr>
-          <tr><td><strong>Silogismo Constructivo</strong></td><td>$P \rightarrow Q, \; R \rightarrow S, \; P \vee R \;\vdash\; Q \vee S$</td><td><strong>Silogismo Destructivo</strong></td><td>$P \rightarrow Q, \; R \rightarrow S, \; \neg Q \vee \neg S \;\vdash\; \neg P \vee \neg R$</td></tr>
-          <tr><td><strong>Simplificación</strong></td><td>$P \wedge Q \;\vdash\; P \text{ (o } Q)$</td><td><strong>Conjunción</strong></td><td>$P, \; Q \;\vdash\; P \wedge Q$</td></tr>
-          <tr><td><strong>Exportación</strong></td><td>$(P \wedge R) \rightarrow Q \;\vdash\; P \rightarrow (R \rightarrow Q)$</td><td><strong>Importación</strong></td><td>$P \rightarrow (R \rightarrow Q) \;\vdash\; (P \wedge R) \rightarrow Q$</td></tr>
-          <tr><td><strong>Adición</strong></td><td>$P \;\vdash\; P \vee R$</td><td></td><td></td></tr>
+          <tr><td><strong>Modus Ponens (MP)</strong></td><td>$P \rightarrow Q$<br>$P$<br>$\therefore\; Q$</td><td><strong>Modus Tollens (MT)</strong></td><td>$P \rightarrow Q$<br>$\neg Q$<br>$\therefore\; \neg P$</td></tr>
+          <tr><td><strong>Silogismo Hipotético (SH)</strong></td><td>$P \rightarrow Q$<br>$Q \rightarrow R$<br>$\therefore\; P \rightarrow R$</td><td><strong>Silogismo Disyuntivo (SD)</strong></td><td>$P \vee Q$<br>$\neg P$<br>$\therefore\; Q$</td></tr>
+          <tr><td><strong>Silogismo Constructivo</strong></td><td>$P \rightarrow Q$<br>$R \rightarrow S$<br>$P \vee R$<br>$\therefore\; Q \vee S$</td><td><strong>Silogismo Destructivo</strong></td><td>$P \rightarrow Q$<br>$R \rightarrow S$<br>$\neg Q \vee \neg S$<br>$\therefore\; \neg P \vee \neg R$</td></tr>
+          <tr><td><strong>Simplificación</strong></td><td>$P \wedge Q$<br>$\therefore\; P \text{ (o } Q)$</td><td><strong>Conjunción</strong></td><td>$P$<br>$Q$<br>$\therefore\; P \wedge Q$</td></tr>
+          <tr><td><strong>Exportación</strong></td><td>$(P \wedge R) \rightarrow Q$<br>$\therefore\; P \rightarrow (R \rightarrow Q)$</td><td><strong>Importación</strong></td><td>$P \rightarrow (R \rightarrow Q)$<br>$\therefore\; (P \wedge R) \rightarrow Q$</td></tr>
+          <tr><td><strong>Adición</strong></td><td>$P$<br>$\therefore\; P \vee R$</td><td></td><td></td></tr>
         </tbody>
       </table>
     </div>
 
     <div class="example-box">
       <div class="example-header">🧩 Ejemplo 4.2: Demostración Formal (Enfoque Híbrido — Prueba Directa)</div>
-      <p>Demuestre la validez del razonamiento: $1.\; P \to Q$, $2.\; P \lor R$, $3.\; \neg R \;\therefore\; Q$.</p>
+      <p>Demuestre la validez del razonamiento:<br>
+      $P_1: P \to Q$,<br>
+      $P_2: P \lor R$,<br>
+      $P_3: \neg R$,<br>
+      $\therefore Q$.</p>
       <details class="solution">
         <summary>🔍 Ver demostración línea por línea</summary>
         <div class="solution-content">
@@ -1042,11 +1061,16 @@
     </div>
 
     <h3 class="section-title" id="sec-4-4">4.4 Reducción al Absurdo</h3>
-    <p>Método indirecto de demostración que incorpora temporalmente la <strong>negación de la conclusión ($\neg C$)</strong> como premisa auxiliar. Si al operar con las premisas originales se obtiene una contradicción explícita ($P \land \neg P$), la conclusión queda validada.</p>
+    <p>Método indirecto de demostración que incorpora temporalmente la <strong>negación de la conclusión $(\neg C)$</strong> como premisa auxiliar. Si al operar con las premisas originales se obtiene una contradicción explícita $(P \land \neg P)$, la conclusión queda validada.</p>
 
     <div class="example-box">
       <div class="example-header">🧩 Ejemplo 4.3: Demostración por Reducción al Absurdo</div>
-      <p>Demuestre la validez de $1.\; P \to Q$, $2.\; P \lor R$, $3.\; \neg R \;\therefore\; Q$ mediante reducción al absurdo.</p>
+      <p>Demuestre la validez de:<br>
+      $1.\; P \to Q$,<br>
+      $2.\; P \lor R$,<br>
+      $3.\; \neg R$<br>
+      $\therefore\; Q$<br>
+      mediante reducción al absurdo.</p>
       <details class="solution">
         <summary>🔍 Ver demostración por contradicción</summary>
         <div class="solution-content">
@@ -1082,8 +1106,8 @@
 
     <h3 class="section-title" id="sec-5-2">5.2 Predicados y Cuantificadores</h3>
     <div class="callout callout-def">
-      <div class="callout-title">📌 Predicado y Universo de Discurso ($U$)</div>
-      <p style="margin:0;">Un <strong>predicado o función proposicional</strong> ($P(x), Q(x,y)$) es un enunciado con una o más variables que expresa una propiedad o relación. Adquiere valor de verdad cuando sus variables toman valores en el <strong>universo de discurso</strong> $U$.</p>
+      <div class="callout-title">📌 Predicado y Universo de Discurso</div>
+      <p style="margin:0;">Un <strong>predicado o función proposicional</strong> \((P(x), Q(x, y))\) es un enunciado con una o más variables que expresa una propiedad o relación. Adquiere valor de verdad cuando sus variables toman valores en el <strong>universo de discurso</strong> $U$.</p>
     </div>
 
     <div class="table-wrapper">
@@ -1106,7 +1130,7 @@
         <summary>🔍 Ver formalización simbólica</summary>
         <div class="solution-content">
           <ul>
-            <li><strong>Universo de discurso ($U$):</strong> Estudiantes de la facultad.</li>
+            <li><strong>Universo de discurso $(U)$:</strong> Estudiantes de la facultad.</li>
             <li><strong>Predicados:</strong> $ApruebaC(x)$: «$x$ aprueba Cálculo»; $ApruebaMD(x)$: «$x$ aprueba Matemáticas Discretas».</li>
           </ul>
           $$\forall x \, [ApruebaC(x) \land ApruebaMD(x)]$$
@@ -1122,7 +1146,9 @@
 
     <div class="example-box">
       <div class="example-header">🧩 Ejemplo 5.2: Simplificación de Negaciones Cuantificadas</div>
-      <p>Sea $U = \mathbb{R}$. Simplifique: <strong>a)</strong> $\neg \forall x [x > 3 \rightarrow x^2 > 9]$ y <strong>b)</strong> $\neg \forall x [f(x) = 0 \rightarrow x = 0]$.</p>
+      <p>Sea $U = \mathbb{R}$. Simplifique:<br>
+      <strong>a)</strong> $\neg \forall x [x > 3 \rightarrow x^2 > 9]$<br>
+      <strong>b)</strong> $\neg \forall x [f(x) = 0 \rightarrow x = 0]$.</p>
       <details class="solution">
         <summary>🔍 Ver resolución paso a paso</summary>
         <div class="solution-content">
@@ -1167,11 +1193,40 @@
     <div class="callout callout-note">
       <div class="callout-title">📝 Práctica de Cuantificadores</div>
       <ol style="margin:0;">
-        <li>En $\mathcal{U} = \mathbb{R}$, con $p(x): x^2 - 7x + 10 = 0$ y $y(x): \operatorname{sen}(x) = 0$, determine el valor de verdad de $p(2)$, $p(1)$, $y(\pi)$, $y(\pi/2)$, así como de $\forall x\,(x^2 \ge 0)$, $\exists x\,(x^2 + 1 = 0)$ y $\exists! x\,(x^2 = 0)$.</li>
-        <li>Simbolice formalmente: «Algunos programadores no toman café»; «Existe un número real negativo»; «No hay ningún número primo que sea par»; «Todos los números enteros son positivos o negativos»; «Existe un número natural que es menor o igual que cero»; «Todo número real es mayor que 5 o menor que 2».</li>
-        <li>Simplifique las negaciones en $U = \mathbb{R}$: $\neg \forall x [x^2 \ge 0]$, $\neg \exists x [x > 0 \land x^2 = 2]$, $\neg \exists x [1 < x < 5]$, $\neg \exists x [x \neq 1 \land (x < -2 \lor x \ge 4)]$, $\neg \forall x [x > 3 \rightarrow x^2 > 9]$, $\neg \exists x [f(x) = 0 \land x = 0]$.</li>
-        <li>Simplifique las negaciones en $U = \mathbb{N}$: $\neg \forall x [x + 1 > x]$, $\neg \exists x [x^2 = 2]$, $\neg \forall x [x \text{ es par} \lor x \text{ es impar}]$, $\neg \exists x [x > 0 \land x < 1]$, $\neg \forall x [x > 2 \rightarrow x \ge 3]$, $\neg \exists x [x \neq 0 \land x^2 = 0]$.</li>
-        <li>En $\mathcal{U} = \mathbb{Z}$, con $p(x): x \text{ es par}$, $q(x): x > 0$ y $r(x): x \text{ es múltiplo de } 5$, simbolice: (a) Todo entero es par o múltiplo de 5; (b) Existe un entero positivo y par; (c) Si un entero es múltiplo de 5, entonces no es positivo; (d) Un entero es par si, y solo si, es positivo; (e) No existe ningún entero par que no sea positivo.</li>
+        <li>En $\mathcal{U} = \mathbb{R}$, con $p(x): x^2 - 7x + 10 = 0$ y $y(x): \operatorname{sen}(x) = 0$,<br>
+        determine el valor de verdad de $p(2)$, $p(1)$, $y(\pi)$, $y(\pi/2)$,<br>
+        así como de $\forall x\,(x^2 \ge 0)$, $\exists x\,(x^2 + 1 = 0)$ y $\exists! x\,(x^2 = 0)$.</li>
+
+        <li>Simbolice formalmente:<br>
+        «Algunos programadores no toman café»;<br>
+        «Existe un número real negativo»;<br>
+        «No hay ningún número primo que sea par»;<br>
+        «Todos los números enteros son positivos o negativos»;<br>
+        «Existe un número natural que es menor o igual que cero»;<br>
+        «Todo número real es mayor que 5 o menor que 2».</li>
+
+        <li>Simplifique las negaciones en $U = \mathbb{R}$:<br>
+        $\neg \forall x [x^2 \ge 0]$,<br>
+        $\neg \exists x [x > 0 \land x^2 = 2]$,<br>
+        $\neg \exists x [1 < x < 5]$,<br>
+        $\neg \exists x [x \neq 1 \land (x < -2 \lor x \ge 4)]$,<br>
+        $\neg \forall x [x > 3 \rightarrow x^2 > 9]$,<br>
+        $\neg \exists x [f(x) = 0 \land x = 0]$.</li>
+
+        <li>Simplifique las negaciones en $U = \mathbb{N}$:<br>
+        $\neg \forall x [x + 1 > x]$,<br>
+        $\neg \exists x [x^2 = 2]$,<br>
+        $\neg \forall x [x \text{ es par} \lor x \text{ es impar}]$,<br>
+        $\neg \exists x [x > 0 \land x < 1]$,<br>
+        $\neg \forall x [x > 2 \rightarrow x \ge 3]$,<br>
+        $\neg \exists x [x \neq 0 \land x^2 = 0]$.</li>
+
+        <li>En $\mathcal{U} = \mathbb{Z}$, con $p(x): x \text{ es par}$, $q(x): x > 0$ y $r(x): x \text{ es múltiplo de } 5$, simbolice:<br>
+        (a) Todo entero es par o múltiplo de 5;<br>
+        (b) Existe un entero positivo y par;<br>
+        (c) Si un entero es múltiplo de 5, entonces no es positivo;<br>
+        (d) Un entero es par si, y solo si, es positivo;<br>
+        (e) No existe ningún entero par que no sea positivo.</li>
       </ol>
     </div>
 
