@@ -639,12 +639,27 @@
         <details class="solution">
           <summary>🔍 Ver solución</summary>
           <div class="solution-content">
-            <ol>
-              <li>$I = \{x \in \mathbb{N} \mid x = 2k - 1 \text{ para algún } k \in \mathbb{N}\}$.</li>
-              <li>$M = \{x \in \mathbb{R} \mid x > 5\}$. Es un <strong>conjunto infinito</strong> no numerable; es
-                imposible representarlo por extensión.</li>
-              <li>$B = \{x \in \mathbb{N} \mid x = 7k \text{ con } k \in \mathbb{N} \land 1 \leq k \leq 5\}$.</li>
-            </ol>
+
+            <p><strong>Primero:</strong></p>
+            <!-- Ecuación centrada. Usamos $$ para modo display si usas MathJax, o el div con text-align -->
+            <div style="text-align: center; margin: 10px 0;">
+              \(I = \{x \in \mathbb{N} \mid x = 2k - 1\}\)
+            </div>
+            <p style="margin-top: 0;">para algún \(k \in \mathbb{N}\).</p>
+
+            <p><strong>Luego:</strong></p>
+            <div style="text-align: center; margin: 10px 0;">
+              \(M = \{x \in \mathbb{R} \mid x > 5\}\)
+            </div>
+            <p style="margin-top: 0;">Es un <strong>conjunto infinito</strong> no numerable; es imposible representarlo
+              por extensión.</p>
+
+            <p><strong>Finalmente:</strong></p>
+            <div style="text-align: center; margin: 10px 0;">
+              \(B = \{x \in \mathbb{N} \mid x = 7k\}\)
+            </div>
+            <p style="margin-top: 0;">con \(k \in \mathbb{N}\) y \(1 \leq k \leq 5\).</p>
+
           </div>
         </details>
       </div>
@@ -727,124 +742,146 @@
           rectángulo $U$ delimita el universo, los círculos representan los conjuntos y las regiones sombreadas indican
           la solución.</p>
       </div>
-<div class="example-box" style="font-family: sans-serif; color: #cbd5e1;">
-  <div class="example-header" style="font-weight: bold; margin-bottom: 10px; color: #e2e8f0;">🧩 Ejemplo 2.1: Operación Combinada</div>
-  <p>Sea:<br>
-    \(U = \{1, \cdots, 10\}\)<br>
-    \(A = \{1, 2, 3, 4, 5\}\)<br>
-    \(B = \{4, 5, 6, 7\}\)<br>
-    \(C = \{2, 4, 8, 9\}\).<br>
-    Halle por extensión:
-    $$\left[ (A \cup B) - C \right]^c \cap (A \triangle B)$$</p>
+      <div class="example-box" style="font-family: sans-serif; color: #cbd5e1;">
+        <div class="example-header" style="font-weight: bold; margin-bottom: 10px; color: #e2e8f0;">🧩 Ejemplo 2.1:
+          Operación Combinada</div>
+        <p>Sea:<br>
+          \(U = \{1, \cdots, 10\}\)<br>
+          \(A = \{1, 2, 3, 4, 5\}\)<br>
+          \(B = \{4, 5, 6, 7\}\)<br>
+          \(C = \{2, 4, 8, 9\}\).<br>
+          Halle por extensión:
+          $$\left[ (A \cup B) - C \right]^c \cap (A \triangle B)$$</p>
 
-  <!-- INICIO DEL DIAGRAMA DE VENN SVG -->
-  <div style="text-align: center; margin: 30px 0;">
-      <svg viewBox="0 0 500 420" style="max-width: 500px; width: 100%; height: auto; background-color: transparent;">
+        <!-- INICIO DEL DIAGRAMA DE VENN SVG -->
+        <div style="text-align: center; margin: 30px 0;">
+          <svg viewBox="0 0 500 420"
+            style="max-width: 500px; width: 100%; height: auto; background-color: transparent;">
+            <!-- Rectángulo del conjunto Universal (U) -->
+            <rect x="5" y="5" width="490" height="410" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
+            <text x="460" y="35" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">U</text>
+
+            <!-- Círculos de los conjuntos (con transparencia) -->
+            <circle cx="180" cy="170" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2" />
+            <circle cx="320" cy="170" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2" />
+            <circle cx="250" cy="280" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2" />
+
+            <!-- Etiquetas de los conjuntos (A, B, C) -->
+            <text x="100" y="60" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">A</text>
+            <text x="390" y="60" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">B</text>
+            <text x="250" y="410" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">C</text>
+
+            <!-- ================= ELEMENTOS EN LAS REGIONES ================= -->
+            <!-- Región: Solo A -->
+            <text x="130" y="130" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">1, 3</text>
+
+            <!-- Región: Solo B -->
+            <text x="370" y="130" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">6, 7</text>
+
+            <!-- Región: Solo C -->
+            <text x="250" y="330" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">8, 9</text>
+
+            <!-- Región: A ∩ B (exclusivo) -->
+            <text x="250" y="120" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">5</text>
+
+            <!-- Región: A ∩ C (exclusivo) - RESULTADO FINAL -->
+            <!-- Resaltado en amarillo porque es la respuesta al ejercicio -->
+            <text x="195" y="240" font-family="sans-serif" font-size="18" font-weight="bold" fill="#fbbf24"
+              text-anchor="middle" dominant-baseline="middle">2</text>
+
+            <!-- Región: B ∩ C (exclusivo) -> Vacío, no hay números -->
+
+            <!-- Región: A ∩ B ∩ C (Centro) -->
+            <text x="250" y="200" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">4</text>
+
+            <!-- Región: Fuera de los conjuntos (U - A - B - C) -->
+            <text x="450" y="380" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">10</text>
+          </svg>
+        </div>
+        <!-- FIN DEL DIAGRAMA DE VENN SVG -->
+
+        <details class="solution">
+          <summary style="cursor: pointer; color: #38bdf8; font-weight: bold;">🔍 Ver resolución paso a paso</summary>
+
+          <!-- Reduje el padding-left a 10px para dar más espacio -->
+          <div style="margin-top: 10px; padding-left: 10px; border-left: 2px solid #38bdf8;">
+
+            <strong>Primero:</strong><br>
+            <!-- overflow-x: auto permite hacer scroll horizontal si es necesario -->
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              \(A \cup B = \{1, 2, 3, 4, 5, 6, 7\}\)
+            </div>
+
+            <strong>Luego:</strong><br>
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              \((A \cup B) - C = \{1, 3, 5, 6, 7\}\)<br>
+              \([(A \cup B) - C]^c = \{2, 4, 8, 9, 10\}\)
+            </div>
+
+            <strong>Finalmente:</strong><br>
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              \(A \triangle B = \{1, 2, 3, 6, 7\}\)
+            </div>
+
+            <strong>Por lo tanto:</strong><br>
+            <!-- AQUÍ ESTÁ LA SOLUCIÓN AL CORTE: Dividimos la ecuación en dos líneas -->
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              \(\{2, 4, 8, 9, 10\} \cap \{1, 2, 3, 6, 7\}\)<br>
+              \(= \mathbf{\{2\}}\)
+            </div>
+
+          </div>
+        </details>
+      </div>
+
+      <h4 class="sub-title" style="color: #e2e8f0; font-family: sans-serif;">Cardinalidad y Principio de
+        Inclusión-Exclusión</h4>
+      <p style="color: #cbd5e1; font-family: sans-serif;">El cardinal \(|A|\) es el número de elementos distintos de
+        \(A\). Cuantitativamente, un diagrama de Venn se divide
+        en regiones disjuntas \((x, y, z, w)\):</p>
+
+      <!-- INICIO DEL DIAGRAMA SVG -->
+      <div style="text-align: center; margin: 30px 0;">
+        <svg viewBox="0 0 400 240" style="max-width: 450px; width: 100%; height: auto; background-color: transparent;">
           <!-- Rectángulo del conjunto Universal (U) -->
-          <rect x="5" y="5" width="490" height="410" rx="15" fill="none" stroke="#64748b" stroke-width="2"/>
-          <text x="460" y="35" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">U</text>
+          <rect x="5" y="5" width="390" height="230" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
 
-          <!-- Círculos de los conjuntos (con transparencia) -->
-          <circle cx="180" cy="170" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2"/>
-          <circle cx="320" cy="170" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2"/>
-          <circle cx="250" cy="280" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2"/>
+          <!-- Círculo del conjunto A -->
+          <circle cx="150" cy="120" r="80" fill="rgba(165, 180, 252, 0.15)" stroke="#818cf8" stroke-width="2" />
 
-          <!-- Etiquetas de los conjuntos (A, B, C) -->
-          <text x="100" y="60" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">A</text>
-          <text x="390" y="60" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">B</text>
-          <text x="250" y="410" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">C</text>
+          <!-- Círculo del conjunto B -->
+          <circle cx="250" cy="120" r="80" fill="rgba(165, 180, 252, 0.15)" stroke="#818cf8" stroke-width="2" />
 
-          <!-- ================= ELEMENTOS EN LAS REGIONES ================= -->
-          <!-- Región: Solo A -->
-          <text x="130" y="130" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">1, 3</text>
+          <!-- Textos de los conjuntos (U, A, B) -->
+          <text x="350" y="30" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">U</text>
+          <text x="90" y="50" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">A</text>
+          <text x="280" y="50" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">B</text>
 
-          <!-- Región: Solo B -->
-          <text x="370" y="130" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">6, 7</text>
-
-          <!-- Región: Solo C -->
-          <text x="250" y="330" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">8, 9</text>
-
-          <!-- Región: A ∩ B (exclusivo) -->
-          <text x="250" y="120" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">5</text>
-
-          <!-- Región: A ∩ C (exclusivo) - RESULTADO FINAL -->
-          <!-- Resaltado en amarillo porque es la respuesta al ejercicio -->
-          <text x="195" y="240" font-family="sans-serif" font-size="18" font-weight="bold" fill="#fbbf24" text-anchor="middle" dominant-baseline="middle">2</text>
-
-          <!-- Región: B ∩ C (exclusivo) -> Vacío, no hay números -->
-
-          <!-- Región: A ∩ B ∩ C (Centro) -->
-          <text x="250" y="200" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">4</text>
-
-          <!-- Región: Fuera de los conjuntos (U - A - B - C) -->
-          <text x="450" y="380" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle" dominant-baseline="middle">10</text>
-      </svg>
-  </div>
-  <!-- FIN DEL DIAGRAMA DE VENN SVG -->
-
-  <details class="solution">
-    <summary style="cursor: pointer; color: #38bdf8; font-weight: bold;">🔍 Ver resolución paso a paso</summary>
-    <div style="margin-top: 10px; padding-left: 15px; border-left: 2px solid #38bdf8;">
-      <strong>Primero:</strong><br>
-      <div style="text-align: center; margin: 0.4em 0;">
-        \(A \cup B = \{1, 2, 3, 4, 5, 6, 7\}\)
+          <!-- Textos de las regiones (x, y, z, w) -->
+          <text x="105" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle">x</text>
+          <text x="200" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle">y</text>
+          <text x="295" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle">z</text>
+          <text x="50" y="210" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle">w</text>
+        </svg>
       </div>
+      <!-- FIN DEL DIAGRAMA SVG -->
 
-      <strong>Luego:</strong><br>
-      <div style="text-align: center; margin: 0.4em 0;">
-        \((A \cup B) - C = \{1, 3, 5, 6, 7\}\)<br>
-        \([(A \cup B) - C]^c = \{2, 4, 8, 9, 10\}\)<br>
-      </div>
-
-      <strong>Finalmente:</strong><br>
-      <div style="text-align: center; margin: 0.4em 0;">
-        \(A \triangle B = \{1, 2, 3, 6, 7\}\)
-      </div>
-
-      <strong>Por lo tanto:</strong><br>
-      <div style="text-align: center; margin: 0.4em 0;">
-        \(\{2, 4, 8, 9, 10\} \cap \{1, 2, 3, 6, 7\} = \mathbf{\{2\}}\)
-      </div>
-    </div>
-  </details>
-</div>
-
-<h4 class="sub-title" style="color: #e2e8f0; font-family: sans-serif;">Cardinalidad y Principio de Inclusión-Exclusión</h4>
-<p style="color: #cbd5e1; font-family: sans-serif;">El cardinal \(|A|\) es el número de elementos distintos de \(A\). Cuantitativamente, un diagrama de Venn se divide
-  en regiones disjuntas \((x, y, z, w)\):</p>
-
-<!-- INICIO DEL DIAGRAMA SVG -->
-<div style="text-align: center; margin: 30px 0;">
-    <svg viewBox="0 0 400 240" style="max-width: 450px; width: 100%; height: auto; background-color: transparent;">
-        <!-- Rectángulo del conjunto Universal (U) -->
-        <rect x="5" y="5" width="390" height="230" rx="15" fill="none" stroke="#64748b" stroke-width="2"/>
-
-        <!-- Círculo del conjunto A -->
-        <circle cx="150" cy="120" r="80" fill="rgba(165, 180, 252, 0.15)" stroke="#818cf8" stroke-width="2"/>
-
-        <!-- Círculo del conjunto B -->
-        <circle cx="250" cy="120" r="80" fill="rgba(165, 180, 252, 0.15)" stroke="#818cf8" stroke-width="2"/>
-
-        <!-- Textos de los conjuntos (U, A, B) -->
-        <text x="350" y="30" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">U</text>
-        <text x="90" y="50" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">A</text>
-        <text x="280" y="50" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">B</text>
-
-        <!-- Textos de las regiones (x, y, z, w) -->
-        <text x="105" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic" text-anchor="middle" dominant-baseline="middle">x</text>
-        <text x="200" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic" text-anchor="middle" dominant-baseline="middle">y</text>
-        <text x="295" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic" text-anchor="middle" dominant-baseline="middle">z</text>
-        <text x="50" y="210" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic" text-anchor="middle" dominant-baseline="middle">w</text>
-    </svg>
-</div>
-<!-- FIN DEL DIAGRAMA SVG -->
-
-<ul style="color: #cbd5e1; font-family: sans-serif;">
-  <li>\(x\): elementos exclusivos de \(A\) \((|A - B| = x)\).</li>
-  <li>\(y\): elementos en la intersección \((|A \cap B| = y)\).</li>
-  <li>\(z\): elementos exclusivos de \(B\) \((|B - A| = z)\).</li>
-  <li>\(w\): elementos externos \((|(A \cup B)^c| = w)\).</li>
-</ul>
+      <ul style="color: #cbd5e1; font-family: sans-serif;">
+        <li>\(x\): elementos exclusivos de \(A\) \((|A - B| = x)\).</li>
+        <li>\(y\): elementos en la intersección \((|A \cap B| = y)\).</li>
+        <li>\(z\): elementos exclusivos de \(B\) \((|B - A| = z)\).</li>
+        <li>\(w\): elementos externos \((|(A \cup B)^c| = w)\).</li>
+      </ul>
 
       <div class="callout callout-thm">
         <div class="callout-title">📐 Teorema: Propiedades de Cardinales</div>
@@ -907,25 +944,39 @@
         <details class="solution">
           <summary>🔍 Ver solución</summary>
           <div class="solution-content">
-            <p>Sean \(P\) (Python), \(D\) (Discretas) y \(U\) (100). Datos: \(|P|=60, |D|=40, |P \cap D|=20\).</p>
+            <!-- Separamos la introducción de los datos -->
+            <p style="margin-bottom: 10px;">Sean \(P\) (Python), \(D\) (Discretas) y \(U\) (100).</p>
+
+            <!-- Los datos ahora están centrados y separados para que no se corten -->
+
+            <div style="text-align: center; overflow-x: auto; margin-bottom: 15px;">
+              $$
+              |P|=60, \quad |D|=40, \quad |P \cap D|=20
+              $$
+            </div>
 
             <strong>Primero:</strong><br>
-            $$
-            \begin{aligned}
-            |P \cup D| &= |P| + |D| - |P \cap D| \\
-            &= 60 + 40 - 20 \\
-            &= \mathbf{80}.
-            \end{aligned}
-            $$
+            <!-- Contenedor con scroll horizontal automático por si acaso -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              |P \cup D| &= |P| + |D| - |P \cap D| \\
+              &= 60 + 40 - 20 \\
+              &= \mathbf{80}.
+              \end{aligned}
+              $$
+            </div>
 
             <strong>Segundo:</strong><br>
-            $$
-            \begin{aligned}
-            |(P \cup D)^c| &= |U| - |P \cup D| \\
-            &= 100 - 80 \\
-            &= \mathbf{20}.
-            \end{aligned}
-            $$
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              |(P \cup D)^c| &= |U| - |P \cup D| \\
+              &= 100 - 80 \\
+              &= \mathbf{20}.
+              \end{aligned}
+              $$
+            </div>
           </div>
         </details>
       </div>
@@ -976,27 +1027,58 @@
           </table>
         </div>
       </div>
-
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 3.1: Cálculo con Índices</div>
-        <p>Con:<br>
-          $I = \{1, 2, 3\}$<br>
-          $A_1 = \{1, 2, 3\}$<br>
-          $A_2 = \{2, 3, 4\}$<br>
-          $A_3 = \{3, 4, 5\}$.<br>
-          Determine $\mathcal{A}$, su unión e intersección generalizada.</p>
+
+        <p style="margin-bottom: 5px;">Con:</p>
+
+        <!-- Agrupamos los datos iniciales para que se vean ordenados -->
+        <div style="text-align: center; overflow-x: auto; margin-bottom: 10px;">
+          $$
+          \begin{aligned}
+          I &= \{1, 2, 3\} \\
+          A_1 &= \{1, 2, 3\} \\
+          A_2 &= \{2, 3, 4\} \\
+          A_3 &= \{3, 4, 5\}
+          \end{aligned}
+          $$
+        </div>
+
+        <p>Determine la familia \(\mathcal{A}\), su unión e intersección generalizada.</p>
+
         <details class="solution">
           <summary>🔍 Ver solución</summary>
           <div class="solution-content">
-            <ul>
-              <li>$\mathcal{A} = \{\{1, 2, 3\}, \{2, 3, 4\}, \{3, 4, 5\}\}$.</li>
-              <li>$\bigcup_{i \in I} A_i = \{1, 2, 3, 4, 5\}$.</li>
-              <li>$\bigcap_{i \in I} A_i = \{3\}$.</li>
-            </ul>
+
+            <strong>Primero:</strong><br>
+            <!-- Dividimos el conjunto largo en 3 líneas usando aligned -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              \mathcal{A} &= \{ \{1, 2, 3\}, \\
+              &\quad \{2, 3, 4\}, \\
+              &\quad \{3, 4, 5\} \}.
+              \end{aligned}
+              $$
+            </div>
+
+            <strong>Luego:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \bigcup_{i \in I} A_i = \{1, 2, 3, 4, 5\}
+              $$
+            </div>
+
+            <strong>Finalmente:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \bigcap_{i \in I} A_i = \{3\}
+              $$
+            </div>
+
           </div>
         </details>
       </div>
-
       <h3 class="section-title" id="sec-3-2">3.2 La Familia Potencia (Conjunto Potencia)</h3>
       <div class="callout callout-def">
         <div class="callout-title">📌 Definición: Conjunto Potencia</div>
@@ -1004,43 +1086,49 @@
           y $A)$. Su cardinalidad cumple el teorema:
           $$\left| \mathcal{P}(A) \right| = 2^{|A|}$$</p>
       </div>
-
-
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 3.2: Construcción Progresiva del Conjunto Potencia</div>
-        <p>Determine:<br>
-          $\mathcal{P}(V)$ para $V = \emptyset$<br>
-          $\mathcal{P}(B)$ para $B = \{a\}$<br>
-          $\mathcal{P}(A)$ para $A = \{a, b\}$.</p>
+
+        <p>Determine:</p>
+        <!-- Datos iniciales centrados -->
+        <div style="text-align: center; overflow-x: auto; margin-bottom: 15px;">
+          $$
+          \begin{aligned}
+          \mathcal{P}(V) &\text{ para } V = \emptyset \\
+          \mathcal{P}(B) &\text{ para } B = \{a\} \\
+          \mathcal{P}(A) &\text{ para } A = \{a, b\}.
+          \end{aligned}
+          $$
+        </div>
+
         <details class="solution">
           <summary>🔍 Ver solución</summary>
           <div class="solution-content">
-            <table style="font-size: 0.9em;">
-              <thead>
-                <tr>
-                  <th>Conjunto</th>
-                  <th>Conjunto Potencia</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>$V = \emptyset$</td>
-                  <td>$\mathcal{P}(V) = \{\emptyset\}$</td>
-                </tr>
-                <tr>
-                  <td>$B = \{a\}$</td>
-                  <td>$\mathcal{P}(B) = \{\emptyset, \{a\}\}$</td>
-                </tr>
-                <tr>
-                  <td>$A = \{a, b\}$</td>
-                  <td>$\mathcal{P}(A) = \{\emptyset, \{a\}, \{b\}, A\}$</td>
-                </tr>
-              </tbody>
-            </table>
+
+            <strong>Primero:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$V = \emptyset \implies \mathcal{P}(V) = \{\emptyset\}$$
+            </div>
+
+            <strong>Luego:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$B = \{a\} \implies \mathcal{P}(B) = \{\emptyset, \{a\}\}$$
+            </div>
+
+            <strong>Finalmente:</strong><br>
+            <!-- La última ecuación es larga, la dividimos en dos líneas -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              A &= \{a, b\} \\
+              \mathcal{P}(A) &= \{\emptyset, \{a\}, \{b\}, A\}
+              \end{aligned}
+              $$
+            </div>
+
           </div>
         </details>
       </div>
-
       <h3 class="section-title" id="sec-3-3">3.3 La Subfamilia Partición</h3>
       <div class="callout callout-def">
         <div class="callout-title">📌 Definición: Conjunto Partición</div>
@@ -1158,183 +1246,186 @@
           </tbody>
         </table>
       </div>
-<h3 class="section-title" id="sec-5-2">5.2 Teoremas bajo Hipótesis de Inclusión \((A \subseteq B)\)</h3>
+      <h3 class="section-title" id="sec-5-2">5.2 Teoremas bajo Hipótesis de Inclusión \((A \subseteq B)\)</h3>
 
-<div class="callout callout-thm">
-  <div class="callout-title">📐 Teoremas de Inclusión</div>
+      <div class="callout callout-thm">
+        <div class="callout-title">📐 Teoremas de Inclusión</div>
 
-  <!-- INICIO DEL DIAGRAMA SVG (A subconjunto de B) -->
-  <div style="text-align: center; margin: 20px 0 25px 0;">
-      <svg viewBox="0 0 400 240" style="max-width: 350px; width: 100%; height: auto; background-color: transparent;">
-          <!-- Rectángulo del conjunto Universal (U) -->
-          <rect x="5" y="5" width="390" height="230" rx="15" fill="none" stroke="#64748b" stroke-width="2"/>
-          <text x="350" y="30" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">U</text>
+        <!-- INICIO DEL DIAGRAMA SVG (A subconjunto de B) -->
+        <div style="text-align: center; margin: 20px 0 25px 0;">
+          <svg viewBox="0 0 400 240"
+            style="max-width: 350px; width: 100%; height: auto; background-color: transparent;">
+            <!-- Rectángulo del conjunto Universal (U) -->
+            <rect x="5" y="5" width="390" height="230" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
+            <text x="350" y="30" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">U</text>
 
-          <!-- Círculo del conjunto B (Contenedor) -->
-          <circle cx="200" cy="125" r="100" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2"/>
-          <text x="280" y="60" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">B</text>
+            <!-- Círculo del conjunto B (Contenedor) -->
+            <circle cx="200" cy="125" r="100" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2" />
+            <text x="280" y="60" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">B</text>
 
-          <!-- Círculo del conjunto A (Contenido) -->
-          <circle cx="170" cy="125" r="55" fill="rgba(129, 140, 248, 0.35)" stroke="#818cf8" stroke-width="2"/>
-          <text x="150" y="60" font-family="serif" font-size="20" fill="#e2e8f0" font-style="italic">A</text>
+            <!-- Círculo del conjunto A (Contenido) -->
+            <circle cx="170" cy="125" r="55" fill="rgba(129, 140, 248, 0.35)" stroke="#818cf8" stroke-width="2" />
+            <text x="150" y="60" font-family="serif" font-size="20" fill="#e2e8f0" font-style="italic">A</text>
 
-          <!-- Etiqueta de la región B - A -->
-          <text x="255" y="130" font-family="serif" font-size="14" fill="#94a3b8" text-anchor="middle" dominant-baseline="middle" font-style="italic">B - A</text>
-      </svg>
-  </div>
-  <!-- FIN DEL DIAGRAMA SVG -->
+            <!-- Etiqueta de la región B - A -->
+            <text x="255" y="130" font-family="serif" font-size="14" fill="#94a3b8" text-anchor="middle"
+              dominant-baseline="middle" font-style="italic">B - A</text>
+          </svg>
+        </div>
+        <!-- FIN DEL DIAGRAMA SVG -->
 
-  <ul style="margin:0;">
-    <li>
-      <strong>Unión:</strong><br>
-      $$A \subseteq B \iff A \cup B = B$$
-    </li>
-    <li>
-      <strong>Intersección:</strong><br>
-      $$A \subseteq B \iff A \cap B = A$$
-    </li>
-    <li>
-      <strong>Diferencia:</strong><br>
-      $$A \subseteq B \Rightarrow A - B = \emptyset$$
-    </li>
-    <li>
-      <strong>Universo:</strong><br>
-      $$A \subseteq B \Rightarrow A^c \cup B = U$$
-    </li>
-  </ul>
-</div>
+        <ul style="margin:0;">
+          <li>
+            <strong>Unión:</strong><br>
+            $$A \subseteq B \iff A \cup B = B$$
+          </li>
+          <li>
+            <strong>Intersección:</strong><br>
+            $$A \subseteq B \iff A \cap B = A$$
+          </li>
+          <li>
+            <strong>Diferencia:</strong><br>
+            $$A \subseteq B \Rightarrow A - B = \emptyset$$
+          </li>
+          <li>
+            <strong>Universo:</strong><br>
+            $$A \subseteq B \Rightarrow A^c \cup B = U$$
+          </li>
+        </ul>
+      </div>
       <h3 class="section-title" id="sec-5-3">5.3 Estrategias y Esquemas de Demostración</h3>
       <p>Para demostrar teoremas algebraicos de conjuntos, se introduce un elemento arbitrario $x$ y se aplican reglas
         de inferencia lógica basadas en los 4 casos estructurales de hipótesis y tesis:</p>
-<div style="overflow-x: auto; font-family: sans-serif;">
-  <table style="width: 100%; border-collapse: collapse; text-align: left; color: #cbd5e1; font-size: 0.95em; line-height: 1.6;">
-    <!-- ENCABEZADO -->
-    <thead>
-      <tr style="border-top: 1px solid #64748b; border-bottom: 1px solid #64748b; color: #60a5fa;">
-        <th style="padding: 12px 8px; font-weight: normal; text-align: center; width: 5%;">Caso</th>
-        <th style="padding: 12px 8px; font-weight: normal; width: 30%;">Forma General</th>
-        <th style="padding: 12px 8px; font-weight: normal; width: 25%;">Objetivo</th>
-        <th style="padding: 12px 8px; font-weight: normal; width: 40%;">Esquema de Demostración</th>
-      </tr>
-    </thead>
+      <div style="overflow-x: auto; font-family: sans-serif;">
+        <table
+          style="width: 100%; border-collapse: collapse; text-align: left; color: #cbd5e1; font-size: 0.95em; line-height: 1.6;">
+          <!-- ENCABEZADO -->
+          <thead>
+            <tr style="border-top: 1px solid #64748b; border-bottom: 1px solid #64748b; color: #60a5fa;">
+              <th style="padding: 12px 8px; font-weight: normal; text-align: center; width: 5%;">Caso</th>
+              <th style="padding: 12px 8px; font-weight: normal; width: 30%;">Forma General</th>
+              <th style="padding: 12px 8px; font-weight: normal; width: 25%;">Objetivo</th>
+              <th style="padding: 12px 8px; font-weight: normal; width: 40%;">Esquema de Demostración</th>
+            </tr>
+          </thead>
 
-    <!-- CUERPO DE LA TABLA -->
-    <tbody>
-      <!-- CASO 1 -->
-      <tr style="border-bottom: 1px solid #334155;">
-        <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">1</td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          \((C_1 \subseteq C_2) \Rightarrow (C_3 \subseteq C_4)\)
-        </td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          Inclusión:<br>
-          \(C_3 \subseteq C_4\)
-        </td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          <div style="display: flex; flex-direction: column; gap: 4px;">
-            <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
-            <span>2. &nbsp; \(x \in C_3\)</span>
-            <div style="border-top: 1px solid #64748b; width: 100px; margin: 4px 0;"></div>
-            <span>&there4; &nbsp; \(x \in C_4\)</span>
-          </div>
-        </td>
-      </tr>
+          <!-- CUERPO DE LA TABLA -->
+          <tbody>
+            <!-- CASO 1 -->
+            <tr style="border-bottom: 1px solid #334155;">
+              <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">1</td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                \((C_1 \subseteq C_2) \Rightarrow (C_3 \subseteq C_4)\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                Inclusión:<br>
+                \(C_3 \subseteq C_4\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                  <span>2. &nbsp; \(x \in C_3\)</span>
+                  <div style="border-top: 1px solid #64748b; width: 100px; margin: 4px 0;"></div>
+                  <span>&there4; &nbsp; \(x \in C_4\)</span>
+                </div>
+              </td>
+            </tr>
 
-      <!-- CASO 2 -->
-      <tr style="border-bottom: 1px solid #64748b;">
-        <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">2</td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          \((C_1 \subseteq C_2) \Rightarrow (C_3 = C_4)\)
-        </td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          Dos inclusiones:<br>
-          \(C_3 \subseteq C_4\) y \(C_4 \subseteq C_3\)
-        </td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          <!-- Uso de flexbox para poner los esquemas i y ii lado a lado -->
-          <div style="display: flex; gap: 30px;">
-            <!-- Esquema i) -->
-            <div style="display: flex; flex-direction: column; gap: 4px;">
-              <span style="margin-bottom: 4px;">i)</span>
-              <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
-              <span>2. &nbsp; \(x \in C_3\)</span>
-              <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
-              <span>&there4; &nbsp; \(x \in C_4\)</span>
-            </div>
-            <!-- Esquema ii) -->
-            <div style="display: flex; flex-direction: column; gap: 4px;">
-              <span style="margin-bottom: 4px;">ii)</span>
-              <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
-              <span>2. &nbsp; \(x \in C_4\)</span>
-              <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
-              <span>&there4; &nbsp; \(x \in C_3\)</span>
-            </div>
-          </div>
-        </td>
-      </tr>
+            <!-- CASO 2 -->
+            <tr style="border-bottom: 1px solid #64748b;">
+              <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">2</td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                \((C_1 \subseteq C_2) \Rightarrow (C_3 = C_4)\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                Dos inclusiones:<br>
+                \(C_3 \subseteq C_4\) y \(C_4 \subseteq C_3\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                <!-- Uso de flexbox para poner los esquemas i y ii lado a lado -->
+                <div style="display: flex; gap: 30px;">
+                  <!-- Esquema i) -->
+                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span style="margin-bottom: 4px;">i)</span>
+                    <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                    <span>2. &nbsp; \(x \in C_3\)</span>
+                    <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
+                    <span>&there4; &nbsp; \(x \in C_4\)</span>
+                  </div>
+                  <!-- Esquema ii) -->
+                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span style="margin-bottom: 4px;">ii)</span>
+                    <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                    <span>2. &nbsp; \(x \in C_4\)</span>
+                    <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
+                    <span>&there4; &nbsp; \(x \in C_3\)</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
 
-      <!-- CASO 3 -->
-      <tr style="border-bottom: 1px solid #334155;">
-        <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">3</td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          \((C_1 = C_2) \Rightarrow (C_3 \subseteq C_4)\)
-        </td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          Inclusión:<br>
-          \(C_3 \subseteq C_4\)
-        </td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          <div style="display: flex; flex-direction: column; gap: 4px;">
-            <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
-            <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
-            <span>3. &nbsp; \(x \in C_3\)</span>
-            <div style="border-top: 1px solid #64748b; width: 100px; margin: 4px 0;"></div>
-            <span>&there4; &nbsp; \(x \in C_4\)</span>
-          </div>
-        </td>
-      </tr>
+            <!-- CASO 3 -->
+            <tr style="border-bottom: 1px solid #334155;">
+              <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">3</td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                \((C_1 = C_2) \Rightarrow (C_3 \subseteq C_4)\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                Inclusión:<br>
+                \(C_3 \subseteq C_4\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                  <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
+                  <span>3. &nbsp; \(x \in C_3\)</span>
+                  <div style="border-top: 1px solid #64748b; width: 100px; margin: 4px 0;"></div>
+                  <span>&there4; &nbsp; \(x \in C_4\)</span>
+                </div>
+              </td>
+            </tr>
 
-      <!-- CASO 4 -->
-      <tr style="border-bottom: 1px solid #64748b;">
-        <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">4</td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          \((C_1 = C_2) \Rightarrow (C_3 = C_4)\)
-        </td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          Dos inclusiones:<br>
-          \(C_3 \subseteq C_4\) y \(C_4 \subseteq C_3\)
-        </td>
-        <td style="padding: 15px 8px; vertical-align: top;">
-          <div style="display: flex; gap: 30px;">
-            <!-- Esquema i) -->
-            <div style="display: flex; flex-direction: column; gap: 4px;">
-              <span style="margin-bottom: 4px;">i)</span>
-              <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
-              <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
-              <span>3. &nbsp; \(x \in C_3\)</span>
-              <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
-              <span>&there4; &nbsp; \(x \in C_4\)</span>
-            </div>
-            <!-- Esquema ii) -->
-            <div style="display: flex; flex-direction: column; gap: 4px;">
-              <span style="margin-bottom: 4px;">ii)</span>
-              <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
-              <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
-              <span>3. &nbsp; \(x \in C_4\)</span>
-              <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
-              <span>&there4; &nbsp; \(x \in C_3\)</span>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+            <!-- CASO 4 -->
+            <tr style="border-bottom: 1px solid #64748b;">
+              <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">4</td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                \((C_1 = C_2) \Rightarrow (C_3 = C_4)\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                Dos inclusiones:<br>
+                \(C_3 \subseteq C_4\) y \(C_4 \subseteq C_3\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                <div style="display: flex; gap: 30px;">
+                  <!-- Esquema i) -->
+                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span style="margin-bottom: 4px;">i)</span>
+                    <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                    <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
+                    <span>3. &nbsp; \(x \in C_3\)</span>
+                    <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
+                    <span>&there4; &nbsp; \(x \in C_4\)</span>
+                  </div>
+                  <!-- Esquema ii) -->
+                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span style="margin-bottom: 4px;">ii)</span>
+                    <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                    <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
+                    <span>3. &nbsp; \(x \in C_4\)</span>
+                    <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
+                    <span>&there4; &nbsp; \(x \in C_3\)</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-  <!-- NOTA AL PIE -->
-  <p style="margin-top: 15px; font-style: italic; font-size: 0.9em; color: #94a3b8;">
-    <em>Nota:</em> El símbolo \(\therefore\) (por lo tanto) indica la conclusión lógica a la que se debe llegar.
-  </p>
-</div>
+        <!-- NOTA AL PIE -->
+        <p style="margin-top: 15px; font-style: italic; font-size: 0.9em; color: #94a3b8;">
+          <em>Nota:</em> El símbolo \(\therefore\) (por lo tanto) indica la conclusión lógica a la que se debe llegar.
+        </p>
+      </div>
 
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 5.1: Demostración Formal</div>
