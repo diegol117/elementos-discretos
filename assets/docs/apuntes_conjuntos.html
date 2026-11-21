@@ -460,28 +460,38 @@
       }
     }
 
-        /* ===== CORRECCIÓN DEL ESPACIO EN BLANCO (DESBORDAMIENTO HORIZONTAL) ===== */
+    /* ===== CORRECCIÓN DEL ESPACIO EN BLANCO (DESBORDAMIENTO HORIZONTAL) ===== */
 
     /* 1. Evita que la página se estire más allá de la pantalla */
-    html, body {
+    html,
+    body {
       overflow-x: hidden !important;
       width: 100%;
       max-width: 100vw;
     }
 
     /* 2. Obliga a todos los medios (SVG, imágenes, videos) a adaptarse al ancho de la pantalla */
-    img, svg, video, iframe, canvas {
+    img,
+    svg,
+    video,
+    iframe,
+    canvas {
       max-width: 100% !important;
       height: auto !important;
     }
 
     /* 3. Asegura que los contenedores flexibles permitan a los hijos encogerse */
-    .container, .card, .example-box, .callout, .solution-content {
+    .container,
+    .card,
+    .example-box,
+    .callout,
+    .solution-content {
       min-width: 0;
     }
 
     /* 4. Refuerzo para las tablas y KaTeX (por si acaso) */
-    .table-wrapper, .katex-display {
+    .table-wrapper,
+    .katex-display {
       max-width: 100%;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -781,10 +791,9 @@
           $$\left[ (A \cup B) - C \right]^c \cap (A \triangle B)$$</p>
 
         <!-- INICIO DEL DIAGRAMA DE VENN SVG -->
-        <div style="text-align: center; margin: 30px 0;">
+        <div style="margin: 30px auto; max-width: 500px;">
           <svg viewBox="0 0 500 420"
-            style="max-width: 500px; width: 100%; height: auto; background-color: transparent;">
-            <!-- Rectángulo del conjunto Universal (U) -->
+            style="display: block; max-width: 500px; width: 100%; height: auto; background-color: transparent;">
             <rect x="5" y="5" width="490" height="410" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
             <text x="460" y="35" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">U</text>
 
@@ -874,9 +883,10 @@
         en regiones disjuntas \((x, y, z, w)\):</p>
 
       <!-- INICIO DEL DIAGRAMA SVG -->
-      <div style="text-align: center; margin: 30px 0;">
-        <svg viewBox="0 0 400 240" style="max-width: 450px; width: 100%; height: auto; background-color: transparent;">
-          <!-- Rectángulo del conjunto Universal (U) -->
+      <div style="margin: 30px auto; max-width: 450px;">
+        <svg viewBox="0 0 400 240"
+          style="display: block; max-width: 450px; width: 100%; height: auto; background-color: transparent;">
+
           <rect x="5" y="5" width="390" height="230" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
 
           <!-- Círculo del conjunto A -->
@@ -1194,29 +1204,29 @@
           $A = \{1, 2\}$<br>
           $B = \{a, b, c\}$.<br>
           Halle $A \times B$ y su cardinalidad.</p>
-<details class="solution">
-  <summary>🔍 Ver solución</summary>
-  <div class="solution-content">
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
 
-    <strong>Primero:</strong><br>
-    <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
-      $$
-      \begin{aligned}
-      A \times B = \{ &(1, a), (1, b), (1, c), \\
-                      &(2, a), (2, b), (2, c)\}
-      \end{aligned}
-      $$
-    </div>
+            <strong>Primero:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              A \times B = \{ &(1, a), (1, b), (1, c), \\
+              &(2, a), (2, b), (2, c)\}
+              \end{aligned}
+              $$
+            </div>
 
-    <strong>Luego:</strong><br>
-    <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
-      $$
-      |A \times B| = |A| \cdot |B| = 2 \cdot 3 = \mathbf{6}.
-      $$
-    </div>
+            <strong>Luego:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              |A \times B| = |A| \cdot |B| = 2 \cdot 3 = \mathbf{6}.
+              $$
+            </div>
 
-  </div>
-</details>
+          </div>
+        </details>
       </div>
 
       <h3 class="section-title" id="sec-4-2">4.2 Propiedades del Producto Cartesiano</h3>
@@ -1293,10 +1303,10 @@
         <div class="callout-title">📐 Teoremas de Inclusión</div>
 
         <!-- INICIO DEL DIAGRAMA SVG (A subconjunto de B) -->
-        <div style="text-align: center; margin: 20px 0 25px 0;">
+        <div style="margin: 20px auto 25px; max-width: 350px;">
           <svg viewBox="0 0 400 240"
-            style="max-width: 350px; width: 100%; height: auto; background-color: transparent;">
-            <!-- Rectángulo del conjunto Universal (U) -->
+            style="display: block; max-width: 350px; width: 100%; height: auto; background-color: transparent;">
+
             <rect x="5" y="5" width="390" height="230" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
             <text x="350" y="30" font-family="serif" font-size="20" fill="#616263" font-style="italic">U</text>
 
@@ -1338,8 +1348,7 @@
       <p>Para demostrar teoremas algebraicos de conjuntos, se introduce un elemento arbitrario $x$ y se aplican reglas
         de inferencia lógica basadas en los 4 casos estructurales de hipótesis y tesis:</p>
       <div style="overflow-x: auto; font-family: sans-serif;">
-        <table
-          style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95em; line-height: 1.6;">
+        <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95em; line-height: 1.6;">
           <!-- ENCABEZADO -->
           <thead>
             <tr style="border-top: 1px solid #64748b; border-bottom: 1px solid #64748b; color: #60a5fa;">
