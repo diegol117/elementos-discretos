@@ -1,0 +1,2101 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 1: Lógica — Matemáticas Discretas</title>
+
+  <!-- KaTeX para renderizado matemático rápido y limpio -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '\\(', right: '\\)', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --primary-border: #3b82f6;
+      --secondary: #0f766e;
+      --secondary-light: #f0fdfa;
+      --secondary-border: #14b8a6;
+      --accent: #b45309;
+      --accent-light: #fffbeb;
+      --accent-border: #f59e0b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+    }
+
+    /* Header */
+    header.doc-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.25);
+    }
+
+    header.doc-header h1 {
+      margin: 0 0 0.75rem 0;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 0.85rem;
+      margin-top: 0.85rem;
+    }
+
+    .meta-bar span strong {
+      color: #ffffff;
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    /* Cards & Sections */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    h2.module-title {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin-top: 0;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .badge {
+      background: var(--primary);
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    h3.section-title {
+      color: #0f172a;
+      font-size: 1.25rem;
+      margin-top: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h4.sub-title {
+      color: #334155;
+      font-size: 1.05rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Tables */
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.2rem 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: var(--surface);
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+      text-align: left;
+      padding: 0.8rem 1rem;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+      /* Evita saltos de línea en cabeceras */
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    table a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    table a:hover {
+      text-decoration: underline;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      border-left: 4px solid;
+      border-radius: 0 10px 10px 0;
+      padding: 1.1rem 1.35rem;
+      margin: 1.25rem 0;
+    }
+
+    .callout-def {
+      background-color: var(--primary-light);
+      border-color: var(--primary-border);
+    }
+
+    .callout-thm {
+      background-color: var(--secondary-light);
+      border-color: var(--secondary-border);
+    }
+
+    .callout-note {
+      background-color: var(--accent-light);
+      border-color: var(--accent-border);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 1rem;
+    }
+
+    .callout-def .callout-title {
+      color: var(--primary);
+    }
+
+    .callout-thm .callout-title {
+      color: var(--secondary);
+    }
+
+    .callout-note .callout-title {
+      color: var(--accent);
+    }
+
+    /* Examples & Collapsible Details */
+    .example-box {
+      background: #fafafa;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      margin: 1.35rem 0;
+    }
+
+    .example-header {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.6rem;
+      font-size: 1.03rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    details.solution {
+      margin-top: 0.9rem;
+      background: var(--surface);
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    details.solution summary {
+      padding: 0.65rem 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      background: #f1f5f9;
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.15s ease;
+    }
+
+    details.solution summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.solution summary::before {
+      content: "▶";
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
+
+    details.solution[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.solution summary:hover {
+      background: #e2e8f0;
+    }
+
+    .solution-content {
+      padding: 1.1rem 1.25rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* SVG Diagrams */
+    .diagram-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 1.25rem 0;
+      padding: 1rem;
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 10px;
+    }
+
+    .diagram-caption {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+
+    /* Back to top link */
+    .back-top {
+      text-align: right;
+      margin-top: 1.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .back-top a {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-top a:hover {
+      color: var(--primary);
+    }
+
+    /* Truth tables centering */
+    table.truth-table th,
+    table.truth-table td {
+      text-align: center;
+    }
+
+    /* ===== CORRECCIÓN CLAVE PARA KATEX ===== */
+    /* Evita que las fórmulas en línea se rompan a la mitad (ej. P \to Q) */
+    .katex {
+      white-space: nowrap;
+    }
+
+    /* Permite scroll en bloques de ecuaciones largas */
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.35rem 0;
+      max-width: 100%;
+    }
+
+    .katex-display>.katex {
+      font-size: 0.95em;
+    }
+
+    /* ===== AJUSTES RESPONSIVE PARA CELULARES ===== */
+    @media (max-width: 640px) {
+      body {
+        font-size: 0.96rem;
+        line-height: 1.6;
+      }
+
+      .container {
+        padding: 0.9rem 0.85rem 3.5rem;
+      }
+
+      header.doc-header {
+        padding: 1.4rem 1.15rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+      }
+
+      header.doc-header h1 {
+        font-size: 1.45rem;
+        line-height: 1.25;
+      }
+
+      header.doc-header p {
+        font-size: 0.95rem !important;
+      }
+
+      .meta-bar {
+        flex-direction: column;
+        gap: 0.35rem;
+        font-size: 0.85rem;
+      }
+
+      .controls-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .controls-bar .btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.65rem 0.85rem;
+      }
+
+      .card {
+        padding: 1.15rem 1rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+      }
+
+      h2.module-title {
+        font-size: 1.22rem;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        line-height: 1.3;
+      }
+
+      h3.section-title {
+        font-size: 1.1rem;
+        margin-top: 1.4rem;
+      }
+
+      .example-box {
+        padding: 0.95rem 1rem;
+        margin: 1rem 0;
+      }
+
+      .callout {
+        padding: 0.9rem 1rem;
+        margin: 1rem 0;
+      }
+
+      /* Tablas más compactas y fáciles de desplazar en horizontal */
+      th,
+      td {
+        padding: 0.55rem 0.65rem;
+        font-size: 0.86rem;
+      }
+    }
+
+        /* ===== CORRECCIÓN DEL ESPACIO EN BLANCO (DESBORDAMIENTO HORIZONTAL) ===== */
+
+    /* 1. Evita que la página se estire más allá de la pantalla */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    /* 2. Obliga a todos los medios (SVG, imágenes, videos) a adaptarse al ancho de la pantalla */
+    img, svg, video, iframe, canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* 3. Asegura que los contenedores flexibles permitan a los hijos encogerse */
+    .container, .card, .example-box, .callout, .solution-content {
+      min-width: 0;
+    }
+
+    /* 4. Refuerzo para las tablas y KaTeX (por si acaso) */
+    .table-wrapper, .katex-display {
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="doc-header" id="inicio">
+      <h1>📐 Tema 1: Lógica — Matemáticas Discretas</h1>
+      <p style="margin: 0; color: #e2e8f0; font-size: 1.05rem;">
+        Apuntes completos de proposiciones lógicas, clasificación, leyes lógicas, razonamientos deductivos y
+        cuantificadores.
+      </p>
+      <div class="meta-bar">
+        <span><strong>Autor:</strong> Diego Linares</span>
+        <span><strong>Área:</strong> Fundamentos de Computación y Matemáticas Discretas</span>
+        <span><strong>Nivel:</strong> Universitario</span>
+      </div>
+    </header>
+
+    <!-- CONTROLES GLOBALES -->
+    <div class="controls-bar">
+      <button class="btn" onclick="toggleAllDetails(true)">📂 Expandir todas las soluciones</button>
+      <button class="btn" onclick="toggleAllDetails(false)">📁 Contraer todas las soluciones</button>
+    </div>
+
+    <!-- MAPA DE CONTENIDOS -->
+    <section class="card" id="mapa-de-contenidos">
+      <h2 class="module-title">📑 Mapa de Contenidos</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 80px;">Módulo</th>
+              <th style="width: 260px;">Tema Principal</th>
+              <th>Subtemas Clave</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge">01</span></td>
+              <td><a href="#mod-1">Proposiciones Lógicas: Definiciones</a></td>
+              <td>
+                <a href="#sec-1-1">1.1 Proposiciones simples</a><br>
+                <a href="#sec-1-2">1.2 Proposición compuesta y conectivos</a><br>
+                <a href="#sec-1-3">1.3 Tablas de verdad básicas</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">02</span></td>
+              <td><a href="#mod-2">Proposiciones Lógicas: Clasificación</a></td>
+              <td>
+                <a href="#sec-2-1">2.1 Formas alternativas del condicional</a><br>
+                <a href="#sec-2-2">2.2 Tautología, contradicción y contingencia</a><br>
+                <a href="#sec-2-3">2.3 Implicación y equivalencia lógica</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">03</span></td>
+              <td><a href="#mod-3">Leyes Lógicas</a></td>
+              <td>
+                <a href="#sec-3-1">3.1 Equivalencias lógicas notables</a><br>
+                <a href="#sec-3-2">3.2 Importancia y algoritmo de simplificación</a><br>
+                <a href="#sec-3-3">3.3 Ejercicios resueltos y propuestos</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">04</span></td>
+              <td><a href="#mod-4">Razonamientos Lógicos</a></td>
+              <td>
+                <a href="#sec-4-1">4.1 Inferencia y validez</a><br>
+                <a href="#sec-4-2">4.2 Determinación analítica de invalidez</a><br>
+                <a href="#sec-4-3">4.3 Reglas de inferencia y prueba directa</a><br>
+                <a href="#sec-4-4">4.4 Reducción al absurdo</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">05</span></td>
+              <td><a href="#mod-5">Cuantificadores</a></td>
+              <td>
+                <a href="#sec-5-1">5.1 Motivación</a><br>
+                <a href="#sec-5-2">5.2 Predicados y cuantificadores $(\forall, \exists, \exists!)$</a><br>
+                <a href="#sec-5-3">5.3 Negación (De Morgan) y propiedades</a><br>
+                <a href="#sec-5-4">5.4 Ejercicios propuestos</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">REF</span></td>
+              <td><a href="#bibliografia">Bibliografía</a></td>
+              <td>Referencias bibliográficas fundamentales sobre Matemáticas Discretas</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 1: PROPOSICIONES LÓGICAS — DEFINICIONES (sem1) -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-1">
+      <h2 class="module-title"><span class="badge">MÓDULO 01</span> Proposiciones Lógicas: Definiciones</h2>
+
+      <h3 class="section-title" id="sec-1-1">1.1 Proposiciones Simples</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Proposición Simple (o Atómica)</div>
+        <p style="margin-top:0;">Es un enunciado declarativo que se representa con letras minúsculas $(p, q, r, \dots)$
+          y cumple tres condiciones:</p>
+        <ol style="margin-bottom:0;">
+          <li>Es inequívocamente verdadera $(V)$ o falsa $(F)$.</li>
+          <li>No contiene conectivos lógicos ni puede descomponerse en partes más simples.</li>
+          <li>Su significado es preciso y objetivo.</li>
+        </ol>
+      </div>
+
+      <p>En computación, asignamos letras minúsculas para facilitar su manipulación como instrucciones en código. Las
+        expresiones exclamativas, interrogativas, imperativas o los enunciados abiertos no son proposiciones al carecer
+        de un valor de verdad definido.</p>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.1: Ejemplos de Enunciados y su Clasificación</div>
+        <ul>
+          <li>«¡Qué hermoso día!» <br> $\rightarrow$ <em>No es proposición</em> (exclamación).</li>
+          <li>«¿Ya terminaste el arreglo?» <br> $\rightarrow$ <em>No es proposición</em> (interrogación).</li>
+          <li>«Limpia la base de datos.» <br> $\rightarrow$ <em>No es proposición</em> (imperativo o mandato).</li>
+          <li>«$x + 5 = 10$» <br> $\rightarrow$ <em>No es proposición</em> (enunciado abierto).</li>
+          <li>$p$: «El número 15 es divisible por 3.» <br> $\rightarrow$ <strong>Proposición simple</strong>, valor
+            lógico $V$.</li>
+          <li>$q$: «La capital de Francia es Madrid.» <br> $\rightarrow$ <strong>Proposición simple</strong>, valor
+            lógico $F$.</li>
+          <li>$s$: «El lenguaje Python es un lenguaje de programación.» <br> $\rightarrow$ <strong>Proposición
+              simple</strong>, valor lógico $V$.</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title" id="sec-1-2">1.2 Proposición Compuesta y Conectivos Lógicos</h3>
+
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Proposición Compuesta</div>
+        <p style="margin:0;">Se forma utilizando <strong>conectivos lógicos</strong> (símbolos o palabras que unen
+          proposiciones simples o modifican su valor de verdad) mediante operaciones como la negación o la combinación
+          de varias proposiciones.</p>
+      </div>
+
+      <!-- Texto añadido con los ejemplos formales antes de la tabla -->
+      <p style="margin-top: 15px; margin-bottom: 10px;">
+        Los <strong>ejemplos formales</strong> de cada conectivo son:
+        \(\neg p\) (negación), \(p \land q\) (conjunción), \(p \lor q\) (disyunción), \(p \rightarrow q\) (condicional)
+        y \(p \leftrightarrow q\) (bicondicional).
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Operación</th>
+              <th>Expresión</th>
+              <th>Símbolo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Negación</strong></td>
+              <td>«No»</td>
+              <td>\(\neg\) o \(\sim\)</td>
+            </tr>
+            <tr>
+              <td><strong>Conjunción</strong></td>
+              <td>«Y»</td>
+              <td>\(\land\)</td>
+            </tr>
+            <tr>
+              <td><strong>Disyunción</strong></td>
+              <td>«O»</td>
+              <td>\(\lor\)</td>
+            </tr>
+            <tr>
+              <td><strong>Condicional</strong></td>
+              <td>«Si \(\dots\), entonces»</td>
+              <td>\(\rightarrow\)</td>
+            </tr>
+            <tr>
+              <td><strong>Bicondicional</strong></td>
+              <td>«Si y solo si»</td>
+              <td>\(\leftrightarrow\)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="section-title" id="sec-1-3">1.3 Valores y Tablas de Verdad</h3>
+      <p>Toda proposición posee un único valor lógico $(V$ o $1$, $F$ o $0)$. Una <strong>tabla de verdad</strong>
+        muestra todas las combinaciones posibles de valores: para $n$ variables simples existen $2^n$ filas (2 filas
+        para 1 variable, 4 para 2 variables y 8 para 3 variables).</p>
+
+      <div class="callout callout-note">
+        <div class="callout-title">💡 Comportamiento de los Principales Operadores Lógicos</div>
+        <ul style="margin:0;">
+          <li><strong>Negación $(\neg)$:</strong> Invierte el valor de verdad $(V \leftrightarrow F)$.</li>
+          <li><strong>Conjunción $(\land)$:</strong> Verdadera únicamente si <strong>ambas</strong> proposiciones son
+            verdaderas.</li>
+          <li><strong>Disyunción $(\lor)$:</strong> Falsa únicamente si <strong>ambas</strong> proposiciones son falsas.
+          </li>
+          <li><strong>Implicación $(\rightarrow)$:</strong> Falsa solo si el antecedente es verdadero $(V)$ y el
+            consecuente es falso $(F)$.</li>
+          <li><strong>Doble implicación $(\leftrightarrow)$:</strong> Verdadera si ambas proposiciones tienen el
+            <strong>mismo</strong> valor lógico.</li>
+        </ul>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="truth-table">
+          <thead>
+            <tr>
+              <th>$P$</th>
+              <th>$Q$</th>
+              <th>$\neg P$</th>
+              <th>$P \land Q$</th>
+              <th>$P \lor Q$</th>
+              <th>$P \rightarrow Q$</th>
+              <th>$P \leftrightarrow Q$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$V$</td>
+              <td>$V$</td>
+              <td>$F$</td>
+              <td>$V$</td>
+              <td>$V$</td>
+              <td>$V$</td>
+              <td>$V$</td>
+            </tr>
+            <tr>
+              <td>$V$</td>
+              <td>$F$</td>
+              <td>$F$</td>
+              <td>$F$</td>
+              <td>$V$</td>
+              <td>$F$</td>
+              <td>$F$</td>
+            </tr>
+            <tr>
+              <td>$F$</td>
+              <td>$V$</td>
+              <td>$V$</td>
+              <td>$F$</td>
+              <td>$V$</td>
+              <td>$V$</td>
+              <td>$F$</td>
+            </tr>
+            <tr>
+              <td>$F$</td>
+              <td>$F$</td>
+              <td>$V$</td>
+              <td>$F$</td>
+              <td>$F$</td>
+              <td>$V$</td>
+              <td>$V$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.2: Aplicación de los Conectivos Lógicos</div>
+        <ul>
+          <li><strong>Negación:</strong> Si $P$ es «El número 4 es par» $(V)$, entonces $\neg P$ es «El número 4 no es
+            par» $(F)$.</li>
+          <li><strong>Conjunción:</strong> «Aprobé cálculo» $(P)$ y «Aprobé física» $(Q)$. Solo es verdadera si pasé
+            ambas materias.</li>
+          <li><strong>Disyunción:</strong> «Iré a la biblioteca» $(P)$ o «Estudiaré en casa» $(Q)$. Solo es falsa si no
+            hago ninguna de las dos.</li>
+          <li><strong>Implicación:</strong> «Si llueve $(P)$, entonces llevo paraguas $(Q)$». Solo se rompe si llueve
+            $(V)$ y no llevo paraguas $(F)$.</li>
+          <li><strong>Doble implicación:</strong> «Un triángulo es equilátero $(P)$ si y solo si todos sus ángulos miden
+            $60^\circ$ $(Q)$».</li>
+        </ul>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.3: Tablas de Verdad Compuestas</div>
+        <p>Construya la tabla de verdad para:<br>
+          <strong>a)</strong> $(P \rightarrow Q) \land \neg P$ $(2^2 = 4$ filas)<br>
+          <strong>b)</strong> $(P \land Q) \rightarrow \neg R$ $(2^3 = 8$ filas).
+        </p>
+        <details class="solution">
+          <summary>🔍 Ver tablas de verdad completas</summary>
+          <div class="solution-content">
+            <p><strong>a) Expresión con 3 operadores y 2 variables: $(P \rightarrow Q) \land \neg P$</strong></p>
+            <div class="table-wrapper">
+              <table class="truth-table">
+                <thead>
+                  <tr>
+                    <th>$P$</th>
+                    <th>$Q$</th>
+                    <th>$P \rightarrow Q$</th>
+                    <th>$\neg P$</th>
+                    <th>$(P \rightarrow Q) \land \neg P$</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td><strong>$F$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td><strong>$F$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><strong>b) Expresión con 3 operadores y 3 variables: $(P \land Q) \rightarrow \neg R$</strong></p>
+            <div class="table-wrapper">
+              <table class="truth-table">
+                <thead>
+                  <tr>
+                    <th>$P$</th>
+                    <th>$Q$</th>
+                    <th>$R$</th>
+                    <th>$P \land Q$</th>
+                    <th>$\neg R$</th>
+                    <th>$(P \land Q) \rightarrow \neg R$</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td><strong>$F$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                  <tr>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$F$</td>
+                    <td>$V$</td>
+                    <td><strong>$V$</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 2: PROPOSICIONES LÓGICAS — CLASIFICACIÓN (sem1-b) -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-2">
+      <h2 class="module-title"><span class="badge">MÓDULO 02</span> Proposiciones Lógicas: Clasificación</h2>
+
+      <h3 class="section-title" id="sec-2-1">2.1 Formas Alternativas del Condicional</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Estructura del Condicional</div>
+        <p style="margin-top:0;">En matemáticas, las proposiciones condicionales forman la base de los teoremas:</p>
+        <ul>
+          <li><strong>Antecedente $(P)$:</strong> Hipótesis o condición suficiente.</li>
+          <li><strong>Consecuente $(Q)$:</strong> Tesis o condición necesaria.</li>
+        </ul>
+        $$\text{Hipótesis (Suficiente)} \rightarrow \text{Tesis (Necesaria)}$$
+        <p style="margin-bottom:0;"><strong>Formas equivalentes en lenguaje natural:</strong><br>
+          (1) Si $P$, entonces $Q$;<br>
+          (2) $P$ es condición suficiente para $Q$;<br>
+          (3) $Q$ es condición necesaria para $P$;<br>
+          (4) $P$ solo si $Q$;<br>
+          (5) $Q$ si $P$.</p>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 2.1: Variaciones Gramaticales del Condicional</div>
+        <p>Sean $P$: «Una figura es un cuadrado» y $Q$: «La figura tiene cuatro lados». La relación $P \rightarrow Q$ se
+          expresa de 5 maneras equivalentes:</p>
+        <ol style="margin-bottom:0;">
+          <li><strong>Si</strong> una figura es un cuadrado, <strong>entonces</strong> tiene cuatro lados.</li>
+          <li>Ser un cuadrado <strong>es condición suficiente para</strong> tener cuatro lados.</li>
+          <li>Tener cuatro lados <strong>es condición necesaria para</strong> ser un cuadrado.</li>
+          <li>Una figura es un cuadrado <strong>solo si</strong> tiene cuatro lados.</li>
+          <li>Una figura tiene cuatro lados <strong>si</strong> es un cuadrado.</li>
+        </ol>
+      </div>
+
+      <h3 class="section-title" id="sec-2-2">2.2 Tautología, Contradicción y Contingencia</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Clasificación según la Última Columna de la Tabla de Verdad</div>
+        <ul style="margin:0;">
+          <li><strong>Tautología:</strong> Resulta verdadera $(V)$ para todas las combinaciones posibles (verdad
+            formal).</li>
+          <li><strong>Contradicción:</strong> Resulta falsa $(F)$ para todas las combinaciones posibles (absurdo
+            lógico).</li>
+          <li><strong>Contingencia:</strong> Presenta tanto valores verdaderos $(V)$ como falsos $(F)$.</li>
+        </ul>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 2.2: Tautología, Contradicción y Contingencia</div>
+        <p>Clasifique las estructuras: <strong>a)</strong> $P \lor \neg P$, <strong>b)</strong> $P \land \neg P$ y
+          <strong>c)</strong> $P \rightarrow Q$.</p>
+        <details class="solution">
+          <summary>🔍 Ver tablas y clasificación</summary>
+          <div class="solution-content">
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
+              <div class="table-wrapper" style="flex: 1; min-width: 220px;">
+                <table class="truth-table">
+                  <thead>
+                    <tr>
+                      <th>$P$</th>
+                      <th>$\neg P$</th>
+                      <th>$P \lor \neg P$ (Tautología)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>$V$</td>
+                      <td>$F$</td>
+                      <td><strong>$V$</strong></td>
+                    </tr>
+                    <tr>
+                      <td>$F$</td>
+                      <td>$V$</td>
+                      <td><strong>$V$</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-wrapper" style="flex: 1; min-width: 220px;">
+                <table class="truth-table">
+                  <thead>
+                    <tr>
+                      <th>$P$</th>
+                      <th>$\neg P$</th>
+                      <th>$P \land \neg P$ (Contradicción)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>$V$</td>
+                      <td>$F$</td>
+                      <td><strong>$F$</strong></td>
+                    </tr>
+                    <tr>
+                      <td>$F$</td>
+                      <td>$V$</td>
+                      <td><strong>$F$</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-wrapper" style="flex: 1; min-width: 220px;">
+                <table class="truth-table">
+                  <thead>
+                    <tr>
+                      <th>$P$</th>
+                      <th>$Q$</th>
+                      <th>$P \rightarrow Q$ (Contingencia)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>$V$</td>
+                      <td>$V$</td>
+                      <td><strong>$V$</strong></td>
+                    </tr>
+                    <tr>
+                      <td>$V$</td>
+                      <td>$F$</td>
+                      <td><strong>$F$</strong></td>
+                    </tr>
+                    <tr>
+                      <td>$F$</td>
+                      <td>$V$</td>
+                      <td><strong>$V$</strong></td>
+                    </tr>
+                    <tr>
+                      <td>$F$</td>
+                      <td>$F$</td>
+                      <td><strong>$V$</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <h3 class="section-title" id="sec-2-3">2.3 Implicación Lógica $(\Rightarrow)$ y Equivalencia Lógica $(\equiv)$
+      </h3>
+      <p>Cuando una proposición compuesta resulta en una <strong>tautología</strong>, la notación de su conectivo
+        principal cambia para reflejar validez universal:</p>
+      <ul>
+        <li><strong>Implicación lógica $(\Rightarrow)$:</strong> Reemplaza al condicional $(\rightarrow)$ cuando este es
+          el conectivo principal de una tautología.</li>
+        <li><strong>Equivalencia lógica $(\Leftrightarrow$ o $\equiv)$:</strong> Reemplaza al bicondicional
+          $(\leftrightarrow)$ cuando este es el conectivo principal de una tautología.</li>
+      </ul>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 2.3: Demostración de Implicación y Equivalencia por Tablas de Verdad
+        </div>
+
+        <ol style="margin-bottom:0; padding-left: 20px;">
+          <li style="margin-bottom: 15px;">
+            <p style="margin-bottom: 5px;">Demuestre el <strong>Silogismo Hipotético</strong>:</p>
+            <!-- Ecuación centrada y dividida en dos líneas -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              &[(P \rightarrow Q) \land (Q \rightarrow R)] \\
+              &\Rightarrow (P \rightarrow R)
+              \end{aligned}
+              $$
+            </div>
+          </li>
+
+          <li>
+            <p style="margin-bottom: 5px;">Verifique la <strong>Ley Distributiva</strong>:</p>
+            <!-- Ecuación centrada y dividida en dos líneas -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              &P \lor (Q \land R) \\
+              &\Leftrightarrow (P \lor Q) \land (P \lor R)
+              \end{aligned}
+              $$
+            </div>
+          </li>
+        </ol>
+
+        <details class="solution" style="margin-top: 15px;">
+          <summary>🔍 Ver tablas de demostración completas</summary>
+          <div class="solution-content">
+
+            <!-- También ajustamos el texto de la solución para que la ecuación no se corte -->
+            <div style="text-align: center; overflow-x: auto; margin: 10px 0;">
+              $$
+              \begin{aligned}
+              \text{1. Llamando } E_I &= (P \rightarrow Q) \land (Q \rightarrow R), \\
+              E_D &= P \rightarrow R:
+              \end{aligned}
+              $$
+            </div>
+
+            <!-- Contenedor con scroll horizontal para la tabla gigante -->
+            <div class="table-wrapper"
+              style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px;">
+              <table class="truth-table" style="min-width: 500px; white-space: nowrap;">
+                <thead>
+                  <tr>
+                    <th>\(P\)</th>
+                    <th>\(Q\)</th>
+                    <th>\(R\)</th>
+                    <th>\(P \rightarrow Q\)</th>
+                    <th>\(Q \rightarrow R\)</th>
+                    <th>\(E_I\)</th>
+                    <th>\(E_D\)</th>
+                    <th>\(E_I \rightarrow E_D\)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="text-align: center; overflow-x: auto; margin: 10px 0;">
+              $$
+              \begin{aligned}
+              \text{2. Llamando } E_I &= P \lor (Q \land R), \\
+              E_D &= (P \lor Q) \land (P \lor R):
+              \end{aligned}
+              $$
+            </div>
+
+            <!-- Contenedor con scroll horizontal para la segunda tabla -->
+            <div class="table-wrapper" style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+              <table class="truth-table" style="min-width: 550px; white-space: nowrap;">
+                <thead>
+                  <tr>
+                    <th>\(P\)</th>
+                    <th>\(Q\)</th>
+                    <th>\(R\)</th>
+                    <th>\(Q \land R\)</th>
+                    <th>\(E_I\)</th>
+                    <th>\(P \lor Q\)</th>
+                    <th>\(P \lor R\)</th>
+                    <th>\(E_D\)</th>
+                    <th>\(E_I \leftrightarrow E_D\)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td>\(V\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(V\)</td>
+                    <td>\(F\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                  <tr>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td>\(F\)</td>
+                    <td><strong>\(V\)</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 3: LEYES LÓGICAS (leyes.tex) -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-3">
+      <h2 class="module-title"><span class="badge">MÓDULO 03</span> Leyes Lógicas</h2>
+
+      <h3 class="section-title" id="sec-3-1">3.1 Equivalencias Lógicas Notables</h3>
+      <p>Las leyes lógicas son tautologías universales que actúan como «reglas de reemplazo» para transformar
+        expresiones complejas en otras más simples sin alterar su valor de verdad original $(P, Q, R$ proposiciones):
+      </p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Simbología</th>
+              <th>Nombre</th>
+              <th>Simbología</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Def. Condicional</strong></td>
+              <td>$P \to Q \equiv \neg P \lor Q$</td>
+              <td><strong>Idempotencia</strong></td>
+              <td>$P \land P \equiv P$<br>$P \lor P \equiv P$</td>
+            </tr>
+            <tr>
+              <td><strong>Def. Bicondicional</strong></td>
+              <td>$P \leftrightarrow Q \equiv (P \to Q) \land (Q \to P)$</td>
+              <td><strong>Inversos</strong></td>
+              <td>$P \lor \neg P \equiv V$<br>$P \land \neg P \equiv F$</td>
+            </tr>
+            <tr>
+              <td><strong>Conmutativa</strong></td>
+              <td>$P \lor Q \equiv Q \lor P$<br>$P \land Q \equiv Q \land P$</td>
+              <td><strong>Identidad</strong></td>
+              <td>$P \lor F \equiv P$<br>$P \land V \equiv P$<br>$P \land F \equiv F$<br>$P \lor V \equiv V$</td>
+            </tr>
+            <tr>
+              <td><strong>Asociativa</strong></td>
+              <td>$(P \lor Q) \lor R \equiv P \lor (Q \lor R)$<br>$(P \land Q) \land R \equiv P \land (Q \land R)$</td>
+              <td><strong>Absorción</strong></td>
+              <td>$P \lor (P \land Q) \equiv P$<br>$P \land (P \lor Q) \equiv P$</td>
+            </tr>
+            <tr>
+              <td><strong>Distributiva</strong></td>
+              <td>$P \lor (Q \land R) \equiv (P \lor Q) \land (P \lor R)$<br>$P \land (Q \lor R) \equiv (P \land Q) \lor
+                (P \land R)$</td>
+              <td><strong>Contrapositiva</strong></td>
+              <td>$P \to Q \equiv \neg Q \to \neg P$</td>
+            </tr>
+            <tr>
+              <td><strong>Doble Negación</strong></td>
+              <td>$\neg\neg P \equiv P$</td>
+              <td><strong>De Morgan</strong></td>
+              <td>$\neg(P \lor Q) \equiv \neg P \land \neg Q$<br>$\neg(P \land Q) \equiv \neg P \lor \neg Q$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="section-title" id="sec-3-2">3.2 Importancia y Algoritmo Analítico de Simplificación</h3>
+      <p>Frente al crecimiento exponencial de las tablas de verdad $(2^n$ filas: 10 variables alcanzan 1024 filas), las
+        leyes lógicas aportan <strong>escalabilidad</strong> y <strong>comprensión estructural</strong>.</p>
+
+      <div class="diagram-container">
+        <!-- AÑADIDO: Contenedor con scroll horizontal -->
+        <div style="width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 5px;">
+          <!-- AÑADIDO: min-width para que no se encoja tanto, y height: auto -->
+          <svg width="680" height="395" viewBox="0 0 680 395"
+            style="min-width: 550px; height: auto; display: block; margin: 0 auto;">
+            <defs>
+              <marker id="arr-teal" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L8,3 z" fill="#0f766e" />
+              </marker>
+            </defs>
+            <!-- Paso 1 -->
+            <rect x="170" y="10" width="340" height="52" rx="8" fill="#f0fdfa" stroke="#0f766e" stroke-width="1.8" />
+            <text x="340" y="31" text-anchor="middle" font-weight="bold" font-size="13" fill="#0f172a">1. Eliminar
+              condicionales y bicondicionales</text>
+            <text x="340" y="50" text-anchor="middle" font-size="11.5" fill="#334155">Ley del Condicional y Ley del
+              Bicondicional</text>
+            <line x1="340" y1="62" x2="340" y2="85" stroke="#0f766e" stroke-width="1.8" marker-end="url(#arr-teal)" />
+
+            <!-- Paso 2 -->
+            <rect x="170" y="88" width="340" height="52" rx="8" fill="#ccfbf1" stroke="#0f766e" stroke-width="1.8" />
+            <text x="340" y="109" text-anchor="middle" font-weight="bold" font-size="13" fill="#0f172a">2. Interiorizar
+              las negaciones</text>
+            <text x="340" y="128" text-anchor="middle" font-size="11.5" fill="#334155">Leyes de De Morgan y Doble
+              Negación</text>
+            <line x1="340" y1="140" x2="340" y2="163" stroke="#0f766e" stroke-width="1.8" marker-end="url(#arr-teal)" />
+
+            <!-- Paso 3 -->
+            <rect x="170" y="166" width="340" height="52" rx="8" fill="#99f6e4" stroke="#0f766e" stroke-width="1.8" />
+            <text x="340" y="187" text-anchor="middle" font-weight="bold" font-size="13" fill="#0f172a">3. Distribuir y
+              factorizar</text>
+            <text x="340" y="206" text-anchor="middle" font-size="11.5" fill="#334155">Leyes Distributivas, Asociativas
+              y Conmutativas</text>
+            <line x1="340" y1="218" x2="340" y2="241" stroke="#0f766e" stroke-width="1.8" marker-end="url(#arr-teal)" />
+
+            <!-- Paso 4 -->
+            <rect x="150" y="244" width="380" height="52" rx="8" fill="#5eead4" stroke="#0f766e" stroke-width="1.8" />
+            <text x="340" y="265" text-anchor="middle" font-weight="bold" font-size="13" fill="#0f172a">4. Reducción de
+              la expresión</text>
+            <text x="340" y="284" text-anchor="middle" font-size="11.5" fill="#0f172a">Depuración de redundancias y
+              variables repetidas</text>
+
+            <!-- Tenedor -->
+            <line x1="340" y1="296" x2="340" y2="322" stroke="#0f766e" stroke-width="1.8" marker-end="url(#arr-teal)" />
+            <polyline points="340,310 115,310 115,322" fill="none" stroke="#0f766e" stroke-width="1.8"
+              marker-end="url(#arr-teal)" />
+            <polyline points="340,310 565,310 565,322" fill="none" stroke="#0f766e" stroke-width="1.8"
+              marker-end="url(#arr-teal)" />
+
+            <!-- 3 Ramas finales -->
+            <rect x="15" y="325" width="200" height="60" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" />
+            <text x="115" y="346" text-anchor="middle" font-weight="bold" font-size="11.5" fill="#0f172a">Absorción e
+              Idempotencia</text>
+            <text x="115" y="366" text-anchor="middle" font-size="10.5" fill="#334155">Simplifica variables
+              repetidas.</text>
+
+            <rect x="240" y="325" width="200" height="60" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" />
+            <text x="340" y="346" text-anchor="middle" font-weight="bold" font-size="11.5" fill="#0f172a">Leyes de los
+              Inversos</text>
+            <text x="340" y="366" text-anchor="middle" font-size="10.5" fill="#334155">Reduce a Tautologías (V) /
+              (F).</text>
+
+            <rect x="465" y="325" width="200" height="60" rx="8" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" />
+            <text x="565" y="346" text-anchor="middle" font-weight="bold" font-size="11.5" fill="#0f172a">Leyes de
+              Identidad</text>
+            <text x="565" y="366" text-anchor="middle" font-size="10.5" fill="#334155">Depura valores lógicos
+              neutros.</text>
+          </svg>
+        </div>
+
+        <div class="diagram-caption" style="width:100%; margin-top: 5px;">Figura 3.1: Algoritmo Analítico de
+          Simplificación Lógica.</div>
+      </div>
+      <h3 class="section-title" id="sec-3-3">3.3 Ejercicios Resueltos y Propuestos</h3>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 3.1: Simplificación Algebraica Paso a Paso</div>
+        <p>Simplifique las siguientes 4 expresiones lógicas:</p>
+        <ol style="margin-bottom:0;">
+          <li>$(A \land B) \to \neg (A \land B)$</li>
+          <li>$\neg (B \land A) \lor \neg B$</li>
+          <li>$(A \lor B) \land \neg A$</li>
+          <li>$A \land (\neg A \lor B) \lor (A \to \neg A)$</li>
+        </ol>
+        <details class="solution">
+          <summary>🔍 Ver las 4 demostraciones paso a paso</summary>
+          <div class="solution-content">
+            <p><strong>1.</strong>
+              $$\begin{aligned}
+              (A \land B) \to \neg (A \land B) &\equiv \neg (A \land B) \lor \neg (A \land B) && (\text{Definición de
+              condicional}) \\
+              &\equiv \neg (A \land B) && (\text{Idempotencia})
+              \end{aligned}$$</p>
+
+            <p><strong>2.</strong>
+              $$\begin{aligned}
+              \neg (B \land A) \lor \neg B &\equiv (\neg B \lor \neg A) \lor \neg B && (\text{Ley de De Morgan}) \\
+              &\equiv (\neg B \lor \neg B) \lor \neg A && (\text{Asociatividad y Conmutatividad}) \\
+              &\equiv \neg B \lor \neg A && (\text{Idempotencia})
+              \end{aligned}$$</p>
+
+            <p><strong>3.</strong>
+              $$\begin{aligned}
+              (A \lor B) \land \neg A &\equiv (A \land \neg A) \lor (B \land \neg A) && (\text{Ley distributiva}) \\
+              &\equiv F \lor (B \land \neg A) && (\text{Ley de inversos}) \\
+              &\equiv B \land \neg A && (\text{Ley de identidad})
+              \end{aligned}$$</p>
+
+            <p><strong>4.</strong>
+              $$\begin{aligned}
+              A \land (\neg A \lor B) \lor (A \to \neg A) &\equiv A \land (\neg A \lor B) \lor (\neg A \lor \neg A) &&
+              (\text{Definición de condicional}) \\
+              &\equiv A \land (\neg A \lor B) \lor \neg A && (\text{Idempotencia}) \\
+              &\equiv (A \land \neg A) \lor (A \land B) \lor \neg A && (\text{Ley distributiva}) \\
+              &\equiv F \lor (A \land B) \lor \neg A && (\text{Ley de inversos}) \\
+              &\equiv (A \land B) \lor \neg A && (\text{Ley de identidad}) \\
+              &\equiv (A \lor \neg A) \land (B \lor \neg A) && (\text{Ley distributiva}) \\
+              &\equiv V \land (B \lor \neg A) && (\text{Ley de inversos}) \\
+              &\equiv B \lor \neg A && (\text{Ley de identidad})
+              \end{aligned}$$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="callout callout-note">
+        <div class="callout-title">📝 Ejercicios Propuestos de Simplificación</div>
+        <ul style="margin:0;">
+          <li>$(B \land B) \land \neg B \land (B \lor B)$</li>
+          <li>$((A \to \neg A) \to A) \to (\neg B \lor A)$</li>
+          <li>$A \to \neg (A \to (A \to (\neg B \lor B)))$</li>
+          <li>$(A \lor B) \lor \neg A \lor B$</li>
+        </ul>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 4: RAZONAMIENTOS LÓGICOS (sem3.tex) -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-4">
+      <h2 class="module-title"><span class="badge">MÓDULO 04</span> Razonamientos Lógicos</h2>
+
+      <h3 class="section-title" id="sec-4-1">4.1 Inferencia y Validez</h3>
+      <p>Una <strong>inferencia</strong> es el proceso deductivo para extraer una conclusión a partir de premisas
+        verdaderas. Todo razonamiento vincula sus hipótesis $P_1, \dots, P_n$ con la conclusión $C$ mediante un
+        condicional:</p>
+      $$\underbrace{(P_1 \land P_2 \land \cdots \land P_n)}_{\text{Premisas}} \rightarrow
+      \underbrace{C}_{\text{Conclusión}}$$
+      <p>Un razonamiento es <strong>válido</strong> si dicho condicional es una tautología, e <strong>inválido</strong>
+        si existe un <strong>contraejemplo</strong> (premisas verdaderas y conclusión falsa).</p>
+
+      <h3 class="section-title" id="sec-4-2">4.2 Determinación Analítica de Invalidez</h3>
+      <p>En lugar de construir toda la tabla de verdad, podemos probar la invalidez imponiendo directamente que todas
+        las premisas sean verdaderas $(\equiv V)$ y la conclusión falsa $(\equiv F)$.</p>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 4.1: Prueba Analítica de Invalidez</div>
+
+        <p style="margin-bottom: 5px;">Demuestre la invalidez del razonamiento:</p>
+
+        <!-- Datos del problema centrados y alineados -->
+        <div style="text-align: center; margin-bottom: 15px; overflow-x: auto;">
+          $$
+          \begin{aligned}
+          P_1 &: p \lor q \\
+          P_2 &: p \\
+          P_3 &: q \to p \\
+          P_4 &: \neg q \lor p \\
+          \therefore \;& q
+          \end{aligned}
+          $$
+        </div>
+
+        <details class="solution">
+          <summary>🔍 Ver resolución y contraejemplo</summary>
+          <div class="solution-content">
+
+            <p>Imponemos la condición de invalidez:</p>
+            <div style="text-align: center; margin: 0.4em 0;">
+              $$ (P_1, P_2, P_3, P_4 \equiv V) \quad \text{y} \quad (C \equiv F) $$
+            </div>
+
+            <strong>Primero:</strong><br>
+            <p style="margin-top: 5px;">De la conclusión obtenemos inmediatamente:</p>
+            <div style="text-align: center; margin: 0.4em 0;">
+              $$ q \equiv F $$
+            </div>
+
+            <strong>Luego:</strong><br>
+            <p style="margin-top: 5px;">De la premisa \(P_2\) obtenemos:</p>
+            <div style="text-align: center; margin: 0.4em 0;">
+              $$ p \equiv V $$
+            </div>
+
+            <strong>Finalmente:</strong><br>
+            <p style="margin-top: 5px;">Verificamos las demás premisas con \(p \equiv V\) y \(q \equiv F\):</p>
+
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              $$
+              \begin{aligned}
+              P_1 &: p \lor q \equiv V \lor F \equiv V \\[1ex]
+              P_3 &: q \to p \equiv F \to V \equiv V \\[1ex]
+              P_4 &: \neg q \lor p \\
+              &\equiv \neg F \lor V \\
+              &\equiv V \lor V \\
+              &\equiv V
+              \end{aligned}
+              $$
+            </div>
+
+            <p style="margin-top: 15px;">Al existir el contraejemplo \(p \equiv V, q \equiv F\) sin contradicciones, el
+              razonamiento es <strong>inválido</strong>.</p>
+
+          </div>
+        </details>
+      </div>
+      <h3 class="section-title" id="sec-4-3">4.3 Reglas de Inferencia y Prueba Directa</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Regla</th>
+              <th>Nombre</th>
+              <th>Regla</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Modus Ponens (MP)</strong></td>
+              <td>$P \rightarrow Q$<br>$P$<br>$\therefore\; Q$</td>
+              <td><strong>Modus Tollens (MT)</strong></td>
+              <td>$P \rightarrow Q$<br>$\neg Q$<br>$\therefore\; \neg P$</td>
+            </tr>
+            <tr>
+              <td><strong>Silogismo Hipotético (SH)</strong></td>
+              <td>$P \rightarrow Q$<br>$Q \rightarrow R$<br>$\therefore\; P \rightarrow R$</td>
+              <td><strong>Silogismo Disyuntivo (SD)</strong></td>
+              <td>$P \vee Q$<br>$\neg P$<br>$\therefore\; Q$</td>
+            </tr>
+            <tr>
+              <td><strong>Silogismo Constructivo</strong></td>
+              <td>$P \rightarrow Q$<br>$R \rightarrow S$<br>$P \vee R$<br>$\therefore\; Q \vee S$</td>
+              <td><strong>Silogismo Destructivo</strong></td>
+              <td>$P \rightarrow Q$<br>$R \rightarrow S$<br>$\neg Q \vee \neg S$<br>$\therefore\; \neg P \vee \neg R$
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Simplificación</strong></td>
+              <td>$P \wedge Q$<br>$\therefore\; P \text{ (o } Q)$</td>
+              <td><strong>Conjunción</strong></td>
+              <td>$P$<br>$Q$<br>$\therefore\; P \wedge Q$</td>
+            </tr>
+            <tr>
+              <td><strong>Exportación</strong></td>
+              <td>$(P \wedge R) \rightarrow Q$<br>$\therefore\; P \rightarrow (R \rightarrow Q)$</td>
+              <td><strong>Importación</strong></td>
+              <td>$P \rightarrow (R \rightarrow Q)$<br>$\therefore\; (P \wedge R) \rightarrow Q$</td>
+            </tr>
+            <tr>
+              <td><strong>Adición</strong></td>
+              <td>$P$<br>$\therefore\; P \vee R$</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 4.2: Demostración Formal (Enfoque Híbrido — Prueba Directa)</div>
+        <p>Demuestre la validez del razonamiento:<br>
+          $P_1: P \to Q$,<br>
+          $P_2: P \lor R$,<br>
+          $P_3: \neg R$,<br>
+          $\therefore Q$.</p>
+        <details class="solution">
+          <summary>🔍 Ver demostración línea por línea</summary>
+          <div class="solution-content">
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Línea</th>
+                    <th>Proposición</th>
+                    <th>Justificación</th>
+                    <th>Referencias</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>$P \to Q$</td>
+                    <td>Premisa</td>
+                    <td>---</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>$P \lor R$</td>
+                    <td>Premisa</td>
+                    <td>---</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>$\neg R$</td>
+                    <td>Premisa</td>
+                    <td>---</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>$P$</td>
+                    <td>Silogismo Disyuntivo</td>
+                    <td>2, 3</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>$Q$</td>
+                    <td>Modus Ponens</td>
+                    <td>1, 4</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <h3 class="section-title" id="sec-4-4">4.4 Reducción al Absurdo</h3>
+      <p>Método indirecto de demostración que incorpora temporalmente la <strong>negación de la conclusión $(\neg
+          C)$</strong> como premisa auxiliar. Si al operar con las premisas originales se obtiene una contradicción
+        explícita $(P \land \neg P)$, la conclusión queda validada.</p>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 4.3: Demostración por Reducción al Absurdo</div>
+        <p>Demuestre la validez de:<br>
+          $1.\; P \to Q$,<br>
+          $2.\; P \lor R$,<br>
+          $3.\; \neg R$<br>
+          $\therefore\; Q$<br>
+          mediante reducción al absurdo.</p>
+        <details class="solution">
+          <summary>🔍 Ver demostración por contradicción</summary>
+          <div class="solution-content">
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Línea</th>
+                    <th>Proposición</th>
+                    <th>Justificación</th>
+                    <th>Referencias</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>$P \to Q$</td>
+                    <td>Premisa</td>
+                    <td>---</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>$P \lor R$</td>
+                    <td>Premisa</td>
+                    <td>---</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>$\neg R$</td>
+                    <td>Premisa</td>
+                    <td>---</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>$\neg Q$</td>
+                    <td>Premisa (Reducción al Absurdo)</td>
+                    <td>---</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>$\neg P$</td>
+                    <td>Modus Tollens</td>
+                    <td>1, 4</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>$P$</td>
+                    <td>Silogismo Disyuntivo</td>
+                    <td>2, 3</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>$P \land \neg P$</td>
+                    <td>Conjunción (Contradicción)</td>
+                    <td>6, 5</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 5: CUANTIFICADORES (cuantificadores.tex) -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-5">
+      <h2 class="module-title"><span class="badge">MÓDULO 05</span> Cuantificadores</h2>
+
+      <h3 class="section-title" id="sec-5-1">5.1 Motivación</h3>
+      <p>La lógica proposicional trata las oraciones como bloques indivisibles, impidiendo expresar generalizaciones o
+        validar argumentos que dependen de la estructura interna de sus sujetos (como el silogismo clásico de Sócrates:
+        <em>«Todos los hombres son mortales; Sócrates es un hombre $\therefore$ Sócrates es mortal»</em>). Para superar
+        esta limitación se introducen los predicados y cuantificadores.</p>
+
+      <h3 class="section-title" id="sec-5-2">5.2 Predicados y Cuantificadores</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Predicado y Universo de Discurso</div>
+        <p style="margin:0;">Un <strong>predicado o función proposicional</strong> \((P(x), Q(x, y))\) es un enunciado
+          con una o más variables que expresa una propiedad o relación. Adquiere valor de verdad cuando sus variables
+          toman valores en el <strong>universo de discurso</strong> $U$.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Cuantificador</th>
+              <th>Símbolo</th>
+              <th>Notación</th>
+              <th>Definición formal / Valor de verdad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Universal</strong></td>
+              <td>$\forall$</td>
+              <td>$\forall x\,(p(x))$</td>
+              <td>$V$ si $p(x_1) \land p(x_2) \land \dots \land p(x_n)$ es $V$; $F$ en caso contrario.</td>
+            </tr>
+            <tr>
+              <td><strong>Existencial</strong></td>
+              <td>$\exists$</td>
+              <td>$\exists x\,(p(x))$</td>
+              <td>$V$ si $p(x_1) \lor p(x_2) \lor \dots \lor p(x_n)$ es $V$; $F$ en caso contrario.</td>
+            </tr>
+            <tr>
+              <td><strong>Existencial Único</strong></td>
+              <td>$\exists!$</td>
+              <td>$\exists! x\,(p(x))$</td>
+              <td>$V$ si $p(x)$ es $V$ para exactamente un $x$; $F$ en caso contrario.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 5.1: Simbolización en Lógica de Predicados</div>
+        <p>Simbolice: <em>«Cualquier estudiante de la facultad debe aprobar Cálculo y Matemáticas Discretas»</em>.</p>
+
+        <details class="solution">
+          <summary>🔍 Ver formalización simbólica</summary>
+          <div class="solution-content">
+
+            <p style="margin-bottom: 5px;"><strong>Primero:</strong> Definimos el universo de discurso (\(U\)) como los
+              estudiantes de la facultad.</p>
+
+            <p style="margin-bottom: 5px;"><strong>Luego:</strong> Establecemos los predicados correspondientes:</p>
+            <!-- Bloque centrado para los predicados -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              ApruebaC(x) &: \text{«}x\text{ aprueba Cálculo»} \\
+              ApruebaMD(x) &: \text{«}x\text{ aprueba Matemáticas Discretas»}
+              \end{aligned}
+              $$
+            </div>
+
+            <p style="margin-bottom: 5px; margin-top: 15px;"><strong>Finalmente:</strong> La formalización de la
+              proposición es:</p>
+            <!-- Fórmula final centrada y con scroll de seguridad -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0; padding: 5px 0;">
+              $$
+              \forall x \, [ApruebaC(x) \land ApruebaMD(x)]
+              $$
+            </div>
+
+          </div>
+        </details>
+      </div>
+      <h3 class="section-title" id="sec-5-3">5.3 Negación (Leyes de De Morgan) y Propiedades</h3>
+      <div class="callout callout-thm">
+        <div class="callout-title">📐 Teorema 5.1: Negación de los Cuantificadores (Leyes de De Morgan)</div>
+
+        <!-- Contenedor centrado con scroll de seguridad -->
+        <div style="text-align: center; overflow-x: auto; margin-top: 10px;">
+          $$
+          \begin{aligned}
+          \neg\forall x(p(x)) &\equiv \exists x(\neg p(x)) \\[1ex]
+          \neg\exists x(p(x)) &\equiv \forall x(\neg p(x))
+          \end{aligned}
+          $$
+        </div>
+      </div>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 5.2: Simplificación de Negaciones Cuantificadas</div>
+        <p>Sea $U = \mathbb{R}$. Simplifique:<br>
+          <strong>a)</strong> $\neg \forall x [x > 3 \rightarrow x^2 > 9]$<br>
+          <strong>b)</strong> $\neg \forall x [f(x) = 0 \rightarrow x = 0]$.
+        </p>
+        <details class="solution">
+          <summary>🔍 Ver resolución paso a paso</summary>
+          <div class="solution-content">
+            <p><strong>a)</strong>
+              $$\begin{aligned}
+              \neg \forall x [x > 3 \rightarrow x^2 > 9] &\equiv \exists x [\neg(x > 3 \rightarrow x^2 > 9)] &&
+              \text{(De Morgan para cuantificadores)} \\
+              &\equiv \exists x [x > 3 \land \neg(x^2 > 9)] && \text{(Negación del condicional)} \\
+              &\equiv \exists x [x > 3 \land x^2 \le 9] && \text{(Negación del operador } > \text{)}
+              \end{aligned}$$</p>
+
+            <p><strong>b)</strong>
+              $$\begin{aligned}
+              \neg \forall x [f(x) = 0 \rightarrow x = 0] &\equiv \exists x [\neg(f(x) = 0 \rightarrow x = 0)] &&
+              \text{(De Morgan para cuantificadores)} \\
+              &\equiv \exists x [f(x) = 0 \land \neg(x = 0)] && \text{(Negación del condicional)} \\
+              &\equiv \exists x [f(x) = 0 \land x \neq 0] && \text{(Negación del operador } = \text{)}
+              \end{aligned}$$</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="callout callout-thm">
+        <div class="callout-title">📐 Teorema 5.2: Equivalencias e Implicaciones Lógicas entre Cuantificadores</div>
+        <div class="table-wrapper" style="margin-bottom:0;">
+          <table>
+            <thead>
+              <tr>
+                <th>N.º</th>
+                <th>Tipo</th>
+                <th>Expresión Izquierda</th>
+                <th>Relación</th>
+                <th>Expresión Derecha</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Equivalencia</td>
+                <td>$\forall x\,(P(x) \land Q(x))$</td>
+                <td>$\equiv$</td>
+                <td>$\forall x\,P(x) \land \forall x\,Q(x)$</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Equivalencia</td>
+                <td>$\forall x\,(P(x) \to \neg Q(x))$</td>
+                <td>$\equiv$</td>
+                <td>$\neg\exists x\,(P(x) \land Q(x))$</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Equivalencia</td>
+                <td>$\forall x\,(P(x) \to Q(x))$</td>
+                <td>$\equiv$</td>
+                <td>$\neg\exists x\,(P(x) \land \neg Q(x))$</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Equivalencia</td>
+                <td>$\forall x\,P(x) \to \exists x\,Q(x)$</td>
+                <td>$\equiv$</td>
+                <td>$\exists x\,(P(x) \to Q(x))$</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Equivalencia</td>
+                <td>$\exists x\,(P(x) \lor Q(x))$</td>
+                <td>$\equiv$</td>
+                <td>$\exists x\,P(x) \lor \exists x\,Q(x)$</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Implicación</td>
+                <td>$\forall x\,P(x)$</td>
+                <td>$\Rightarrow$</td>
+                <td>$\exists x\,P(x)$</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Implicación</td>
+                <td>$\forall x\,P(x) \lor \forall x\,Q(x)$</td>
+                <td>$\Rightarrow$</td>
+                <td>$\forall x\,(P(x) \lor Q(x))$</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Implicación</td>
+                <td>$\forall x\,(P(x) \to Q(x))$</td>
+                <td>$\Rightarrow$</td>
+                <td>$\forall x\,P(x) \to \forall x\,Q(x)$</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>Implicación</td>
+                <td>$\exists x\,(P(x) \land Q(x))$</td>
+                <td>$\Rightarrow$</td>
+                <td>$\exists x\,P(x) \land \exists x\,Q(x)$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3 class="section-title" id="sec-5-4">5.4 Ejercicios Propuestos</h3>
+      <div class="callout callout-note">
+        <div class="callout-title">📝 Práctica de Cuantificadores</div>
+        <ol style="margin:0;">
+          <li>En $\mathcal{U} = \mathbb{R}$, con $p(x): x^2 - 7x + 10 = 0$ y $y(x): \operatorname{sen}(x) = 0$,<br>
+            determine el valor de verdad de $p(2)$, $p(1)$, $y(\pi)$, $y(\pi/2)$,<br>
+            así como de $\forall x\,(x^2 \ge 0)$, $\exists x\,(x^2 + 1 = 0)$ y $\exists! x\,(x^2 = 0)$.</li>
+
+          <li>Simbolice formalmente:<br>
+            «Algunos programadores no toman café»;<br>
+            «Existe un número real negativo»;<br>
+            «No hay ningún número primo que sea par»;<br>
+            «Todos los números enteros son positivos o negativos»;<br>
+            «Existe un número natural que es menor o igual que cero»;<br>
+            «Todo número real es mayor que 5 o menor que 2».</li>
+
+          <li>Simplifique las negaciones en $U = \mathbb{R}$:<br>
+            $\neg \forall x [x^2 \ge 0]$,<br>
+            $\neg \exists x [x > 0 \land x^2 = 2]$,<br>
+            $\neg \exists x [1 < x < 5]$,<br>
+              $\neg \exists x [x \neq 1 \land (x < -2 \lor x \ge 4)]$,<br>
+                $\neg \forall x [x > 3 \rightarrow x^2 > 9]$,<br>
+                $\neg \exists x [f(x) = 0 \land x = 0]$.</li>
+
+          <li>Simplifique las negaciones en $U = \mathbb{N}$:<br>
+            $\neg \forall x [x + 1 > x]$,<br>
+            $\neg \exists x [x^2 = 2]$,<br>
+            $\neg \forall x [x \text{ es par} \lor x \text{ es impar}]$,<br>
+            $\neg \exists x [x > 0 \land x < 1]$,<br>
+              $\neg \forall x [x > 2 \rightarrow x \ge 3]$,<br>
+              $\neg \exists x [x \neq 0 \land x^2 = 0]$.</li>
+
+          <li>En $\mathcal{U} = \mathbb{Z}$, con $p(x): x \text{ es par}$, $q(x): x > 0$ y $r(x): x \text{ es múltiplo
+            de } 5$, simbolice:<br>
+            (a) Todo entero es par o múltiplo de 5;<br>
+            (b) Existe un entero positivo y par;<br>
+            (c) Si un entero es múltiplo de 5, entonces no es positivo;<br>
+            (d) Un entero es par si, y solo si, es positivo;<br>
+            (e) No existe ningún entero par que no sea positivo.</li>
+        </ol>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BIBLIOGRAFÍA -->
+    <!-- ===================================================================== -->
+    <section class="card" id="bibliografia">
+      <h2 class="module-title"><span class="badge">REF</span> Bibliografía</h2>
+      <ul style="line-height: 1.85; padding-left: 1.4rem; margin-bottom: 0;">
+        <li><strong>[Rosen, 2012]</strong> Rosen, K. H. (2012). <em>Matemática discreta y sus aplicaciones</em>
+          (7.<sup>a</sup> ed.). McGraw-Hill Interamericana.</li>
+        <li><strong>[Grimaldi, 1998]</strong> Grimaldi, R. P. (1998). <em>Matemáticas discreta y combinatoria: Una
+            introducción con aplicaciones</em> (3.<sup>a</sup> ed.). Addison-Wesley Iberoamericana.</li>
+        <li><strong>[Epp, 2012]</strong> Epp, S. S. (2012). <em>Matemáticas discretas con aplicaciones</em>
+          (4.<sup>a</sup> ed.). Cengage Learning.</li>
+        <li><strong>[Johnsonbaugh, 2005]</strong> Johnsonbaugh, R. (2005). <em>Matemáticas discretas</em>
+          (6.<sup>a</sup> ed.). Pearson Educación.</li>
+        <li><strong>[Kolman et al., 1997]</strong> Kolman, B., Busby, R. C., &amp; Ross, S. (1997). <em>Estructuras de
+            matemáticas discretas para la computación</em> (3.<sup>a</sup> ed.). Prentice Hall Hispanoamericana.</li>
+        <li><strong>[Murillo, 2012]</strong> Murillo, M. (2012). <em>Introducción a la matemática discreta</em>
+          (4.<sup>a</sup> ed.). Editorial Tecnológica de Costa Rica.</li>
+      </ul>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+  </div>
+
+  <script>
+    function toggleAllDetails(openState) {
+      document.querySelectorAll('details.solution').forEach(detail => {
+        detail.open = openState;
+      });
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 2: Teoría de Conjuntos — Matemáticas Discretas</title>
+
+  <!-- KaTeX para renderizado matemático -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {
+      delimiters: [
+        {left: '$$', right: '$$', display: true},
+        {left: '$', right: '$', display: false},
+        {left: '\\[', right: '\\]', display: true},
+        {left: '\\(', right: '\\)', display: false}
+      ],
+      throwOnError: false
+    });"></script>
+
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --primary-border: #3b82f6;
+      --secondary: #0f766e;
+      --secondary-light: #f0fdfa;
+      --secondary-border: #14b8a6;
+      --accent: #b45309;
+      --accent-light: #fffbeb;
+      --accent-border: #f59e0b;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+    }
+
+    /* Header */
+    header.doc-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(30, 58, 138, 0.25);
+    }
+
+    header.doc-header h1 {
+      margin: 0 0 0.75rem 0;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 0.85rem;
+      margin-top: 0.85rem;
+    }
+
+    .meta-bar span strong {
+      color: #ffffff;
+    }
+
+    /* Controls Bar */
+    .controls-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.45rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .btn:hover {
+      background: var(--primary-light);
+      border-color: var(--primary-border);
+      color: var(--primary);
+    }
+
+    /* Cards & Sections */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    h2.module-title {
+      color: var(--primary);
+      font-size: 1.6rem;
+      margin-top: 0;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--primary-light);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .badge {
+      background: var(--primary);
+      color: white;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    h3.section-title {
+      color: #0f172a;
+      font-size: 1.25rem;
+      margin-top: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    h4.sub-title {
+      color: #334155;
+      font-size: 1.05rem;
+      margin-top: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Tables */
+    .table-wrapper {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1.2rem 0;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      background: var(--surface);
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: #0f172a;
+      font-weight: 700;
+      text-align: left;
+      padding: 0.8rem 1rem;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    table a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    table a:hover {
+      text-decoration: underline;
+    }
+
+    /* Callout Boxes */
+    .callout {
+      border-left: 4px solid;
+      border-radius: 0 10px 10px 0;
+      padding: 1.1rem 1.35rem;
+      margin: 1.25rem 0;
+    }
+
+    .callout-def {
+      background-color: var(--primary-light);
+      border-color: var(--primary-border);
+    }
+
+    .callout-thm {
+      background-color: var(--secondary-light);
+      border-color: var(--secondary-border);
+    }
+
+    .callout-note {
+      background-color: var(--accent-light);
+      border-color: var(--accent-border);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 1rem;
+    }
+
+    .callout-def .callout-title {
+      color: var(--primary);
+    }
+
+    .callout-thm .callout-title {
+      color: var(--secondary);
+    }
+
+    .callout-note .callout-title {
+      color: var(--accent);
+    }
+
+    /* Examples & Collapsible Details */
+    .example-box {
+      background: #fafafa;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      margin: 1.35rem 0;
+    }
+
+    .example-header {
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 0.6rem;
+      font-size: 1.03rem;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    details.solution {
+      margin-top: 0.9rem;
+      background: var(--surface);
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    details.solution summary {
+      padding: 0.65rem 1rem;
+      font-weight: 600;
+      color: var(--primary);
+      cursor: pointer;
+      background: #f1f5f9;
+      user-select: none;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.15s ease;
+    }
+
+    details.solution summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.solution summary::before {
+      content: "▶";
+      font-size: 0.75rem;
+      transition: transform 0.2s ease;
+      display: inline-block;
+    }
+
+    details.solution[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    details.solution summary:hover {
+      background: #e2e8f0;
+    }
+
+    .solution-content {
+      padding: 1.1rem 1.25rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    /* Diagram Containers */
+    .diagram-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 1.25rem 0;
+      padding: 1rem;
+      background: #ffffff;
+      border: 1px dashed #cbd5e1;
+      border-radius: 10px;
+    }
+
+    .diagram-caption {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      font-weight: 600;
+    }
+
+    /* Back to top link */
+    .back-top {
+      text-align: right;
+      margin-top: 1.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .back-top a {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-top a:hover {
+      color: var(--primary);
+    }
+
+    /* ===== CORRECCIÓN CLAVE PARA KATEX ===== */
+    /* Evita que las fórmulas en línea se rompan a la mitad (ej. P \to Q) */
+    .katex {
+      white-space: nowrap;
+    }
+
+    /* Permite scroll en bloques de ecuaciones largas */
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.35rem 0;
+      max-width: 100%;
+    }
+
+    .katex-display>.katex {
+      font-size: 0.95em;
+    }
+
+    /* ===== AJUSTES RESPONSIVE PARA CELULARES ===== */
+    @media (max-width: 640px) {
+      body {
+        font-size: 0.96rem;
+        line-height: 1.6;
+      }
+
+      .container {
+        padding: 0.9rem 0.85rem 3.5rem;
+      }
+
+      header.doc-header {
+        padding: 1.4rem 1.15rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+      }
+
+      header.doc-header h1 {
+        font-size: 1.45rem;
+        line-height: 1.25;
+      }
+
+      header.doc-header p {
+        font-size: 0.95rem !important;
+      }
+
+      .meta-bar {
+        flex-direction: column;
+        gap: 0.35rem;
+        font-size: 0.85rem;
+      }
+
+      .controls-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .controls-bar .btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.65rem 0.85rem;
+      }
+
+      .card {
+        padding: 1.15rem 1rem;
+        border-radius: 12px;
+        margin-bottom: 1.25rem;
+      }
+
+      h2.module-title {
+        font-size: 1.22rem;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        line-height: 1.3;
+      }
+
+      h3.section-title {
+        font-size: 1.1rem;
+        margin-top: 1.4rem;
+      }
+
+      .example-box {
+        padding: 0.95rem 1rem;
+        margin: 1rem 0;
+      }
+
+      .callout {
+        padding: 0.9rem 1rem;
+        margin: 1rem 0;
+      }
+
+      /* Tablas más compactas y fáciles de desplazar en horizontal */
+      th,
+      td {
+        padding: 0.55rem 0.65rem;
+        font-size: 0.86rem;
+      }
+    }
+
+        /* ===== CORRECCIÓN DEL ESPACIO EN BLANCO (DESBORDAMIENTO HORIZONTAL) ===== */
+
+    /* 1. Evita que la página se estire más allá de la pantalla */
+    html, body {
+      overflow-x: hidden !important;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    /* 2. Obliga a todos los medios (SVG, imágenes, videos) a adaptarse al ancho de la pantalla */
+    img, svg, video, iframe, canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* 3. Asegura que los contenedores flexibles permitan a los hijos encogerse */
+    .container, .card, .example-box, .callout, .solution-content {
+      min-width: 0;
+    }
+
+    /* 4. Refuerzo para las tablas y KaTeX (por si acaso) */
+    .table-wrapper, .katex-display {
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="doc-header" id="inicio">
+      <h1>📐 Tema 2: Teoría de Conjuntos — Matemáticas Discretas</h1>
+      <p style="margin: 0; font-size: 1.05rem;">
+        Apuntes completos de definiciones, operaciones, diagramas de Venn, familias de conjuntos, cardinalidad,
+        relaciones de inclusión y demostraciones formales.
+      </p>
+      <div class="meta-bar">
+        <span><strong>Autor:</strong> Diego Linares</span>
+        <span><strong>Área:</strong> Fundamentos de Computación y Matemáticas Discretas</span>
+        <span><strong>Nivel:</strong> Universitario</span>
+      </div>
+    </header>
+
+    <!-- CONTROLES GLOBALES -->
+    <div class="controls-bar">
+      <button class="btn" onclick="toggleAllDetails(true)">📂 Expandir todas las soluciones</button>
+      <button class="btn" onclick="toggleAllDetails(false)">📁 Contraer todas las soluciones</button>
+    </div>
+
+    <!-- MAPA DE CONTENIDOS -->
+    <section class="card" id="mapa-de-contenidos">
+      <h2 class="module-title">📑 Mapa de Contenidos</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 80px;">Módulo</th>
+              <th style="width: 100px;">Tema Principal</th>
+              <th style="width: 260px;">Subtemas Clave</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge">01</span></td>
+              <td><a href="#mod-1">Definiciones</a></td>
+              <td>
+                <a href="#sec-1-1">1.1 Analogía lógica y conjuntos notables $(\emptyset, U)$</a><br>
+                <a href="#sec-1-2">1.2 Extensión y comprensión</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">02</span></td>
+              <td><a href="#mod-2">Operaciones y Diagramas de Venn</a></td>
+              <td>
+                <a href="#sec-2-1">2.1 Operaciones aritmético-lógicas</a><br>
+                <a href="#sec-2-2">2.2 Diferencia simétrica</a><br>
+                <a href="#sec-2-3">2.3 Estudio visual con Diagramas de Venn y Cardinalidad</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">03</span></td>
+              <td><a href="#mod-3">Familias de Conjuntos</a></td>
+              <td>
+                <a href="#sec-3-1">3.1 Familias y operaciones generalizadas</a><br>
+                <a href="#sec-3-2">3.2 Conjunto potencia</a><br>
+                <a href="#sec-3-3">3.3 Subfamilia partición</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">04</span></td>
+              <td><a href="#mod-4">Producto Cartesiano</a></td>
+              <td>
+                <a href="#sec-4-1">4.1 Definición y representación geométrica</a><br>
+                <a href="#sec-4-2">4.2 Cardinalidad y propiedades</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">05</span></td>
+              <td><a href="#mod-5">Relaciones e Inclusión</a></td>
+              <td>
+                <a href="#sec-5-1">5.1 Subconjunto e igualdad</a><br>
+                <a href="#sec-5-2">5.2 Teoremas bajo hipótesis de inclusión</a><br>
+                <a href="#sec-5-3">5.3 Estrategias y esquemas de demostración</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">06</span></td>
+              <td><a href="#mod-6">Álgebra de Conjuntos y Leyes</a></td>
+              <td>
+                <a href="#sec-6-1">6.1 Demostraciones sin hipótesis</a><br>
+                <a href="#sec-6-2">6.2 Compendio de leyes algebraicas</a><br>
+                <a href="#sec-6-3">6.3 Simplificación algebraica y de cardinales</a>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="badge">REF</span></td>
+              <td><a href="#bibliografia">Bibliografía</a></td>
+              <td>Referencias bibliográficas sobre Teoría de Conjuntos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 1: DEFINICIONES FUNDAMENTALES -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-1">
+      <h2 class="module-title"><span class="badge">MÓDULO 01</span> Definiciones</h2>
+
+      <h3 class="section-title" id="sec-1-1">1.1 Analogía Lógica y Conjuntos Notables</h3>
+      <p>Existe una analogía profunda entre la lógica proposicional y la Teoría de Conjuntos: mientras que la lógica
+        opera sobre proposiciones de verdad, la teoría de conjuntos trabaja sobre colecciones de objetos. Los conectivos
+        lógicos $(\land, \lor, \neg)$ se materializan en operaciones algebraicas entre conjuntos.</p>
+
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Conjunto</div>
+        <p style="margin:0;">Un <strong>conjunto</strong> es una colección de objetos bien definidos, llamados
+          elementos, que comparten una característica común o están agrupados bajo un mismo criterio.</p>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.1: Vocales del Alfabeto</div>
+        <p>El conjunto de las vocales del alfabeto español se escribe por extensión como:
+          $$V = \{a, e, i, o, u\}$$</p>
+      </div>
+
+      <p>Antes de estudiar operaciones, es indispensable definir los límites absolutos de cualquier espacio de estudio,
+        vinculados directamente con contradicciones y tautologías de la lógica proposicional:</p>
+
+      <!-- Información extraída de la tercera columna como incisos -->
+      <ul style="margin-top: 0.5rem; margin-bottom: 1rem; padding-left: 20px; line-height: 1.5;">
+        <li>El <strong>conjunto vacío</strong> representa una <strong>contradicción</strong> lógica y no contiene
+          elementos.</li>
+        <li>El <strong>conjunto universal</strong> representa una <strong>tautología</strong> lógica y contiene todo el
+          marco de referencia.</li>
+      </ul>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Conjunto</th>
+              <th>Definición Formal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Vacío</strong></td>
+              <td>\(\emptyset = \{x \mid x \in A \land x \notin A\}\)</td>
+            </tr>
+            <tr>
+              <td><strong>Universal</strong></td>
+              <td>\(U = \{x \mid x \in A \lor x \notin A\}\)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="section-title" id="sec-1-2">1.2 Formas de Definición: Extensión y Comprensión</h3>
+      <p>Para especificar qué elementos forman parte de un conjunto, se emplean dos métodos principales:</p>
+      <ul>
+        <li><strong>Por Extensión (o Tabulación):</strong> Se enumeran uno a uno los elementos del conjunto:
+          $$A = \{a_1, a_2, \cdots, a_n\}$$
+        </li>
+        <li><strong>Por Comprensión (o Forma Constructiva):</strong> Se define mediante una propiedad o función
+          proposicional $P(x)$ sobre un universo $U$:
+          $$A = \{x \in U \mid P(x)\}$$
+        </li>
+      </ul>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.2: Conversión a Comprensión y análisis de infinitos</div>
+        <p>Defina por comprensión los siguientes conjuntos y justifique si es posible representarlos por extensión:</p>
+        <ol>
+          <li>El conjunto de los números naturales impares.</li>
+          <li>El conjunto de todos los números reales mayores que 5.</li>
+          <li>El conjunto $B = \{7, 14, 21, 28, 35\}$.</li>
+        </ol>
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
+
+            <p><strong>Primero:</strong></p>
+            <!-- Ecuación centrada. Usamos $$ para modo display si usas MathJax, o el div con text-align -->
+            <div style="text-align: center; margin: 10px 0;">
+              \(I = \{x \in \mathbb{N} \mid x = 2k - 1\}\)
+            </div>
+            <p style="margin-top: 0;">para algún \(k \in \mathbb{N}\).</p>
+
+            <p><strong>Luego:</strong></p>
+            <div style="text-align: center; margin: 10px 0;">
+              \(M = \{x \in \mathbb{R} \mid x > 5\}\)
+            </div>
+            <p style="margin-top: 0;">Es un <strong>conjunto infinito</strong> no numerable; es imposible representarlo
+              por extensión.</p>
+
+            <p><strong>Finalmente:</strong></p>
+            <div style="text-align: center; margin: 10px 0;">
+              \(B = \{x \in \mathbb{N} \mid x = 7k\}\)
+            </div>
+            <p style="margin-top: 0;">con \(k \in \mathbb{N}\) y \(1 \leq k \leq 5\).</p>
+
+          </div>
+        </details>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 1.3: De Comprensión a Extensión y Casos Especiales</div>
+        <p>Exprese por extensión:<br>
+          $A = \{x \in \mathbb{Z} \mid -2 \leq x < 3\}$<br>
+            $C = \{x \in \mathbb{R} \mid 3x - 7 = 2\}$<br>
+            $D = \{x \in \mathbb{R} \mid x^2 + 4 = 0\}$.</p>
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
+            <ul>
+              <li>$A = \{-2, -1, 0, 1, 2\}$.</li>
+              <li>$3x - 7 = 2 \Rightarrow x = 3$. Es un <strong>conjunto unitario</strong>: $C = \{3\}$.</li>
+              <li>$x^2 = -4$ no tiene solución en $\mathbb{R}$. Es el <strong>conjunto vacío</strong>: $D = \emptyset$.
+              </li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 2: OPERACIONES Y DIAGRAMAS DE VENN -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-2">
+      <h2 class="module-title"><span class="badge">MÓDULO 02</span> Operaciones y Diagramas de Venn</h2>
+
+      <h3 class="section-title" id="sec-2-1">2.1 Operaciones Aritmético-Lógicas</h3>
+      <p>Cada operación responde directamente a un conectivo lógico:</p>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: center;">Operación</th>
+              <th style="text-align: center;">Definición Formal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: center;"><strong>Unión</strong></td>
+              <td style="text-align: center;">$A \cup B = \{x \mid x \in A \lor x \in B\}$</td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>Intersección</strong></td>
+              <td style="text-align: center;">$A \cap B = \{x \mid x \in A \land x \in B\}$</td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>Diferencia</strong></td>
+              <td style="text-align: center;">$A - B = \{x \mid x \in A \land x \notin B\}$</td>
+            </tr>
+            <tr>
+              <td style="text-align: center;"><strong>Complemento</strong></td>
+              <td style="text-align: center;">$A^c = \{x \in U \mid x \notin A\}$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="section-title" id="sec-2-2">2.2 Diferencia Simétrica</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Diferencia Simétrica</div>
+        <p style="margin:0;">Recolecta los elementos que pertenecen exclusivamente a uno de los conjuntos, omitiendo su
+          intersección. Posee dos definiciones equivalentes:</p>
+        <ul style="margin: 0.5rem 0 0 0;">
+          <li><strong>Definición I (Por exclusión):</strong><br> $A \triangle B = (A \cup B) - (A \cap B)$</li>
+          <li><strong>Definición II (Por unión de diferencias):</strong><br> $A \triangle B = (A - B) \cup (B - A)$</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title" id="sec-2-3">2.3 Estudio Visual con Diagramas de Venn y Cardinalidad</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Diagramas de Venn</div>
+        <p style="margin:0;">Representaciones gráficas que traducen proposiciones lógicas en regiones espaciales. El
+          rectángulo $U$ delimita el universo, los círculos representan los conjuntos y las regiones sombreadas indican
+          la solución.</p>
+      </div>
+      <div class="example-box" style="font-family: sans-serif">
+        <div class="example-header" style="font-weight: bold; margin-bottom: 10px;">🧩 Ejemplo 2.1:
+          Operación Combinada</div>
+        <p>Sea:<br>
+          \(U = \{1, \cdots, 10\}\)<br>
+          \(A = \{1, 2, 3, 4, 5\}\)<br>
+          \(B = \{4, 5, 6, 7\}\)<br>
+          \(C = \{2, 4, 8, 9\}\).<br>
+          Halle por extensión:
+          $$\left[ (A \cup B) - C \right]^c \cap (A \triangle B)$$</p>
+
+        <!-- INICIO DEL DIAGRAMA DE VENN SVG -->
+        <div style="text-align: center; margin: 30px 0;">
+          <svg viewBox="0 0 500 420"
+            style="max-width: 500px; width: 100%; height: auto; background-color: transparent;">
+            <!-- Rectángulo del conjunto Universal (U) -->
+            <rect x="5" y="5" width="490" height="410" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
+            <text x="460" y="35" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">U</text>
+
+            <!-- Círculos de los conjuntos (con transparencia) -->
+            <circle cx="180" cy="170" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2" />
+            <circle cx="320" cy="170" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2" />
+            <circle cx="250" cy="280" r="110" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2" />
+
+            <!-- Etiquetas de los conjuntos (A, B, C) -->
+            <text x="100" y="60" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">A</text>
+            <text x="390" y="60" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">B</text>
+            <text x="250" y="410" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic">C</text>
+
+            <!-- ================= ELEMENTOS EN LAS REGIONES ================= -->
+            <!-- Región: Solo A -->
+            <text x="130" y="130" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">1, 3</text>
+
+            <!-- Región: Solo B -->
+            <text x="370" y="130" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">6, 7</text>
+
+            <!-- Región: Solo C -->
+            <text x="250" y="330" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">8, 9</text>
+
+            <!-- Región: A ∩ B (exclusivo) -->
+            <text x="250" y="120" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">5</text>
+
+            <!-- Región: A ∩ C (exclusivo) - RESULTADO FINAL -->
+            <!-- Resaltado en amarillo porque es la respuesta al ejercicio -->
+            <text x="195" y="240" font-family="sans-serif" font-size="18" font-weight="bold" fill="#fbbf24"
+              text-anchor="middle" dominant-baseline="middle">2</text>
+
+            <!-- Región: B ∩ C (exclusivo) -> Vacío, no hay números -->
+
+            <!-- Región: A ∩ B ∩ C (Centro) -->
+            <text x="250" y="200" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">4</text>
+
+            <!-- Región: Fuera de los conjuntos (U - A - B - C) -->
+            <text x="450" y="380" font-family="sans-serif" font-size="16" fill="#e2e8f0" text-anchor="middle"
+              dominant-baseline="middle">10</text>
+          </svg>
+        </div>
+        <!-- FIN DEL DIAGRAMA DE VENN SVG -->
+
+        <details class="solution">
+          <summary style="cursor: pointer; color: #38bdf8; font-weight: bold;">🔍 Ver resolución paso a paso</summary>
+
+          <!-- Reduje el padding-left a 10px para dar más espacio -->
+          <div style="margin-top: 10px; padding-left: 10px; border-left: 2px solid #38bdf8;">
+
+            <strong>Primero:</strong><br>
+            <!-- overflow-x: auto permite hacer scroll horizontal si es necesario -->
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              \(A \cup B = \{1, 2, 3, 4, 5, 6, 7\}\)
+            </div>
+
+            <strong>Luego:</strong><br>
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              \((A \cup B) - C = \{1, 3, 5, 6, 7\}\)<br>
+              \([(A \cup B) - C]^c = \{2, 4, 8, 9, 10\}\)
+            </div>
+
+            <strong>Finalmente:</strong><br>
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              \(A \triangle B = \{1, 2, 3, 6, 7\}\)
+            </div>
+
+            <strong>Por lo tanto:</strong><br>
+            <!-- AQUÍ ESTÁ LA SOLUCIÓN AL CORTE: Dividimos la ecuación en dos líneas -->
+            <div style="text-align: center; margin: 0.4em 0; overflow-x: auto;">
+              \(\{2, 4, 8, 9, 10\} \cap \{1, 2, 3, 6, 7\}\)<br>
+              \(= \mathbf{\{2\}}\)
+            </div>
+
+          </div>
+        </details>
+      </div>
+
+      <h4 class="sub-title" style="color: #e2e8f0; font-family: sans-serif;">Cardinalidad y Principio de
+        Inclusión-Exclusión</h4>
+      <p style="font-family: sans-serif;">El cardinal \(|A|\) es el número de elementos distintos de
+        \(A\). Cuantitativamente, un diagrama de Venn se divide
+        en regiones disjuntas \((x, y, z, w)\):</p>
+
+      <!-- INICIO DEL DIAGRAMA SVG -->
+      <div style="text-align: center; margin: 30px 0;">
+        <svg viewBox="0 0 400 240" style="max-width: 450px; width: 100%; height: auto; background-color: transparent;">
+          <!-- Rectángulo del conjunto Universal (U) -->
+          <rect x="5" y="5" width="390" height="230" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
+
+          <!-- Círculo del conjunto A -->
+          <circle cx="150" cy="120" r="80" fill="rgba(165, 180, 252, 0.15)" stroke="#818cf8" stroke-width="2" />
+
+          <!-- Círculo del conjunto B -->
+          <circle cx="250" cy="120" r="80" fill="rgba(165, 180, 252, 0.15)" stroke="#818cf8" stroke-width="2" />
+
+          <!-- Textos de los conjuntos (U, A, B) -->
+          <text x="350" y="30" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">U</text>
+          <text x="90" y="50" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">A</text>
+          <text x="280" y="50" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">B</text>
+
+          <!-- Textos de las regiones (x, y, z, w) -->
+          <text x="105" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle">x</text>
+          <text x="200" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle">y</text>
+          <text x="295" y="128" font-family="serif" font-size="22" fill="#e2e8f0" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle">z</text>
+          <text x="50" y="210" font-family="serif" font-size="22" fill="#94a3b8" font-style="italic"
+            text-anchor="middle" dominant-baseline="middle">w</text>
+        </svg>
+      </div>
+      <!-- FIN DEL DIAGRAMA SVG -->
+
+      <ul style="font-family: sans-serif;">
+        <li>\(x\): elementos exclusivos de \(A\) \((|A - B| = x)\).</li>
+        <li>\(y\): elementos en la intersección \((|A \cap B| = y)\).</li>
+        <li>\(z\): elementos exclusivos de \(B\) \((|B - A| = z)\).</li>
+        <li>\(w\): elementos externos \((|(A \cup B)^c| = w)\).</li>
+      </ul>
+
+      <div class="callout callout-thm">
+        <div class="callout-title">📐 Teorema: Propiedades de Cardinales</div>
+        <div class="table-wrapper" style="margin-bottom:0;">
+          <table>
+            <thead>
+              <tr>
+                <th>Propiedad</th>
+                <th>Fórmula General</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Unión</strong></td>
+                <td>
+                  $\begin{aligned}
+                  |A \cup B| &= |A| + |B| - |A \cap B|
+                  \end{aligned}$
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Complemento</strong></td>
+                <td>
+                  $\begin{aligned}
+                  |A^c| &= |U| - |A|
+                  \end{aligned}$
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Diferencia</strong></td>
+                <td>
+                  $\begin{aligned}
+                  |A - B| &= |A| - |A \cap B|
+                  \end{aligned}$
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Diferencia Simétrica</strong></td>
+                <td>
+                  <!-- Aquí dividimos la fórmula larga en dos líneas -->
+                  $\begin{aligned}
+                  |A \triangle B| &= |A \cup B| - |A \cap B| \\
+                  &= |A - B| + |B - A|
+                  \end{aligned}$
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 2.2: Problema Aplicado (Estudiantes universitarios)</div>
+        <p>En un grupo de 100 estudiantes, 60 programan en Python, 40 asisten a Estructuras Discretas y 20 hacen ambas
+          cosas. Determine:</p>
+        <ol>
+          <li>Estudiantes que programan en Python o asisten a Discretas.</li>
+          <li>Estudiantes que no realizan ninguna de las dos actividades.</li>
+        </ol>
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
+            <!-- Separamos la introducción de los datos -->
+            <p style="margin-bottom: 10px;">Sean \(P\) (Python), \(D\) (Discretas) y \(U\) (100).</p>
+
+            <!-- Los datos ahora están centrados y separados para que no se corten -->
+
+            <div style="text-align: center; overflow-x: auto; margin-bottom: 15px;">
+              $$
+              |P|=60, \ |D|=40, \ |P \cap D|=20
+              $$
+            </div>
+
+            <strong>Primero:</strong><br>
+            <!-- Contenedor con scroll horizontal automático por si acaso -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              |P \cup D| &= |P| + |D| - |P \cap D| \\
+              &= 60 + 40 - 20 \\
+              &= \mathbf{80}.
+              \end{aligned}
+              $$
+            </div>
+
+            <strong>Segundo:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              |(P \cup D)^c| &= |U| - |P \cup D| \\
+              &= 100 - 80 \\
+              &= \mathbf{20}.
+              \end{aligned}
+              $$
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 3: FAMILIAS DE CONJUNTOS -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-3">
+      <h2 class="module-title"><span class="badge">MÓDULO 03</span> Familias de Conjuntos</h2>
+
+      <h3 class="section-title" id="sec-3-1">3.1 Familias y Operaciones Generalizadas</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definiciones: Familia, Unión e Intersección Generalizada</div>
+
+        <!-- 1. Agregamos la información como incisos antes de la tabla -->
+        <ul style="margin-top: 10px; margin-bottom: 15px; padding-left: 20px; line-height: 1.5;">
+          <li><strong>Familia de conjuntos:</strong> Colección cuyos elementos son otros conjuntos.</li>
+          <li><strong>Unión generalizada:</strong> Elementos que pertenecen al menos a uno de los conjuntos.</li>
+          <li><strong>Intersección generalizada:</strong> Elementos presentes en todos y cada uno de los conjuntos.</li>
+        </ul>
+
+        <!-- 2. Tabla simplificada a solo 2 columnas -->
+        <div class="table-wrapper" style="margin-bottom:0;">
+          <table>
+            <thead>
+              <tr>
+                <th>Concepto</th>
+                <th>Expresión Formal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Familia de conjuntos</strong></td>
+                <td>$\mathcal{A} = \{A_i\}_{i \in I}$</td>
+              </tr>
+              <tr>
+                <td><strong>Unión generalizada</strong></td>
+                <td>$\bigcup_{i \in I} A_i = A_1 \cup \cdots \cup A_n$</td>
+              </tr>
+              <tr>
+                <td><strong>Intersección generalizada</strong></td>
+                <td>$\bigcap_{i \in I} A_i = A_1 \cap \cdots \cap A_n$</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 3.1: Cálculo con Índices</div>
+
+        <p style="margin-bottom: 5px;">Con:</p>
+
+        <!-- Agrupamos los datos iniciales para que se vean ordenados -->
+        <div style="text-align: center; overflow-x: auto; margin-bottom: 10px;">
+          $$
+          \begin{aligned}
+          I &= \{1, 2, 3\} \\
+          A_1 &= \{1, 2, 3\} \\
+          A_2 &= \{2, 3, 4\} \\
+          A_3 &= \{3, 4, 5\}
+          \end{aligned}
+          $$
+        </div>
+
+        <p>Determine la familia \(\mathcal{A}\), su unión e intersección generalizada.</p>
+
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
+
+            <strong>Primero:</strong><br>
+            <!-- Dividimos el conjunto largo en 3 líneas usando aligned -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              \mathcal{A} &= \{ \{1, 2, 3\}, \\
+              &\quad \{2, 3, 4\}, \\
+              &\quad \{3, 4, 5\} \}.
+              \end{aligned}
+              $$
+            </div>
+
+            <strong>Luego:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \bigcup_{i \in I} A_i = \{1, 2, 3, 4, 5\}
+              $$
+            </div>
+
+            <strong>Finalmente:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \bigcap_{i \in I} A_i = \{3\}
+              $$
+            </div>
+
+          </div>
+        </details>
+      </div>
+      <h3 class="section-title" id="sec-3-2">3.2 La Familia Potencia (Conjunto Potencia)</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Conjunto Potencia</div>
+        <p style="margin:0;">Es la familia compuesta por todos los subconjuntos posibles de $A$ (incluyendo $\emptyset$
+          y $A)$. Su cardinalidad cumple el teorema:
+          $$\left| \mathcal{P}(A) \right| = 2^{|A|}$$</p>
+      </div>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 3.2: Construcción Progresiva del Conjunto Potencia</div>
+
+        <p>Determine:</p>
+        <!-- Datos iniciales centrados -->
+        <div style="text-align: center; overflow-x: auto; margin-bottom: 15px;">
+          $$
+          \begin{aligned}
+          \mathcal{P}(V) &\text{ para } V = \emptyset \\
+          \mathcal{P}(B) &\text{ para } B = \{a\} \\
+          \mathcal{P}(A) &\text{ para } A = \{a, b\}.
+          \end{aligned}
+          $$
+        </div>
+
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
+
+            <strong>Primero:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$V = \emptyset \implies \mathcal{P}(V) = \{\emptyset\}$$
+            </div>
+
+            <strong>Luego:</strong><br>
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$B = \{a\} \implies \mathcal{P}(B) = \{\emptyset, \{a\}\}$$
+            </div>
+
+            <strong>Finalmente:</strong><br>
+            <!-- La última ecuación es larga, la dividimos en dos líneas -->
+            <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+              $$
+              \begin{aligned}
+              A &= \{a, b\} \\
+              \mathcal{P}(A) &= \{\emptyset, \{a\}, \{b\}, A\}
+              \end{aligned}
+              $$
+            </div>
+
+          </div>
+        </details>
+      </div>
+      <h3 class="section-title" id="sec-3-3">3.3 La Subfamilia Partición</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Conjunto Partición</div>
+        <p style="margin:0;">Es una familia de subconjuntos no vacíos y mutuamente disjuntos de \(A\) cuya unión es
+          \(A\). Debe cumplir tres reglas:</p>
+        <ol style="margin: 0.5rem 0 0 0;">
+          <li><strong>Exclusión del vacío:</strong><br>$$\forall X \in P \Rightarrow X \neq \emptyset$$</li>
+          <li><strong>Mutuamente disjuntos:</strong><br>$$X, Y \in P: X \neq Y \Rightarrow X \cap Y = \emptyset$$</li>
+          <li><strong>Recubrimiento (Unión):</strong><br>$$\bigcup_{X \in P} X = A$$</li>
+        </ol>
+        <p style="margin: 0.5rem 0 0 0;">Para cualquier conjunto no vacío, el cardinal satisface \(1 \leq |P| \leq
+          |A|\).</p>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 4: PRODUCTO CARTESIANO -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-4">
+      <h2 class="module-title"><span class="badge">MÓDULO 04</span> Producto Cartesiano</h2>
+
+      <h3 class="section-title" id="sec-4-1">4.1 Definición y Representación</h3>
+      <div class="callout callout-def">
+        <div class="callout-title">📌 Definición: Producto Cartesiano</div>
+        <p style="margin:0;">Es el conjunto de pares ordenados formados por un elemento de $A$ y uno de $B$:
+          $$A \times B = \{(a, b) \mid a \in A \land b \in B\}$$
+          El orden importa $((a, b) \neq (b, a))$; por tanto, <strong>no es conmutativo</strong> $(A \times B \neq B
+          \times A)$. No se grafica en diagramas de Venn, sino en un <strong>plano cartesiano</strong>.</p>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 4.1: Cálculo de Producto Cartesiano</div>
+        <p>Sean:<br>
+          $A = \{1, 2\}$<br>
+          $B = \{a, b, c\}$.<br>
+          Halle $A \times B$ y su cardinalidad.</p>
+<details class="solution">
+  <summary>🔍 Ver solución</summary>
+  <div class="solution-content">
+
+    <strong>Primero:</strong><br>
+    <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+      $$
+      \begin{aligned}
+      A \times B = \{ &(1, a), (1, b), (1, c), \\
+                      &(2, a), (2, b), (2, c)\}
+      \end{aligned}
+      $$
+    </div>
+
+    <strong>Luego:</strong><br>
+    <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+      $$
+      |A \times B| = |A| \cdot |B| = 2 \cdot 3 = \mathbf{6}.
+      $$
+    </div>
+
+  </div>
+</details>
+      </div>
+
+      <h3 class="section-title" id="sec-4-2">4.2 Propiedades del Producto Cartesiano</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Propiedad</th>
+              <th>Expresión Formal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>No conmutatividad</strong></td>
+              <td>$A \times B \neq B \times A$</td>
+            </tr>
+            <tr>
+              <td><strong>No asociatividad</strong></td>
+              <td>$(A \times B) \times C \neq A \times (B \times C)$</td>
+            </tr>
+            <tr>
+              <td><strong>Elemento absorbente</strong></td>
+              <td>$A \times \emptyset = \emptyset \times A = \emptyset$</td>
+            </tr>
+            <tr>
+              <td><strong>Distributividad (Unión)</strong></td>
+              <td>$A \times (B \cup C) = (A \times B) \cup (A \times C)$</td>
+            </tr>
+            <tr>
+              <td><strong>Distributividad (Intersección)</strong></td>
+              <td>$A \times (B \cap C) = (A \times B) \cap (A \times C)$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 5: RELACIONES E INCLUSIÓN -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-5">
+      <h2 class="module-title"><span class="badge">MÓDULO 05</span> Relaciones e Inclusión</h2>
+
+      <h3 class="section-title" id="sec-5-1">5.1 Subconjunto e Igualdad</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Concepto</th>
+              <th>Definición Formal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Subconjunto (Inclusión)</strong></td>
+              <td>$A \subseteq B \iff (\forall x)(x \in A \Rightarrow x \in B)$</td>
+            </tr>
+            <tr>
+              <td><strong>Subconjunto propio</strong></td>
+              <td>$A \subset B \iff (A \subseteq B \land A \neq B)$</td>
+            </tr>
+            <tr>
+              <td><strong>Igualdad de Conjuntos</strong></td>
+              <td>$A = B \iff (A \subseteq B \land B \subseteq A)$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="section-title" id="sec-5-2">5.2 Teoremas bajo Hipótesis de Inclusión \((A \subseteq B)\)</h3>
+
+      <div class="callout callout-thm">
+        <div class="callout-title">📐 Teoremas de Inclusión</div>
+
+        <!-- INICIO DEL DIAGRAMA SVG (A subconjunto de B) -->
+        <div style="text-align: center; margin: 20px 0 25px 0;">
+          <svg viewBox="0 0 400 240"
+            style="max-width: 350px; width: 100%; height: auto; background-color: transparent;">
+            <!-- Rectángulo del conjunto Universal (U) -->
+            <rect x="5" y="5" width="390" height="230" rx="15" fill="none" stroke="#64748b" stroke-width="2" />
+            <text x="350" y="30" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">U</text>
+
+            <!-- Círculo del conjunto B (Contenedor) -->
+            <circle cx="200" cy="125" r="100" fill="rgba(129, 140, 248, 0.1)" stroke="#818cf8" stroke-width="2" />
+            <text x="280" y="60" font-family="serif" font-size="20" fill="#94a3b8" font-style="italic">B</text>
+
+            <!-- Círculo del conjunto A (Contenido) -->
+            <circle cx="170" cy="125" r="55" fill="rgba(129, 140, 248, 0.35)" stroke="#818cf8" stroke-width="2" />
+            <text x="150" y="60" font-family="serif" font-size="20" fill="#e2e8f0" font-style="italic">A</text>
+
+            <!-- Etiqueta de la región B - A -->
+            <text x="255" y="130" font-family="serif" font-size="14" fill="#94a3b8" text-anchor="middle"
+              dominant-baseline="middle" font-style="italic">B - A</text>
+          </svg>
+        </div>
+        <!-- FIN DEL DIAGRAMA SVG -->
+
+        <ul style="margin:0;">
+          <li>
+            <strong>Unión:</strong><br>
+            $$A \subseteq B \iff A \cup B = B$$
+          </li>
+          <li>
+            <strong>Intersección:</strong><br>
+            $$A \subseteq B \iff A \cap B = A$$
+          </li>
+          <li>
+            <strong>Diferencia:</strong><br>
+            $$A \subseteq B \Rightarrow A - B = \emptyset$$
+          </li>
+          <li>
+            <strong>Universo:</strong><br>
+            $$A \subseteq B \Rightarrow A^c \cup B = U$$
+          </li>
+        </ul>
+      </div>
+      <h3 class="section-title" id="sec-5-3">5.3 Estrategias y Esquemas de Demostración</h3>
+      <p>Para demostrar teoremas algebraicos de conjuntos, se introduce un elemento arbitrario $x$ y se aplican reglas
+        de inferencia lógica basadas en los 4 casos estructurales de hipótesis y tesis:</p>
+      <div style="overflow-x: auto; font-family: sans-serif;">
+        <table
+          style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95em; line-height: 1.6;">
+          <!-- ENCABEZADO -->
+          <thead>
+            <tr style="border-top: 1px solid #64748b; border-bottom: 1px solid #64748b; color: #60a5fa;">
+              <th style="padding: 12px 8px; font-weight: normal; text-align: center; width: 5%;">Caso</th>
+              <th style="padding: 12px 8px; font-weight: normal; width: 30%;">Forma General</th>
+              <th style="padding: 12px 8px; font-weight: normal; width: 25%;">Objetivo</th>
+              <th style="padding: 12px 8px; font-weight: normal; width: 40%;">Esquema de Demostración</th>
+            </tr>
+          </thead>
+
+          <!-- CUERPO DE LA TABLA -->
+          <tbody>
+            <!-- CASO 1 -->
+            <tr style="border-bottom: 1px solid #334155;">
+              <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">1</td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                \((C_1 \subseteq C_2) \Rightarrow (C_3 \subseteq C_4)\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                Inclusión:<br>
+                \(C_3 \subseteq C_4\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                  <span>2. &nbsp; \(x \in C_3\)</span>
+                  <div style="border-top: 1px solid #64748b; width: 100px; margin: 4px 0;"></div>
+                  <span>&there4; &nbsp; \(x \in C_4\)</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- CASO 2 -->
+            <tr style="border-bottom: 1px solid #64748b;">
+              <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">2</td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                \((C_1 \subseteq C_2) \Rightarrow (C_3 = C_4)\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                Dos inclusiones:<br>
+                \(C_3 \subseteq C_4\) y \(C_4 \subseteq C_3\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                <!-- Uso de flexbox para poner los esquemas i y ii lado a lado -->
+                <div style="display: flex; gap: 30px;">
+                  <!-- Esquema i) -->
+                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span style="margin-bottom: 4px;">i)</span>
+                    <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                    <span>2. &nbsp; \(x \in C_3\)</span>
+                    <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
+                    <span>&there4; &nbsp; \(x \in C_4\)</span>
+                  </div>
+                  <!-- Esquema ii) -->
+                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span style="margin-bottom: 4px;">ii)</span>
+                    <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                    <span>2. &nbsp; \(x \in C_4\)</span>
+                    <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
+                    <span>&there4; &nbsp; \(x \in C_3\)</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+
+            <!-- CASO 3 -->
+            <tr style="border-bottom: 1px solid #334155;">
+              <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">3</td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                \((C_1 = C_2) \Rightarrow (C_3 \subseteq C_4)\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                Inclusión:<br>
+                \(C_3 \subseteq C_4\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                  <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
+                  <span>3. &nbsp; \(x \in C_3\)</span>
+                  <div style="border-top: 1px solid #64748b; width: 100px; margin: 4px 0;"></div>
+                  <span>&there4; &nbsp; \(x \in C_4\)</span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- CASO 4 -->
+            <tr style="border-bottom: 1px solid #64748b;">
+              <td style="padding: 15px 8px; text-align: center; color: #60a5fa; vertical-align: top;">4</td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                \((C_1 = C_2) \Rightarrow (C_3 = C_4)\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                Dos inclusiones:<br>
+                \(C_3 \subseteq C_4\) y \(C_4 \subseteq C_3\)
+              </td>
+              <td style="padding: 15px 8px; vertical-align: top;">
+                <div style="display: flex; gap: 30px;">
+                  <!-- Esquema i) -->
+                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span style="margin-bottom: 4px;">i)</span>
+                    <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                    <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
+                    <span>3. &nbsp; \(x \in C_3\)</span>
+                    <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
+                    <span>&there4; &nbsp; \(x \in C_4\)</span>
+                  </div>
+                  <!-- Esquema ii) -->
+                  <div style="display: flex; flex-direction: column; gap: 4px;">
+                    <span style="margin-bottom: 4px;">ii)</span>
+                    <span>1. &nbsp; \(C_1 \subseteq C_2\)</span>
+                    <span>2. &nbsp; \(C_2 \subseteq C_1\)</span>
+                    <span>3. &nbsp; \(x \in C_4\)</span>
+                    <div style="border-top: 1px solid #64748b; width: 90px; margin: 4px 0;"></div>
+                    <span>&there4; &nbsp; \(x \in C_3\)</span>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- NOTA AL PIE -->
+        <p style="margin-top: 15px; font-style: italic; font-size: 0.9em; color: #94a3b8;">
+          <em>Nota:</em> El símbolo \(\therefore\) (por lo tanto) indica la conclusión lógica a la que se debe llegar.
+        </p>
+      </div>
+
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 5.1: Demostración Formal</div>
+        <p>Demuestre que si $A \subseteq B$, entonces $A \cap A \subseteq B \cap A$ utilizando una tabla deductiva.</p>
+        <details class="solution">
+          <summary>🔍 Ver demostración detallada</summary>
+          <div class="solution-content">
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Paso</th>
+                    <th>Proposición</th>
+                    <th>Justificación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>$x \in A \Rightarrow x \in B$</td>
+                    <td>Hipótesis (Def. de $A \subseteq B)$</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>$x \in A \land x \in A$</td>
+                    <td>Nueva hipótesis $(x \in A \cap A)$</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>$x \in A$</td>
+                    <td>Idempotencia en (2)</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>$x \in B$</td>
+                    <td>Modus ponens en (1) y (3)</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>$x \in B \land x \in A$</td>
+                    <td>Conjunción entre (3) y (4) $(\therefore x \in B \cap A)$</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- MÓDULO 6: ÁLGEBRA DE CONJUNTOS Y LEYES -->
+    <!-- ===================================================================== -->
+    <section class="card" id="mod-6">
+      <h2 class="module-title"><span class="badge">MÓDULO 06</span> Álgebra de Conjuntos y Leyes</h2>
+
+      <h3 class="section-title" id="sec-6-1">6.1 Demostraciones sin Hipótesis</h3>
+      <p>Para demostrar igualdades de conjuntos sin hipótesis, se parte del lado izquierdo y mediante equivalencias
+        lógicas $(\iff)$ se llega al lado derecho.</p>
+
+      <h3 class="section-title" id="sec-6-2">6.2 Compendio de Leyes del Álgebra de Conjuntos</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Ley / Propiedad</th>
+              <th>Variante con Unión $(\cup)$</th>
+              <th>Variante con Intersección $(\cap)$</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Conmutativa</strong></td>
+              <td>$A \cup B = B \cup A$</td>
+              <td>$A \cap B = B \cap A$</td>
+            </tr>
+            <tr>
+              <td><strong>Asociatividad</strong></td>
+              <td>$A \cup (B \cup C) = (A \cup B) \cup C$</td>
+              <td>$A \cap (B \cap C) = (A \cap B) \cap C$</td>
+            </tr>
+            <tr>
+              <td><strong>Distributiva</strong></td>
+              <td>$A \cup (B \cap C) = (A \cup B) \cap (A \cup C)$</td>
+              <td>$A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$</td>
+            </tr>
+            <tr>
+              <td><strong>Absorción</strong></td>
+              <td>$A \cup (A \cap B) = A$</td>
+              <td>$A \cap (A \cup B) = A$</td>
+            </tr>
+            <tr>
+              <td><strong>De Morgan</strong></td>
+              <td>$(A \cup B)^c = A^c \cap B^c$</td>
+              <td>$(A \cap B)^c = A^c \cup B^c$</td>
+            </tr>
+            <tr>
+              <td><strong>Idempotencia</strong></td>
+              <td>$A \cup A = A$</td>
+              <td>$A \cap A = A$</td>
+            </tr>
+            <tr>
+              <td><strong>Identidad</strong></td>
+              <td>$A \cup \emptyset = A$<br>$A \cup U = U$</td>
+              <td>$A \cap U = A$<br>$A \cap \emptyset = \emptyset$</td>
+            </tr>
+            <tr>
+              <td><strong>Complementación</strong></td>
+              <td>$A \cup A^c = U$</td>
+              <td>$A \cap A^c = \emptyset$</td>
+            </tr>
+            <tr>
+              <td><strong>Doble Complemento</strong></td>
+              <td>$(A^c)^c = A$</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="section-title" id="sec-6-3">6.3 Simplificación Algebraica y de Cardinales</h3>
+      <div class="example-box">
+        <div class="example-header">🧩 Ejemplo 6.1: Simplificación de Expresiones</div>
+        <p>Reduzca la expresión $(A \cup B)^c \cap A$ justificando cada paso algebraico.</p>
+        <details class="solution">
+          <summary>🔍 Ver solución</summary>
+          <div class="solution-content">
+            <p>
+              $$\begin{aligned}
+              (A \cup B)^c \cap A &= (A^c \cap B^c) \cap A && \text{(Ley de De Morgan)} \\
+              &= (A^c \cap A) \cap B^c && \text{(Conmutativa y Asociatividad)} \\
+              &= \emptyset \cap B^c && \text{(Ley de Inversos: } A^c \cap A = \emptyset \text{)} \\
+              &= \emptyset && \text{(Ley de Dominación)}
+              \end{aligned}$$
+            </p>
+          </div>
+        </details>
+      </div>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- BIBLIOGRAFÍA -->
+    <!-- ===================================================================== -->
+    <section class="card" id="bibliografia">
+      <h2 class="module-title"><span class="badge">REF</span> Bibliografía</h2>
+      <ul style="line-height: 1.85; padding-left: 1.4rem; margin-bottom: 0;">
+        <li><strong>[Halmos, 1974]</strong> Halmos, P. R. (1974). <em>Teoría intuitiva de los conjuntos</em>. Compañía
+          Editorial Continental (CECSA).</li>
+        <li><strong>[Suppes, 1972]</strong> Suppes, P. (1972). <em>Teoría axiomática de conjuntos</em>. Editorial Norma.
+        </li>
+        <li><strong>[Lipschutz, 1991]</strong> Lipschutz, S. (1991). <em>Teoría de conjuntos y temas afines</em> (Serie
+          Schaum). McGraw-Hill.</li>
+        <li><strong>[Enderton, 1977]</strong> Enderton, H. B. (1977). <em>Elements of Set Theory</em>. Academic Press.
+        </li>
+        <li><strong>[Hrbacek y Jech, 1999]</strong> Hrbacek, K., &amp; Jech, T. (1999). <em>Introduction to Set
+            Theory</em> (3.<sup>a</sup> ed.). Marcel Dekker.</li>
+        <li><strong>[Oubiña, 1974]</strong> Oubiña, L. (1974). <em>Introducción a la teoría de conjuntos</em>
+          (7.<sup>a</sup> ed.). Editorial Universitaria de Buenos Aires (EUDEBA).</li>
+      </ul>
+
+      <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
+    </section>
+
+  </div>
+
+  <script>
+    function toggleAllDetails(openState) {
+      document.querySelectorAll('details.solution').forEach(detail => {
+        detail.open = openState;
+      });
+    }
+  </script>
+
+</body>
+
+</html>
