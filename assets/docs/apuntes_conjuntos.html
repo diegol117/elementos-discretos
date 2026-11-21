@@ -599,17 +599,17 @@
         <table>
           <thead>
             <tr>
-              <th>Conjunto Notable</th>
+              <th>Conjunto</th>
               <th>Definición Formal</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Vacío \((\emptyset)\)</strong></td>
+              <td><strong>Vacío</strong></td>
               <td>\(\emptyset = \{x \mid x \in A \land x \notin A\}\)</td>
             </tr>
             <tr>
-              <td><strong>Universal \((U)\)</strong></td>
+              <td><strong>Universal</strong></td>
               <td>\(U = \{x \mid x \in A \lor x \notin A\}\)</td>
             </tr>
           </tbody>
@@ -842,7 +842,7 @@
 
       <h4 class="sub-title" style="color: #e2e8f0; font-family: sans-serif;">Cardinalidad y Principio de
         Inclusión-Exclusión</h4>
-      <p style="color: #cbd5e1; font-family: sans-serif;">El cardinal \(|A|\) es el número de elementos distintos de
+      <p style="font-family: sans-serif;">El cardinal \(|A|\) es el número de elementos distintos de
         \(A\). Cuantitativamente, un diagrama de Venn se divide
         en regiones disjuntas \((x, y, z, w)\):</p>
 
@@ -876,7 +876,7 @@
       </div>
       <!-- FIN DEL DIAGRAMA SVG -->
 
-      <ul style="color: #cbd5e1; font-family: sans-serif;">
+      <ul style="font-family: sans-serif;">
         <li>\(x\): elementos exclusivos de \(A\) \((|A - B| = x)\).</li>
         <li>\(y\): elementos en la intersección \((|A \cap B| = y)\).</li>
         <li>\(z\): elementos exclusivos de \(B\) \((|B - A| = z)\).</li>
@@ -951,7 +951,7 @@
 
             <div style="text-align: center; overflow-x: auto; margin-bottom: 15px;">
               $$
-              |P|=60, \quad |D|=40, \quad |P \cap D|=20
+              |P|=60, \ |D|=40, \ |P \cap D|=20
               $$
             </div>
 
@@ -1167,15 +1167,29 @@
           $A = \{1, 2\}$<br>
           $B = \{a, b, c\}$.<br>
           Halle $A \times B$ y su cardinalidad.</p>
-        <details class="solution">
-          <summary>🔍 Ver solución</summary>
-          <div class="solution-content">
-            Primero:
-            $$A \times B = \{(1, a), (1, b), (1, c), (2, a), (2, b), (2, c)\}$$
-            Luego:
-            $$|A \times B| = |A| \cdot |B| = 2 \cdot 3 = \mathbf{6}.$$
-          </div>
-        </details>
+<details class="solution">
+  <summary>🔍 Ver solución</summary>
+  <div class="solution-content">
+
+    <strong>Primero:</strong><br>
+    <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+      $$
+      \begin{aligned}
+      A \times B = \{ &(1, a), (1, b), (1, c), \\
+                      &(2, a), (2, b), (2, c)\}
+      \end{aligned}
+      $$
+    </div>
+
+    <strong>Luego:</strong><br>
+    <div style="text-align: center; overflow-x: auto; margin: 0.4em 0;">
+      $$
+      |A \times B| = |A| \cdot |B| = 2 \cdot 3 = \mathbf{6}.
+      $$
+    </div>
+
+  </div>
+</details>
       </div>
 
       <h3 class="section-title" id="sec-4-2">4.2 Propiedades del Producto Cartesiano</h3>
@@ -1298,7 +1312,7 @@
         de inferencia lógica basadas en los 4 casos estructurales de hipótesis y tesis:</p>
       <div style="overflow-x: auto; font-family: sans-serif;">
         <table
-          style="width: 100%; border-collapse: collapse; text-align: left; color: #cbd5e1; font-size: 0.95em; line-height: 1.6;">
+          style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.95em; line-height: 1.6;">
           <!-- ENCABEZADO -->
           <thead>
             <tr style="border-top: 1px solid #64748b; border-bottom: 1px solid #64748b; color: #60a5fa;">
