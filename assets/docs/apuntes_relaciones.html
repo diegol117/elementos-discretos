@@ -844,9 +844,9 @@
               </svg>
             </div>
             <ul>
-              <li>Desde $1 \in A \to a \in B \to x \in C \implies (1, x) \in S \circ R$.</li>
+              <li>Desde $1 \in A \to a \in B \to x \in C \rightarrow (1, x) \in S \circ R$.</li>
               <li>El camino $1 \to b$ se corta en $b$ (no tiene salida en $S$).</li>
-              <li>Desde $2 \in A \to c \in B \to y \in C \implies (2, y) \in S \circ R$.</li>
+              <li>Desde $2 \in A \to c \in B \to y \in C \rightarrow (2, y) \in S \circ R$.</li>
             </ul>
             $$S \circ R = \{ (1, x), (2, y) \} \subset A \times C$$
           </div>
@@ -866,14 +866,14 @@
           <div class="solution-content">
             <p><strong>1. Paridad en $\mathbb{Z}$:</strong><br>
               Si existe $y \in \mathbb{Z}$ tal que $x - y = 2k$ y $y - z = 2m$, sumando ambas ecuaciones se elimina $y$:
-              $$(x - y) + (y - z) = 2k + 2m \implies x - z = 2(k + m)$$
+              $$(x - y) + (y - z) = 2k + 2m \rightarrow x - z = 2(k + m)$$
               Recíprocamente, si $x - z$ es par, basta elegir $y = x \in \mathbb{Z}$ para verificar ambas condiciones.
               Por tanto:
               $$S \circ R = \{ (x, z) \in \mathbb{Z}^2 \mid x - z \text{ es un número par} \} = R = S$$</p>
 
             <p><strong>2. Relaciones lineales en $\mathbb{R}$:</strong><br>
               Sustituyendo $y = x + 2$ en $z = 3y$:
-              $$z = 3(x + 2) \implies z = 3x + 6$$
+              $$z = 3(x + 2) \rightarrow z = 3x + 6$$
               Para cualquier $(x, z)$ con $z = 3x + 6$, existe $y = x + 2 \in \mathbb{R}$ que satisface ambas
               relaciones:
               $$S \circ R = \{ (x, z) \in \mathbb{R}^2 \mid z = 3x + 6 \}$$</p>
@@ -1228,7 +1228,7 @@
             <tr>
               <td><strong>Reflexiva</strong></td>
               <td>$I_A \subseteq R$</td>
-              <td>$\forall x \in A \implies (x, x) \in R$</td>
+              <td>$\forall x \in A \rightarrow (x, x) \in R$</td>
               <td>Todos los pares $(x,x)$ están en $R$.</td>
             </tr>
             <tr>
@@ -1240,13 +1240,13 @@
             <tr>
               <td><strong>Arreflexiva</strong></td>
               <td>$I_A \cap R = \emptyset$</td>
-              <td>$\forall x \in A \implies (x, x) \notin R$</td>
+              <td>$\forall x \in A \rightarrow (x, x) \notin R$</td>
               <td>Ningún par $(x,x)$ está en $R$.</td>
             </tr>
             <tr>
               <td><strong>Simétrica</strong></td>
               <td>$R = R^{-1}$</td>
-              <td>$\forall x,y [(x,y) \in R \implies (y,x) \in R]$</td>
+              <td>$\forall x,y [(x,y) \in R \rightarrow (y,x) \in R]$</td>
               <td>Todo par tiene su recíproco en $R$.</td>
             </tr>
             <tr>
@@ -1258,19 +1258,19 @@
             <tr>
               <td><strong>Asimétrica</strong></td>
               <td>$R \cap R^{-1} = \emptyset$</td>
-              <td>$\forall x,y [(x,y) \in R \implies (y,x) \notin R]$</td>
+              <td>$\forall x,y [(x,y) \in R \rightarrow (y,x) \notin R]$</td>
               <td>Ningún par tiene recíproco en $R$.</td>
             </tr>
             <tr>
               <td><strong>Antisimétrica</strong></td>
               <td>$R \cap R^{-1} \subseteq I_A$</td>
-              <td>$\forall x,y [(x,y) \in R \land (y,x) \in R \implies x = y]$</td>
+              <td>$\forall x,y [(x,y) \in R \land (y,x) \in R \rightarrow x = y]$</td>
               <td>Solo hay simetría en pares $(x,x)$.</td>
             </tr>
             <tr>
               <td><strong>Transitiva</strong></td>
               <td>$R \circ R \subseteq R$</td>
-              <td>$\forall x,y,z [(x,y) \in R \land (y,z) \in R \implies (x,z) \in R]$</td>
+              <td>$\forall x,y,z [(x,y) \in R \land (y,z) \in R \rightarrow (x,z) \in R]$</td>
               <td>Todo camino de 2 pasos tiene atajo directo.</td>
             </tr>
             <tr>
@@ -1282,13 +1282,13 @@
             <tr>
               <td><strong>Atransitiva</strong></td>
               <td>$(R \circ R) \cap R = \emptyset$</td>
-              <td>$\forall x,y,z [(x,y),(y,z) \in R \implies (x,z) \notin R]$</td>
+              <td>$\forall x,y,z [(x,y),(y,z) \in R \rightarrow (x,z) \notin R]$</td>
               <td>Ningún par compuesto está en $R$.</td>
             </tr>
             <tr>
               <td><strong>Total</strong></td>
               <td>$R \cup R^{-1} = R_U$</td>
-              <td>$\forall x,y \in A \implies (x,y) \in R \lor (y,x) \in R$</td>
+              <td>$\forall x,y \in A \rightarrow (x,y) \in R \lor (y,x) \in R$</td>
               <td>Todo par de elementos es comparable.</td>
             </tr>
           </tbody>
@@ -1298,9 +1298,9 @@
       <div class="callout callout-thm">
         <div class="callout-title">📐 Teorema 3.1: Implicaciones y Relaciones Particulares</div>
         <ul style="margin:0;">
-          <li><strong>Asimetría:</strong> Si $R$ es asimétrica $\implies$ es arreflexiva, antisimétrica y no total.</li>
-          <li><strong>Totalidad:</strong> Si $R$ es total $\implies$ es reflexiva y no asimétrica.</li>
-          <li><strong>Simetría + Antisimetría:</strong> Si ambas se cumplen $\implies R \subseteq I_A$.</li>
+          <li><strong>Asimetría:</strong> Si $R$ es asimétrica $\rightarrow$ es arreflexiva, antisimétrica y no total.</li>
+          <li><strong>Totalidad:</strong> Si $R$ es total $\rightarrow$ es reflexiva y no asimétrica.</li>
+          <li><strong>Simetría + Antisimetría:</strong> Si ambas se cumplen $\rightarrow R \subseteq I_A$.</li>
           <li><strong>Relación Vacía ($\emptyset$) sobre $A \neq \emptyset$:</strong> Es arreflexiva, simétrica,
             antisimétrica, asimétrica, transitiva y atransitiva por vacuidad.</li>
           <li><strong>Relación Universal ($A \times A$):</strong> Es reflexiva, simétrica, transitiva y total.</li>
@@ -1338,17 +1338,17 @@
                   <tr>
                     <td><strong>Simetría</strong></td>
                     <td>❌ <strong>No simétrica</strong> ($5 \ge 3$ pero $3 \not\ge 5$).</td>
-                    <td>❌ <strong>Asimétrica</strong> ($x > y \implies y \not> x$).</td>
+                    <td>❌ <strong>Asimétrica</strong> ($x > y \rightarrow y \not> x$).</td>
                   </tr>
                   <tr>
                     <td><strong>Antisimetría</strong></td>
-                    <td>✅ <strong>Antisimétrica</strong> ($x \ge y \land y \ge x \implies x = y$).</td>
+                    <td>✅ <strong>Antisimétrica</strong> ($x \ge y \land y \ge x \rightarrow x = y$).</td>
                     <td>✅ <strong>Antisimétrica</strong> (por vacuidad / asimetría).</td>
                   </tr>
                   <tr>
                     <td><strong>Transitividad</strong></td>
-                    <td>✅ <strong>Transitiva</strong> ($x \ge y \land y \ge z \implies x \ge z$).</td>
-                    <td>✅ <strong>Transitiva</strong> ($x > y \land y > z \implies x > z$).</td>
+                    <td>✅ <strong>Transitiva</strong> ($x \ge y \land y \ge z \rightarrow x \ge z$).</td>
+                    <td>✅ <strong>Transitiva</strong> ($x > y \land y > z \rightarrow x > z$).</td>
                   </tr>
                   <tr>
                     <td><strong>Totalidad</strong></td>
@@ -1469,7 +1469,7 @@
               <li>$[2,1] = (0 \land 0) \lor (1 \land 1) \lor (0 \land 0) = 1$</li>
               <li>$[2,2] = (0 \land 1) \lor (1 \land 0) \lor (0 \land 1) = 0$</li>
             </ul>
-            $$M_{S \circ R} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \implies S \circ R = \{(1, b), (2, a)\}$$
+            $$M_{S \circ R} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \rightarrow S \circ R = \{(1, b), (2, a)\}$$
           </div>
         </details>
       </div>
