@@ -466,6 +466,43 @@
         font-size: 0.86rem;
       }
     }
+
+    /* ===== CORRECCIÓN DEL ESPACIO EN BLANCO (DESBORDAMIENTO HORIZONTAL) ===== */
+
+    /* 1. Evita que la página se estire más allá de la pantalla */
+    html,
+    body {
+      overflow-x: hidden !important;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    /* 2. Obliga a todos los medios (SVG, imágenes, videos) a adaptarse al ancho de la pantalla */
+    img,
+    svg,
+    video,
+    iframe,
+    canvas {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+
+    /* 3. Asegura que los contenedores flexibles permitan a los hijos encogerse */
+    .container,
+    .card,
+    .example-box,
+    .callout,
+    .solution-content {
+      min-width: 0;
+    }
+
+    /* 4. Refuerzo para las tablas y KaTeX (por si acaso) */
+    .table-wrapper,
+    .katex-display {
+      max-width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
   </style>
 </head>
 
@@ -671,7 +708,8 @@
           <li><strong>Implicación $(\rightarrow)$:</strong> Falsa solo si el antecedente es verdadero $(V)$ y el
             consecuente es falso $(F)$.</li>
           <li><strong>Doble implicación $(\leftrightarrow)$:</strong> Verdadera si ambas proposiciones tienen el
-            <strong>mismo</strong> valor lógico.</li>
+            <strong>mismo</strong> valor lógico.
+          </li>
         </ul>
       </div>
 
@@ -901,7 +939,8 @@
           <li><strong>Antecedente $(P)$:</strong> Hipótesis o condición suficiente.</li>
           <li><strong>Consecuente $(Q)$:</strong> Tesis o condición necesaria.</li>
         </ul>
-        $$\text{Hipótesis (Suficiente)} \rightarrow \text{Tesis (Necesaria)}$$
+        $$\underbrace{\text{Hipótesis}}_{\text{Suficiente}} \rightarrow
+        \underbrace{\text{Tesis}}_{\text{Necesaria}}$$
         <p style="margin-bottom:0;"><strong>Formas equivalentes en lenguaje natural:</strong><br>
           (1) Si $P$, entonces $Q$;<br>
           (2) $P$ es condición suficiente para $Q$;<br>
@@ -934,99 +973,125 @@
           <li><strong>Contingencia:</strong> Presenta tanto valores verdaderos $(V)$ como falsos $(F)$.</li>
         </ul>
       </div>
-
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 2.2: Tautología, Contradicción y Contingencia</div>
-        <p>Clasifique las estructuras: <strong>a)</strong> $P \lor \neg P$, <strong>b)</strong> $P \land \neg P$ y
-          <strong>c)</strong> $P \rightarrow Q$.</p>
+        <p>Clasifique las estructuras: <strong>a)</strong> \(P \lor \neg P\), <strong>b)</strong> \(P \land \neg P\) y
+          <strong>c)</strong> \(P \rightarrow Q\).
+        </p>
         <details class="solution">
           <summary>🔍 Ver tablas y clasificación</summary>
           <div class="solution-content">
-            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem;">
-              <div class="table-wrapper" style="flex: 1; min-width: 220px;">
-                <table class="truth-table">
-                  <thead>
-                    <tr>
-                      <th>$P$</th>
-                      <th>$\neg P$</th>
-                      <th>$P \lor \neg P$ (Tautología)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>$V$</td>
-                      <td>$F$</td>
-                      <td><strong>$V$</strong></td>
-                    </tr>
-                    <tr>
-                      <td>$F$</td>
-                      <td>$V$</td>
-                      <td><strong>$V$</strong></td>
-                    </tr>
-                  </tbody>
-                </table>
+
+            <!-- Contenedor principal flex -->
+            <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+
+              <!-- BLOQUE 1: Tautología -->
+              <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column;">
+                <div class="table-wrapper" style="margin: 0 0 0.5rem 0;">
+                  <table class="truth-table">
+                    <thead>
+                      <tr>
+                        <th>\(P\)</th>
+                        <th>\(\neg P\)</th>
+                        <th>\(P \lor \neg P\)</th> <!-- Quitamos el texto del encabezado -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>\(V\)</td>
+                        <td>\(F\)</td>
+                        <td><strong>\(V\)</strong></td>
+                      </tr>
+                      <tr>
+                        <td>\(F\)</td>
+                        <td>\(V\)</td>
+                        <td><strong>\(V\)</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- Comentario debajo de la tabla -->
+                <p style="text-align: center; font-weight: bold; color: var(--primary); margin: 0; font-size: 0.95em;">
+                  Es una Tautología
+                </p>
               </div>
-              <div class="table-wrapper" style="flex: 1; min-width: 220px;">
-                <table class="truth-table">
-                  <thead>
-                    <tr>
-                      <th>$P$</th>
-                      <th>$\neg P$</th>
-                      <th>$P \land \neg P$ (Contradicción)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>$V$</td>
-                      <td>$F$</td>
-                      <td><strong>$F$</strong></td>
-                    </tr>
-                    <tr>
-                      <td>$F$</td>
-                      <td>$V$</td>
-                      <td><strong>$F$</strong></td>
-                    </tr>
-                  </tbody>
-                </table>
+
+              <!-- BLOQUE 2: Contradicción -->
+              <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column;">
+                <div class="table-wrapper" style="margin: 0 0 0.5rem 0;">
+                  <table class="truth-table">
+                    <thead>
+                      <tr>
+                        <th>\(P\)</th>
+                        <th>\(\neg P\)</th>
+                        <th>\(P \land \neg P\)</th> <!-- Quitamos el texto del encabezado -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>\(V\)</td>
+                        <td>\(F\)</td>
+                        <td><strong>\(F\)</strong></td>
+                      </tr>
+                      <tr>
+                        <td>\(F\)</td>
+                        <td>\(V\)</td>
+                        <td><strong>\(F\)</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- Comentario debajo de la tabla (usando un tono rojizo para indicar contradicción) -->
+                <p style="text-align: center; font-weight: bold; color: #ef4444; margin: 0; font-size: 0.95em;">
+                  Es una Contradicción
+                </p>
               </div>
-              <div class="table-wrapper" style="flex: 1; min-width: 220px;">
-                <table class="truth-table">
-                  <thead>
-                    <tr>
-                      <th>$P$</th>
-                      <th>$Q$</th>
-                      <th>$P \rightarrow Q$ (Contingencia)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>$V$</td>
-                      <td>$V$</td>
-                      <td><strong>$V$</strong></td>
-                    </tr>
-                    <tr>
-                      <td>$V$</td>
-                      <td>$F$</td>
-                      <td><strong>$F$</strong></td>
-                    </tr>
-                    <tr>
-                      <td>$F$</td>
-                      <td>$V$</td>
-                      <td><strong>$V$</strong></td>
-                    </tr>
-                    <tr>
-                      <td>$F$</td>
-                      <td>$F$</td>
-                      <td><strong>$V$</strong></td>
-                    </tr>
-                  </tbody>
-                </table>
+
+              <!-- BLOQUE 3: Contingencia -->
+              <div style="flex: 1; min-width: 220px; display: flex; flex-direction: column;">
+                <div class="table-wrapper" style="margin: 0 0 0.5rem 0;">
+                  <table class="truth-table">
+                    <thead>
+                      <tr>
+                        <th>\(P\)</th>
+                        <th>\(Q\)</th>
+                        <th>\(P \rightarrow Q\)</th> <!-- Quitamos el texto del encabezado -->
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>\(V\)</td>
+                        <td>\(V\)</td>
+                        <td><strong>\(V\)</strong></td>
+                      </tr>
+                      <tr>
+                        <td>\(V\)</td>
+                        <td>\(F\)</td>
+                        <td><strong>\(F\)</strong></td>
+                      </tr>
+                      <tr>
+                        <td>\(F\)</td>
+                        <td>\(V\)</td>
+                        <td><strong>\(V\)</strong></td>
+                      </tr>
+                      <tr>
+                        <td>\(F\)</td>
+                        <td>\(F\)</td>
+                        <td><strong>\(V\)</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- Comentario debajo de la tabla -->
+                <p style="text-align: center; font-weight: bold; color: var(--text); margin: 0; font-size: 0.95em;">
+                  Es una Contingencia
+                </p>
               </div>
+
             </div>
           </div>
         </details>
       </div>
-
       <h3 class="section-title" id="sec-2-3">2.3 Implicación Lógica $(\Rightarrow)$ y Equivalencia Lógica $(\equiv)$
       </h3>
       <p>Cuando una proposición compuesta resulta en una <strong>tautología</strong>, la notación de su conectivo
@@ -1074,11 +1139,15 @@
           <div class="solution-content">
 
             <!-- También ajustamos el texto de la solución para que la ecuación no se corte -->
-            <div style="text-align: center; overflow-x: auto; margin: 10px 0;">
+            <!-- Texto centrado en HTML normal -->
+            <p style="text-align: center; margin-bottom: 5px;"><strong>1. Llamando:</strong></p>
+
+            <!-- Bloque matemático solo con las ecuaciones -->
+            <div style="text-align: center; overflow-x: auto; margin-bottom: 15px;">
               $$
               \begin{aligned}
-              \text{1. Llamando } E_I &= (P \rightarrow Q) \land (Q \rightarrow R), \\
-              E_D &= P \rightarrow R:
+              E_I &= (P \rightarrow Q) \land (Q \rightarrow R), \\
+              E_D &= P \rightarrow R.
               \end{aligned}
               $$
             </div>
@@ -1184,11 +1253,15 @@
               </table>
             </div>
 
-            <div style="text-align: center; overflow-x: auto; margin: 10px 0;">
+            <!-- Texto centrado en HTML normal -->
+            <p style="text-align: center; margin-bottom: 5px;"><strong>2. Llamando:</strong></p>
+
+            <!-- Bloque matemático solo con las ecuaciones -->
+            <div style="text-align: center; overflow-x: auto; margin-bottom: 15px;">
               $$
               \begin{aligned}
-              \text{2. Llamando } E_I &= P \lor (Q \land R), \\
-              E_D &= (P \lor Q) \land (P \lor R):
+              E_I &= P \lor (Q \land R), \\
+              E_D &= (P \lor Q) \land (P \lor R).
               \end{aligned}
               $$
             </div>
@@ -1791,7 +1864,8 @@
       <p>La lógica proposicional trata las oraciones como bloques indivisibles, impidiendo expresar generalizaciones o
         validar argumentos que dependen de la estructura interna de sus sujetos (como el silogismo clásico de Sócrates:
         <em>«Todos los hombres son mortales; Sócrates es un hombre $\therefore$ Sócrates es mortal»</em>). Para superar
-        esta limitación se introducen los predicados y cuantificadores.</p>
+        esta limitación se introducen los predicados y cuantificadores.
+      </p>
 
       <h3 class="section-title" id="sec-5-2">5.2 Predicados y Cuantificadores</h3>
       <div class="callout callout-def">
