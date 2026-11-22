@@ -364,32 +364,18 @@
 
     /* ===== CORRECCIÓN CLAVE PARA KATEX ===== */
     /* Evita que las fórmulas en línea se rompan a la mitad (ej. P \to Q) */
-.katex-display .katex {
-  white-space: nowrap;
-}
+    .katex {
+      white-space: nowrap;
+    }
 
     /* Permite scroll en bloques de ecuaciones largas */
-/* Contenedor de ecuación display: nunca más ancho que la pantalla */
-.katex-display {
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* opcional: menos margen vertical para no “inflar” el alto */
-  margin: 0.5em 0;
-}
-@media (max-width: 768px) {
-  body {
-    margin: 0;
-    padding: 0 10px;      /* margen mínimo para no tocar el borde */
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  p, ul, ol, li, details {
-    max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.35rem 0;
+      max-width: 100%;
+    }
+
     .katex-display>.katex {
       font-size: 0.95em;
     }
