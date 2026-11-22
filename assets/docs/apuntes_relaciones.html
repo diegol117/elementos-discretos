@@ -186,7 +186,7 @@
       text-align: left;
       padding: 0.8rem 1rem;
       border-bottom: 2px solid var(--border);
-
+      white-space: nowrap;
     }
 
     td {
@@ -365,29 +365,18 @@
 
     /* ===== CORRECCIÓN CLAVE PARA KATEX ===== */
     /* Evita que las fórmulas en línea se rompan a la mitad (ej. P \to Q) */
+    .katex {
+      white-space: nowrap;
+    }
 
     /* Permite scroll en bloques de ecuaciones largas */
-/* Contenedor de ecuación display: nunca más ancho que la pantalla */
-.katex-display {
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  /* opcional: menos margen vertical para no “inflar” el alto */
-  margin: 0.5em 0;
-}
-@media (max-width: 768px) {
-  body {
-    margin: 0;
-    padding: 0 10px;      /* margen mínimo para no tocar el borde */
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-  p, ul, ol, li, details {
-    max-width: 100%;
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
+    .katex-display {
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding: 0.35rem 0;
+      max-width: 100%;
+    }
+
     .katex-display>.katex {
       font-size: 0.95em;
     }
@@ -576,7 +565,7 @@
     <!-- ===================================================================== -->
     <!-- MÓDULO 1: CONCEPTOS PRINCIPALES -->
     <!-- ===================================================================== -->
-    <section class="card" id="mod-1">
+<section class="card" id="mod-1">
       <h2 class="module-title"><span class="badge">MÓDULO 01</span> Conceptos Principales</h2>
 
       <h3 class="section-title" id="sec-1-1">1.1 Relaciones Binarias</h3>
@@ -601,8 +590,8 @@
       </ul>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 1.1: Relación por extensión a partir de tabla</div>
-        <p>Sean los conjuntos $A$ y $B$ con la relación $R$: <em>"x estudia la carrera y"</em>:</p>
+        <div class="example-header">🧩 Ejemplo 1.1</div>
+        <p><strong>Enunciado formal.</strong> Relación por extensión a partir de tabla. Sean los conjuntos $A$ y $B$ con la relación $R$: <em>"x estudia la carrera y"</em>:</p>
         <div class="table-wrapper" style="max-width: 380px;">
           <table>
             <thead>
@@ -630,8 +619,9 @@
         <details class="solution">
           <summary>🔍 Ver solución</summary>
           <div class="solution-content">
-            <p>Los conjuntos asociados son $A = \{ \text{Ana}, \text{Luis}, \text{Marta} \}$ y $B = \{
-              \text{Matemáticas}, \text{Literatura}, \text{Física} \}$.</p>
+            <p>Los conjuntos asociados son:</p>
+            $$A = \{ \text{Ana}, \text{Luis}, \text{Marta} \}$$
+            $$B = \{ \text{Matemáticas}, \text{Literatura}, \text{Física} \}$$
             <p>Expresando la relación por extensión:</p>
             $$R = \left\{ (\text{Ana}, \text{Matemáticas}), (\text{Luis}, \text{Física}), (\text{Marta},
             \text{Literatura}) \right\}$$
@@ -640,22 +630,19 @@
       </div>
 
       <h4 class="sub-title">Elementos asociados a una relación</h4>
-      <ul>
-        <li><strong>Dominio:</strong> Elementos del conjunto de partida ($A$) que participan en la relación:
-          $$\text{Dom}(R) = \{ x \in A \mid \exists \, y \in B, (x, y) \in R \}$$
-        </li>
-        <li><strong>Rango:</strong> Elementos del conjunto de llegada ($B$) asociados con al menos un elemento de $A$:
-          $$\text{Rgo}(R) = \{ y \in B \mid \exists \, x \in A, (x, y) \in R \}$$
-        </li>
-        <li><strong>Relación Inversa ($R^{-1} \subseteq B \times A$):</strong> Pares ordenados invertidos:
-          $$R^{-1} = \{ (y, x) \mid (x, y) \in R \}$$
-          Cumple las dualidades: $\text{Dom}(R^{-1}) = \text{Rgo}(R)$ y $\text{Rgo}(R^{-1}) = \text{Dom}(R)$.
-        </li>
-      </ul>
+      <p><strong>Dominio.</strong> Elementos del conjunto de partida ($A$) que participan en la relación:</p>
+      $$\text{Dom}(R) = \{ x \in A \mid \exists \, y \in B, (x, y) \in R \}$$
+      <p><strong>Rango.</strong> Elementos del conjunto de llegada ($B$) asociados con al menos un elemento de $A$:</p>
+      $$\text{Rgo}(R) = \{ y \in B \mid \exists \, x \in A, (x, y) \in R \}$$
+      <p><strong>Relación Inversa ($R^{-1} \subseteq B \times A$).</strong> Pares ordenados invertidos:</p>
+      $$R^{-1} = \{ (y, x) \mid (x, y) \in R \}$$
+      <p>Cumple las dualidades:</p>
+      $$\text{Dom}(R^{-1}) = \text{Rgo}(R)$$
+      $$\text{Rgo}(R^{-1}) = \text{Dom}(R)$$
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 1.2: Cálculo de Dominio y Rango</div>
-        <p>Considérense los conjuntos y la relación:</p>
+        <div class="example-header">🧩 Ejemplo 1.2</div>
+        <p><strong>Enunciado formal.</strong> Cálculo de Dominio y Rango. Considérense los conjuntos y la relación:</p>
         $$A = \{\text{Ana},\, \text{Luis},\, \text{María},\, \text{Juan},\, \text{Alberto}\}$$
         $$B = \{\text{Matemáticas},\, \text{Historia}\}$$
         $$R = \{(\text{Ana}, \text{Matemáticas}),\, (\text{Luis}, \text{Historia}),\, (\text{María},
@@ -665,23 +652,18 @@
         <details class="solution">
           <summary>🔍 Ver solución paso a paso</summary>
           <div class="solution-content">
-            <ol>
-              <li><strong>Dominio ($\text{Dom}(R)$):</strong> primeras componentes de los pares en $R$:
-                $$\text{Dom}(R) = \{\text{Ana},\, \text{Luis},\, \text{María}\}$$
-                <em>Nota:</em> Juan y Alberto pertenecen a $A$, pero no al dominio al no estar relacionados con ninguna
-                asignatura.
-              </li>
-              <li><strong>Rango ($\text{Rgo}(R)$):</strong> segundas componentes presentes en los pares de $R$:
-                $$\text{Rgo}(R) = \{\text{Matemáticas},\, \text{Historia}\} = B$$
-              </li>
-            </ol>
+            <p><strong>Primero:</strong> Dominio ($\text{Dom}(R)$). Primeras componentes de los pares en $R$:</p>
+            $$\text{Dom}(R) = \{\text{Ana},\, \text{Luis},\, \text{María}\}$$
+            <p><em>Nota:</em> Juan y Alberto pertenecen a $A$, pero no al dominio al no estar relacionados con ninguna asignatura.</p>
+            <p><strong>Luego:</strong> Rango ($\text{Rgo}(R)$). Segundas componentes presentes en los pares de $R$:</p>
+            $$\text{Rgo}(R) = \{\text{Matemáticas},\, \text{Historia}\} = B$$
           </div>
         </details>
       </div>
+
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 1.3: Conversión de Comprensión a Extensión</div>
-        <p>Sea $A = \{1, 2, 3\}$ y $R \subseteq A^2$ definida por $R = \{ (x, y) \in A^2 \mid x + y = 4 \}$. Exprese $R$
-          por extensión.</p>
+        <div class="example-header">🧩 Ejemplo 1.3</div>
+        <p><strong>Enunciado formal.</strong> Conversión de Comprensión a Extensión. Sea $A = \{1, 2, 3\}$ y $R \subseteq A^2$ definida por $R = \{ (x, y) \in A^2 \mid x + y = 4 \}$. Exprese $R$ por extensión.</p>
         <details class="solution">
           <summary>🔍 Ver solución paso a paso</summary>
           <div class="solution-content">
@@ -694,14 +676,18 @@
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 1.4: Conversión de Extensión a Comprensión</div>
-        <p>Dados $A = \{2, 4, 6, 8\}$, $B = \{4, 8, 12, 16\}$ y $R = \{ (2, 4), (4, 8), (6, 12), (8, 16) \}$, exprese
-          $R$ por comprensión.</p>
+        <div class="example-header">🧩 Ejemplo 1.4</div>
+        <p><strong>Enunciado formal.</strong> Conversión de Extensión a Comprensión. Dados los conjuntos y la relación:</p>
+        $$A = \{2, 4, 6, 8\}$$
+        $$B = \{4, 8, 12, 16\}$$
+        $$R = \{ (2, 4), (4, 8), (6, 12), (8, 16) \}$$
+        <p>Exprese $R$ por comprensión.</p>
         <details class="solution">
           <summary>🔍 Ver solución paso a paso</summary>
           <div class="solution-content">
-            <p>Observamos que en todos los pares $(x,y) \in R$, la segunda componente es el doble de la primera ($y =
-              2x$):</p>
+            <p>Observamos que en todos los pares $(x,y) \in R$, la segunda componente es el doble de la primera:</p>
+            $$y = 2x$$
+            <p>Por tanto:</p>
             $$R = \{ (x, y) \in A \times B \mid y = 2x \}$$
           </div>
         </details>
@@ -711,13 +697,13 @@
       <div class="callout callout-def">
         <div class="callout-title">📌 Definición: Relación Identidad ($I_A$)</div>
         <p style="margin:0;">Definida sobre un conjunto $A$ (con $R_U = A^2$), asigna cada elemento únicamente consigo
-          mismo:
-          $$I_A = \{ (x, x) \mid x \in A \}$$</p>
+          mismo:</p>
+        $$I_A = \{ (x, x) \mid x \in A \}$$
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 1.5: Identificación de la Relación Identidad</div>
-        <p>Dado \(A = \{1, 2, 3\}\), determine cuáles de las siguientes relaciones corresponden a \(I_A\):</p>
+        <div class="example-header">🧩 Ejemplo 1.5</div>
+        <p><strong>Enunciado formal.</strong> Identificación de la Relación Identidad. Dado $A = \{1, 2, 3\}$, determine cuáles de las siguientes relaciones corresponden a $I_A$:</p>
         $$
         \begin{align}
         R_1 &= \{(1, 1), (2, 2), (3, 3)\} \\
@@ -728,13 +714,11 @@
         <details class="solution">
           <summary>🔍 Ver solución</summary>
           <div class="solution-content">
-            <p>La relación identidad corresponde a la diagonal principal de $A \times A$: $I_A = \{ (1,
-              1), (2, 2), (3, 3) \}$.</p>
-            <ul>
-              <li><strong>$R_1$: Sí es $I_A$</strong>, contiene exactamente todos los pares $(x,x)$ de $A$.</li>
-              <li><strong>$R_2$: No es $I_A$</strong>, falta el par $(3,3)$ correspondiente a $3 \in A$.</li>
-              <li><strong>$R_3$: No es $I_A$</strong>, incluye el par extra $(1,2)$ con componentes distintas.</li>
-            </ul>
+            <p>La relación identidad corresponde a la diagonal principal de $A \times A$:</p>
+            $$I_A = \{ (1, 1), (2, 2), (3, 3) \}$$
+            <p><strong>Primero:</strong> $R_1$ sí es $I_A$, contiene exactamente todos los pares $(x,x)$ de $A$.</p>
+            <p><strong>Luego:</strong> $R_2$ no es $I_A$, falta el par $(3,3)$ correspondiente a $3 \in A$.</p>
+            <p><strong>Finalmente:</strong> $R_3$ no es $I_A$, incluye el par extra $(1,2)$ con componentes distintas.</p>
           </div>
         </details>
       </div>
@@ -745,9 +729,8 @@
 
       <div class="callout callout-def">
         <div class="callout-title">📌 Definición: Composición de Relaciones ($S \circ R$)</div>
-        <p style="margin:0;">Sean $R \subseteq A \times B$ y $S \subseteq B \times C$. La composición se define como:
-          $$S \circ R = S(R) = \{ (x, z) \in A \times C \mid \exists \, y \in B, (x, y) \in R \land (y, z) \in S \}$$
-        </p>
+        <p style="margin:0;">Sean $R \subseteq A \times B$ y $S \subseteq B \times C$. La composición se define como:</p>
+        $$S \circ R = S(R) = \{ (x, z) \in A \times C \mid \exists \, y \in B, (x, y) \in R \land (y, z) \in S \}$$
       </div>
 
       <div class="callout callout-thm">
@@ -783,9 +766,14 @@
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 1.6: Obtención mediante Diagrama Sagital</div>
-        <p>Sean $A=\{1, 2\}$, $B=\{a, b, c\}$, $C=\{x, y\}$, $R = \{(1, a), (1, b), (2, c)\}$ y $S = \{(a, x), (c,
-          y)\}$. Obtenga $S \circ R$.</p>
+        <div class="example-header">🧩 Ejemplo 1.6</div>
+        <p><strong>Enunciado formal.</strong> Obtención mediante Diagrama Sagital. Sean los conjuntos y las relaciones:</p>
+        $$A=\{1, 2\}$$
+        $$B=\{a, b, c\}$$
+        $$C=\{x, y\}$$
+        $$R = \{(1, a), (1, b), (2, c)\}$$
+        $$S = \{(a, x), (c, y)\}$$
+        <p>Obtenga $S \circ R$.</p>
         <details class="solution">
           <summary>🔍 Ver diagrama sagital y solución</summary>
           <div class="solution-content">
@@ -860,40 +848,45 @@
                 <text x="230" y="226" text-anchor="middle" fill="#06b6d4" font-size="13" font-weight="bold">S ∘ R</text>
               </svg>
             </div>
-            <ul>
-              <li>Desde $1 \in A \to a \in B \to x \in C \rightarrow (1, x) \in S \circ R$.</li>
-              <li>El camino $1 \to b$ se corta en $b$ (no tiene salida en $S$).</li>
-              <li>Desde $2 \in A \to c \in B \to y \in C \rightarrow (2, y) \in S \circ R$.</li>
-            </ul>
+            <p><strong>Primero:</strong> desde $1 \in A$</p>
+            <p style="text-align:center;">$\to a \in B$</p>
+            <p style="text-align:center;">$\to x \in C$</p>
+            <p style="text-align:center;">$\rightarrow (1, x) \in S \circ R$</p>
+            <p><strong>Luego:</strong> el camino $1 \to b$ se corta en $b$ (no tiene salida en $S$).</p>
+            <p><strong>Finalmente:</strong> desde $2 \in A$</p>
+            <p style="text-align:center;">$\to c \in B$</p>
+            <p style="text-align:center;">$\to y \in C$</p>
+            <p style="text-align:center;">$\rightarrow (2, y) \in S \circ R$</p>
+            <p>Por tanto:</p>
             $$S \circ R = \{ (1, x), (2, y) \} \subset A \times C$$
           </div>
         </details>
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 1.7: Composición por Comprensión (Paridad y Lineales)</div>
-        <p>Determine $S \circ R$ en los siguientes dos casos:</p>
-        <ol>
-          <li>En $\mathbb{Z}$: $R = \{ (x, y) \mid x - y \text{ es par} \}$ y $S = \{ (y, z) \mid y - z \text{ es par}
-            \}$.</li>
-          <li>En $\mathbb{R}$: $R = \{ (x, y) \mid y = x + 2 \}$ y $S = \{ (y, z) \mid z = 3y \}$.</li>
-        </ol>
+        <div class="example-header">🧩 Ejemplo 1.7</div>
+        <p><strong>Enunciado formal.</strong> Composición por Comprensión (Paridad y Lineales). Determine $S \circ R$ en los siguientes dos casos:</p>
+        <p><strong>Primero:</strong> en $\mathbb{Z}$:</p>
+        $$R = \{ (x, y) \mid x - y \text{ es par} \}$$
+        $$S = \{ (y, z) \mid y - z \text{ es par} \}$$
+        <p><strong>Luego:</strong> en $\mathbb{R}$:</p>
+        $$R = \{ (x, y) \mid y = x + 2 \}$$
+        $$S = \{ (y, z) \mid z = 3y \}$$
         <details class="solution">
           <summary>🔍 Ver demostraciones analíticas</summary>
           <div class="solution-content">
-            <p><strong>1. Paridad en $\mathbb{Z}$:</strong><br>
-              Si existe $y \in \mathbb{Z}$ tal que $x - y = 2k$ y $y - z = 2m$, sumando ambas ecuaciones se elimina $y$:
-              $$(x - y) + (y - z) = 2k + 2m \rightarrow x - z = 2(k + m)$$
-              Recíprocamente, si $x - z$ es par, basta elegir $y = x \in \mathbb{Z}$ para verificar ambas condiciones.
-              Por tanto:
-              $$S \circ R = \{ (x, z) \in \mathbb{Z}^2 \mid x - z \text{ es un número par} \} = R = S$$</p>
+            <p><strong>1. Paridad en $\mathbb{Z}$:</strong> Si existe $y \in \mathbb{Z}$ tal que $x - y = 2k$ y $y - z = 2m$, sumando ambas ecuaciones se elimina $y$:</p>
+            $$(x - y) + (y - z) = 2k + 2m$$
+            $$\rightarrow x - z = 2(k + m)$$
+            <p>Recíprocamente, si $x - z$ es par, basta elegir $y = x \in \mathbb{Z}$ para verificar ambas condiciones. Por tanto:</p>
+            $$S \circ R = \{ (x, z) \in \mathbb{Z}^2 \mid x - z \text{ es un número par} \}$$
+            $$= R = S$$
 
-            <p><strong>2. Relaciones lineales en $\mathbb{R}$:</strong><br>
-              Sustituyendo $y = x + 2$ en $z = 3y$:
-              $$z = 3(x + 2) \rightarrow z = 3x + 6$$
-              Para cualquier $(x, z)$ con $z = 3x + 6$, existe $y = x + 2 \in \mathbb{R}$ que satisface ambas
-              relaciones:
-              $$S \circ R = \{ (x, z) \in \mathbb{R}^2 \mid z = 3x + 6 \}$$</p>
+            <p><strong>2. Relaciones lineales en $\mathbb{R}$:</strong> Sustituyendo $y = x + 2$ en $z = 3y$:</p>
+            $$z = 3(x + 2)$$
+            $$\rightarrow z = 3x + 6$$
+            <p>Para cualquier $(x, z)$ con $z = 3x + 6$, existe $y = x + 2 \in \mathbb{R}$ que satisface ambas relaciones:</p>
+            $$S \circ R = \{ (x, z) \in \mathbb{R}^2 \mid z = 3x + 6 \}$$
           </div>
         </details>
       </div>
@@ -944,14 +937,20 @@
 
       <h3 class="section-title" id="sec-2-2">2.2 Operaciones en Relaciones Finitas (Extensión y Comprensión)</h3>
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 2.1: Operaciones en relaciones definidas por extensión</div>
-        <ol>
-          <li>Sea $U = \{1, 2, 3, 4\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $(R \cup S) - (R \Delta
-            S)$.</li>
-          <li>Sea $A = \{a, b, c\}$, $R = \{(a,a), (b,b)\}$ y $S = \{(b,b), (c,c)\}$. Halle $(R - S) \cup (R \cap S)$.
-          </li>
-          <li>Sea $U = \{1, 2, 3\}$, $R = \{(1,1), (2,2)\}$ y $S = \{(2,2), (3,3)\}$. Halle $R \cap (R^c \cup S)$.</li>
-        </ol>
+        <div class="example-header">🧩 Ejemplo 2.1</div>
+        <p><strong>Enunciado formal.</strong> Operaciones en relaciones definidas por extensión.</p>
+        <p><strong>Primero:</strong> sea $U = \{1, 2, 3, 4\}$:</p>
+        $$R = \{(1,1), (2,2)\}$$
+        $$S = \{(2,2), (3,3)\}$$
+        <p>Halle $(R \cup S) - (R \Delta S)$.</p>
+        <p><strong>Luego:</strong> sea $A = \{a, b, c\}$:</p>
+        $$R = \{(a,a), (b,b)\}$$
+        $$S = \{(b,b), (c,c)\}$$
+        <p>Halle $(R - S) \cup (R \cap S)$.</p>
+        <p><strong>Finalmente:</strong> sea $U = \{1, 2, 3\}$:</p>
+        $$R = \{(1,1), (2,2)\}$$
+        $$S = \{(2,2), (3,3)\}$$
+        <p>Halle $R \cap (R^c \cup S)$.</p>
         <details class="solution">
           <summary>🔍 Ver soluciones desarrolladas</summary>
           <div class="solution-content">
@@ -963,13 +962,12 @@
             $$(R \cup S) - (R \Delta S) = \{(2,2)\}$$
 
             <p><strong>2.</strong> Calculamos cada operación por separado:</p>
-            $$R - S = \{(a,a)\}, \qquad R \cap S = \{(b,b)\}$$
+            $$R - S = \{(a,a)\}$$
+            $$R \cap S = \{(b,b)\}$$
             <p>Al ser conjuntos disjuntos, la unión coincide con $R$:</p>
             $$(R - S) \cup (R \cap S) = \{(a,a),\, (b,b)\} = R$$
 
-            <p><strong>3.</strong> El complemento $R^c = (U \times U) \setminus R$ son los $7$ pares de $U \times U$ que
-              no están en $R$. Al unirlo con $S$ se recupera únicamente el par $(2,2)$, de modo que $R^c \cup S$
-              contiene todos los pares de $U \times U$ salvo $(1,1)$:</p>
+            <p><strong>3.</strong> El complemento $R^c = (U \times U) \setminus R$ son los $7$ pares de $U \times U$ que no están en $R$. Al unirlo con $S$ se recupera únicamente el par $(2,2)$, de modo que $R^c \cup S$ contiene todos los pares de $U \times U$ salvo $(1,1)$:</p>
             $$R^c \cup S = (U \times U) \setminus \{(1,1)\}$$
             <p>Intersectando finalmente con $R$:</p>
             $$R \cap (R^c \cup S) = \{(2,2)\}$$
@@ -979,32 +977,39 @@
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 2.2: Operaciones en relaciones finitas definidas por comprensión</div>
-        <ol>
-          <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x = y \}$ y $S = \{ (x, y) \mid x < y \}$. Halle $S - R^c$.</li>
-          <li>En $A = \{1, 2, 3\}$: $R = \{ (x, y) \mid x + y \text{ es par} \}$ y $S = \{ (x, y) \mid x + y \leq 3 \}$.
-            Halle $R \cap S$.</li>
-          <li>En $A = \{1, 2, 3, 4\}$: $R = \{ (x, y) \mid y = 2x \}$ y $S = \{ (x, y) \mid x \text{ es par y } y \text{
-            es impar} \}$. Halle $R \Delta S$.</li>
-        </ol>
+        <div class="example-header">🧩 Ejemplo 2.2</div>
+        <p><strong>Enunciado formal.</strong> Operaciones en relaciones finitas definidas por comprensión.</p>
+        <p><strong>Primero:</strong> en $A = \{1, 2, 3\}$:</p>
+        $$R = \{ (x, y) \mid x = y \}$$
+        $$S = \{ (x, y) \mid x < y \}$$
+        <p>Halle $S - R^c$.</p>
+        <p><strong>Luego:</strong> en $A = \{1, 2, 3\}$:</p>
+        $$R = \{ (x, y) \mid x + y \text{ es par} \}$$
+        $$S = \{ (x, y) \mid x + y \leq 3 \}$$
+        <p>Halle $R \cap S$.</p>
+        <p><strong>Finalmente:</strong> en $A = \{1, 2, 3, 4\}$:</p>
+        $$R = \{ (x, y) \mid y = 2x \}$$
+        $$S = \{ (x, y) \mid x \text{ es par y } y \text{ es impar} \}$$
+        <p>Halle $R \Delta S$.</p>
         <details class="solution">
           <summary>🔍 Ver soluciones desarrolladas</summary>
           <div class="solution-content">
 
             <p><strong>1.</strong> Por extensión:</p>
-            $$R = \{(1,1),\, (2,2),\, (3,3)\}, \qquad S = \{(1,2),\, (1,3),\, (2,3)\}$$
-            <p>El complemento $R^c = (A \times A) \setminus R$ está formado por todos los pares con coordenadas
-              distintas, entre ellos los tres de $S$. Es decir, $S \subseteq R^c$, por lo que:</p>
+            $$R = \{(1,1),\, (2,2),\, (3,3)\}$$
+            $$S = \{(1,2),\, (1,3),\, (2,3)\}$$
+            <p>El complemento $R^c = (A \times A) \setminus R$ está formado por todos los pares con coordenadas distintas, entre ellos los tres de $S$. Es decir, $S \subseteq R^c$, por lo que:</p>
             $$S - R^c = \emptyset$$
 
             <p><strong>2.</strong> Por extensión:</p>
-            $$R = \{(1,1),\, (1,3),\, (2,2),\, (3,1),\, (3,3)\}, \qquad S = \{(1,1),\, (1,2),\, (2,1)\}$$
+            $$R = \{(1,1),\, (1,3),\, (2,2),\, (3,1),\, (3,3)\}$$
+            $$S = \{(1,1),\, (1,2),\, (2,1)\}$$
             <p>El único par que satisface simultáneamente $x + y$ par y $x + y \leq 3$ es $(1,1)$:</p>
             $$R \cap S = \{(1,1)\}$$
 
-            <p><strong>3.</strong> La condición $y = 2x$ solo se cumple para $x \in \{1, 2\}$, y la condición "$x$ par,
-              $y$ impar" genera los pares con $x \in \{2,4\}$ e $y \in \{1,3\}$:</p>
-            $$R = \{(1,2),\, (2,4)\}, \qquad S = \{(2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
+            <p><strong>3.</strong> La condición $y = 2x$ solo se cumple para $x \in \{1, 2\}$, y la condición "$x$ par, $y$ impar" genera los pares con $x \in \{2,4\}$ e $y \in \{1,3\}$:</p>
+            $$R = \{(1,2),\, (2,4)\}$$
+            $$S = \{(2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
             <p>Como $R$ y $S$ son disjuntos, la diferencia simétrica coincide con la unión:</p>
             $$R \Delta S = R \cup S = \{(1,2),\, (2,4),\, (2,1),\, (2,3),\, (4,1),\, (4,3)\}$$
 
@@ -1013,12 +1018,10 @@
       </div>
       <h3 class="section-title" id="sec-2-3">2.3 Interpretación Gráfica: Conjuntos Discretos, Continuos y Regiones
         Infinitas</h3>
-      <ul>
-        <li><strong>Caso Discreto:</strong> Nube de puntos aislados en la cuadrícula cartesiana.</li>
-        <li><strong>Caso Continuo:</strong> Regiones del plano. Los extremos <strong>cerrados</strong> ($\le, \ge$) se
+      <p><strong>Caso Discreto.</strong> Nube de puntos aislados en la cuadrícula cartesiana.</p>
+      <p><strong>Caso Continuo.</strong> Regiones del plano. Los extremos <strong>cerrados</strong> ($\le, \ge$) se
           trazan con <strong>línea continua</strong>; los extremos <strong>abiertos</strong> ($<,>$) se trazan con
-            <strong>línea punteada</strong>.</li>
-      </ul>
+            <strong>línea punteada</strong>.</p>
 
       <div class="table-wrapper">
         <table>
@@ -1055,9 +1058,8 @@
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 2.3: Producto Cartesiano Discreto vs. Continuo e Intervalos</div>
-        <p>Visualización comparativa de $A \times B = \{1,2,3,4\} \times \{1,2,3\}$ frente a intervalos continuos $[1,4]
-          \times [1,3]$ y variantes abiertas/semiabiertas.</p>
+        <div class="example-header">🧩 Ejemplo 2.3</div>
+        <p><strong>Enunciado formal.</strong> Producto Cartesiano Discreto vs. Continuo e Intervalos. Visualización comparativa de $A \times B = \{1,2,3,4\} \times \{1,2,3\}$ frente a intervalos continuos $[1,4] \times [1,3]$ y variantes abiertas/semiabiertas.</p>
         <details class="solution" open>
           <summary>🔍 Ver gráficas vectoriales comparativas</summary>
           <div class="solution-content">
@@ -1141,88 +1143,86 @@
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 2.4: Operaciones con Regiones Infinitas en $\mathbb{R}^2$</div>
-        <ol>
-          <li><strong>Intersección lineal:</strong> $R = \{ (x, y) \in \mathbb{R}^2 \mid y > x \}$ y $S = \{ (x, y) \in
-            \mathbb{R}^2 \mid y < -x + 2 \}$. Halle $R \cap S$.</li>
-          <li><strong>Diferencia cuadrática (Corona circular):</strong> $R = \{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2
-            \leq 4 \}$ y $S = \{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2 < 1 \}$. Halle $R - S$.</li>
-          <li><strong>Intersección de cuadrados:</strong> $R = [1, 4] \times [1, 4]$ y $S = [2, 5] \times [2, 5]$. Halle
-            $R \cap S$.</li>
-        </ol>
+        <div class="example-header">🧩 Ejemplo 2.4</div>
+        <p><strong>Enunciado formal.</strong> Operaciones con Regiones Infinitas en $\mathbb{R}^2$.</p>
+        <p><strong>Primero:</strong> intersección lineal. Sean las relaciones:</p>
+        $$R = \{ (x, y) \in \mathbb{R}^2 \mid y > x \}$$
+        $$S = \{ (x, y) \in \mathbb{R}^2 \mid y < -x + 2 \}$$
+        <p>Halle $R \cap S$.</p>
+        <p><strong>Luego:</strong> diferencia cuadrática (corona circular). Sean las relaciones:</p>
+        $$R = \{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2 \leq 4 \}$$
+        $$S = \{ (x, y) \in \mathbb{R}^2 \mid x^2 + y^2 < 1 \}$$
+        <p>Halle $R - S$.</p>
+        <p><strong>Finalmente:</strong> intersección de cuadrados. Sean las relaciones:</p>
+        $$R = [1, 4] \times [1, 4]$$
+        $$S = [2, 5] \times [2, 5]$$
+        <p>Halle $R \cap S$.</p>
         <details class="solution">
           <summary>🔍 Ver resolución analítica y gráficas</summary>
           <div class="solution-content">
-            <p><strong>1. Intersección de semiplanos:</strong><br>
-              $R \cap S = \{ (x, y) \in \mathbb{R}^2 \mid x < y < -x + 2 \}$. Región triangular abierta a la izquierda
-                del vértice abierto $(1,1)$.</p>
+            <p><strong>1. Intersección de semiplanos.</strong></p>
+            $$R \cap S = \{ (x, y) \in \mathbb{R}^2 \mid x < y < -x + 2 \}$$
+            <p>Región triangular abierta a la izquierda del vértice abierto $(1,1)$.</p>
 
-                <p><strong>2. Corona circular ($R - S$):</strong><br>
-                  $$R - S = \{ (x, y) \in \mathbb{R}^2 \mid (x^2 + y^2 \leq 4) \land \neg (x^2 + y^2 < 1) \}=\{ (x, y)
-                    \in \mathbb{R}^2 \mid 1 \leq x^2 + y^2 \leq 4 \}$$ <em>Detalle clave:</em> La circunferencia
-                    interior $x^2+y^2=1$ era abierta en $S$, pero pasa a ser <strong>cerrada</strong> (línea continua)
-                    en $R - S$ porque esos puntos pertenecían a $R$.</p>
+            <p><strong>2. Corona circular ($R - S$).</strong></p>
+            $$R - S = \{ (x, y) \in \mathbb{R}^2 \mid (x^2 + y^2 \leq 4) \land \neg (x^2 + y^2 < 1) \}$$
+            $$= \{ (x, y) \in \mathbb{R}^2 \mid 1 \leq x^2 + y^2 \leq 4 \}$$
+            <p><em>Detalle clave:</em> la circunferencia interior $x^2+y^2=1$ era abierta en $S$, pero pasa a ser <strong>cerrada</strong> (línea continua) en $R - S$ porque esos puntos pertenecían a $R$.</p>
 
-                <p><strong>3. Intersección de productos cartesianos:</strong><br>
-                  $$R \cap S = ([1,4] \cap [2,5]) \times ([1,4] \cap [2,5]) = [2, 4] \times [2, 4]$$</p>
+            <p><strong>3. Intersección de productos cartesianos.</strong></p>
+            $$R \cap S = ([1,4] \cap [2,5]) \times ([1,4] \cap [2,5])$$
+            $$= [2, 4] \times [2, 4]$$
 
-                <div class="diagram-container">
-                  <!-- Triángulo R cap S -->
-                  <div>
-                    <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
-                      <line x1="15" y1="150" x2="195" y2="150" stroke="currentColor" stroke-width="1.2" />
-                      <line x1="60" y1="15" x2="60" y2="195" stroke="currentColor" stroke-width="1.2" />
-                      <!-- Región sombreada (intersección en ámbar) -->
-                      <polygon points="15,195 105,105 15,15" fill="rgba(245, 158, 11, 0.30)" />
-                      <!-- y = x (frontera abierta, cyan) -->
-                      <line x1="15" y1="195" x2="180" y2="30" stroke="#06b6d4" stroke-width="1.8"
-                        stroke-dasharray="4,3" />
-                      <!-- y = -x + 2 (frontera abierta, naranja) -->
-                      <line x1="15" y1="15" x2="180" y2="180" stroke="#f97316" stroke-width="1.8"
-                        stroke-dasharray="4,3" />
-                      <circle cx="105" cy="105" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5" />
-                      <text x="112" y="109" font-size="11" fill="currentColor">(1,1)</text>
-                      <text x="35" y="108" fill="#b45309" font-weight="bold" font-size="13">R ∩ S</text>
-                    </svg>
-                    <div class="diagram-caption">1) $x < y < -x + 2$</div>
-                    </div>
+            <div class="diagram-container">
+              <!-- Triángulo R cap S -->
+              <div>
+                <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
+                  <line x1="15" y1="150" x2="195" y2="150" stroke="currentColor" stroke-width="1.2" />
+                  <line x1="60" y1="15" x2="60" y2="195" stroke="currentColor" stroke-width="1.2" />
+                  <polygon points="15,195 105,105 15,15" fill="rgba(245, 158, 11, 0.30)" />
+                  <line x1="15" y1="195" x2="180" y2="30" stroke="#06b6d4" stroke-width="1.8"
+                    stroke-dasharray="4,3" />
+                  <line x1="15" y1="15" x2="180" y2="180" stroke="#f97316" stroke-width="1.8"
+                    stroke-dasharray="4,3" />
+                  <circle cx="105" cy="105" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+                  <text x="112" y="109" font-size="11" fill="currentColor">(1,1)</text>
+                  <text x="35" y="108" fill="#b45309" font-weight="bold" font-size="13">R ∩ S</text>
+                </svg>
+                <div class="diagram-caption">1) $x < y < -x + 2$</div>
+              </div>
 
-                    <!-- Corona Circular -->
-                    <div>
-                      <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
-                        <!-- Anillo con evenodd: dos círculos concéntricos, el interior hace de agujero -->
-                        <path
-                          d="M 105 35 A 70 70 0 1 1 105 175 A 70 70 0 1 1 105 35 Z M 105 70 A 35 35 0 1 1 105 140 A 35 35 0 1 1 105 70 Z"
-                          fill="rgba(249, 115, 22, 0.25)" stroke="#f97316" stroke-width="2" fill-rule="evenodd" />
-                        <line x1="15" y1="105" x2="195" y2="105" stroke="currentColor" stroke-width="1" />
-                        <line x1="105" y1="15" x2="105" y2="195" stroke="currentColor" stroke-width="1" />
-                        <text x="105" y="55" text-anchor="middle" fill="#f97316" font-weight="bold" font-size="12">R -
-                          S</text>
-                      </svg>
-                      <div class="diagram-caption">2) Corona: $1 \leq x^2 + y^2 \leq 4$</div>
-                    </div>
+              <!-- Corona Circular -->
+              <div>
+                <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
+                  <path
+                    d="M 105 35 A 70 70 0 1 1 105 175 A 70 70 0 1 1 105 35 Z M 105 70 A 35 35 0 1 1 105 140 A 35 35 0 1 1 105 70 Z"
+                    fill="rgba(249, 115, 22, 0.25)" stroke="#f97316" stroke-width="2" fill-rule="evenodd" />
+                  <line x1="15" y1="105" x2="195" y2="105" stroke="currentColor" stroke-width="1" />
+                  <line x1="105" y1="15" x2="105" y2="195" stroke="currentColor" stroke-width="1" />
+                  <text x="105" y="55" text-anchor="middle" fill="#f97316" font-weight="bold" font-size="12">R -
+                    S</text>
+                </svg>
+                <div class="diagram-caption">2) Corona: $1 \leq x^2 + y^2 \leq 4$</div>
+              </div>
 
-                    <!-- Cuadrados [2,4]x[2,4] -->
-                    <div>
-                      <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
-                        <line x1="25" y1="185" x2="195" y2="185" stroke="currentColor" stroke-width="1.2" />
-                        <line x1="25" y1="185" x2="25" y2="15" stroke="currentColor" stroke-width="1.2" />
-                        <!-- R: [1,4] (cyan) -->
-                        <rect x="50" y="85" width="75" height="75" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4"
-                          stroke-width="1.5" />
-                        <!-- S: [2,5] (naranja) -->
-                        <rect x="75" y="60" width="75" height="75" fill="rgba(249, 115, 22, 0.15)" stroke="#f97316"
-                          stroke-width="1.5" />
-                        <!-- R ∩ S: [2,4] (ámbar, autocontenido) -->
-                        <rect x="75" y="85" width="50" height="50" fill="rgba(245, 158, 11, 0.55)" stroke="#b45309"
-                          stroke-width="2" />
-                        <text x="100" y="114" text-anchor="middle" font-weight="bold" font-size="11" fill="#78350f">R ∩
-                          S</text>
-                      </svg>
-                      <div class="diagram-caption">3) $[2,4] \times [2,4]$</div>
-                    </div>
-                  </div>
-                </div>
+              <!-- Cuadrados [2,4]x[2,4] -->
+              <div>
+                <svg width="210" height="210" viewBox="0 0 210 210" style="color: #64748b;">
+                  <line x1="25" y1="185" x2="195" y2="185" stroke="currentColor" stroke-width="1.2" />
+                  <line x1="25" y1="185" x2="25" y2="15" stroke="currentColor" stroke-width="1.2" />
+                  <rect x="50" y="85" width="75" height="75" fill="rgba(6, 182, 212, 0.15)" stroke="#06b6d4"
+                    stroke-width="1.5" />
+                  <rect x="75" y="60" width="75" height="75" fill="rgba(249, 115, 22, 0.15)" stroke="#f97316"
+                    stroke-width="1.5" />
+                  <rect x="75" y="85" width="50" height="50" fill="rgba(245, 158, 11, 0.55)" stroke="#b45309"
+                    stroke-width="2" />
+                  <text x="100" y="114" text-anchor="middle" font-weight="bold" font-size="11" fill="#78350f">R ∩
+                    S</text>
+                </svg>
+                <div class="diagram-caption">3) $[2,4] \times [2,4]$</div>
+              </div>
+            </div>
+          </div>
         </details>
       </div>
 
@@ -1232,7 +1232,7 @@
     <!-- ===================================================================== -->
     <!-- MÓDULO 3: PROPIEDADES DE LAS RELACIONES -->
     <!-- ===================================================================== -->
-    <section class="card" id="mod-3">
+<section class="card" id="mod-3">
       <h2 class="module-title"><span class="badge">MÓDULO 03</span> Propiedades de las Relaciones</h2>
 
       <h3 class="section-title" id="sec-3-1">3.1 Relaciones Descritas por Extensión</h3>
@@ -1322,27 +1322,20 @@
 
       <div class="callout callout-thm">
         <div class="callout-title">📐 Teorema 3.1: Implicaciones y Relaciones Particulares</div>
-        <ul style="margin:0;">
-          <li><strong>Asimetría:</strong> Si $R$ es asimétrica $\rightarrow$ es arreflexiva, antisimétrica y no total.
-          </li>
-          <li><strong>Totalidad:</strong> Si $R$ es total $\rightarrow$ es reflexiva y no asimétrica.</li>
-          <li><strong>Simetría + Antisimetría:</strong> Si ambas se cumplen $\rightarrow R \subseteq I_A$.</li>
-          <li><strong>Relación Vacía ($\emptyset$) sobre $A \neq \emptyset$:</strong> Es arreflexiva, simétrica,
-            antisimétrica, asimétrica, transitiva y atransitiva por vacuidad.</li>
-          <li><strong>Relación Universal ($A \times A$):</strong> Es reflexiva, simétrica, transitiva y total.</li>
-          <li><strong>Relación Identidad ($I_A$):</strong> Es reflexiva, simétrica, antisimétrica y transitiva
-            simultáneamente.</li>
-        </ul>
+        <p><strong>Asimetría.</strong> Si $R$ es asimétrica $\rightarrow$ es arreflexiva, antisimétrica y no total.</p>
+        <p><strong>Totalidad.</strong> Si $R$ es total $\rightarrow$ es reflexiva y no asimétrica.</p>
+        <p><strong>Simetría + Antisimetría.</strong> Si ambas se cumplen $\rightarrow R \subseteq I_A$.</p>
+        <p><strong>Relación Vacía ($\emptyset$) sobre $A \neq \emptyset$.</strong> Es arreflexiva, simétrica, antisimétrica, asimétrica, transitiva y atransitiva por vacuidad.</p>
+        <p><strong>Relación Universal ($A \times A$).</strong> Es reflexiva, simétrica, transitiva y total.</p>
+        <p><strong>Relación Identidad ($I_A$).</strong> Es reflexiva, simétrica, antisimétrica y transitiva simultáneamente.</p>
       </div>
 
       <h3 class="section-title" id="sec-3-2">3.2 Análisis por Comprensión e Interpretación Geométrica en $\mathbb{R}$
       </h3>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 3.1: Relación $R = \{ (x, y) \in \mathbb{R}^2 \mid x \geq y \}$ vs. $R =
-          \{ (x, y) \in \mathbb{R}^2 \mid x > y \}$</div>
-        <p>Analice reflexividad, simetría, antisimetría, transitividad y totalidad para ambas relaciones en
-          $\mathbb{R}$.</p>
+        <div class="example-header">🧩 Ejemplo 3.1</div>
+        <p><strong>Enunciado formal.</strong> Relación $R = \{ (x, y) \in \mathbb{R}^2 \mid x \geq y \}$ vs. $R = \{ (x, y) \in \mathbb{R}^2 \mid x > y \}$. Analice reflexividad, simetría, antisimetría, transitividad y totalidad para ambas relaciones en $\mathbb{R}$.</p>
         <details class="solution">
           <summary>🔍 Ver análisis lógico y comparación geométrica</summary>
           <div class="solution-content">
@@ -1427,9 +1420,8 @@
       <div class="callout callout-def">
         <div class="callout-title">📌 Definición: Matriz Booleana de Adyacencia</div>
         <p style="margin:0;">Dada $R \subseteq A \times B$ con $A = \{a_1, \dots, a_m\}$ y $B = \{b_1, \dots, b_n\}$, la
-          matriz $M_R$ tiene entradas $m_{ij} \in \{0, 1\}$ definidas por:
-          $$m_{ij} = \begin{cases} 1 & \text{si } (a_i, b_j) \in R \\ 0 & \text{si } (a_i, b_j) \notin R \end{cases}$$
-        </p>
+          matriz $M_R$ tiene entradas $m_{ij} \in \{0, 1\}$ definidas por:</p>
+        $$m_{ij} = \begin{cases} 1 & \text{si } (a_i, b_j) \in R \\ 0 & \text{si } (a_i, b_j) \notin R \end{cases}$$
       </div>
 
       <h3 class="section-title" id="sec-4-2">4.2 Operaciones Lógicas entre Matrices</h3>
@@ -1476,26 +1468,35 @@
       <div class="callout callout-def">
         <div class="callout-title">📌 Producto Booleano ($M_{S \circ R} = M_R \cdot M_S$)</div>
         <p style="margin:0;">Para $R \subseteq A \times B$ y $S \subseteq B \times C$, cada entrada se calcula
-          reemplazando suma por $\lor$ y producto por $\land$:
-          $$M_{S \circ R}[i, j] = \bigvee_{k=1}^n \left( M_{R}[i, k] \land M_{S}[k, j] \right)$$</p>
+          reemplazando suma por $\lor$ y producto por $\land$:</p>
+        $$M_{S \circ R}[i, j] = \bigvee_{k=1}^n \left( M_{R}[i, k] \land M_{S}[k, j] \right)$$
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 4.1: Producto Booleano para Composición</div>
-        <p>Sean $A = \{1, 2\}$, $B = \{x, y, z\}$, $C = \{a, b\}$, $R = \{ (1, x), (1, z), (2, y) \}$ y $S = \{ (x, b),
-          (y, a), (z, b) \}$. Calcule $M_{S \circ R}$.</p>
+        <div class="example-header">🧩 Ejemplo 4.1</div>
+        <p><strong>Enunciado formal.</strong> Producto Booleano para Composición. Sean los conjuntos y relaciones:</p>
+        $$A = \{1, 2\}$$
+        $$B = \{x, y, z\}$$
+        $$C = \{a, b\}$$
+        $$R = \{ (1, x), (1, z), (2, y) \}$$
+        $$S = \{ (x, b), (y, a), (z, b) \}$$
+        <p>Calcule $M_{S \circ R}$.</p>
         <details class="solution">
           <summary>🔍 Ver cálculo matricial paso a paso</summary>
           <div class="solution-content">
-            $$M_R = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix}, \quad M_S = \begin{bmatrix} 0 & 1 \\ 1 & 0 \\
-            0 & 1 \end{bmatrix}$$
-            <ul>
-              <li>$[1,1] = (1 \land 0) \lor (0 \land 1) \lor (1 \land 0) = 0$</li>
-              <li>$[1,2] = (1 \land 1) \lor (0 \land 0) \lor (1 \land 1) = 1$</li>
-              <li>$[2,1] = (0 \land 0) \lor (1 \land 1) \lor (0 \land 0) = 1$</li>
-              <li>$[2,2] = (0 \land 1) \lor (1 \land 0) \lor (0 \land 1) = 0$</li>
-            </ul>
-            $$M_{S \circ R} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix} \rightarrow S \circ R = \{(1, b), (2, a)\}$$
+            $$M_R = \begin{bmatrix} 1 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix}$$
+            $$M_S = \begin{bmatrix} 0 & 1 \\ 1 & 0 \\ 0 & 1 \end{bmatrix}$$
+            <p><strong>Primero:</strong> entrada $[1,1]$:</p>
+            $$[1,1] = (1 \land 0) \lor (0 \land 1) \lor (1 \land 0) = 0$$
+            <p><strong>Luego:</strong> entrada $[1,2]$:</p>
+            $$[1,2] = (1 \land 1) \lor (0 \land 0) \lor (1 \land 1) = 1$$
+            <p><strong>Luego:</strong> entrada $[2,1]$:</p>
+            $$[2,1] = (0 \land 0) \lor (1 \land 1) \lor (0 \land 0) = 1$$
+            <p><strong>Finalmente:</strong> entrada $[2,2]$:</p>
+            $$[2,2] = (0 \land 1) \lor (1 \land 0) \lor (0 \land 1) = 0$$
+            <p>Por tanto:</p>
+            $$M_{S \circ R} = \begin{bmatrix} 0 & 1 \\ 1 & 0 \end{bmatrix}$$
+            $$\rightarrow S \circ R = \{(1, b), (2, a)\}$$
           </div>
         </details>
       </div>
@@ -1552,22 +1553,17 @@
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 4.2: Análisis matricial de la relación de inclusión ($Y \subseteq X$)
-        </div>
-        <p>Dado $A = \{1, 2\}$ y $\mathcal{P}(A) = \{ \emptyset, \{1\}, \{2\}, A \}$, analice matricialmente la relación
-          $(X, Y) \in R \iff Y \subseteq X$.</p>
+        <div class="example-header">🧩 Ejemplo 4.2</div>
+        <p><strong>Enunciado formal.</strong> Análisis matricial de la relación de inclusión ($Y \subseteq X$). Dado $A = \{1, 2\}$ y $\mathcal{P}(A) = \{ \emptyset, \{1\}, \{2\}, A \}$, analice matricialmente la relación $(X, Y) \in R \iff Y \subseteq X$.</p>
         <details class="solution">
           <summary>🔍 Ver verificación matricial completa</summary>
           <div class="solution-content">
             $$M_R = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 1 \end{bmatrix}$$
-            <ul>
-              <li><strong>Reflexiva:</strong> ✅ Toda la diagonal es $1$ ($M_I \leq M_R$).</li>
-              <li><strong>Simétrica:</strong> ❌ $M_R \neq M_R^T$ (por ejemplo, $m_{21} = 1 \neq m_{12} = 0$).</li>
-              <li><strong>Antisimétrica:</strong> ✅ $M_R \wedge M_R^T = M_I \leq M_I$.</li>
-              <li><strong>Transitiva:</strong> ✅ $M_R \circ M_R = M_R \leq M_R$.</li>
-              <li><strong>Total:</strong> ❌ $M_R \vee M_R^T$ tiene ceros en $[2,3]$ y $[3,2]$ ($\{1\}$ y $\{2\}$ son
-                incomparables).</li>
-            </ul>
+            <p><strong>Primero:</strong> <strong>Reflexiva.</strong> ✅ Toda la diagonal es $1$ ($M_I \leq M_R$).</p>
+            <p><strong>Luego:</strong> <strong>Simétrica.</strong> ❌ $M_R \neq M_R^T$ (por ejemplo, $m_{21} = 1 \neq m_{12} = 0$).</p>
+            <p><strong>Luego:</strong> <strong>Antisimétrica.</strong> ✅ $M_R \wedge M_R^T = M_I \leq M_I$.</p>
+            <p><strong>Luego:</strong> <strong>Transitiva.</strong> ✅ $M_R \circ M_R = M_R \leq M_R$.</p>
+            <p><strong>Finalmente:</strong> <strong>Total.</strong> ❌ $M_R \vee M_R^T$ tiene ceros en $[2,3]$ y $[3,2]$ ($\{1\}$ y $\{2\}$ son incomparables).</p>
           </div>
         </details>
       </div>
@@ -1627,9 +1623,8 @@
         disjuntos llamados clases de equivalencia.</p>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 5.1: Verificación gráfica y analítica de Equivalencia</div>
-        <p>Sea $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$. Verifique que $R$ es de
-          equivalencia.</p>
+        <div class="example-header">🧩 Ejemplo 5.1</div>
+        <p><strong>Enunciado formal.</strong> Verificación gráfica y analítica de Equivalencia. Sea $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$. Verifique que $R$ es de equivalencia.</p>
         <details class="solution">
           <summary>🔍 Ver grafo dirigido y verificación</summary>
           <div class="solution-content">
@@ -1663,13 +1658,10 @@
                   y="130" text-anchor="middle" font-weight="bold" fill="currentColor">3</text>
               </svg>
             </div>
-            <ul>
-              <li><strong>Reflexividad:</strong> Contiene todos los bucles: $I_A = \{(1,1), (2,2), (3,3)\} \subseteq R$.
-              </li>
-              <li><strong>Simetría:</strong> $R^{-1} = R$ (el camino $1 \to 2$ tiene su regreso $2 \to 1$).</li>
-              <li><strong>Transitividad:</strong> $R \circ R = R \subseteq R$ (los recorridos $1 \to 2 \to 1$ y $2 \to 1
-                \to 2$ aterrizan en los bucles $(1,1)$ y $(2,2)$ ya incluidos).</li>
-            </ul>
+            <p><strong>Primero:</strong> <strong>Reflexividad.</strong> Contiene todos los bucles:</p>
+            $$I_A = \{(1,1), (2,2), (3,3)\} \subseteq R$$
+            <p><strong>Luego:</strong> <strong>Simetría.</strong> $R^{-1} = R$ (el camino $1 \to 2$ tiene su regreso $2 \to 1$).</p>
+            <p><strong>Finalmente:</strong> <strong>Transitividad.</strong> $R \circ R = R \subseteq R$ (los recorridos $1 \to 2 \to 1$ y $2 \to 1 \to 2$ aterrizan en los bucles $(1,1)$ y $(2,2)$ ya incluidos).</p>
           </div>
         </details>
       </div>
@@ -1677,40 +1669,41 @@
       <h3 class="section-title" id="sec-5-3">5.3 Clases de Equivalencia y Conjunto Cociente</h3>
       <div class="callout callout-def">
         <div class="callout-title">📌 Definiciones: Clase de Equivalencia y Conjunto Cociente</div>
-        <ul style="margin:0;">
-          <li><strong>Clase de equivalencia de $x$:</strong> $[x] = \{ y \in A \mid (x, y) \in R \}$.</li>
-          <li><strong>Conjunto Cociente ($A/R$):</strong> Familia formada por todas las clases distintas de $A$:
-            $$A/R = \{ [x] \mid x \in A \}$$
-            Constituye una <strong>partición</strong> exacta de $A$.
-          </li>
-          <li><strong>Reconstrucción de $R$:</strong> $R = \bigcup_{C \in A/R} (C \times C)$.</li>
-        </ul>
+        <p><strong>Clase de equivalencia de $x$.</strong></p>
+        $$[x] = \{ y \in A \mid (x, y) \in R \}$$
+        <p><strong>Conjunto Cociente ($A/R$).</strong> Familia formada por todas las clases distintas de $A$:</p>
+        $$A/R = \{ [x] \mid x \in A \}$$
+        <p>Constituye una <strong>partición</strong> exacta de $A$.</p>
+        <p><strong>Reconstrucción de $R$.</strong></p>
+        $$R = \bigcup_{C \in A/R} (C \times C)$$
       </div>
 
       <div class="example-box">
-        <div class="example-header">🧩 Ejemplo 5.2: Cálculo del Conjunto Cociente y Reconstrucción de $R$</div>
-        <ol>
-          <li>Para $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$, halle las clases y $A/R$.
-          </li>
-          <li>Dado $A/R = \{ \{x, z\}, \{y\} \}$, reconstruya $A$ y la relación $R$ por extensión.</li>
-        </ol>
+        <div class="example-header">🧩 Ejemplo 5.2</div>
+        <p><strong>Enunciado formal.</strong> Cálculo del Conjunto Cociente y Reconstrucción de $R$.</p>
+        <p><strong>Primero:</strong> para $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$, halle las clases y $A/R$.</p>
+        <p><strong>Luego:</strong> dado $A/R = \{ \{x, z\}, \{y\} \}$, reconstruya $A$ y la relación $R$ por extensión.</p>
         <details class="solution">
           <summary>🔍 Ver soluciones</summary>
           <div class="solution-content">
-            <p><strong>1.</strong> $[1] = \{1, 2\}$, $[2] = \{1, 2\}$ y $[3] = \{3\}$. Eliminando clases repetidas:
-              $$A/R = \{ \{1, 2\}, \{3\} \}$$</p>
+            <p><strong>1.</strong> Calculamos las clases:</p>
+            $$[1] = \{1, 2\}$$
+            $$[2] = \{1, 2\}$$
+            $$[3] = \{3\}$$
+            <p>Eliminando clases repetidas:</p>
+            $$A/R = \{ \{1, 2\}, \{3\} \}$$
 
-            <p><strong>2.</strong> El conjunto original es $A = \{x, z\} \cup \{y\} = \{x, y, z\}$.<br>
-              Reconstruyendo $R$:
-              $$R = (\{x, z\} \times \{x, z\}) \cup (\{y\} \times \{y\}) = \{ (x, x), (x, z), (z, x), (z, z), (y, y)
-              \}$$</p>
+            <p><strong>2.</strong> El conjunto original es:</p>
+            $$A = \{x, z\} \cup \{y\} = \{x, y, z\}$$
+            <p>Reconstruyendo $R$:</p>
+            $$R = (\{x, z\} \times \{x, z\}) \cup (\{y\} \times \{y\})$$
+            $$= \{ (x, x), (x, z), (z, x), (z, z), (y, y) \}$$
           </div>
         </details>
       </div>
 
       <div class="back-top"><a href="#mapa-de-contenidos">⬆️ Volver al índice</a></div>
     </section>
-
     <!-- ===================================================================== -->
     <!-- MÓDULO 6: RELACIONES DE ORDEN -->
     <!-- ===================================================================== -->
