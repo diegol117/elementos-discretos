@@ -580,8 +580,8 @@
       </div>
 
       <ul>
-        <li><strong>Relación vacía ($R = \emptyset$):</strong> No contiene ningún par ordenado.</li>
-        <li><strong>Relación universal ($R_U = A \times B$):</strong> Contiene la totalidad de los pares posibles del
+        <li><strong>Relación vacía $(R = \emptyset)$:</strong> No contiene ningún par ordenado.</li>
+        <li><strong>Relación universal $(R_U = A \times B)$:</strong> Contiene la totalidad de los pares posibles del
           producto cartesiano.</li>
         <li><strong>Por Extensión:</strong> Enumera explícitamente cada par ordenado: $R = \{ (a_1, b_1), (a_2, b_2),
           \dots \}$.</li>
@@ -631,11 +631,11 @@
       </div>
 
       <h4 class="sub-title">Elementos asociados a una relación</h4>
-      <p><strong>Dominio.</strong> Elementos del conjunto de partida ($A$) que participan en la relación:</p>
+      <p><strong>Dominio.</strong> Elementos del conjunto de partida $(A)$ que participan en la relación:</p>
       $$\text{Dom}(R) = \{ x \in A \mid \exists \, y \in B, (x, y) \in R \}$$
-      <p><strong>Rango.</strong> Elementos del conjunto de llegada ($B$) asociados con al menos un elemento de $A$:</p>
+      <p><strong>Rango.</strong> Elementos del conjunto de $B$ asociados con al menos un elemento de $A$:</p>
       $$\text{Rgo}(R) = \{ y \in B \mid \exists \, x \in A, (x, y) \in R \}$$
-      <p><strong>Relación Inversa ($R^{-1} \subseteq B \times A$).</strong> Pares ordenados invertidos:</p>
+      <p><strong>Relación Inversa $(R^{-1} \subseteq B \times A)$.</strong> Pares ordenados invertidos:</p>
       $$R^{-1} = \{ (y, x) \mid (x, y) \in R \}$$
       <p>Cumple las dualidades:</p>
       $$\text{Dom}(R^{-1}) = \text{Rgo}(R)$$
@@ -653,11 +653,11 @@
         <details class="solution">
           <summary>🔍 Ver solución paso a paso</summary>
           <div class="solution-content">
-            <p><strong>Primero:</strong> Dominio ($\text{Dom}(R)$). Primeras componentes de los pares en $R$:</p>
+            <p><strong>Primero:</strong> Dominio $(\text{Dom}(R))$. Primeras componentes de los pares en $R$:</p>
             $$\text{Dom}(R) = \{\text{Ana},\, \text{Luis},\, \text{María}\}$$
             <p><em>Nota:</em> Juan y Alberto pertenecen a $A$, pero no al dominio al no estar relacionados con ninguna
               asignatura.</p>
-            <p><strong>Luego:</strong> Rango ($\text{Rgo}(R)$). Segundas componentes presentes en los pares de $R$:</p>
+            <p><strong>Luego:</strong> Rango $(\text{Rgo}(R))$. Segundas componentes presentes en los pares de $R$:</p>
             $$\text{Rgo}(R) = \{\text{Matemáticas},\, \text{Historia}\} = B$$
           </div>
         </details>
@@ -699,8 +699,8 @@
 
       <h3 class="section-title" id="sec-1-2">1.2 Relación Identidad</h3>
       <div class="callout callout-def">
-        <div class="callout-title">📌 Definición: Relación Identidad ($I_A$)</div>
-        <p style="margin:0;">Definida sobre un conjunto $A$ (con $R_U = A^2$), asigna cada elemento únicamente consigo
+        <div class="callout-title">📌 Definición: Relación Identidad</div>
+        <p style="margin:0;">Definida sobre un conjunto $A$ (con $R_U = A^2)$, asigna cada elemento únicamente consigo
           mismo:</p>
         $$I_A = \{ (x, x) \mid x \in A \}$$
       </div>
@@ -710,11 +710,11 @@
         <p><strong>Enunciado formal.</strong> Identificación de la Relación Identidad. Dado $A = \{1, 2, 3\}$, determine
           cuáles de las siguientes relaciones corresponden a $I_A$:</p>
         $$
-        \begin{align}
+        \begin{align*}
         R_1 &= \{(1, 1), (2, 2), (3, 3)\} \\
         R_2 &= \{(1, 1), (2, 2)\} \\
         R_3 &= \{(1, 1), (2, 2), (3, 3), (1,2)\}
-        \end{align}
+        \end{align*}
         $$
         <details class="solution">
           <summary>🔍 Ver solución</summary>
@@ -734,7 +734,7 @@
         $B$. En la notación $S \circ R = S(R)$, actúa primero $R$ y luego $S$.</p>
 
       <div class="callout callout-def">
-        <div class="callout-title">📌 Definición: Composición de Relaciones ($S \circ R$)</div>
+        <div class="callout-title">📌 Definición: Composición de Relaciones</div>
         <p style="margin:0;">Sean $R \subseteq A \times B$ y $S \subseteq B \times C$. La composición se define como:
         </p>
         $$S \circ R = S(R) = \{ (x, z) \in A \times C \mid \exists \, y \in B, (x, y) \in R \land (y, z) \in S \}$$
@@ -860,7 +860,7 @@
             <p style="text-align:center;">$\to a \in B$</p>
             <p style="text-align:center;">$\to x \in C$</p>
             <p style="text-align:center;">$\rightarrow (1, x) \in S \circ R$</p>
-            <p><strong>Luego:</strong> el camino $1 \to b$ se corta en $b$ (no tiene salida en $S$).</p>
+            <p><strong>Luego:</strong> el camino $1 \to b$ se corta en $b$ (no tiene salida en $S)$.</p>
             <p><strong>Finalmente:</strong> desde $2 \in A$</p>
             <p style="text-align:center;">$\to c \in B$</p>
             <p style="text-align:center;">$\to y \in C$</p>
@@ -916,7 +916,7 @@
       <p>Al ser conjuntos de pares ordenados, las relaciones heredan todas las operaciones del álgebra de conjuntos:</p>
 
       <div class="callout callout-def">
-        <div class="callout-title">📌 Operaciones Fundamentales sobre $R$ y $S$</div>
+        <div class="callout-title">📌 Operaciones </div>
         <div class="table-wrapper" style="margin-bottom:0;">
           <table>
             <thead>
@@ -1034,8 +1034,8 @@
       <h3 class="section-title" id="sec-2-3">2.3 Interpretación Gráfica: Conjuntos Discretos, Continuos y Regiones
         Infinitas</h3>
       <p><strong>Caso Discreto.</strong> Nube de puntos aislados en la cuadrícula cartesiana.</p>
-      <p><strong>Caso Continuo.</strong> Regiones del plano. Los extremos <strong>cerrados</strong> ($\le, \ge$) se
-        trazan con <strong>línea continua</strong>; los extremos <strong>abiertos</strong> ($<,>$) se trazan con
+      <p><strong>Caso Continuo.</strong> Regiones del plano. Los extremos <strong>cerrados</strong> $(\le, \ge)$ se
+        trazan con <strong>línea continua</strong>; los extremos <strong>abiertos</strong> $(<,>)$ se trazan con
           <strong>línea punteada</strong>.</p>
 
       <div class="table-wrapper">
@@ -1043,8 +1043,8 @@
           <thead>
             <tr>
               <th>Característica</th>
-              <th>En Conjuntos Ordinarios ($\mathbb{R}$)</th>
-              <th>En Relaciones ($\mathbb{R}^2$)</th>
+              <th>En Conjuntos Ordinarios $(\mathbb{R})$</th>
+              <th>En Relaciones $(\mathbb{R}^2)$</th>
             </tr>
           </thead>
           <tbody>
@@ -1064,7 +1064,7 @@
               <td>Región del plano, curva o nube de puntos.</td>
             </tr>
             <tr>
-              <td><strong>Complemento ($R^c$)</strong></td>
+              <td><strong>Complemento $(R^c)$</strong></td>
               <td>Puntos de la recta fuera del intervalo.</td>
               <td>Todo el plano fuera de la región o curva.</td>
             </tr>
@@ -1179,7 +1179,7 @@
                 $$R \cap S = \{ (x, y) \in \mathbb{R}^2 \mid x < y < -x + 2 \}$$ <p>Región triangular abierta a la
                   izquierda del vértice abierto $(1,1)$.</p>
 
-                  <p><strong>2. Corona circular ($R - S$).</strong></p>
+                  <p><strong>2. Corona circular $(R - S)$.</strong></p>
                   $$R - S = \{ (x, y) \in \mathbb{R}^2 \mid (x^2 + y^2 \leq 4) \land \neg (x^2 + y^2 < 1) \}$$ $$=\{ (x,
                     y) \in \mathbb{R}^2 \mid 1 \leq x^2 + y^2 \leq 4 \}$$ <p><em>Detalle clave:</em> la circunferencia
                     interior $x^2+y^2=1$ era abierta en $S$, pero pasa a ser <strong>cerrada</strong> (línea continua)
@@ -1343,10 +1343,10 @@
         <p><strong>Asimetría.</strong> Si $R$ es asimétrica $\rightarrow$ es arreflexiva, antisimétrica y no total.</p>
         <p><strong>Totalidad.</strong> Si $R$ es total $\rightarrow$ es reflexiva y no asimétrica.</p>
         <p><strong>Simetría + Antisimetría.</strong> Si ambas se cumplen $\rightarrow R \subseteq I_A$.</p>
-        <p><strong>Relación Vacía ($\emptyset$) sobre $A \neq \emptyset$.</strong> Es arreflexiva, simétrica,
+        <p><strong>Relación Vacía $(\emptyset)$ sobre $A \neq \emptyset$.</strong> Es arreflexiva, simétrica,
           antisimétrica, asimétrica, transitiva y atransitiva por vacuidad.</p>
-        <p><strong>Relación Universal ($A \times A$).</strong> Es reflexiva, simétrica, transitiva y total.</p>
-        <p><strong>Relación Identidad ($I_A$).</strong> Es reflexiva, simétrica, antisimétrica y transitiva
+        <p><strong>Relación Universal $(A \times A)$.</strong> Es reflexiva, simétrica, transitiva y total.</p>
+        <p><strong>Relación Identidad $(I_A)$.</strong> Es reflexiva, simétrica, antisimétrica y transitiva
           simultáneamente.</p>
       </div>
 
@@ -1373,28 +1373,28 @@
                 <tbody>
                   <tr>
                     <td><strong>Reflexividad</strong></td>
-                    <td>✅ <strong>Reflexiva</strong> ($x \ge x$ siempre).</td>
-                    <td>❌ <strong>Arreflexiva</strong> ($x > x$ es falso).</td>
+                    <td>✅ <strong>Reflexiva</strong> $(x \ge x$ siempre).</td>
+                    <td>❌ <strong>Arreflexiva</strong> $(x > x$ es falso).</td>
                   </tr>
                   <tr>
                     <td><strong>Simetría</strong></td>
-                    <td>❌ <strong>No simétrica</strong> ($5 \ge 3$ pero $3 \not\ge 5$).</td>
-                    <td>❌ <strong>Asimétrica</strong> ($x > y \rightarrow y \not> x$).</td>
+                    <td>❌ <strong>No simétrica</strong> $(5 \ge 3$ pero $3 \not\ge 5)$.</td>
+                    <td>❌ <strong>Asimétrica</strong> $(x > y \rightarrow y \not> x)$.</td>
                   </tr>
                   <tr>
                     <td><strong>Antisimetría</strong></td>
-                    <td>✅ <strong>Antisimétrica</strong> ($x \ge y \land y \ge x \rightarrow x = y$).</td>
+                    <td>✅ <strong>Antisimétrica</strong> $(x \ge y \land y \ge x \rightarrow x = y)$.</td>
                     <td>✅ <strong>Antisimétrica</strong> (por vacuidad / asimetría).</td>
                   </tr>
                   <tr>
                     <td><strong>Transitividad</strong></td>
-                    <td>✅ <strong>Transitiva</strong> ($x \ge y \land y \ge z \rightarrow x \ge z$).</td>
-                    <td>✅ <strong>Transitiva</strong> ($x > y \land y > z \rightarrow x > z$).</td>
+                    <td>✅ <strong>Transitiva</strong> $(x \ge y \land y \ge z \rightarrow x \ge z)$.</td>
+                    <td>✅ <strong>Transitiva</strong> $(x > y \land y > z \rightarrow x > z)$.</td>
                   </tr>
                   <tr>
                     <td><strong>Totalidad</strong></td>
-                    <td>✅ <strong>Total</strong> ($R_1 \cup R_1^{-1} = \mathbb{R}^2$).</td>
-                    <td>❌ <strong>No total</strong> (falta la diagonal $y = x$).</td>
+                    <td>✅ <strong>Total</strong> $(R_1 \cup R_1^{-1} = \mathbb{R}^2)$.</td>
+                    <td>❌ <strong>No total</strong> (falta la diagonal $y = x)$.</td>
                   </tr>
                 </tbody>
               </table>
@@ -1438,7 +1438,7 @@
     <section class="card" id="mod-4">
       <h2 class="module-title"><span class="badge">MÓDULO 04</span> Matrices Binarias</h2>
 
-      <h3 class="section-title" id="sec-4-1">4.1 Matriz de una Relación ($M_R$)</h3>
+      <h3 class="section-title" id="sec-4-1">4.1 Matriz de una Relación $(M_R)$</h3>
       <div class="callout callout-def">
         <div class="callout-title">📌 Definición: Matriz Booleana de Adyacencia</div>
         <p style="margin:0;">Dada $R \subseteq A \times B$ con $A = \{a_1, \dots, a_m\}$ y $B = \{b_1, \dots, b_n\}$, la
@@ -1458,27 +1458,27 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>Unión ($R \cup S$)</strong></td>
-              <td>Disyunción lógica ($\lor$) elemento a elemento.</td>
+              <td><strong>Unión $(R \cup S)$</strong></td>
+              <td>Disyunción lógica $(\lor)$ elemento a elemento.</td>
               <td>$M_{R \cup S}[i, j] = M_{R}[i, j] \lor M_{S}[i, j]$</td>
             </tr>
             <tr>
-              <td><strong>Intersección ($R \cap S$)</strong></td>
-              <td>Conjunción lógica ($\land$) elemento a elemento.</td>
+              <td><strong>Intersección $(R \cap S)$</strong></td>
+              <td>Conjunción lógica $(\land)$ elemento a elemento.</td>
               <td>$M_{R \cap S}[i, j] = M_{R}[i, j] \land M_{S}[i, j]$</td>
             </tr>
             <tr>
-              <td><strong>Complemento ($\overline{R}$)</strong></td>
-              <td>Negación booleana ($\neg 1 = 0$, $\neg 0 = 1$).</td>
+              <td><strong>Complemento $(\overline{R})$</strong></td>
+              <td>Negación booleana $(\neg 1 = 0$, $\neg 0 = 1)$.</td>
               <td>$M_{\overline{R}}[i, j] = \neg M_{R}[i, j]$</td>
             </tr>
             <tr>
-              <td><strong>Diferencia ($R - S$)</strong></td>
+              <td><strong>Diferencia $(R - S)$</strong></td>
               <td>Intersección de $R$ con el complemento de $S$.</td>
               <td>$M_{R - S}[i, j] = M_{R}[i, j] \land \neg M_{S}[i, j]$</td>
             </tr>
             <tr>
-              <td><strong>Inversa ($R^{-1}$)</strong></td>
+              <td><strong>Inversa $(R^{-1})$</strong></td>
               <td>Transposición de la matriz (filas $\leftrightarrow$ columnas).</td>
               <td>$M_{R^{-1}} = M_{R}^T$</td>
             </tr>
@@ -1488,7 +1488,7 @@
 
       <h3 class="section-title" id="sec-4-3">4.3 Composición mediante Producto Booleano</h3>
       <div class="callout callout-def">
-        <div class="callout-title">📌 Producto Booleano ($M_{S \circ R} = M_R \cdot M_S$)</div>
+        <div class="callout-title">📌 Producto Booleano</div>
         <p style="margin:0;">Para $R \subseteq A \times B$ y $S \subseteq B \times C$, cada entrada se calcula
           reemplazando suma por $\lor$ y producto por $\land$:</p>
         $$M_{S \circ R}[i, j] = \bigvee_{k=1}^n \left( M_{R}[i, k] \land M_{S}[k, j] \right)$$
@@ -1576,20 +1576,20 @@
 
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 4.2</div>
-        <p><strong>Enunciado formal.</strong> Análisis matricial de la relación de inclusión ($Y \subseteq X$). Dado $A
+        <p><strong>Enunciado formal.</strong> Análisis matricial de la relación de inclusión $(Y \subseteq X)$. Dado $A
           = \{1, 2\}$ y $\mathcal{P}(A) = \{ \emptyset, \{1\}, \{2\}, A \}$, analice matricialmente la relación $(X, Y)
           \in R \iff Y \subseteq X$.</p>
         <details class="solution">
           <summary>🔍 Ver verificación matricial completa</summary>
           <div class="solution-content">
             $$M_R = \begin{bmatrix} 1 & 0 & 0 & 0 \\ 1 & 1 & 0 & 0 \\ 1 & 0 & 1 & 0 \\ 1 & 1 & 1 & 1 \end{bmatrix}$$
-            <p><strong>Primero:</strong> <strong>Reflexiva.</strong> ✅ Toda la diagonal es $1$ ($M_I \leq M_R$).</p>
+            <p><strong>Primero:</strong> <strong>Reflexiva.</strong> ✅ Toda la diagonal es $1$ $(M_I \leq M_R)$.</p>
             <p><strong>Luego:</strong> <strong>Simétrica.</strong> ❌ $M_R \neq M_R^T$ (por ejemplo, $m_{21} = 1 \neq
-              m_{12} = 0$).</p>
+              m_{12} = 0)$.</p>
             <p><strong>Luego:</strong> <strong>Antisimétrica.</strong> ✅ $M_R \wedge M_R^T = M_I \leq M_I$.</p>
             <p><strong>Luego:</strong> <strong>Transitiva.</strong> ✅ $M_R \circ M_R = M_R \leq M_R$.</p>
             <p><strong>Finalmente:</strong> <strong>Total.</strong> ❌ $M_R \vee M_R^T$ tiene ceros en $[2,3]$ y $[3,2]$
-              ($\{1\}$ y $\{2\}$ son incomparables).</p>
+              $(\{1\}$ y $\{2\}$ son incomparables).</p>
           </div>
         </details>
       </div>
@@ -1619,7 +1619,7 @@
             </tr>
             <tr>
               <td>Preorden + Simétrica (Reflexiva + Simétrica + Transitiva)</td>
-              <td><strong>Relación de Equivalencia ($\sim$)</strong></td>
+              <td><strong>Relación de Equivalencia $(\sim)$</strong></td>
             </tr>
             <tr>
               <td>Preorden + Antisimétrica (Reflexiva + Antisimétrica + Transitiva)</td>
@@ -1638,20 +1638,24 @@
       </div>
 
       <div class="callout callout-thm">
-        <div class="callout-title">📐 Teorema 5.1: Heredabilidad en la Relación Inversa ($R^{-1}$)</div>
+        <div class="callout-title">📐 Teorema 5.1: Heredabilidad en la Relación Inversa</div>
         <p style="margin:0;">Toda propiedad primaria (reflexividad, arreflexividad, simetría, antisimetría, asimetría y
           transitividad) se preserva intacta en $R^{-1}$. En consecuencia, si $R$ es una <strong>relación de
             equivalencia</strong> (o un <strong>orden parcial</strong>), $R^{-1}$ también lo es.</p>
       </div>
 
       <h3 class="section-title" id="sec-5-2">5.2 Relación de Equivalencia</h3>
-      <p>Una relación de equivalencia ($R = \sim$) generaliza la noción de igualdad y fragmenta un conjunto en grupos
+      <p>Una relación de equivalencia $(R = \sim)$ generaliza la noción de igualdad y fragmenta un conjunto en grupos
         disjuntos llamados clases de equivalencia.</p>
 
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 5.1</div>
-        <p><strong>Enunciado formal.</strong> Verificación gráfica y analítica de Equivalencia. Sea $A = \{1, 2, 3\}$ y
-          $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$. Verifique que $R$ es de equivalencia.</p>
+  <p><strong>Enunciado formal.</strong> Verificación gráfica y analítica de Equivalencia.</p>
+  <p>Sea</p>
+  $$A = \{1, 2, 3\}$$
+  <p>y</p>
+  $$R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$$
+  <p>Verifique que $R$ es de equivalencia.</p>
         <details class="solution">
           <summary>🔍 Ver grafo dirigido y verificación</summary>
           <div class="solution-content">
@@ -1688,7 +1692,7 @@
             <p><strong>Primero:</strong> <strong>Reflexividad.</strong> Contiene todos los bucles:</p>
             $$I_A = \{(1,1), (2,2), (3,3)\} \subseteq R$$
             <p><strong>Luego:</strong> <strong>Simetría.</strong> $R^{-1} = R$ (el camino $1 \to 2$ tiene su regreso $2
-              \to 1$).</p>
+              \to 1)$.</p>
             <p><strong>Finalmente:</strong> <strong>Transitividad.</strong> $R \circ R = R \subseteq R$ (los recorridos
               $1 \to 2 \to 1$ y $2 \to 1 \to 2$ aterrizan en los bucles $(1,1)$ y $(2,2)$ ya incluidos).</p>
           </div>
@@ -1700,7 +1704,7 @@
         <div class="callout-title">📌 Definiciones: Clase de Equivalencia y Conjunto Cociente</div>
         <p><strong>Clase de equivalencia de $x$.</strong></p>
         $$[x] = \{ y \in A \mid (x, y) \in R \}$$
-        <p><strong>Conjunto Cociente ($A/R$).</strong> Familia formada por todas las clases distintas de $A$:</p>
+        <p><strong>Conjunto Cociente $(A/R)$.</strong> Familia formada por todas las clases distintas de $A$:</p>
         $$A/R = \{ [x] \mid x \in A \}$$
         <p>Constituye una <strong>partición</strong> exacta de $A$.</p>
         <p><strong>Reconstrucción de $R$.</strong></p>
@@ -1709,11 +1713,17 @@
 
       <div class="example-box">
         <div class="example-header">🧩 Ejemplo 5.2</div>
-        <p><strong>Enunciado formal.</strong> Cálculo del Conjunto Cociente y Reconstrucción de $R$.</p>
-        <p><strong>Primero:</strong> para $A = \{1, 2, 3\}$ y $R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$, halle
-          las clases y $A/R$.</p>
-        <p><strong>Luego:</strong> dado $A/R = \{ \{x, z\}, \{y\} \}$, reconstruya $A$ y la relación $R$ por extensión.
-        </p>
+  <p><strong>Enunciado formal.</strong> Cálculo del Conjunto Cociente y Reconstrucción de $R$.</p>
+
+  <p><strong>Primero:</strong> para</p>
+  $$A = \{1, 2, 3\}$$
+  <p>y</p>
+  $$R = \{ (1, 1), (2, 2), (3, 3), (1, 2), (2, 1) \}$$
+  <p>halle las clases y $A/R$.</p>
+
+  <p><strong>Luego:</strong> dado</p>
+  $$A/R = \{ \{x, z\}, \{y\} \}$$
+  <p>reconstruya $A$ y la relación $R$ por extensión.</p>
         <details class="solution">
           <summary>🔍 Ver soluciones</summary>
           <div class="solution-content">
@@ -1743,13 +1753,13 @@
 
       <h3 class="section-title" id="sec-6-1">6.1 Orden Parcial y Comparabilidad</h3>
       <div class="callout callout-def">
-        <div class="callout-title">📌 Definición: Conjunto Parcialmente Ordenado $(A, \le)$ o $(A, \underline{\alpha})$
+        <div class="callout-title">📌 Definición: Conjunto Parcialmente Ordenado
         </div>
         <p><strong>Orden Parcial (Amplio).</strong> Relación <strong>reflexiva, antisimétrica y transitiva</strong>.</p>
-        <p><strong>Orden Estricto ($<$).</strong> Relación <strong>arreflexiva, asimétrica y transitiva</strong>.</p>
+        <p><strong>Orden Estricto $(<)$.</strong> Relación <strong>arreflexiva, asimétrica y transitiva</strong>.</p>
         <p><strong>Elementos Comparables.</strong></p>
         $$x \le y \lor y \le x$$
-        <p><strong>Elementos Incomparables ($x \parallel y$).</strong></p>
+        <p><strong>Elementos Incomparables $(x \parallel y)$.</strong></p>
         $$x \not\le y \land y \not\le x$$
       </div>
 
@@ -1800,7 +1810,7 @@
                   <circle cx="100" cy="38" r="12" fill="none" stroke="currentColor" stroke-width="1.5" /><text x="100"
                     y="42" text-anchor="middle" font-size="12" fill="currentColor">4</text>
                 </svg>
-                <div class="diagram-caption">Grafo (con arista transitiva $1 \to 4$)</div>
+                <div class="diagram-caption">Grafo (con arista transitiva $1 \to 4)$</div>
               </div>
 
               <div style="font-size: 1.5rem; color: var(--primary); font-weight: bold;">➔</div>
@@ -1842,7 +1852,7 @@
           </thead>
           <tbody>
             <tr>
-              <td rowspan="4"><strong>Globales<br>(en $A$)</strong></td>
+              <td rowspan="4"><strong>Globales<br>(en $A)$</strong></td>
               <td><strong>Maximal</strong></td>
               <td>No tiene sucesores (nadie por encima de él). Puede haber varios.</td>
             </tr>
@@ -1861,7 +1871,7 @@
                 finitos, equivale a un único minimal).</td>
             </tr>
             <tr>
-              <td rowspan="4"><strong>Relativos<br>(respecto a $S \subseteq A$)</strong></td>
+              <td rowspan="4"><strong>Relativos<br>(respecto a $S \subseteq A)$</strong></td>
               <td><strong>Cota Superior</strong></td>
               <td>Elemento $x \in A$ que supera a todos los elementos de $S$.</td>
             </tr>
@@ -1870,11 +1880,11 @@
               <td>Elemento $x \in A$ que precede a todos los elementos de $S$.</td>
             </tr>
             <tr>
-              <td><strong>Supremo ($\sup$)</strong></td>
+              <td><strong>Supremo $(\sup)$</strong></td>
               <td>La <strong>menor</strong> de las cotas superiores (la más cercana a $S$ por arriba).</td>
             </tr>
             <tr>
-              <td><strong>Ínfimo ($\inf$)</strong></td>
+              <td><strong>Ínfimo $(\inf)$</strong></td>
               <td>La <strong>mayor</strong> de las cotas inferiores (la más cercana a $S$ por abajo).</td>
             </tr>
             <tr>
@@ -2023,10 +2033,10 @@
                     <td>Maximales: $\{f\}$; <strong>Máximo: $f$</strong>.<br>Minimales: $\{a, b\}$; <strong>Mínimo: No
                         hay</strong>.</td>
                     <td>
-                      <strong>Para $S = \{c\}$.</strong> Cotas sup. $\{c,d,e,f\}$ ($\sup = c$); Cotas inf. $\{c,a,b\}$
-                      ($\inf = c$).<br>
-                      <strong>Para $B = \{d,e\}$.</strong> Cotas sup. $\{f\}$ ($\sup = f$); Cotas inf. $\{c,a,b\}$
-                      ($\inf = c$).
+                      <strong>Para $S = \{c\}$.</strong> Cotas sup. $\{c,d,e,f\}$ $(\sup = c)$; Cotas inf. $\{c,a,b\}$
+                      $(\inf = c)$.<br>
+                      <strong>Para $B = \{d,e\}$.</strong> Cotas sup. $\{f\}$ $(\sup = f)$; Cotas inf. $\{c,a,b\}$
+                      $(\inf = c)$.
                     </td>
                   </tr>
                   <tr>
@@ -2034,8 +2044,8 @@
                     <td>Maximales: $\{i, j\}$; <strong>Máximo: No hay</strong>.<br>Minimales: $\{a\}$; <strong>Mínimo:
                         $a$</strong>.</td>
                     <td>
-                      <strong>Para $S = \{g, h\}$.</strong> Cotas sup. $\{j\}$ ($\sup = j$); Cotas inf. $\{c, a\}$
-                      ($\inf = c$).
+                      <strong>Para $S = \{g, h\}$.</strong> Cotas sup. $\{j\}$ $(\sup = j)$; Cotas inf. $\{c, a\}$
+                      $(\inf = c)$.
                     </td>
                   </tr>
                   <tr>
@@ -2044,10 +2054,10 @@
                       <strong>Mínimo: $1$</strong>.
                     </td>
                     <td>
-                      <strong>$S_1 = \{6, 8\}$ (Anticadena).</strong> Cotas sup. $\emptyset$ ($\sup$: No hay); Cotas
-                      inf. $\{1\}$ ($\inf = 1$).<br>
-                      <strong>$S_2 = \{1, 2, 4\}$ (Cadena).</strong> Cotas sup. $\{4, 5\}$ ($\sup = 4$); Cotas inf.
-                      $\{1\}$ ($\inf = 1$).
+                      <strong>$S_1 = \{6, 8\}$ (Anticadena).</strong> Cotas sup. $\emptyset$ $(\sup$: No hay); Cotas
+                      inf. $\{1\}$ $(\inf = 1)$.<br>
+                      <strong>$S_2 = \{1, 2, 4\}$ (Cadena).</strong> Cotas sup. $\{4, 5\}$ $(\sup = 4)$; Cotas inf.
+                      $\{1\}$ $(\inf = 1)$.
                     </td>
                   </tr>
                 </tbody>
